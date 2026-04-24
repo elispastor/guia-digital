@@ -20,6 +20,7 @@
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background: #000;
         }
         .carrusel-inner {
             display: flex;
@@ -75,9 +76,10 @@
         .card { background: #112b4f; padding: 25px; border-radius: 20px; border-left: 5px solid #fbbf24; margin-bottom: 20px; }
         .taller-card { background: #112b4f; border-radius: 20px; padding: 20px; margin-bottom: 20px; transition: 0.3s; border: 1px solid #1e3a5f; }
         .taller-card:hover { transform: translateY(-5px); background: #1e3a5f; border-color: #fbbf24; }
-        .btn { padding: 8px 16px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 0.8rem; }
+        .btn { padding: 8px 16px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 0.8rem; transition: 0.2s; }
         .btn-wsp { background: #25d366; color: white; }
         .btn-sitio { background: #3b82f6; color: white; }
+        .btn-sitio:hover, .btn-wsp:hover { transform: scale(1.05); }
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2em; text-decoration: none; color: white; border: 2px solid #fbbf24; z-index: 1000; }
         .btn-categoria { background: #112b4f; padding: 8px 16px; border-radius: 30px; color: white; cursor: pointer; border: none; font-size: 0.8rem; transition: 0.2s; }
         .btn-categoria.activo { background: #fbbf24; color: #0b1c3a; font-weight: bold; }
@@ -117,15 +119,15 @@
         <img src="portada-guia.jpg" alt="Guía Digital de Cúcuta" class="w-full h-auto object-cover" style="max-height: 400px; width: 100%;">
     </div>
 
-    <!-- CARRUSEL REAL CON IMÁGENES -->
+    <!-- CARRUSEL CON IMÁGENES REALES DE NEGOCIOS -->
     <div class="carrusel" id="carrusel">
         <div class="carrusel-inner" id="carruselInner">
-            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Hotel+La+Puerta+del+Sol" alt="Hotel La Puerta del Sol"></div>
-            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=TOYOMACK+Accesorios" alt="TOYOMACK"></div>
-            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Ferretería+La+17" alt="Ferretería La 17"></div>
-            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Restaurante+La+Mano+de+Dios" alt="Restaurante"></div>
-            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Motores+Jesús" alt="Motores Jesús"></div>
-            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Salón+D%27Steffy" alt="Salón de Belleza"></div>
+            <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel La Puerta del Sol"></div>
+            <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK Accesorios"></div>
+            <div class="carrusel-slide"><img src="https://ferreteria-la-17.pages.dev/portada.jpg" alt="Ferretería La 17"></div>
+            <div class="carrusel-slide"><img src="https://restaurantlamanodedios.netlify.app/portada.jpg" alt="Restaurante La Mano de Dios"></div>
+            <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús"></div>
+            <div class="carrusel-slide"><img src="https://salondebellezadsteffy.pages.dev/portada.jpg" alt="Salón D'Steffy"></div>
         </div>
         <button class="carrusel-btn prev" id="prevBtn">❮</button>
         <button class="carrusel-btn next" id="nextBtn">❯</button>
@@ -160,7 +162,7 @@
         </div>
     </div>
 
-    <!-- CONTACTO Y QR -->
+    <!-- CONTACTO Y QR (con la nueva URL de Cloudflare) -->
     <div id="contacto" class="card text-center">
         <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
         <p>Contáctanos para incluir tu negocio en la guía o para ser patrocinador.</p>
@@ -170,16 +172,17 @@
         </div>
         <div class="mt-4">
             <h3 class="text-[#fbbf24]">📱 ESCANEA Y GUARDA ESTA GUÍA</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://guia-talleres-cucuta.netlify.app" alt="QR Guía" class="mx-auto my-2">
-            <p><a href="https://guia-talleres-cucuta.netlify.app" class="text-[#fbbf24] underline">🔗 Haz clic si no puedes escanear</a></p>
+            <!-- QR actualizado a la NUEVA URL de Cloudflare -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://guiadigitalcucuta.pages.dev" alt="QR Guía" class="mx-auto my-2">
+            <p><a href="https://guiadigitalcucuta.pages.dev" class="text-[#fbbf24] underline">🔗 Haz clic si no puedes escanear</a></p>
             <button onclick="reenviarGuia()" class="mt-3 bg-[#fbbf24] text-[#0b1c3a] font-bold py-2 px-4 rounded-full shadow-md hover:scale-105 transition">📲 Reenviar esta guía a un amigo</button>
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (actualizado) -->
     <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
         <p>© 2026 Guía Digital de Cúcuta · Directorio de negocios</p>
-        <div class="mt-2"><a href="https://guiadigitalcucuta.netlify.app/" class="text-[#fbbf24] font-bold">📱 Tu Tarjeta Digital</a></div>
+        <div class="mt-2"><a href="https://guiadigitalcucuta.pages.dev" class="text-[#fbbf24] font-bold">📱 Tu Tarjeta Digital</a></div>
         <p class="text-sm text-gray-400 mt-1">Guía Digital Cúcuta - Unidos Ganamos Más</p>
     </footer>
 </div>
@@ -276,7 +279,9 @@
             <div class="taller-card">
                 <h3 class="text-xl font-bold text-[#fbbf24]">${n.nombre}</h3>
                 <p class="text-sm text-gray-300 mb-3">${obtenerNombreCategoria(n.categoria)}</p>
-                <div class="flex gap-3"><a href="${n.url}" target="_blank" class="btn btn-sitio">🔗 Ver sitio</a></div>
+                <div class="flex gap-3">
+                    <a href="${n.url}" target="_blank" class="btn btn-sitio">🔗 Ver sitio</a>
+                </div>
             </div>
         `).join("");
     }
@@ -339,16 +344,26 @@
     nextBtn.addEventListener('click', nextSlide);
     setInterval(nextSlide, 5000);
 
+    // Funciones de compartir con la NUEVA URL
+    const NUEVA_URL = 'https://guiadigitalcucuta.pages.dev';
+
     function compartirSitio() {
-        const url = 'https://guia-talleres-cucuta.netlify.app';
-        if (navigator.share) { navigator.share({ title: 'Guía Digital de Cúcuta', text: 'Directorio de negocios en Cúcuta', url: url }); }
-        else { navigator.clipboard.writeText(url); alert('📋 Enlace copiado.'); }
+        if (navigator.share) {
+            navigator.share({ title: 'Guía Digital de Cúcuta', text: 'Directorio de negocios en Cúcuta', url: NUEVA_URL });
+        } else {
+            navigator.clipboard.writeText(NUEVA_URL);
+            alert('📋 Enlace copiado al portapapeles.');
+        }
     }
+
     function reenviarGuia() {
-        const url = 'https://guia-talleres-cucuta.netlify.app';
         const texto = '🔧 Guía Digital de Cúcuta - Directorio de negocios, talleres y servicios. ¡Míralo aquí:';
-        if (navigator.share) { navigator.share({ title: 'Guía Digital de Cúcuta', text: texto, url: url }); }
-        else { navigator.clipboard.writeText(url + ' ' + texto); alert('📋 Enlace copiado.'); }
+        if (navigator.share) {
+            navigator.share({ title: 'Guía Digital de Cúcuta', text: texto, url: NUEVA_URL });
+        } else {
+            navigator.clipboard.writeText(NUEVA_URL + ' ' + texto);
+            alert('📋 Enlace copiado. Pégalo en WhatsApp o donde prefieras.');
+        }
     }
 </script>
 </body>
