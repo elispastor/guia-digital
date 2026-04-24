@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Guía Digital de Cúcuta | Directorio de negocios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0b1c3a; font-family: 'Segoe UI', Arial, sans-serif; color: white; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* CARRUSEL REAL */
+        .carrusel {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin: 30px 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .carrusel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carrusel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        .carrusel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+        .carrusel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 0 15px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 30px;
+        }
+        .carrusel-btn.prev { left: 10px; }
+        .carrusel-btn.next { right: 10px; }
+        .carrusel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 12px;
+            border-radius: 30px;
+            z-index: 10;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .indicator.active { background: #fbbf24; }
+
+        .card { background: #112b4f; padding: 25px; border-radius: 20px; border-left: 5px solid #fbbf24; margin-bottom: 20px; }
+        .taller-card { background: #112b4f; border-radius: 20px; padding: 20px; margin-bottom: 20px; transition: 0.3s; border: 1px solid #1e3a5f; }
+        .taller-card:hover { transform: translateY(-5px); background: #1e3a5f; border-color: #fbbf24; }
+        .btn { padding: 8px 16px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 0.8rem; }
+        .btn-wsp { background: #25d366; color: white; }
+        .btn-sitio { background: #3b82f6; color: white; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2em; text-decoration: none; color: white; border: 2px solid #fbbf24; z-index: 1000; }
+        .btn-categoria { background: #112b4f; padding: 8px 16px; border-radius: 30px; color: white; cursor: pointer; border: none; font-size: 0.8rem; transition: 0.2s; }
+        .btn-categoria.activo { background: #fbbf24; color: #0b1c3a; font-weight: bold; }
+        .filtros-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+<a href="https://wa.me/573244913371" class="whatsapp-float" target="_blank">💬</a>
+
+<div class="container">
+
+    <!-- MENÚ PRINCIPAL -->
+    <nav class="bg-[#112b4f] border-b-4 border-[#fbbf24] py-4 px-6 mb-8 flex flex-wrap items-center justify-between sticky top-0 z-50 rounded-2xl">
+        <span class="font-['Montserrat'] text-xl font-bold text-[#fbbf24]">📍 GUÍA DIGITAL DE CÚCUTA</span>
+        <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
+            <a href="#inicio" class="hover:text-[#fbbf24]">INICIO</a>
+            <a href="#directorio" class="hover:text-[#fbbf24]">DIRECTORIO</a>
+            <a href="#planes" class="hover:text-[#fbbf24]">PLANES</a>
+            <a href="#contacto" class="hover:text-[#fbbf24]">CONTACTO</a>
+            <button onclick="compartirSitio()" class="hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white text-sm font-semibold">📤 COMPARTIR</button>
+        </div>
+        <button id="menu-btn" class="md:hidden text-2xl text-[#fbbf24]"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#112b4f] p-4 mb-4 rounded-2xl flex-col gap-3 border-l-4 border-[#fbbf24]">
+        <a href="#inicio" class="block py-2 hover:text-[#fbbf24]">INICIO</a>
+        <a href="#directorio" class="block py-2 hover:text-[#fbbf24]">DIRECTORIO</a>
+        <a href="#planes" class="block py-2 hover:text-[#fbbf24]">PLANES</a>
+        <a href="#contacto" class="block py-2 hover:text-[#fbbf24]">CONTACTO</a>
+        <button onclick="compartirSitio()" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">📤 COMPARTIR</button>
+    </div>
+
+    <!-- PORTADA LIMPIA -->
+    <div id="inicio" class="mb-8 rounded-2xl overflow-hidden">
+        <img src="portada-guia.jpg" alt="Guía Digital de Cúcuta" class="w-full h-auto object-cover" style="max-height: 400px; width: 100%;">
+    </div>
+
+    <!-- CARRUSEL REAL CON IMÁGENES -->
+    <div class="carrusel" id="carrusel">
+        <div class="carrusel-inner" id="carruselInner">
+            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Hotel+La+Puerta+del+Sol" alt="Hotel La Puerta del Sol"></div>
+            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=TOYOMACK+Accesorios" alt="TOYOMACK"></div>
+            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Ferretería+La+17" alt="Ferretería La 17"></div>
+            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Restaurante+La+Mano+de+Dios" alt="Restaurante"></div>
+            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Motores+Jesús" alt="Motores Jesús"></div>
+            <div class="carrusel-slide"><img src="https://placehold.co/1200x675/0b1c3a/fbbf24?text=Salón+D%27Steffy" alt="Salón de Belleza"></div>
+        </div>
+        <button class="carrusel-btn prev" id="prevBtn">❮</button>
+        <button class="carrusel-btn next" id="nextBtn">❯</button>
+        <div class="carrusel-indicators" id="indicadores"></div>
+    </div>
+
+    <!-- MISIÓN -->
+    <div class="card">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-2">🎯 ¿Qué es la Guía Digital de Cúcuta?</h2>
+        <p>El directorio más completo de talleres, tiendas y servicios de Cúcuta. Cada negocio tiene su propia tarjeta digital con WhatsApp, ubicación y más.</p>
+        <p class="mt-2"><strong>💡 ¿Cómo puedes ganar?</strong> Refiere otros negocios y cuando ellos se unan, tú ganas una comisión. Pregúntanos cómo.</p>
+        <p class="mt-2 text-sm text-gray-300">✅ Todos los negocios aquí listados ya tienen su tarjeta digital activa.</p>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filtros-container" id="filtros"></div>
+
+    <!-- DIRECTORIO -->
+    <div id="directorio" class="mb-8">
+        <h2 class="text-3xl font-bold text-[#fbbf24] mb-4 text-center">📋 DIRECTORIO POR CATEGORÍA</h2>
+        <div id="lista-negocios" class="grid md:grid-cols-2 gap-6"></div>
+    </div>
+
+    <!-- PLANES -->
+    <div id="planes" class="card">
+        <h2 class="text-2xl font-bold text-[#fbbf24] text-center mb-4">📊 PLANES PARA TU NEGOCIO</h2>
+        <div class="grid md:grid-cols-4 gap-4 text-center">
+            <div class="bg-black/30 p-4 rounded-xl"><strong class="text-[#fbbf24]">Gratis</strong><br>+ Básico<br><span class="text-sm">Presencia en guía</span></div>
+            <div class="bg-black/30 p-4 rounded-xl"><strong class="text-[#fbbf24]">Básico</strong><br>$25.000/año<br><span class="text-sm">+ Tarjeta digital básica</span></div>
+            <div class="bg-black/30 p-4 rounded-xl"><strong class="text-[#fbbf24]">Pro</strong><br>$50.000/año<br><span class="text-sm">+ Carrusel de fotos</span></div>
+            <div class="bg-black/30 p-4 rounded-xl"><strong class="text-[#fbbf24]">Élite</strong><br>$150.000/año<br><span class="text-sm">+ Videos + Sistema de referidos</span></div>
+        </div>
+    </div>
+
+    <!-- CONTACTO Y QR -->
+    <div id="contacto" class="card text-center">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
+        <p>Contáctanos para incluir tu negocio en la guía o para ser patrocinador.</p>
+        <div class="flex justify-center gap-4 my-4 flex-wrap">
+            <a href="https://wa.me/573244913371" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
+            <button onclick="compartirSitio()" class="btn" style="background:#3b82f6; color:white;">📤 Compartir guía</button>
+        </div>
+        <div class="mt-4">
+            <h3 class="text-[#fbbf24]">📱 ESCANEA Y GUARDA ESTA GUÍA</h3>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://guia-talleres-cucuta.netlify.app" alt="QR Guía" class="mx-auto my-2">
+            <p><a href="https://guia-talleres-cucuta.netlify.app" class="text-[#fbbf24] underline">🔗 Haz clic si no puedes escanear</a></p>
+            <button onclick="reenviarGuia()" class="mt-3 bg-[#fbbf24] text-[#0b1c3a] font-bold py-2 px-4 rounded-full shadow-md hover:scale-105 transition">📲 Reenviar esta guía a un amigo</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
+        <p>© 2026 Guía Digital de Cúcuta · Directorio de negocios</p>
+        <div class="mt-2"><a href="https://guiadigitalcucuta.netlify.app/" class="text-[#fbbf24] font-bold">📱 Tu Tarjeta Digital</a></div>
+        <p class="text-sm text-gray-400 mt-1">Guía Digital Cúcuta - Unidos Ganamos Más</p>
+    </footer>
+</div>
+
+<script>
+    // ============================================================
+    // BASE DE DATOS DE NEGOCIOS (NOMBRE, URL, CATEGORÍA)
+    // ============================================================
+    const negocios = [
+        { nombre: "Tracto Auto M.F.", url: "https://tracto-auto-mf.pages.dev/", categoria: "mecanica" },
+        { nombre: "Taller Barney", url: "https://taller-barney.netlify.app/", categoria: "mecanica" },
+        { nombre: "Autotaller Murillo", url: "https://autotallermurillo.netlify.app/", categoria: "mecanica" },
+        { nombre: "Taller Mecánico TS", url: "https://taller-mecanico-ts.netlify.app/", categoria: "mecanica" },
+        { nombre: "Mecánica Willson y Gustavo", url: "https://mecanicaautomotrizwillsonygustavo.netlify.app/", categoria: "mecanica" },
+        { nombre: "Multiservicios Los Torres", url: "https://multiserviciosautomotrizlostorres.netlify.app/", categoria: "mecanica" },
+        { nombre: "Electroauto El Rolo", url: "https://electroautoelrolo.netlify.app/", categoria: "mecanica" },
+        { nombre: "Papa Barney", url: "https://papa-barney.netlify.app/", categoria: "mecanica" },
+        { nombre: "Motores Jesús", url: "https://motores-motoreductores-jesus.netlify.app/", categoria: "motores" },
+        { nombre: "Embobinados Dacoor", url: "https://embobinadosdacoor.netlify.app/", categoria: "motores" },
+        { nombre: "Montallantas El Indio", url: "https://montallantas-el-indio.netlify.app/", categoria: "llantas" },
+        { nombre: "Ruedas y Rodamientos El Shaddai", url: "https://ruedasyrodamientoselshaddai.netlify.app/", categoria: "llantas" },
+        { nombre: "Servigomas", url: "https://servigomas.netlify.app/", categoria: "llantas" },
+        { nombre: "Herrería Duarte", url: "https://tallerdeherreriaduarte.netlify.app/", categoria: "herreria" },
+        { nombre: "Acero y Gas", url: "https://aceroygas.netlify.app/", categoria: "herreria" },
+        { nombre: "Aceros PC", url: "https://acerospc.netlify.app/", categoria: "herreria" },
+        { nombre: "Herramientas El Segundazo", url: "https://herramientas-el-segundazo.netlify.app/", categoria: "herreria" },
+        { nombre: "Muebles RQ", url: "https://mueblesrq.netlify.app/", categoria: "tapiceria" },
+        { nombre: "La Clínica del Mueble", url: "https://laclinicadelmueble.netlify.app/", categoria: "tapiceria" },
+        { nombre: "Carpintería JK", url: "https://carpinteriajk.netlify.app/", categoria: "tapiceria" },
+        { nombre: "Carpintería 10 con 2da", url: "https://carpinteria10con2da.netlify.app/", categoria: "tapiceria" },
+        { nombre: "Muebles Diseños y Punto", url: "https://mueblesdisenosypunto.netlify.app/", categoria: "tapiceria" },
+        { nombre: "TOYOMACK", url: "https://toyomack.pages.dev/", categoria: "accesorios" },
+        { nombre: "Quincallería Blanca", url: "https://quincalleriablanca.netlify.app/", categoria: "accesorios" },
+        { nombre: "Fabrigomas", url: "https://fabrigomas.netlify.app/", categoria: "accesorios" },
+        { nombre: "Otoniel Acarreos", url: "https://otoniel-acarreos.netlify.app/", categoria: "acarreos" },
+        { nombre: "Acarreos Carlos", url: "https://acarreoscarlos.netlify.app/", categoria: "acarreos" },
+        { nombre: "Acarreos Luis Bueno", url: "https://acarreosluisbueno.netlify.app/", categoria: "acarreos" },
+        { nombre: "Acarreos Isidro", url: "https://acarreos-isidro.netlify.app/", categoria: "acarreos" },
+        { nombre: "Gatos Hidráulicos María", url: "https://gatoshidraulicosmaria.netlify.app/", categoria: "acarreos" },
+        { nombre: "Servipuertas", url: "https://servipuertas.netlify.app/", categoria: "puertas" },
+        { nombre: "Cerrajería El Mago", url: "https://cerrajeriaelmago.netlify.app/", categoria: "puertas" },
+        { nombre: "Marianacell", url: "https://marianacell.netlify.app/", categoria: "celulares" },
+        { nombre: "Davidcell", url: "https://davidcell.netlify.app/", categoria: "celulares" },
+        { nombre: "HDMovil", url: "https://hdmovil.netlify.app/", categoria: "celulares" },
+        { nombre: "HDMovil2", url: "https://hdmovil2.netlify.app/", categoria: "celulares" },
+        { nombre: "Esbedcell", url: "https://esbedcell.netlify.app/", categoria: "celulares" },
+        { nombre: "Mis Antojos", url: "https://mis-antojos-restaurante.netlify.app/", categoria: "restaurantes" },
+        { nombre: "Restaurante La Mano de Dios", url: "https://restaurantlamanodedios.netlify.app/", categoria: "restaurantes" },
+        { nombre: "Charcutería Jireh", url: "https://charcuteriajireh.netlify.app/", categoria: "restaurantes" },
+        { nombre: "Restaurante El Sabor de Doña Rosa", url: "https://restauranteelsabordedonarosa.netlify.app/", categoria: "restaurantes" },
+        { nombre: "Proyecto Comedor NGE", url: "https://proyecto-comedor-nge.netlify.app/", categoria: "restaurantes" },
+        { nombre: "El Punto de Jack", url: "https://elpuntode-jack.netlify.app/", categoria: "maquinas" },
+        { nombre: "Hotel La Puerta del Sol", url: "https://hotel-lapuertadelsol.netlify.app/", categoria: "hoteles" },
+        { nombre: "Salón D'Steffy", url: "https://salondebellezadsteffy.pages.dev/", categoria: "belleza" },
+        { nombre: "Liam Stylos Peluquería", url: "https://liam-stylos-peluqueria.netlify.app/", categoria: "belleza" },
+        { nombre: "Ciclorepuestos Biker10", url: "https://ciclorepuestosbiker10.netlify.app/", categoria: "bicicletas" },
+        { nombre: "Bicicletas Alex", url: "https://bicicletas-alex.netlify.app/", categoria: "bicicletas" },
+        { nombre: "Frioaire Vásquez", url: "https://frioaire-vasquez.netlify.app/", categoria: "refrigeracion" },
+        { nombre: "Hidrotec Cúcuta", url: "https://hidrotec-cucuta.netlify.app/", categoria: "hidraulica" },
+        { nombre: "Comercializadora El Campo", url: "https://comercializadoraelcampo.netlify.app/", categoria: "comercializadoras" }
+    ];
+
+    const categorias = [
+        { id: "todos", nombre: "🔧 Todos" },
+        { id: "mecanica", nombre: "🚗 Mecánica" },
+        { id: "motores", nombre: "⚙️ Motores" },
+        { id: "llantas", nombre: "🛞 Llantas" },
+        { id: "herreria", nombre: "🔩 Herrería" },
+        { id: "tapiceria", nombre: "🪑 Tapicería" },
+        { id: "accesorios", nombre: "🔧 Accesorios" },
+        { id: "acarreos", nombre: "🚛 Acarreos" },
+        { id: "puertas", nombre: "🚪 Puertas" },
+        { id: "celulares", nombre: "📱 Celulares" },
+        { id: "restaurantes", nombre: "🍽️ Restaurantes" },
+        { id: "maquinas", nombre: "🧵 Máquinas de coser" },
+        { id: "hoteles", nombre: "🏨 Hoteles" },
+        { id: "belleza", nombre: "💇 Belleza" },
+        { id: "bicicletas", nombre: "🚴 Bicicletas" },
+        { id: "refrigeracion", nombre: "❄️ Refrigeración" },
+        { id: "hidraulica", nombre: "💧 Hidráulica" },
+        { id: "comercializadoras", nombre: "🏪 Comercializadoras" }
+    ];
+
+    let categoriaActual = "todos";
+
+    function mostrarNegocios(categoria) {
+        const contenedor = document.getElementById("lista-negocios");
+        const filtrados = categoria === "todos" ? negocios : negocios.filter(n => n.categoria === categoria);
+        if (filtrados.length === 0) {
+            contenedor.innerHTML = `<div class="col-span-2 text-center py-8 text-gray-400">No hay negocios en esta categoría aún.</div>`;
+            return;
+        }
+        contenedor.innerHTML = filtrados.map(n => `
+            <div class="taller-card">
+                <h3 class="text-xl font-bold text-[#fbbf24]">${n.nombre}</h3>
+                <p class="text-sm text-gray-300 mb-3">${obtenerNombreCategoria(n.categoria)}</p>
+                <div class="flex gap-3"><a href="${n.url}" target="_blank" class="btn btn-sitio">🔗 Ver sitio</a></div>
+            </div>
+        `).join("");
+    }
+
+    function obtenerNombreCategoria(catId) {
+        const cat = categorias.find(c => c.id === catId);
+        return cat ? cat.nombre : catId;
+    }
+
+    function generarFiltros() {
+        const contenedor = document.getElementById("filtros");
+        contenedor.innerHTML = categorias.map(cat => `<button class="btn-categoria ${cat.id === categoriaActual ? 'activo' : ''}" data-categoria="${cat.id}">${cat.nombre}</button>`).join("");
+        document.querySelectorAll(".btn-categoria").forEach(btn => {
+            btn.addEventListener("click", () => {
+                categoriaActual = btn.dataset.categoria;
+                mostrarNegocios(categoriaActual);
+                document.querySelectorAll(".btn-categoria").forEach(b => b.classList.remove("activo"));
+                btn.classList.add("activo");
+            });
+        });
+    }
+
+    generarFiltros();
+    mostrarNegocios("todos");
+
+    // Menú hamburguesa
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => el.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    }
+
+    // Carrusel REAL
+    const carruselInner = document.getElementById('carruselInner');
+    const slides = document.querySelectorAll('.carrusel-slide');
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicadores = document.getElementById('indicadores');
+
+    function updateCarrusel() {
+        carruselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        document.querySelectorAll('.indicator').forEach((ind, i) => {
+            i === currentIndex ? ind.classList.add('active') : ind.classList.remove('active');
+        });
+    }
+    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarrusel(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarrusel(); }
+
+    for (let i = 0; i < totalSlides; i++) {
+        const ind = document.createElement('span');
+        ind.classList.add('indicator');
+        if (i === 0) ind.classList.add('active');
+        ind.onclick = () => { currentIndex = i; updateCarrusel(); };
+        indicadores.appendChild(ind);
+    }
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    setInterval(nextSlide, 5000);
+
+    function compartirSitio() {
+        const url = 'https://guia-talleres-cucuta.netlify.app';
+        if (navigator.share) { navigator.share({ title: 'Guía Digital de Cúcuta', text: 'Directorio de negocios en Cúcuta', url: url }); }
+        else { navigator.clipboard.writeText(url); alert('📋 Enlace copiado.'); }
+    }
+    function reenviarGuia() {
+        const url = 'https://guia-talleres-cucuta.netlify.app';
+        const texto = '🔧 Guía Digital de Cúcuta - Directorio de negocios, talleres y servicios. ¡Míralo aquí:';
+        if (navigator.share) { navigator.share({ title: 'Guía Digital de Cúcuta', text: texto, url: url }); }
+        else { navigator.clipboard.writeText(url + ' ' + texto); alert('📋 Enlace copiado.'); }
+    }
+</script>
+</body>
+</html>
