@@ -11,7 +11,6 @@
         body{background:#0b1c3a;font-family:'Segoe UI',Arial,sans-serif;color:white;}
         .container{max-width:1200px;margin:0 auto;padding:20px;}
 
-        /* CARRUSEL REAL */
         .carrusel{position:relative;width:100%;margin:30px 0;overflow:hidden;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.3);background:#000;}
         .carrusel-inner{display:flex;transition:transform 0.5s ease;}
         .carrusel-slide{min-width:100%;flex-shrink:0;}
@@ -26,21 +25,17 @@
         .card{background:#112b4f;padding:25px;border-radius:20px;border-left:5px solid #fbbf24;margin-bottom:20px;}
         .taller-card{background:#112b4f;border-radius:20px;padding:20px;margin-bottom:20px;transition:0.3s;border:1px solid #1e3a5f;}
         .taller-card:hover{transform:translateY(-5px);background:#1e3a5f;border-color:#fbbf24;}
-        .btn{padding:10px 20px;border-radius:30px;text-decoration:none;font-weight:bold;display:inline-block;font-size:0.9rem;transition:0.2s;text-align:center;}
+        .btn{padding:10px 20px;border-radius:30px;font-weight:bold;display:inline-block;font-size:0.9rem;transition:0.2s;text-align:center;}
         .btn-wsp{background:#25d366;color:white;}
-        .btn-sitio{background:#3b82f6;color:white;}
+        .btn-sitio{background:#3b82f6;color:white;border:none;cursor:pointer;}
         .btn-sitio:active,.btn-wsp:active{transform:scale(0.96);}
         .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25d366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2em;text-decoration:none;color:white;border:2px solid #fbbf24;z-index:1000;}
         .btn-categoria{background:#112b4f;padding:8px 16px;border-radius:30px;color:white;cursor:pointer;border:none;font-size:0.8rem;transition:0.2s;}
         .btn-categoria.activo{background:#fbbf24;color:#0b1c3a;font-weight:bold;}
         .filtros-container{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px;}
-
-        /* Feedback visual para botones */
         .btn-loading{opacity:0.6;pointer-events:none;position:relative;}
         .btn-loading::after{content:"⏳";font-size:1rem;margin-left:8px;animation:parpadeo 0.8s infinite;}
         @keyframes parpadeo{0%,100%{opacity:1;}50%{opacity:0.3;}}
-
-        /* MEJORAS MÓVIL */
         @media (max-width: 768px) {
             .container{padding:12px;}
             .carrusel-slide img{height:200px; aspect-ratio:auto; object-fit:cover;}
@@ -84,20 +79,21 @@
         <img src="portada-guia.jpg" alt="Guía Digital de Cúcuta" class="w-full h-auto">
     </div>
 
-   <!-- CARRUSEL REAL -->
-<div class="carrusel" id="carrusel">
-    <div class="carrusel-inner" id="carruselInner">
-        <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel La Puerta del Sol"></div>
-        <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK Accesorios"></div>
-        <div class="carrusel-slide"><img src="https://images.pexels.com/photos/4014840/pexels-photo-4014840.jpeg?w=1200&h=675&fit=crop" alt="Ferretería y construcción"></div>
-        <div class="carrusel-slide"><img src="https://restaurantlamanodedios.netlify.app/portada.jpg" alt="Restaurante La Mano de Dios"></div>
-        <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús"></div>
-        <div class="carrusel-slide"><img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=1200&h=675&fit=crop" alt="Salón de belleza"></div>
+    <!-- CARRUSEL -->
+    <div class="carrusel" id="carrusel">
+        <div class="carrusel-inner" id="carruselInner">
+            <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel La Puerta del Sol"></div>
+            <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK Accesorios"></div>
+            <div class="carrusel-slide"><img src="https://ferreteria-la-17.pages.dev/portada.jpg" alt="Ferretería La 17"></div>
+            <div class="carrusel-slide"><img src="https://restaurantlamanodedios.netlify.app/portada.jpg" alt="Restaurante La Mano de Dios"></div>
+            <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús"></div>
+            <div class="carrusel-slide"><img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?w=1200&h=675&fit=crop" alt="Salón de belleza"></div>
+        </div>
+        <button class="carrusel-btn prev" id="prevBtn">❮</button>
+        <button class="carrusel-btn next" id="nextBtn">❯</button>
+        <div class="carrusel-indicators" id="indicadores"></div>
     </div>
-    <button class="carrusel-btn prev" id="prevBtn">❮</button>
-    <button class="carrusel-btn next" id="nextBtn">❯</button>
-    <div class="carrusel-indicators" id="indicadores"></div>
-</div>
+
     <!-- MISIÓN -->
     <div class="card">
         <h2 class="text-2xl font-bold text-[#fbbf24] mb-2">🎯 ¿Qué es la Guía Digital de Cúcuta?</h2>
@@ -106,7 +102,7 @@
         <p class="mt-2 text-sm text-gray-300">✅ Todos los negocios aquí listados ya tienen su tarjeta digital activa.</p>
     </div>
 
-    <!-- FILTROS -->
+    <!-- FILTROS (se generan con JS) -->
     <div class="filtros-container" id="filtros"></div>
 
     <!-- DIRECTORIO -->
@@ -150,8 +146,8 @@
 </div>
 
 <script>
-    // ========== NEGOCIOS ==========
     const negocios = [
+        { nombre: "Ferretería La 17", url: "https://ferreteria-la-17.pages.dev/", categoria: "ferreterias" },
         { nombre: "Tracto Auto M.F.", url: "https://tracto-auto-mf.pages.dev/", categoria: "mecanica" },
         { nombre: "Taller Barney", url: "https://taller-barney.netlify.app/", categoria: "mecanica" },
         { nombre: "Autotaller Murillo", url: "https://autotallermurillo.netlify.app/", categoria: "mecanica" },
@@ -207,6 +203,7 @@
 
     const categorias = [
         { id: "todos", nombre: "🔧 Todos" },
+        { id: "ferreterias", nombre: "🏪 Ferreterías" },
         { id: "mecanica", nombre: "🚗 Mecánica" },
         { id: "motores", nombre: "⚙️ Motores" },
         { id: "llantas", nombre: "🛞 Llantas" },
@@ -228,7 +225,6 @@
 
     let categoriaActual = "todos";
 
-    // Función para mostrar negocios con botones mejorados (feedback visual)
     function mostrarNegocios(categoria) {
         const contenedor = document.getElementById("lista-negocios");
         const filtrados = categoria === "todos" ? negocios : negocios.filter(n => n.categoria === categoria);
@@ -246,7 +242,6 @@
             </div>
         `).join("");
 
-        // Eventos de clic con feedback
         document.querySelectorAll('.btn-sitio[data-url]').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -284,7 +279,6 @@
     generarFiltros();
     mostrarNegocios("todos");
 
-    // Menú hamburguesa
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuBtn) {
@@ -292,7 +286,6 @@
         document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => el.addEventListener('click', () => mobileMenu.classList.add('hidden')));
     }
 
-    // Carrusel REAL (funcional)
     const carruselInner = document.getElementById('carruselInner');
     const slides = document.querySelectorAll('.carrusel-slide');
     const totalSlides = slides.length;
@@ -321,7 +314,6 @@
     nextBtn.addEventListener('click', nextSlide);
     setInterval(nextSlide, 5000);
 
-    // Compartir y reenviar (con nueva URL)
     const NUEVA_URL = 'https://guiadigitalcucuta.pages.dev';
 
     function compartirSitio() {
