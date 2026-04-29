@@ -74,59 +74,12 @@
         <button onclick="compartirSitio()" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">📤 COMPARTIR</button>
     </div>
 
-    <!-- PORTADA -->
+       <!-- PORTADA (imagen que hará Lovart) -->
     <div id="inicio" class="mb-8 rounded-2xl overflow-hidden">
-        <img src="portada-guia.jpg" alt="Guía Digital de Cúcuta" class="w-full h-auto">
-    </div>
-        <!-- BUSCADOR DE GOOGLE (dentro de la guía) -->
-    <div class="card mb-6">
-        <div class="text-center">
-            <h2 class="text-2xl font-bold text-[#fbbf24] mb-2">🔍 ¿NO ENCUENTRAS LO QUE BUSCAS?</h2>
-            <p class="text-gray-300 mb-3">Búscalo directamente en Google sin salir de nuestra guía.</p>
-            <div class="max-w-2xl mx-auto">
-                <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
-                    <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería..." 
-                           class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
-                    <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
-                        <i class="fas fa-search mr-2"></i> Buscar en Google
-                    </button>
-                </form>
-                <p class="text-xs text-gray-400 mt-2">🔎 Al buscar, se abrirá una nueva pestaña con los resultados de Google.</p>
-            </div>
-        </div>
-    </div>
-        <!-- BUSCADOR DE EMPLEO (portales externos) -->
-    <div class="card mb-6" style="border-left-color: #34B7F1;">
-        <div class="text-center">
-            <h2 class="text-2xl font-bold text-[#34B7F1] mb-2">💼 ¿BUSCAS TRABAJO?</h2>
-            <p class="text-gray-300 mb-3">Encuentra empleo en los principales portales del país, directamente desde nuestra guía.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-3xl mx-auto">
-                <a href="https://www.computrabajo.com.co/trabajo-en-cucuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:scale-105">
-                    <i class="fas fa-briefcase"></i> Computrabajo
-                </a>
-                <a href="https://www.elempleo.com.co/ofertas-empleo-cucuta-norte-de-santander" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:scale-105">
-                    <i class="fas fa-file-alt"></i> elempleo.com
-                </a>
-                <a href="https://co.indeed.com/ofertas?l=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:scale-105">
-                    <i class="fas fa-search"></i> Indeed
-                </a>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto mt-3">
-                <a href="https://www.linkedin.com/jobs/search/?location=C%C3%BAcuta%2C%20Norte%20de%20Santander%2C%20Colombia" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:scale-105">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://www.trabajos.org/trabajo-en-cucuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition hover:scale-105">
-                    <i class="fas fa-globe"></i> Trabajos.org
-                </a>
-            </div>
-            <p class="text-xs text-gray-400 mt-3">🔎 Al hacer clic, se abrirá una nueva pestaña con las ofertas de empleo en Cúcuta.</p>
-            <div class="mt-4 pt-3 border-t border-gray-700">
-                <p class="text-sm text-amber-400">📢 ¿Eres una empresa? <a href="#contacto" class="font-bold underline">Contáctanos</a> para publicar tus ofertas DIRECTAMENTE en nuestra Bolsa de Empleo Local.</p>
-            </div>
-        </div>
+        <img src="portada-guia-nueva.jpg" alt="Guía Digital de Cúcuta" class="w-full h-auto">
     </div>
 
-    <!-- CARRUSEL -->
+    <!-- CARRUSEL (subido justo después de la portada) -->
     <div class="carrusel" id="carrusel">
         <div class="carrusel-inner" id="carruselInner">
             <!-- 1. FAJAS EDI -->
@@ -138,6 +91,37 @@
                     <p style="font-size: 0.8rem; margin-top: 1rem;">¡Escanea y conoce la calidad que transforma!</p>
                     <i class="fas fa-qrcode" style="font-size: 2rem; margin-top: 0.5rem; color: #fbbf24;"></i>
                 </div>
+            </div>
+            <!-- 2. HOTEL -->
+            <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Hotel'"></div>
+            <!-- 3. TOYOMACK -->
+            <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=TOYOMACK'"></div>
+            <!-- 4. RESTAURANTE -->
+            <div class="carrusel-slide"><img src="https://restaurantlamanodedios.netlify.app/portada.jpg" alt="Restaurante" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Restaurante'"></div>
+            <!-- 5. MOTORES JESÚS -->
+            <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Motores'"></div>
+        </div>
+        <button class="carrusel-btn prev" id="prevBtn">❮</button>
+        <button class="carrusel-btn next" id="nextBtn">❯</button>
+        <div class="carrusel-indicators" id="indicadores"></div>
+    </div>
+
+    <!-- GUÍA DE TODOS LOS NEGOCIOS DE CÚCUTA (EN CONSTRUCCIÓN) + BUSCADOR GOOGLE -->
+    <div class="card mb-6 text-center">
+        <h2 class="text-3xl font-bold text-[#fbbf24] mb-2">📍 GUÍA DE TODOS LOS NEGOCIOS DE CÚCUTA</h2>
+        <p class="text-xl text-amber-300 mb-2">✨ EN CONSTRUCCIÓN ✨</p>
+        <p class="text-gray-300 mb-4">Mientras crecemos, todo lo que quieras encontrar está aquí, desde Google, desde esta guía.</p>
+        <div class="max-w-2xl mx-auto">
+            <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
+                <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería, empleo..." 
+                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                    <i class="fas fa-search mr-2"></i> Buscar en Google
+                </button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">🔎 Busca cualquier negocio, servicio o empleo. Se abrirá una nueva pestaña con los resultados de Google.</p>
+        </div>
+    </div>
             </div>
             <!-- 2. HOTEL -->
             <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel La Puerta del Sol" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Hotel'"></div>
