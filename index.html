@@ -81,32 +81,17 @@
 
     <!-- CARRUSEL -->
     <div class="carrusel" id="carrusel">
-    <div class="carrusel-inner" id="carruselInner">
-       <div class="carrusel-slide">
-    <div style="width:100%; height:100%; background: linear-gradient(135deg, #6a3093, #a044ff); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; font-family: 'Segoe UI', sans-serif;">
-        <i class="fas fa-tshirt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-        <h2 style="font-size: 1.8rem; font-weight: bold; margin: 0;">Fajas Edi</h2>
-        <p style="font-size: 1rem; margin-top: 0.5rem;">Reducción · Moldeado · Fajas Postquirúrgicas</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">¡Escanea y conoce la calidad que transforma!</p>
-        <i class="fas fa-qrcode" style="font-size: 2rem; margin-top: 0.5rem; color: #fbbf24;"></i>
+        <div class="carrusel-inner" id="carruselInner">
+            <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel"></div>
+            <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK"></div>
+            <div class="carrusel-slide"><img src="https://ferreteria-la-17.pages.dev/portada.jpg" alt="Ferretería La 17"></div>
+            <div class="carrusel-slide"><img src="https://restaurantlamanodedios.netlify.app/portada.jpg" alt="Restaurante"></div>
+            <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús"></div>
+        </div>
+        <button class="carrusel-btn prev" id="prevBtn">❮</button>
+        <button class="carrusel-btn next" id="nextBtn">❯</button>
+        <div class="carrusel-indicators" id="indicadores"></div>
     </div>
-</div>
-        <!-- 2. HOTEL -->
-        <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel La Puerta del Sol" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Hotel'"></div>
-        
-        <!-- 3. TOYOMACK -->
-        <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Accesorios'"></div>
-        
-        <!-- 4. RESTAURANTE -->
-        <div class="carrusel-slide"><img src="https://restaurantlamanodedios.netlify.app/portada.jpg" alt="Restaurante" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Restaurante'"></div>
-        
-        <!-- 5. MOTORES JESÚS -->
-        <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Motores'"></div>
-    </div>
-    <button class="carrusel-btn prev" id="prevBtn">❮</button>
-    <button class="carrusel-btn next" id="nextBtn">❯</button>
-    <div class="carrusel-indicators" id="indicadores"></div>
-</div>
 
     <!-- MISIÓN -->
     <div class="card">
@@ -115,93 +100,34 @@
         <p class="mt-2"><strong>💡 ¿Cómo puedes ganar?</strong> Refiere otros negocios y cuando ellos se unan, tú ganas una comisión. Pregúntanos cómo.</p>
         <p class="mt-2 text-sm text-gray-300">✅ Todos los negocios aquí listados ya tienen su tarjeta digital activa.</p>
     </div>
-      <!-- NUEVA SECCIÓN: BOLSA DE EMPLEO + OFERTAS DESTACADAS -->
+
+    <!-- BOLSA DE EMPLEO -->
     <div id="empleo" class="card" style="border-left-color: #34B7F1;">
         <h2 class="text-3xl font-bold text-[#fbbf24] text-center mb-2">💼 BOLSA DE EMPLEO</h2>
         <p class="text-center text-gray-300 mb-6">El talento y las oportunidades se encuentran en Cúcuta.</p>
-
-        <!-- Contenedor de las Ofertas de Empleo -->
         <div class="space-y-4 mb-8">
-             <h3 class="text-xl font-semibold text-white border-l-4 border-[#34B7F1] pl-3 mb-3">📢 OFERTAS ACTIVAS</h3>
-
-            <!-- Oferta 1: Mecánico Diesel -->
-            <div class="bg-black/30 p-4 rounded-xl border border-gray-700 hover:border-[#fbbf24] transition-all">
-                <div class="flex justify-between items-start flex-wrap">
-                    <div>
-                        <h4 class="text-lg font-bold text-white">Mecánico Diesel</h4>
-                        <p class="text-sm text-gray-300">📍 Taller Los Torres · Cúcuta</p>
-                        <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
-                            <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
-                            <span><i class="fas fa-calendar-alt"></i> Salario: $1.800.000</span>
-                            <span><i class="fas fa-clock"></i> Experiencia: 2 años</span>
-                        </div>
-                        <p class="text-sm text-gray-400 mt-2">Buscamos mecánico con experiencia en motores diésel de tractomulas.</p>
-                    </div>
-                    <div class="mt-3 sm:mt-0">
-                        <a href="https://wa.me/573244913371?text=Hola,%20me%20interesa%20la%20oferta%20de%20Mecánico%20Diesel" class="btn-sitio inline-block text-sm py-2 px-4 rounded-full">📱 Aplicar Ahora</a>
-                    </div>
+            <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
+                <h4 class="text-lg font-bold text-white">Mecánico Diesel</h4>
+                <p class="text-sm text-gray-300">📍 Taller Los Torres · Cúcuta</p>
+                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
+                    <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
+                    <span><i class="fas fa-calendar-alt"></i> Salario: $1.800.000</span>
                 </div>
+                <div class="mt-2"><a href="https://wa.me/573244913371" class="btn-sitio inline-block text-sm py-1 px-3 rounded-full">📱 Aplicar</a></div>
             </div>
-
-            <!-- Oferta 2: Tapicero / Decorador -->
-            <div class="bg-black/30 p-4 rounded-xl border border-gray-700 hover:border-[#fbbf24] transition-all">
-                <div class="flex justify-between items-start flex-wrap">
-                    <div>
-                        <h4 class="text-lg font-bold text-white">Tapicero / Decorador</h4>
-                        <p class="text-sm text-gray-300">📍 Muebles RQ · Cúcuta</p>
-                        <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
-                            <span><i class="fas fa-briefcase"></i> Medio Tiempo</span>
-                            <span><i class="fas fa-calendar-alt"></i> Salario: A convenir</span>
-                            <span><i class="fas fa-clock"></i> Horario flexible</span>
-                        </div>
-                        <p class="text-sm text-gray-400 mt-2">Experiencia en restauración y tapizado de muebles.</p>
-                    </div>
-                    <div class="mt-3 sm:mt-0">
-                        <a href="https://wa.me/573244913371?text=Hola,%20me%20interesa%20la%20oferta%20de%20Tapicero" class="btn-sitio inline-block text-sm py-2 px-4 rounded-full">📱 Aplicar Ahora</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Oferta 3: Mesero / Ayudante de Cocina -->
-            <div class="bg-black/30 p-4 rounded-xl border border-gray-700 hover:border-[#fbbf24] transition-all">
-                <div class="flex justify-between items-start flex-wrap">
-                    <div>
-                        <h4 class="text-lg font-bold text-white">Mesero / Ayudante de Cocina</h4>
-                        <p class="text-sm text-gray-300">📍 Restaurante La Vecina · Cúcuta</p>
-                        <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
-                            <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
-                            <span><i class="fas fa-calendar-alt"></i> Salario: $1.300.000 + propinas</span>
-                        </div>
-                        <p class="text-sm text-gray-400 mt-2">Atención al cliente, trabajo en equipo y actitud positiva.</p>
-                    </div>
-                    <div class="mt-3 sm:mt-0">
-                        <a href="https://wa.me/573244913371?text=Hola,%20me%20interesa%20la%20oferta%20de%20Mesero" class="btn-sitio inline-block text-sm py-2 px-4 rounded-full">📱 Aplicar Ahora</a>
-                    </div>
-                </div>
+            <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
+                <h4 class="text-lg font-bold text-white">Tapicero</h4>
+                <p class="text-sm text-gray-300">📍 Muebles RQ · Cúcuta</p>
+                <div class="mt-2"><a href="https://wa.me/573244913371" class="btn-sitio inline-block text-sm py-1 px-3 rounded-full">📱 Aplicar</a></div>
             </div>
         </div>
-
-        <!-- Sección Dual para Aspirantes y Empresas -->
-        <div class="grid md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-gray-700">
-            <!-- Para Buscadores de Empleo -->
-            <div class="text-center bg-white/5 p-5 rounded-xl">
-                <i class="fas fa-user-graduate text-5xl text-[#34B7F1] mb-3"></i>
-                <h3 class="text-xl font-bold">¿Buscas Trabajo?</h3>
-                <p class="text-sm text-gray-300 mt-2">Regístrate gratis. Crearemos tu Hoja de Vida Digital y te postularemos a vacantes afines.</p>
-                <a href="https://wa.me/573244913371?text=Hola,%20quiero%20registrarme%20en%20la%20bolsa%20de%20empleo" class="btn-wsp inline-block mt-4 px-5 py-2 text-sm rounded-full">📝 Quiero Trabajar</a>
-            </div>
-            <!-- Para Empresas -->
-            <div class="text-center bg-white/5 p-5 rounded-xl">
-                <i class="fas fa-building text-5xl text-[#fbbf24] mb-3"></i>
-                <h3 class="text-xl font-bold">¿Buscas Personal?</h3>
-                <p class="text-sm text-gray-300 mt-2">Publica tu oferta de empleo y accede al mejor talento de Cúcuta.</p>
-                <a href="https://wa.me/573244913371?text=Hola,%20quiero%20publicar%20una%20oferta%20de%20empleo" class="btn-sitio inline-block mt-4 px-5 py-2 text-sm rounded-full">🏢 Publicar Oferta</a>
-            </div>
+        <div class="grid md:grid-cols-2 gap-6 mt-4 pt-4 border-t border-gray-700">
+            <div class="text-center bg-white/5 p-4 rounded-xl"><i class="fas fa-user-graduate text-4xl text-[#34B7F1] mb-2"></i><h3 class="text-lg font-bold">¿Buscas Trabajo?</h3><a href="https://wa.me/573244913371" class="btn-wsp inline-block mt-2 px-4 py-1 text-sm rounded-full">📝 Registrarme</a></div>
+            <div class="text-center bg-white/5 p-4 rounded-xl"><i class="fas fa-building text-4xl text-[#fbbf24] mb-2"></i><h3 class="text-lg font-bold">¿Buscas Personal?</h3><a href="https://wa.me/573244913371" class="btn-sitio inline-block mt-2 px-4 py-1 text-sm rounded-full">🏢 Publicar Oferta</a></div>
         </div>
-        <p class="text-center text-xs text-gray-400 mt-6">* Al registrarse, aceptas recibir comunicaciones sobre ofertas laborales.</p>
     </div>
 
-    <!-- FILTROS (se generan con JS) -->
+    <!-- FILTROS -->
     <div class="filtros-container" id="filtros"></div>
 
     <!-- DIRECTORIO -->
@@ -214,17 +140,17 @@
     <div id="planes" class="card">
         <h2 class="text-2xl font-bold text-[#fbbf24] text-center mb-4">📊 PLANES PARA TU NEGOCIO</h2>
         <div class="grid md:grid-cols-4 gap-4 text-center">
-            <div class="bg-black/30 p-4 rounded-xl"><strong class="text-[#fbbf24]">Gratis</strong><br>+ Básico<br><span class="text-sm">Presencia en guía</span></div>
-            <div class="bg-black/30 p-4 rounded-xl"><strong class="text-[#fbbf24]">Básico</strong><br>$25.000/año<br><span class="text-sm">+ Tarjeta digital básica</span></div>
-            <div class="bg-black/30 p-4 rounded-xl"><strong class="text-[#fbbf24]">Pro</strong><br>$50.000/año<br><span class="text-sm">+ Carrusel de fotos</span></div>
-            <div class="bg-black/30 p-4 rounded-xl"><strong class="text-[#fbbf24]">Élite</strong><br>$150.000/año<br><span class="text-sm">+ Videos + Sistema de referidos</span></div>
+            <div class="bg-black/30 p-3 rounded-xl"><strong class="text-[#fbbf24]">Gratis</strong><br>Presencia en guía</div>
+            <div class="bg-black/30 p-3 rounded-xl"><strong class="text-[#fbbf24]">Básico</strong><br>$25.000/año</div>
+            <div class="bg-black/30 p-3 rounded-xl"><strong class="text-[#fbbf24]">Pro</strong><br>$50.000/año</div>
+            <div class="bg-black/30 p-3 rounded-xl"><strong class="text-[#fbbf24]">Élite</strong><br>$150.000/año</div>
         </div>
     </div>
 
     <!-- CONTACTO Y QR -->
     <div id="contacto" class="card text-center">
         <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
-        <p>Contáctanos para incluir tu negocio en la guía o para ser patrocinador.</p>
+        <p>Contáctanos para incluir tu negocio en la guía.</p>
         <div class="flex justify-center gap-4 my-4 flex-wrap">
             <a href="https://wa.me/573244913371" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
             <button onclick="compartirSitio()" class="btn" style="background:#3b82f6; color:white;">📤 Compartir guía</button>
@@ -232,8 +158,7 @@
         <div class="mt-4">
             <h3 class="text-[#fbbf24]">📱 ESCANEA Y GUARDA ESTA GUÍA</h3>
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://guiadigitalcucuta.pages.dev" alt="QR Guía" class="mx-auto my-2">
-            <p><a href="https://guiadigitalcucuta.pages.dev" class="text-[#fbbf24] underline">🔗 Haz clic si no puedes escanear</a></p>
-            <button onclick="reenviarGuia()" class="mt-3 bg-[#fbbf24] text-[#0b1c3a] font-bold py-2 px-4 rounded-full shadow-md hover:scale-105 transition">📲 Reenviar esta guía a un amigo</button>
+            <button onclick="reenviarGuia()" class="mt-3 bg-[#fbbf24] text-[#0b1c3a] font-bold py-2 px-4 rounded-full shadow-md hover:scale-105 transition">📲 Reenviar esta guía</button>
         </div>
     </div>
 
@@ -299,7 +224,9 @@
         { nombre: "Frioaire Vásquez", url: "https://frioaire-vasquez.netlify.app/", categoria: "refrigeracion" },
         { nombre: "Hidrotec Cúcuta", url: "https://hidrotec-cucuta.netlify.app/", categoria: "hidraulica" },
         { nombre: "Comercializadora El Campo", url: "https://comercializadoraelcampo.netlify.app/", categoria: "comercializadoras" }
-              const categorias = [
+    ];
+
+    const categorias = [
         { id: "todos", nombre: "🔧 Todos" },
         { id: "ferreterias", nombre: "🏪 Ferreterías" },
         { id: "mecanica", nombre: "🚗 Mecánica" },
