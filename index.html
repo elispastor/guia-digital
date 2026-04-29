@@ -78,6 +78,23 @@
     <div id="inicio" class="mb-8 rounded-2xl overflow-hidden">
         <img src="portada-guia.jpg" alt="Guía Digital de Cúcuta" class="w-full h-auto">
     </div>
+        <!-- BUSCADOR DE GOOGLE (dentro de la guía) -->
+    <div class="card mb-6">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold text-[#fbbf24] mb-2">🔍 ¿NO ENCUENTRAS LO QUE BUSCAS?</h2>
+            <p class="text-gray-300 mb-3">Búscalo directamente en Google sin salir de nuestra guía.</p>
+            <div class="max-w-2xl mx-auto">
+                <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería..." 
+                           class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                    <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                        <i class="fas fa-search mr-2"></i> Buscar en Google
+                    </button>
+                </form>
+                <p class="text-xs text-gray-400 mt-2">🔎 Al buscar, se abrirá una nueva pestaña con los resultados de Google.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- CARRUSEL -->
     <div class="carrusel" id="carrusel">
