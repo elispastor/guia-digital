@@ -77,7 +77,37 @@
     <div id="inicio" class="mb-8 rounded-2xl overflow-hidden">
         <img src="portada-guia-nueva.jpg" alt="Guía Digital de Cúcuta" class="w-full h-auto">
     </div>
-
+    <!-- BUSCADOR DE LA GUÍA (primero) -->
+    <div class="card mb-6 text-center">
+        <h2 class="text-3xl font-bold text-[#fbbf24] mb-2">🔍 ENCUENTRA TODO EN CÚCUTA</h2>
+        <p class="text-gray-300 mb-4">Busca negocios, talleres, restaurantes y servicios en nuestra guía.</p>
+        <div class="max-w-2xl mx-auto">
+            <div class="flex flex-col sm:flex-row gap-2">
+                <input type="text" id="buscadorLocal" placeholder="Ej: taller, ferretería, restaurante, hotel..." 
+                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                <button id="btnBuscarLocal" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                    <i class="fas fa-search mr-2"></i> Buscar en la Guía
+                </button>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">🔎 Escribe lo que buscas y te mostraremos los negocios relacionados.</p>
+        </div>
+        <div id="resultadosBusqueda" class="mt-4 hidden"></div>
+    </div>
+        <!-- BUSCADOR DE GOOGLE (secundario) -->
+    <div class="card mb-6 text-center" style="border-left-color: #34B7F1;">
+        <h2 class="text-2xl font-bold text-[#34B7F1] mb-2">🌐 ¿NO ENCUENTRAS LO QUE BUSCAS?</h2>
+        <p class="text-gray-300 mb-3">Búscalo directamente en Google. Se abrirá una nueva pestaña.</p>
+        <div class="max-w-2xl mx-auto">
+            <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
+                <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería..." 
+                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                    <i class="fas fa-search mr-2"></i> Buscar en Google
+                </button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">🔎 Al buscar, se abrirá una nueva pestaña con los resultados de Google.</p>
+        </div>
+    </div>
     <!-- CARRUSEL -->
     <div class="carrusel" id="carrusel">
         <div class="carrusel-inner" id="carruselInner">
@@ -399,6 +429,54 @@
             navigator.clipboard.writeText(NUEVA_URL + ' ' + texto);
             alert('📋 Enlace copiado.');
         }
+    }
+        // Buscador local de la guía
+    const btnBuscar = document.getElementById('btnBuscarLocal');
+    const inputBuscar = document.getElementById('buscadorLocal');
+    const resultadosDiv = document.getElementById('resultadosBusqueda');
+
+    if (btnBuscar) {
+        btnBuscar.addEventListener('click', function() {
+            const termino = inputBuscar.value.trim().toLowerCase();
+            if (termino === '') {
+                alert('Escribe lo que quieres buscar');
+                return;
+            }
+            
+            // Filtrar los negocios que coinciden
+            const resultados = negocios.filter(n => 
+                n.nombre.toLowerCase().includes(termino) || 
+                obtenerNombreCategoria(n.categoria).toLowerCase().includes(termino)
+            );
+            
+            if (resultados.length === 0) {
+                resultadosDiv.innerHTML = `<div class="mt-4 p-4 bg-black/30 rounded-xl text-center text-gray-300">❌ No encontramos "${termino}" en nuestra guía. Intenta buscar en Google abajo.</div>`;
+            } else {
+                resultadosDiv.innerHTML = `
+                    <div class="mt-4 p-4 bg-black/30 rounded-xl">
+                        <h3 class="text-lg font-bold text-amber-400 mb-3">📋 Resultados para "${termino}":</h3>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            ${resultados.map(n => `
+                                <div class="bg-black/50 p-3 rounded-xl flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-white">${n.nombre}</p>
+                                        <p class="text-xs text-gray-400">${obtenerNombreCategoria(n.categoria)}</p>
+                                    </div>
+                                    <button class="btn-sitio text-sm py-1 px-3 rounded-full" data-url="${n.url}">Ver sitio</button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                // Reasignar eventos a los botones de resultados
+                document.querySelectorAll('#resultadosBusqueda .btn-sitio').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        window.open(this.getAttribute('data-url'), '_blank');
+                    });
+                });
+            }
+            resultadosDiv.classList.remove('hidden');
+        });
     }
 </script>
 </body>
