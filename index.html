@@ -698,6 +698,54 @@
             resultadosDiv.classList.remove('hidden');
         });
     }
+        function abrirFormularioLocal() {
+        document.getElementById('formularioLocal').classList.remove('hidden');
+        document.getElementById('formularioInfluencer').classList.add('hidden');
+    }
+    
+    function abrirFormularioInfluencer() {
+        document.getElementById('formularioInfluencer').classList.remove('hidden');
+        document.getElementById('formularioLocal').classList.add('hidden');
+    }
+    
+    function cerrarFormulario(tipo) {
+        document.getElementById(`formulario${tipo === 'local' ? 'Local' : 'Influencer'}`).classList.add('hidden');
+    }
+    
+    // Capturar formulario de locales
+    const formLocal = document.getElementById('formLocal');
+    if (formLocal) {
+        formLocal.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]').value;
+            const direccion = this.querySelector('[name="direccion"]').value;
+            const telefono = this.querySelector('[name="telefono"]').value;
+            const mensaje = this.querySelector('[name="mensaje"]').value;
+            const texto = `🏪 *NUEVO LOCAL INTERESADO* 🏪%0A%0A*Negocio:* ${nombre}%0A*Dirección:* ${direccion}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Solicitud enviada. Te contactaremos en 24 horas.');
+            this.reset();
+            cerrarFormulario('local');
+        });
+    }
+    
+    // Capturar formulario de influencers
+    const formInfluencer = document.getElementById('formInfluencer');
+    if (formInfluencer) {
+        formInfluencer.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]').value;
+            const redes = this.querySelector('[name="redes"]').value;
+            const seguidores = this.querySelector('[name="seguidores"]').value;
+            const telefono = this.querySelector('[name="telefono"]').value;
+            const mensaje = this.querySelector('[name="mensaje"]').value;
+            const texto = `📊 *NUEVO INFLUENCER INTERESADO* 📊%0A%0A*Nombre:* ${nombre}%0A*Redes:* ${redes}%0A*Seguidores:* ${seguidores}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Solicitud enviada. Recibirás tu código de afiliado y material promocional.');
+            this.reset();
+            cerrarFormulario('influencer');
+        });
+    }
 </script>
 </body>
 </html>
