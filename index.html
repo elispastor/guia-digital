@@ -339,16 +339,66 @@
             <a href="https://www.trabajos.org/trabajo-en-cucuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex item-center justify-center gap-2"><i class="fas fa-globe"></i> Trabajos.org</a>
         </div>
 
-        <!-- Ofertas locales (las que ya tenías) -->
-        <div class="space-y-4 mb-6">
-            <h3 class="text-xl font-semibold text-white border-l-4 border-[#34B7F1] pl-3">📢 OFERTAS LOCALES ACTIVAS</h3>
-            <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
-                <h4 class="text-lg font-bold text-white">Mecánico Diesel</h4>
-                <p class="text-sm text-gray-300">📍 Taller Los Torres · Cúcuta</p>
-                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
-                    <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
-                    <span><i class="fas fa-calendar-alt"></i> Salario: $1.800.000</span>
-                </div>
+         <!-- ========================================== -->
+    <!-- OFERTAS LOCALES ACTIVAS (NEGOCIOS + INFLUENCERS) -->
+    <!-- ========================================== -->
+    <div class="grid md:grid-cols-2 gap-6 mt-6 pt-4 border-t border-gray-700">
+        
+        <!-- OPCIÓN 1: PARA NEGOCIOS CON LOCAL -->
+        <div class="bg-gradient-to-r from-blue-900/30 to-blue-800/30 p-5 rounded-xl text-center border border-blue-500/30">
+            <i class="fas fa-store text-5xl text-blue-400 mb-3"></i>
+            <h3 class="text-2xl font-bold text-white">🏪 ¿TIENES UN LOCAL?</h3>
+            <p class="text-gray-300 mt-2">Amplía tu radio de propuestas y llega a más clientes en Cúcuta.</p>
+            <p class="text-sm text-gray-400 mt-2">✔️ Aparece en nuestra guía digital ✔️ Tarjeta digital profesional ✔️ Botones de contacto directo</p>
+            <button onclick="abrirFormularioLocal()" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">
+                📢 Quiero ampliar mi negocio
+            </button>
+        </div>
+        
+        <!-- OPCIÓN 2: PARA INFLUENCERS / AFILIADOS -->
+        <div class="bg-gradient-to-r from-purple-900/30 to-purple-800/30 p-5 rounded-xl text-center border border-purple-500/30">
+            <i class="fas fa-chart-line text-5xl text-purple-400 mb-3"></i>
+            <h3 class="text-2xl font-bold text-white">📊 ¿TIENES SEGUIDORES?</h3>
+            <p class="text-gray-300 mt-2">Base de datos, redes sociales o comunidad. Amplía tu portafolio y genera ingresos ilimitados.</p>
+            <p class="text-sm text-gray-400 mt-2">✔️ Comisiones por cada venta ✔️ Código de afiliado único ✔️ Material de promoción incluido</p>
+            <button onclick="abrirFormularioInfluencer()" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">
+                🚀 Quiero generar ingresos
+            </button>
+        </div>
+    </div>
+
+    <!-- FORMULARIO PARA NEGOCIOS LOCALES (oculto al inicio) -->
+    <div id="formularioLocal" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📋 Amplía tu negocio</h3>
+            <button onclick="cerrarFormulario('local')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        <form id="formLocal" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Nombre del local / negocio" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="text" name="direccion" placeholder="Dirección completa" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <textarea name="mensaje" rows="2" placeholder="Cuéntanos qué productos o servicios ofreces..." class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar solicitud</button>
+        </form>
+        <p class="text-xs text-gray-400 mt-2">📢 Te contactaremos en menos de 24 horas para activar tu presencia en la guía.</p>
+    </div>
+
+    <!-- FORMULARIO PARA INFLUENCERS / AFILIADOS (oculto al inicio) -->
+    <div id="formularioInfluencer" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📊 Genera ingresos con NGE</h3>
+            <button onclick="cerrarFormulario('influencer')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        <form id="formInfluencer" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="text" name="redes" placeholder="Tus redes sociales (Instagram, TikTok, Facebook, etc.)" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="text" name="seguidores" placeholder="Número aproximado de seguidores / contactos" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <textarea name="mensaje" rows="2" placeholder="Cuéntanos cómo te gustaría trabajar con nosotros..." class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">🚀 Quiero generar ingresos</button>
+        </form>
+        <p class="text-xs text-gray-400 mt-2">📢 Recibirás tu código de afiliado y material promocional (banners, guiones, etc.) al activar tu cuenta.</p>
+    </div>
                 <div class="mt-2"><a href="https://wa.me/573244913371" class="btn-sitio inline-block text-sm py-1 px-3 rounded-full">📱 Aplicar</a></div>
             </div>
             <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
