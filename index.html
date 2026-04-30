@@ -154,6 +154,124 @@
         <p class="mt-2"><strong>💡 ¿Cómo puedes ganar?</strong> Refiere otros negocios y cuando ellos se unan, tú ganas una comisión. Pregúntanos cómo.</p>
         <p class="mt-2 text-sm text-gray-300">✅ Todos los negocios aquí listados ya tienen su tarjeta digital activa.</p>
     </div>
+        <!-- CHATBOT DE EMPLEO + HOJA DE VIDA DIGITAL -->
+    <div class="bg-black/40 rounded-xl p-5 mb-6">
+        <div class="flex items-center gap-2 mb-3">
+            <i class="fas fa-robot text-3xl text-amber-400"></i>
+            <h3 class="text-xl font-bold text-white">🤖 Asistente de Empleo</h3>
+        </div>
+        <div id="chatEmpleo" class="space-y-3">
+            <div id="chatMensajes" class="space-y-2 mb-3 max-h-80 overflow-y-auto">
+                <div class="bg-amber-400/20 p-3 rounded-xl text-sm">
+                    👋 ¡Hola! Soy tu asistente. Te ayudaré a encontrar empleo en Cúcuta. Responde las preguntas para personalizar tu búsqueda.
+                </div>
+            </div>
+            <div id="chatPregunta" class="bg-black/50 p-3 rounded-xl">
+                <p class="text-amber-400 font-bold mb-2" id="preguntaTexto">¿Qué tipo de empleo buscas?</p>
+                <div id="preguntaOpciones" class="flex flex-wrap gap-2">
+                    <button onclick="respuestaChat('tiempo_completo')" class="btn-sitio text-sm py-2 px-4 rounded-full">⏱️ Tiempo completo</button>
+                    <button onclick="respuestaChat('medio_tiempo')" class="btn-sitio text-sm py-2 px-4 rounded-full">🕒 Medio tiempo</button>
+                    <button onclick="respuestaChat('temporal')" class="btn-sitio text-sm py-2 px-4 rounded-full">📅 Temporal</button>
+                    <button onclick="respuestaChat('indistinto')" class="btn-sitio text-sm py-2 px-4 rounded-full">🔧 Indistinto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Estado del chatbot
+    let pasoChat = 0;
+    let respuestasUsuario = {};
+
+    function respuestaChat(valor) {
+        const chatMensajes = document.getElementById('chatMensajes');
+        const preguntaDiv = document.getElementById('chatPregunta');
+        
+        // Mostrar respuesta del usuario
+        let textoRespuesta = '';
+        switch(pasoChat) {
+            case 0:
+                textoRespuesta = valor.replace('_', ' ');
+                respuestasUsuario.tipo = valor;
+                break;
+            case 1:
+                textoRespuesta = valor;
+                respuestasUsuario.zona = valor;
+                break;
+            case 2:
+                textoRespuesta = valor;
+                respuestasUsuario.hvDigital = valor;
+                break;
+        }
+        
+        chatMensajes.innerHTML += `<div class="bg-blue-600/30 p-3 rounded-xl text-sm text-right">👉 ${textoRespuesta}</div>`;
+        
+        // Siguiente paso
+        pasoChat++;
+        
+        if (pasoChat === 1) {
+            // Preguntar zona
+            document.getElementById('preguntaTexto').innerHTML = '📍 ¿En qué zona de Cúcuta buscas empleo?';
+            document.getElementById('preguntaOpciones').innerHTML = `
+                <button onclick="respuestaChat('La Merced')" class="btn-sitio text-sm py-2 px-4 rounded-full">📍 La Merced</button>
+                <button onclick="respuestaChat('Centro')" class="btn-sitio text-sm py-2 px-4 rounded-full">🏛️ Centro</button>
+                <button onclick="respuestaChat('Pescadero')" class="btn-sitio text-sm py-2 px-4 rounded-full">🐟 Pescadero</button>
+                <button onclick="respuestaChat('Cualquiera')" class="btn-sitio text-sm py-2 px-4 rounded-full">🚗 Cualquiera</button>
+            `;
+        } else if (pasoChat === 2) {
+            // Preguntar si tiene hoja de vida digital
+            document.getElementById('preguntaTexto').innerHTML = '📄 ¿Tienes hoja de vida digital?';
+            document.getElementById('preguntaOpciones').innerHTML = `
+                <button onclick="respuestaChat('si')" class="btn-sitio text-sm py-2 px-4 rounded-full">✅ Sí, ya tengo</button>
+                <button onclick="respuestaChat('no')" class="btn-wsp text-sm py-2 px-4 rounded-full">❌ No, necesito una</button>
+            `;
+        } else if (pasoChat === 3) {
+            // Oferta de hoja de vida digital
+            let mensajeOferta = '';
+            if (respuestasUsuario.hvDigital === 'no') {
+                mensajeOferta = `
+                    <div class="bg-gradient-to-r from-green-800 to-green-900 p-4 rounded-xl text-center mt-2">
+                        <i class="fas fa-file-alt text-5xl text-amber-400 mb-2"></i>
+                        <p class="font-bold text-white">¡No te preocupes! Podemos crear tu Hoja de Vida Digital por solo <strong class="text-amber-400">$5.000</strong>.</p>
+                        <p class="text-sm text-gray-300 mt-1">Destaca entre los demás aspirantes. Los empleadores te contactarán directamente.</p>
+                        <a href="https://wa.me/573244913371?text=Hola,%20quiero%20crear%20mi%20hoja%20de%20vida%20digital" 
+                           class="btn-wsp inline-block mt-3 py-2 px-4 rounded-full text-sm font-bold">📄 Quiero mi hoja de vida digital</a>
+                    </div>
+                `;
+            } else {
+                mensajeOferta = `
+                    <div class="bg-gradient-to-r from-purple-800 to-purple-900 p-4 rounded-xl text-center mt-2">
+                        <i class="fas fa-star text-5xl text-amber-400 mb-2"></i>
+                        <p class="font-bold text-white">¿Quieres destacar tu hoja de vida?</p>
+                        <p class="text-sm text-gray-300 mt-1">Por solo <strong class="text-amber-400">$5.000</strong>, tu perfil aparecerá primero para los empleadores.</p>
+                        <a href="https://wa.me/573244913371?text=Hola,%20quiero%20destacar%20mi%20hoja%20de%20vida%20digital" 
+                           class="btn-primary inline-block mt-3 py-2 px-4 rounded-full text-sm font-bold">⭐ Destacar mi perfil</a>
+                    </div>
+                `;
+            }
+            
+            chatMensajes.innerHTML += `
+                <div class="bg-amber-400/20 p-3 rounded-xl text-sm">
+                    ${mensajeOferta}
+                    <div class="mt-3 text-center">
+                        <p class="text-sm text-gray-300">📢 Mientras tanto, aquí tienes ofertas de empleo reales:</p>
+                        <div class="flex flex-wrap justify-center gap-2 mt-2">
+                            <a href="https://www.computrabajo.com.co/trabajo-en-cucuta" target="_blank" class="btn-sitio text-xs py-1 px-3 rounded-full">Computrabajo</a>
+                            <a href="https://co.indeed.com/ofertas?l=C%C3%BAcuta" target="_blank" class="btn-sitio text-xs py-1 px-3 rounded-full">Indeed</a>
+                            <a href="https://www.trabajos.org/trabajo-en-cucuta" target="_blank" class="btn-sitio text-xs py-1 px-3 rounded-full">Trabajos.org</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            // Ocultar el formulario de preguntas
+            document.getElementById('chatPregunta').classList.add('hidden');
+        }
+        
+        // Auto-scroll al final del chat
+        const chatMensajesDiv = document.getElementById('chatMensajes');
+        chatMensajesDiv.scrollTop = chatMensajesDiv.scrollHeight;
+    }
+</script>
 
     <!-- BOLSA DE EMPLEO (COMPLETA) -->
     <div id="empleo" class="card" style="border-left-color: #34B7F1;">
