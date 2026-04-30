@@ -191,23 +191,15 @@
         <div class="grid md:grid-cols-2 gap-6 mb-6">
             <div class="bg-black/30 p-5 rounded-xl text-left">
                 <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
+                            <div class="bg-black/30 p-5 rounded-xl text-left">
+                <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
                 <h3 class="text-xl font-bold text-white">💪 IMPULSADOR(A) DIGITAL</h3>
-                <ul class="text-sm text-gray-400 mt-3 space-y-1">
-                    <li>✅ Promocionar la Guía Digital de Cúcuta</li>
-                    <li>✅ Invitar a comercios a formar parte del directorio</li>
-                    <li>✅ Ganar comisiones por cada venta y referido</li>
-                </ul>
-                <a href="https://wa.me/573244913371?text=Hola,%20quiero%20ser%20Impulsador(a)%20Digital%20en%20NGE" class="btn-wsp inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">📢 Quiero ser Impulsador(a)</a>
+                <button onclick="abrirFormulario('impulsador')" class="btn-wsp inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme como Impulsador(a)</button>
             </div>
             <div class="bg-black/30 p-5 rounded-xl text-left">
                 <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
                 <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
-                <ul class="text-sm text-gray-400 mt-3 space-y-1">
-                    <li>✅ Crear tarjetas digitales</li>
-                    <li>✅ Actualizar la Guía Digital</li>
-                    <li>✅ Trabajo remoto, pago por proyecto</li>
-                </ul>
-                <a href="https://wa.me/573244913371?text=Hola,%20quiero%20ser%20Diseñador(a)%20Web%20en%20NGE" class="btn-primary inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">💻 Quiero ser Diseñador(a)</a>
+                <button onclick="abrirFormulario('disenador')" class="btn-primary inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme como Diseñador(a)</button>
             </div>
         </div>
         <div class="bg-amber-400/10 p-4 rounded-xl border border-amber-400/30">
@@ -302,6 +294,35 @@
             </form>
         </div>
     </div>
+            <!-- FORMULARIO PARA IMPULSADORES (oculto al inicio) -->
+        <div id="formularioImpulsador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Impulsador(a)</h3>
+                <button onclick="cerrarFormulario('impulsador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formImpulsador" class="space-y-3">
+                <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="text" name="experiencia" placeholder="¿Tienes experiencia en ventas o promoción?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+            </form>
+        </div>
+
+        <!-- FORMULARIO PARA DISEÑADORES (oculto al inicio) -->
+        <div id="formularioDisenador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Diseñador(a) Web</h3>
+                <button onclick="cerrarFormulario('disenador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formDisenador" class="space-y-3">
+                <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="text" name="portafolio" placeholder="Enlace a tu portafolio o GitHub (opcional)" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white">
+                <textarea name="conocimientos" rows="2" placeholder="¿Qué herramientas o lenguajes conoces? (HTML, CSS, etc.)" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+                <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+            </form>
+        </div>
 
     <!-- FILTROS -->
     <div class="filtros-container" id="filtros"></div>
@@ -655,6 +676,55 @@
         }
         const chatMensajesDiv = document.getElementById('chatMensajes');
         chatMensajesDiv.scrollTop = chatMensajesDiv.scrollHeight;
+    }
+        // Funciones para abrir formularios de la convocatoria
+    function abrirFormulario(tipo) {
+        if (tipo === 'impulsador') {
+            document.getElementById('formularioImpulsador').classList.remove('hidden');
+            document.getElementById('formularioDisenador')?.classList.add('hidden');
+        } else if (tipo === 'disenador') {
+            document.getElementById('formularioDisenador').classList.remove('hidden');
+            document.getElementById('formularioImpulsador')?.classList.add('hidden');
+        }
+    }
+    
+    function cerrarFormulario(tipo) {
+        const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
+        document.getElementById(id).classList.add('hidden');
+    }
+    
+    // Capturar formulario de impulsadores
+    const formImpulsador = document.getElementById('formImpulsador');
+    if (formImpulsador) {
+        formImpulsador.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]')?.value || '';
+            const telefono = this.querySelector('[name="telefono"]')?.value || '';
+            const experiencia = this.querySelector('[name="experiencia"]')?.value || '';
+            const motivacion = this.querySelector('[name="motivacion"]')?.value || '';
+            const texto = `💪 *NUEVO IMPULSADOR* 💪%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Experiencia:* ${experiencia}%0A*Motivación:* ${motivacion}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Postulación enviada. Te contactaremos pronto.');
+            this.reset();
+            cerrarFormulario('impulsador');
+        });
+    }
+    
+    // Capturar formulario de diseñadores
+    const formDisenador = document.getElementById('formDisenador');
+    if (formDisenador) {
+        formDisenador.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]')?.value || '';
+            const telefono = this.querySelector('[name="telefono"]')?.value || '';
+            const portafolio = this.querySelector('[name="portafolio"]')?.value || '';
+            const conocimientos = this.querySelector('[name="conocimientos"]')?.value || '';
+            const texto = `🎨 *NUEVO DISEÑADOR* 🎨%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Portafolio:* ${portafolio}%0A*Conocimientos:* ${conocimientos}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Postulación enviada. Te contactaremos pronto.');
+            this.reset();
+            cerrarFormulario('disenador');
+        });
     }
 </script>
 </body>
