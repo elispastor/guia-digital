@@ -398,20 +398,40 @@
         </form>
         <p class="text-xs text-gray-400 mt-2">📢 Recibirás tu código de afiliado y material promocional (banners, guiones, etc.) al activar tu cuenta.</p>
     </div>
-                <div class="mt-2"><a href="https://wa.me/573244913371" class="btn-sitio inline-block text-sm py-1 px-3 rounded-full">📱 Aplicar</a></div>
-            </div>
+                 <!-- OFERTAS LOCALES REALES -->
+        <div class="space-y-4 mb-6">
+            <h3 class="text-xl font-semibold text-white border-l-4 border-[#34B7F1] pl-3">📢 OFERTA LABORAL REAL</h3>
+            
+            <!-- Oferta: Tapicero (AFILIADO) -->
             <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
                 <h4 class="text-lg font-bold text-white">Tapicero</h4>
-                <p class="text-sm text-gray-300">📍 Muebles RQ · Cúcuta</p>
-                <div class="mt-2"><a href="https://wa.me/573244913371" class="btn-sitio inline-block text-sm py-1 px-3 rounded-full">📱 Aplicar</a></div>
+                <p class="text-sm text-gray-300">📍 Muebles RQ · Cúcuta (Afiliado a la Guía)</p>
+                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
+                    <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
+                    <span><i class="fas fa-calendar-alt"></i> Salario: A convenir</span>
+                </div>
+                <button onclick="abrirFormularioOferta('Tapicero', 'Muebles RQ')" class="btn-primary mt-3 py-2 px-4 rounded-full text-sm font-bold w-full sm:w-auto">
+                    📋 Aplicar a esta oferta
+                </button>
             </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4 mt-4 pt-4 border-t border-gray-700">
-            <div class="text-center bg-white/5 p-4 rounded-xl"><i class="fas fa-user-graduate text-4xl text-[#34B7F1] mb-2"></i><h3 class="text-lg font-bold">¿Buscas Trabajo?</h3><a href="https://wa.me/573244913371" class="btn-wsp inline-block mt-2 px-4 py-1 text-sm rounded-full">📝 Registrarme</a></div>
-            <div class="text-center bg-white/5 p-4 rounded-xl"><i class="fas fa-building text-4xl text-[#fbbf24] mb-2"></i><h3 class="text-lg font-bold">¿Buscas Personal?</h3><a href="https://wa.me/573244913371" class="btn-sitio inline-block mt-2 px-4 py-1 text-sm rounded-full">🏢 Publicar Oferta</a></div>
+        <!-- FORMULARIO PARA APLICAR A OFERTAS (oculto al inicio) -->
+        <div id="formularioOferta" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📋 Aplicar a oferta laboral</h3>
+                <button onclick="cerrarFormularioOferta()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formOferta" class="space-y-3">
+                <input type="text" id="ofertaNombre" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Oferta">
+                <input type="text" id="ofertaEmpresa" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Empresa">
+                <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <textarea name="experiencia" rows="2" placeholder="Cuéntanos tu experiencia o comparte tu hoja de vida digital" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar aplicación</button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">📢 Tu solicitud será enviada al empleador. Si tienes hoja de vida digital, comparte el enlace.</p>
         </div>
-    </div>
 
     <!-- FILTROS -->
     <div class="filtros-container" id="filtros"></div>
