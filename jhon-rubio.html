@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Jhon Rubio III - Inspección Automotriz | Guía Digital</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { background: #0b1c3a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.2s;
+        }
+        .whatsapp-float:hover { transform: scale(1.05); background: #128C7E; }
+        .btn-wsp { background: #25d366; color: white; border-radius: 999px; padding: 10px 20px; font-weight: bold; display: inline-block; transition: 0.2s; }
+        .btn-wsp:hover { background: #128C7E; transform: scale(1.02); }
+        .btn-primary { background: #3b82f6; color: white; border-radius: 999px; padding: 10px 20px; font-weight: bold; display: inline-block; transition: 0.2s; }
+        .btn-primary:hover { background: #2563eb; transform: scale(1.02); }
+        .servicio-item { background: #112b4f; padding: 12px; border-radius: 50px; text-align: center; font-weight: 500; border-left: 4px solid #fbbf24; }
+        .galeria-img { border-radius: 20px; transition: 0.3s; cursor: pointer; }
+        .galeria-img:hover { transform: scale(1.02); opacity: 0.9; }
+    </style>
+</head>
+<body class="text-white">
+
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<a href="https://wa.me/573105573261?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="container mx-auto px-4 py-6 max-w-6xl">
+
+    <!-- ENCABEZADO CON LOGO Y TÍTULO -->
+    <div class="bg-gradient-to-r from-[#112b4f] to-[#0b1c3a] rounded-2xl p-6 mb-6 border-b-4 border-[#fbbf24] flex flex-col md:flex-row items-center gap-6 shadow-xl">
+        <div class="bg-white p-3 rounded-2xl w-40 h-40 flex items-center justify-center shadow-lg">
+            <img src="logo-jhon-rubio.png" alt="Logo Jhon Rubio" class="max-w-full max-h-full object-contain" onerror="this.src='https://placehold.co/200x200/0b1c3a/fbbf24?text=PAI'">
+        </div>
+        <div class="text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">PAI · JHON RUBIO III</h1>
+            <p class="text-2xl text-[#fbbf24] font-semibold mt-1">INSPECCIÓN AUTOMOTRIZ</p>
+            <div class="flex flex-wrap gap-3 mt-3 justify-center md:justify-start">
+                <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-certificate text-[#fbbf24]"></i> Especialistas en Ford</span>
+                <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-tools text-[#fbbf24]"></i> +10 años de experiencia</span>
+                <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-shield-alt text-[#fbbf24]"></i> Confianza y calidad</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESCRIPCIÓN Y CONTACTO RÁPIDO -->
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="md:col-span-2 bg-[#112b4f] p-6 rounded-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-[#fbbf24] mb-3 flex items-center gap-2"><i class="fas fa-info-circle"></i> Sobre nosotros</h2>
+            <p class="text-gray-300 leading-relaxed">En <strong>PAI - Jhon Rubio III</strong> ofrecemos servicios de inspección automotriz con tecnología de punta. Diagnóstico preciso, reparación eficiente y atención personalizada. Especialistas en vehículos Ford, pero atendemos todas las marcas y modelos.</p>
+            <div class="grid grid-cols-2 gap-3 mt-4">
+                <div><i class="fas fa-map-marker-alt text-[#fbbf24] mr-2"></i> Cúcuta, Norte de Santander</div>
+                <div><i class="fas fa-clock text-[#fbbf24] mr-2"></i> Lun - Sab: 8am - 6pm</div>
+                <div><i class="fas fa-parking text-[#fbbf24] mr-2"></i> Parqueadero 24/7</div>
+                <div><i class="fas fa-motorcycle text-[#fbbf24] mr-2"></i> Carros y motos</div>
+            </div>
+        </div>
+        <div class="bg-[#112b4f] p-6 rounded-2xl shadow-lg text-center">
+            <i class="fas fa-headset text-5xl text-[#fbbf24] mb-3"></i>
+            <h3 class="text-xl font-bold">¿Necesitas ayuda?</h3>
+            <p class="text-gray-300 mb-4">Contáctanos por WhatsApp o llámanos</p>
+            <a href="https://wa.me/573105573261" class="btn-wsp inline-flex items-center gap-2"><i class="fab fa-whatsapp"></i> Escribir por WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- SERVICIOS DESTACADOS -->
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold text-center text-[#fbbf24] mb-6 flex items-center justify-center gap-2"><i class="fas fa-wrench"></i> Nuestros servicios</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <div class="servicio-item"><i class="fas fa-car text-[#fbbf24] mr-2"></i> Mecánica en general</div>
+            <div class="servicio-item"><i class="fas fa-microchip text-[#fbbf24] mr-2"></i> Servicio de escáner</div>
+            <div class="servicio-item"><i class="fas fa-tachometer-alt text-[#fbbf24] mr-2"></i> Limpieza de inyectores</div>
+            <div class="servicio-item"><i class="fas fa-paint-bucket text-[#fbbf24] mr-2"></i> Latonería y pintura</div>
+            <div class="servicio-item"><i class="fas fa-oil-can text-[#fbbf24] mr-2"></i> Venta de repuestos y aceites</div>
+            <div class="servicio-item"><i class="fas fa-parking text-[#fbbf24] mr-2"></i> Parqueadero 24/7</div>
+        </div>
+    </div>
+
+    <!-- GALERÍA DE IMÁGENES (OPCIONAL) -->
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold text-center text-[#fbbf24] mb-6 flex items-center justify-center gap-2"><i class="fas fa-images"></i> Galería</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <img src="https://placehold.co/400x300/112b4f/fbbf24?text=Taller+1" class="galeria-img w-full h-40 object-cover rounded-xl">
+            <img src="https://placehold.co/400x300/112b4f/fbbf24?text=Diagnóstico" class="galeria-img w-full h-40 object-cover rounded-xl">
+            <img src="https://placehold.co/400x300/112b4f/fbbf24?text=Herramientas" class="galeria-img w-full h-40 object-cover rounded-xl">
+            <img src="https://placehold.co/400x300/112b4f/fbbf24?text=Atención" class="galeria-img w-full h-40 object-cover rounded-xl">
+        </div>
+    </div>
+
+    <!-- INFORMACIÓN DE CONTACTO Y REDES SOCIALES -->
+    <div class="bg-[#112b4f] rounded-2xl p-6 mb-8 grid md:grid-cols-2 gap-6 shadow-lg">
+        <div>
+            <h3 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-address-card"></i> Información de contacto</h3>
+            <p><i class="fas fa-phone-alt text-[#fbbf24] w-6"></i> <a href="tel:+573105573261" class="hover:text-[#fbbf24]">310 557 3261</a></p>
+            <p><i class="fab fa-whatsapp text-[#25d366] w-6"></i> <a href="https://wa.me/573105573261" target="_blank">310 557 3261</a></p>
+            <p><i class="fas fa-envelope text-[#fbbf24] w-6"></i> <a href="mailto:jhonrubio@mecanico.com" class="hover:text-[#fbbf24]">jhonrubio@mecanico.com</a></p>
+            <p><i class="fas fa-map-marker-alt text-[#fbbf24] w-6"></i> Cúcuta, Norte de Santander, Colombia</p>
+        </div>
+        <div>
+            <h3 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-share-alt"></i> Redes sociales</h3>
+            <div class="flex flex-wrap gap-4">
+                <a href="https://facebook.com/JhonRubioAutomotriz" target="_blank" class="bg-[#1877f2] px-4 py-2 rounded-full text-white flex items-center gap-2"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://instagram.com/jhonrubio_Mecanico" target="_blank" class="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded-full text-white flex items-center gap-2"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://twitter.com/jhonrubioautomotriz" target="_blank" class="bg-black px-4 py-2 rounded-full text-white flex items-center gap-2"><i class="fab fa-twitter"></i> X (Twitter)</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAPA DE UBICACIÓN -->
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-map"></i> ¿Dónde estamos?</h2>
+        <div class="rounded-2xl overflow-hidden shadow-xl h-64">
+            <iframe src="https://maps.google.com/maps?q=C%C3%BAcuta%2C%20Norte%20de%20Santander%2C%20Colombia&t=&z=13&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- BOTÓN DE REGRESO A LA GUÍA PRINCIPAL -->
+    <div class="text-center">
+        <a href="https://guia-digital.com" class="btn-primary inline-flex items-center gap-2 px-8 py-3 text-lg"><i class="fas fa-arrow-left"></i> Volver a la Guía Digital de Cúcuta</a>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="text-center mt-12 pt-6 border-t border-gray-700 text-gray-400 text-sm">
+        <p>© 2026 Jhon Rubio III - Inspección Automotriz. Todos los derechos reservados.</p>
+        <p>Miembro de la <strong class="text-[#fbbf24]">Guía Digital de Cúcuta</strong> | <a href="https://guia-digital.com" class="text-[#fbbf24] hover:underline">guia-digital.com</a></p>
+    </footer>
+</div>
+
+<script>
+    // Pequeño script para confirmar carga de imágenes y manejo de errores
+    const imagenes = document.querySelectorAll('.galeria-img');
+    imagenes.forEach(img => {
+        img.onerror = function() {
+            this.src = 'https://placehold.co/400x300/112b4f/fbbf24?text=Imagen';
+        };
+    });
+</script>
+</body>
+</html>
