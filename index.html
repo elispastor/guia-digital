@@ -53,16 +53,22 @@
 <div class="container">
 
     <!-- MENÚ PRINCIPAL -->
-    <nav class="bg-[#112b4f] border-b-4 border-[#fbbf24] py-4 px-6 mb-8 flex flex-wrap items-center justify-between sticky top-0 z-50 rounded-2xl">
-        <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
-            <a href="#inicio" class="hover:text-[#fbbf24]">INICIO</a>
-            <a href="#directorio" class="hover:text-[#fbbf24]">DIRECTORIO</a>
-            <a href="#planes" class="hover:text-[#fbbf24]">PLANES</a>
-            <a href="#contacto" class="hover:text-[#fbbf24]">CONTACTO</a>
-            <button onclick="compartirSitio()" class="hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white text-sm font-semibold">📤 COMPARTIR</button>
-        </div>
-        <button id="menu-btn" class="md:hidden text-2xl text-[#fbbf24]"><i class="fas fa-bars"></i></button>
-    </nav>
+   <nav class="bg-[#112b4f] border-b-4 border-[#fbbf24] py-4 px-6 mb-8 flex flex-wrap items-center justify-between sticky top-0 z-50 rounded-2xl">
+    <!-- TÍTULO EN EL MENÚ -->
+    <div class="flex flex-col">
+        <div class="text-white text-2xl font-bold tracking-wide">GUÍA DIGITAL</div>
+        <div class="text-[#fbbf24] text-xs font-semibold -mt-1">Cúcuta</div>
+    </div>
+    <!-- ENLACES DEL MENÚ (escritorio) -->
+    <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
+        <a href="#inicio" class="hover:text-[#fbbf24]">INICIO</a>
+        <a href="#directorio" class="hover:text-[#fbbf24]">DIRECTORIO</a>
+        <a href="#planes" class="hover:text-[#fbbf24]">PLANES</a>
+        <a href="#contacto" class="hover:text-[#fbbf24]">CONTACTO</a>
+        <button onclick="compartirSitio()" class="hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white text-sm font-semibold">📤 COMPARTIR</button>
+    </div>
+    <button id="menu-btn" class="md:hidden text-2xl text-[#fbbf24]"><i class="fas fa-bars"></i></button>
+</nav>
 
     <!-- MENÚ MÓVIL -->
     <div id="mobile-menu" class="hidden md:hidden bg-[#112b4f] p-4 mb-4 rounded-2xl flex-col gap-3 border-l-4 border-[#fbbf24]">
