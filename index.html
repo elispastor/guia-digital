@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Guía Digital de Cúcuta | Directorio de negocios</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    ...
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
@@ -56,28 +54,22 @@
 
 <div class="container">
 
-    <!-- MENÚ PRINCIPAL -->
-   <nav class="bg-[#112b4f] border-b-4 border-[#fbbf24] py-4 px-6 mb-8 flex flex-wrap items-center justify-between sticky top-0 z-50 rounded-2xl">
-    <!-- TÍTULO EN EL MENÚ -->
-    <div class="flex items-center gap-3">
-    <img src="logo-guia-digital.png" alt="Guía Digital" class="h-12 w-auto">
-    <div class="flex flex-col">
-        <div class="text-white text-2xl font-bold tracking-wide">GUÍA DIGITAL</div>
-        <div class="text-[#fbbf24] text-xs font-semibold -mt-1">Cúcuta</div>
-    </div>
-</div>
-    <!-- ENLACES DEL MENÚ (escritorio) -->
-    <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
-        <a href="#inicio" class="hover:text-[#fbbf24]">INICIO</a>
-        <a href="#directorio" class="hover:text-[#fbbf24]">DIRECTORIO</a>
-        <a href="#planes" class="hover:text-[#fbbf24]">PLANES</a>
-        <a href="#contacto" class="hover:text-[#fbbf24]">CONTACTO</a>
-        <button onclick="compartirSitio()" class="hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white text-sm font-semibold">📤 COMPARTIR</button>
-    </div>
-    <button id="menu-btn" class="md:hidden text-2xl text-[#fbbf24]"><i class="fas fa-bars"></i></button>
-</nav>
+    <!-- MENÚ PRINCIPAL (SIN LOGO PEQUEÑO, SOLO TEXTO) -->
+    <nav class="bg-[#112b4f] border-b-4 border-[#fbbf24] py-4 px-6 mb-8 flex flex-wrap items-center justify-between sticky top-0 z-50 rounded-2xl">
+        <div class="flex flex-col">
+            <div class="text-white text-2xl font-bold tracking-wide">GUÍA DIGITAL</div>
+            <div class="text-[#fbbf24] text-xs font-semibold -mt-1">Cúcuta</div>
+        </div>
+        <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
+            <a href="#inicio" class="hover:text-[#fbbf24]">INICIO</a>
+            <a href="#directorio" class="hover:text-[#fbbf24]">DIRECTORIO</a>
+            <a href="#planes" class="hover:text-[#fbbf24]">PLANES</a>
+            <a href="#contacto" class="hover:text-[#fbbf24]">CONTACTO</a>
+            <button onclick="compartirSitio()" class="hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white text-sm font-semibold">📤 COMPARTIR</button>
+        </div>
+        <button id="menu-btn" class="md:hidden text-2xl text-[#fbbf24]"><i class="fas fa-bars"></i></button>
+    </nav>
 
-    <!-- MENÚ MÓVIL -->
     <div id="mobile-menu" class="hidden md:hidden bg-[#112b4f] p-4 mb-4 rounded-2xl flex-col gap-3 border-l-4 border-[#fbbf24]">
         <a href="#inicio" class="block py-2 hover:text-[#fbbf24]">INICIO</a>
         <a href="#directorio" class="block py-2 hover:text-[#fbbf24]">DIRECTORIO</a>
@@ -85,19 +77,22 @@
         <a href="#contacto" class="block py-2 hover:text-[#fbbf24]">CONTACTO</a>
         <button onclick="compartirSitio()" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">📤 COMPARTIR</button>
     </div>
-<!-- ENCABEZADO PRINCIPAL -->
-<!-- SUBTÍTULO DEBAJO DE LA PORTADA -->
-<div class="text-center my-8 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold italic text-white drop-shadow-lg">
-        Directorio de negocios, talleres y servicios
-    </h2>
-</div>
-    <!-- PORTADA -->
-    <div id="inicio" class="mb-8 rounded-2xl overflow-hidden">
-        <img src="portada-guia-nueva.jpg" "Portada" class="w-full h-auto">
+
+    <!-- LOGO GRANDE COMO PORTADA -->
+    <div class="text-center my-6">
+        <img src="logo-guia-digital.png" alt="Guía Digital" class="w-64 h-auto mx-auto md:w-80">
     </div>
 
-    <!-- BUSCADOR DE LA GUÍA -->
+    <div class="text-center my-8 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold italic text-white drop-shadow-lg">
+            Directorio de negocios, talleres y servicios
+        </h2>
+    </div>
+
+    <div id="inicio" class="mb-8 rounded-2xl overflow-hidden">
+        <img src="portada-guia-nueva.jpg" alt="Portada" class="w-full h-auto">
+    </div>
+
     <div class="card mb-6 text-center">
         <h2 class="text-3xl font-bold text-[#fbbf24] mb-2">🔍 ENCUENTRA TODO EN CÚCUTA</h2>
         <p class="text-gray-300 mb-4">Busca negocios, talleres, restaurantes y servicios en nuestra guía.</p>
@@ -111,6 +106,622 @@
             </div>
             <p class="text-xs text-gray-400 mt-2">🔎 Escribe lo que buscas y te mostraremos los negocios relacionados.</p>
         </div>
+        <div id="resultadosBusqueda" class="mt-4 hidden"></div>
+    </div>
+
+    <div class="card mb-6 text-center" style="border-left-color: #34B7F1;">
+        <h2 class="text-2xl font-bold text-[#34B7F1] mb-2">🌐 ¿NO ENCUENTRAS LO QUE BUSCAS?</h2>
+        <p class="text-gray-300 mb-3">Búscalo directamente en Google. Se abrirá una nueva pestaña.</p>
+        <div class="max-w-2xl mx-auto">
+            <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
+                <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería..." 
+                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                    <i class="fas fa-search mr-2"></i> Buscar en Google
+                </button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">🔎 Al buscar, se abrirá una nueva pestaña con los resultados de Google.</p>
+        </div>
+    </div>
+
+    <!-- CARRUSEL -->
+    <div class="carrusel" id="carrusel">
+        <div class="carrusel-inner" id="carruselInner">
+            <div class="carrusel-slide">
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #6a3093, #a044ff); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; font-family: 'Segoe UI', sans-serif;">
+                    <i class="fas fa-tshirt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                    <h2 style="font-size: 1.8rem; font-weight: bold; margin: 0;">Fajas Edi</h2>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Reducción · Moldeado · Fajas Postquirúrgicas</p>
+                    <p style="font-size: 0.8rem; margin-top: 1rem;">¡Escanea y conoce la calidad que transforma!</p>
+                    <i class="fas fa-qrcode" style="font-size: 2rem; margin-top: 0.5rem; color: #fbbf24;"></i>
+                </div>
+            </div>
+            <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Hotel'"></div>
+            <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=TOYOMACK'"></div>
+            <div class="carrusel-slide"><img src="https://restaurantlamanodedios.netlify.app/portada.jpg" alt="Restaurante" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Restaurante'"></div>
+            <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Motores'"></div>
+        </div>
+        <button class="carrusel-btn prev" id="prevBtn">❮</button>
+        <button class="carrusel-btn next" id="nextBtn">❯</button>
+        <div class="carrusel-indicators" id="indicadores"></div>
+    </div>
+
+    <div class="card mb-6 text-center">
+        <h2 class="text-3xl font-bold text-[#fbbf24] mb-2">📍 GUÍA DE TODOS LOS NEGOCIOS DE CÚCUTA</h2>
+        <p class="text-xl text-amber-300 mb-2">✨ EN CONSTRUCCIÓN ✨</p>
+        <p class="text-gray-300 mb-4">Mientras crecemos, todo lo que quieras encontrar está aquí, desde Google, desde esta guía.</p>
+        <div class="max-w-2xl mx-auto">
+            <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
+                <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería, empleo..." 
+                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                    <i class="fas fa-search mr-2"></i> Buscar en Google
+                </button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">🔎 Busca cualquier negocio, servicio o empleo. Se abrirá una nueva pestaña.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-2">🎯 ¿Qué es la Guía Digital de Cúcuta?</h2>
+        <p>El directorio más completo de talleres, tiendas y servicios de Cúcuta. Cada negocio tiene su propia tarjeta digital con WhatsApp, ubicación y más.</p>
+        <p class="mt-2"><strong>💡 ¿Cómo puedes ganar?</strong> Refiere otros negocios y cuando ellos se unan, tú ganas una comisión. Pregúntanos cómo.</p>
+        <p class="mt-2 text-sm text-gray-300">✅ Todos los negocios aquí listados ya tienen su tarjeta digital activa.</p>
+    </div>
+
+    <!-- CHATBOT DE EMPLEO -->
+    <div class="bg-black/40 rounded-xl p-5 mb-6">
+        <div class="flex items-center gap-2 mb-3">
+            <i class="fas fa-robot text-3xl text-amber-400"></i>
+            <h3 class="text-xl font-bold text-white">🤖 Asistente de Empleo</h3>
+        </div>
+        <div id="chatEmpleo" class="space-y-3">
+            <div id="chatMensajes" class="space-y-2 mb-3 max-h-80 overflow-y-auto">
+                <div class="bg-amber-400/20 p-3 rounded-xl text-sm">👋 ¡Hola! Soy tu asistente. Te ayudaré a encontrar empleo en Cúcuta.</div>
+            </div>
+            <div id="chatPregunta" class="bg-black/50 p-3 rounded-xl">
+                <p class="text-amber-400 font-bold mb-2" id="preguntaTexto">¿Qué tipo de empleo buscas?</p>
+                <div id="preguntaOpciones" class="flex flex-wrap gap-2">
+                    <button onclick="respuestaChat('tiempo_completo')" class="btn-sitio text-sm py-2 px-4 rounded-full">⏱️ Tiempo completo</button>
+                    <button onclick="respuestaChat('medio_tiempo')" class="btn-sitio text-sm py-2 px-4 rounded-full">🕒 Medio tiempo</button>
+                    <button onclick="respuestaChat('temporal')" class="btn-sitio text-sm py-2 px-4 rounded-full">📅 Temporal</button>
+                    <button onclick="respuestaChat('indistinto')" class="btn-sitio text-sm py-2 px-4 rounded-full">🔧 Indistinto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-center" style="border-left-color: #fbbf24;">
+        <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
+            <span class="bg-amber-400 text-black px-3 py-1 rounded-full text-sm font-bold">🔥 OPORTUNIDAD LABORAL 🔥</span>
+            <span class="text-xs text-gray-300">NGE - Nueva Generación Emprendedora</span>
+        </div>
+        <h2 class="text-3xl font-bold text-amber-400 mb-2">🚀 ÚNETE AL EQUIPO NGE</h2>
+        <p class="text-gray-300 mb-4">Sé parte de la Evolución digital en Cúcuta. Trabaja con nosotros impulsando la Guía Digital.</p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-black/30 p-5 rounded-xl text-left">
+                <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
+                <h3 class="text-xl font-bold text-white">💪 IMPULSADOR(A) DIGITAL</h3>
+                <button onclick="abrirFormulario('impulsador')" class="btn-wsp inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme como Impulsador(a)</button>
+            </div>
+            
+            <div class="bg-black/30 p-5 rounded-xl text-left">
+                <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
+                <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
+                <button onclick="abrirFormulario('disenador')" class="btn-primary inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme como Diseñador(a)</button>
+            </div>
+        </div>
+        
+        <div class="bg-amber-400/10 p-4 rounded-xl border border-amber-400/30">
+            <p class="text-sm text-gray-300"><strong class="text-amber-400">🎓 Requisitos:</strong> Estudiantes o recién graduados de informática, diseño o carreras afines. Ganas de aprender.</p>
+        </div>
+    </div>
+
+    <div id="empleo" class="card" style="border-left-color: #34B7F1;">
+        <h2 class="text-3xl font-bold text-[#34B7F1] text-center mb-2">💼 BOLSA DE EMPLEO</h2>
+        <p class="text-center text-gray-300 mb-4">Encuentra trabajo en los principales portales y postúlate a ofertas locales.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+            <a href="https://www.computrabajo.com.co/trabajo-en-cucuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fas fa-briefcase"></i> Computrabajo</a>
+            <a href="https://co.indeed.com/ofertas?l=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fas fa-search"></i> Indeed</a>
+            <a href="https://www.linkedin.com/jobs/search/?location=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+
+        <div class="space-y-4 mb-6">
+            <h3 class="text-xl font-semibold text-white border-l-4 border-[#34B7F1] pl-3">📢 OFERTA LABORAL REAL</h3>
+            <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
+                <h4 class="text-lg font-bold text-white">Tapicero</h4>
+                <p class="text-sm text-gray-300">📍 Muebles RQ · Cúcuta (Afiliado a la Guía)</p>
+                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
+                    <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
+                    <span><i class="fas fa-calendar-alt"></i> Salario: A convenir</span>
+                </div>
+                <button onclick="abrirFormularioOferta('Tapicero', 'Muebles RQ')" class="btn-primary mt-3 py-2 px-4 rounded-full text-sm font-bold w-full sm:w-auto">📋 Aplicar a esta oferta</button>
+            </div>
+        </div>
+
+        <div id="formularioOferta" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📋 Aplicar a oferta laboral</h3>
+                <button onclick="cerrarFormularioOferta()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formOferta" class="space-y-3">
+                <input type="text" id="ofertaNombre" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Oferta">
+                <input type="text" id="ofertaEmpresa" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Empresa">
+                <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <textarea name="experiencia" rows="2" placeholder="Cuéntanos tu experiencia" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar aplicación</button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">📢 Tu solicitud será enviada al empleador.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-6 pt-4 border-t border-gray-700">
+            <div class="bg-gradient-to-r from-blue-900/30 to-blue-800/30 p-5 rounded-xl text-center border border-blue-500/30">
+                <i class="fas fa-store text-5xl text-blue-400 mb-3"></i>
+                <h3 class="text-2xl font-bold text-white">🏪 ¿TIENES UN LOCAL?</h3>
+                <button onclick="abrirFormularioLocal()" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">📢 Quiero ampliar mi negocio</button>
+            </div>
+            <div class="bg-gradient-to-r from-purple-900/30 to-purple-800/30 p-5 rounded-xl text-center border border-purple-500/30">
+                <i class="fas fa-chart-line text-5xl text-purple-400 mb-3"></i>
+                <h3 class="text-2xl font-bold text-white">📊 ¿TIENES SEGUIDORES?</h3>
+                <button onclick="abrirFormularioInfluencer()" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">🚀 Quiero generar ingresos</button>
+            </div>
+        </div>
+
+        <div id="formularioLocal" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📋 Amplía tu negocio</h3>
+                <button onclick="cerrarFormulario('local')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formLocal" class="space-y-3">
+                <input type="text" name="nombre" placeholder="Nombre del local" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="text" name="direccion" placeholder="Dirección" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <textarea name="mensaje" rows="2" placeholder="Cuéntanos sobre tu negocio" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+                <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar solicitud</button>
+            </form>
+        </div>
+
+        <div id="formularioInfluencer" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📊 Genera ingresos con NGE</h3>
+                <button onclick="cerrarFormulario('influencer')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formInfluencer" class="space-y-3">
+                <input type="text" name="nombre" placeholder="Tu nombre" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="text" name="redes" placeholder="Tus redes sociales" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="text" name="seguidores" placeholder="Número de seguidores" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">🚀 Quiero generar ingresos</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="formularioImpulsador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Impulsador(a)</h3>
+            <button onclick="cerrarFormulario('impulsador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        <form id="formImpulsador" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="text" name="experiencia" placeholder="¿Tienes experiencia en ventas o promoción?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+        </form>
+    </div>
+
+    <div id="formularioDisenador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Diseñador(a) Web</h3>
+            <button onclick="cerrarFormulario('disenador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        <form id="formDisenador" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="text" name="portafolio" placeholder="Enlace a tu portafolio o GitHub (opcional)" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white">
+            <textarea name="conocimientos" rows="2" placeholder="¿Qué herramientas o lenguajes conoces? (HTML, CSS, etc.)" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+        </form>
+    </div>
+
+    <div class="filtros-container" id="filtros"></div>
+
+    <div id="directorio" class="mb-8">
+        <h2 class="text-3xl font-bold text-[#fbbf24] mb-4 text-center">📋 DIRECTORIO POR CATEGORÍA</h2>
+        <div id="lista-negocios" class="grid md:grid-cols-2 gap-6"></div>
+    </div>
+
+    <div id="planes" class="card">
+        <h2 class="text-2xl font-bold text-[#fbbf24] text-center mb-4">📊 PLANES PARA TU NEGOCIO</h2>
+        <div class="grid md:grid-cols-4 gap-4 text-center">
+            <div class="bg-black/30 p-3 rounded-xl"><strong class="text-[#fbbf24]">Gratis</strong><br>Presencia en guía</div>
+            <div class="bg-black/30 p-3 rounded-xl"><strong class="text-[#fbbf24]">Básico</strong><br>$25.000/año</div>
+            <div class="bg-black/30 p-3 rounded-xl"><strong class="text-[#fbbf24]">Pro</strong><br>$50.000/año</div>
+            <div class="bg-black/30 p-3 rounded-xl"><strong class="text-[#fbbf24]">Élite</strong><br>$150.000/año</div>
+        </div>
+    </div>
+
+    <div id="contacto" class="card text-center">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
+        <div class="flex justify-center gap-4 my-4 flex-wrap">
+            <a href="https://wa.me/573244913371" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
+            <button onclick="compartirSitio()" class="btn" style="background:#3b82f6; color:white;">📤 Compartir guía</button>
+        </div>
+        <div class="mt-4">
+            <h3 class="text-[#fbbf24]">📱 ESCANEA Y GUARDA ESTA GUÍA</h3>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://guiadigitalcucuta.pages.dev" alt="QR Guía" class="mx-auto my-2">
+            <button onclick="reenviarGuia()" class="mt-3 bg-[#fbbf24] text-[#0b1c3a] font-bold py-2 px-4 rounded-full shadow-md hover:scale-105 transition">📲 Reenviar esta guía</button>
+        </div>
+    </div>
+
+    <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
+        <p>© 2026 Guía Digital de Cúcuta · Directorio de negocios</p>
+        <div class="mt-2"><a href="https://guiadigitalcucuta.pages.dev" class="text-[#fbbf24] font-bold">📱 Tu Tarjeta Digital</a></div>
+        <p class="text-sm text-gray-400 mt-1">Guía Digital Cúcuta - Unidos Ganamos Más</p>
+    </footer>
+</div>
+
+<script>
+    const negocios = [
+        { nombre: "Fajas Edi", url: "https://fajasedi.netlify.app/", categoria: "belleza" },
+        { nombre: "Ferretería La 17", url: "https://ferreteria-la-17.pages.dev/", categoria: "ferreterias" },
+        { nombre: "Tracto Auto M.F.", url: "https://tracto-auto-mf.pages.dev/", categoria: "mecanica" },
+        { nombre: "Taller Barney", url: "https://taller-barney.netlify.app/", categoria: "mecanica" },
+        { nombre: "Autotaller Murillo", url: "https://autotallermurillo.netlify.app/", categoria: "mecanica" },
+        { nombre: "Taller Mecánico TS", url: "https://taller-mecanico-ts.netlify.app/", categoria: "mecanica" },
+        { nombre: "Mecánica Willson y Gustavo", url: "https://mecanicaautomotrizwillsonygustavo.netlify.app/", categoria: "mecanica" },
+        { nombre: "Multiservicios Los Torres", url: "https://multiserviciosautomotrizlostorres.netlify.app/", categoria: "mecanica" },
+        { nombre: "Electroauto El Rolo", url: "https://electroautoelrolo.netlify.app/", categoria: "mecanica" },
+        { nombre: "Papa Barney", url: "https://papa-barney.netlify.app/", categoria: "mecanica" },
+        { nombre: "Motores Jesús", url: "https://motores-motoreductores-jesus.netlify.app/", categoria: "motores" },
+        { nombre: "Embobinados Dacoor", url: "https://embobinadosdacoor.netlify.app/", categoria: "motores" },
+        { nombre: "Montallantas El Indio", url: "https://montallantas-el-indio.netlify.app/", categoria: "llantas" },
+        { nombre: "Ruedas y Rodamientos El Shaddai", url: "https://ruedasyrodamientoselshaddai.netlify.app/", categoria: "llantas" },
+        { nombre: "Servigomas", url: "https://servigomas.netlify.app/", categoria: "llantas" },
+        { nombre: "Herrería Duarte", url: "https://tallerdeherreriaduarte.netlify.app/", categoria: "herreria" },
+        { nombre: "Acero y Gas", url: "https://aceroygas.netlify.app/", categoria: "herreria" },
+        { nombre: "Aceros PC", url: "https://acerospc.netlify.app/", categoria: "herreria" },
+        { nombre: "Herramientas El Segundazo", url: "https://herramientas-el-segundazo.netlify.app/", categoria: "herreria" },
+        { nombre: "Muebles RQ", url: "https://mueblesrq.netlify.app/", categoria: "tapiceria" },
+        { nombre: "La Clínica del Mueble", url: "https://laclinicadelmueble.netlify.app/", categoria: "tapiceria" },
+        { nombre: "Carpintería JK", url: "https://carpinteriajk.netlify.app/", categoria: "tapiceria" },
+        { nombre: "Carpintería 10 con 2da", url: "https://carpinteria10con2da.netlify.app/", categoria: "tapiceria" },
+        { nombre: "Muebles Diseños y Punto", url: "https://mueblesdisenosypunto.netlify.app/", categoria: "tapiceria" },
+        { nombre: "TOYOMACK", url: "https://toyomack.pages.dev/", categoria: "accesorios" },
+        { nombre: "Quincallería Blanca", url: "https://quincalleriablanca.netlify.app/", categoria: "accesorios" },
+        { nombre: "Fabrigomas", url: "https://fabrigomas.netlify.app/", categoria: "accesorios" },
+        { nombre: "Otoniel Acarreos", url: "https://otoniel-acarreos.netlify.app/", categoria: "acarreos" },
+        { nombre: "Acarreos Carlos", url: "https://acarreoscarlos.netlify.app/", categoria: "acarreos" },
+        { nombre: "Acarreos Luis Bueno", url: "https://acarreosluisbueno.netlify.app/", categoria: "acarreos" },
+        { nombre: "Acarreos Isidro", url: "https://acarreos-isidro.netlify.app/", categoria: "acarreos" },
+        { nombre: "Gatos Hidráulicos María", url: "https://gatoshidraulicosmaria.netlify.app/", categoria: "acarreos" },
+        { nombre: "Servipuertas", url: "https://servipuertas.netlify.app/", categoria: "puertas" },
+        { nombre: "Cerrajería El Mago", url: "https://cerrajeriaelmago.netlify.app/", categoria: "puertas" },
+        { nombre: "Marianacell", url: "https://marianacell.netlify.app/", categoria: "celulares" },
+        { nombre: "Davidcell", url: "https://davidcell.netlify.app/", categoria: "celulares" },
+        { nombre: "HDMovil", url: "https://hdmovil.netlify.app/", categoria: "celulares" },
+        { nombre: "HDMovil2", url: "https://hdmovil2.netlify.app/", categoria: "celulares" },
+        { nombre: "Esbedcell", url: "https://esbedcell.netlify.app/", categoria: "celulares" },
+        { nombre: "Mis Antojos", url: "https://mis-antojos-restaurante.netlify.app/", categoria: "restaurantes" },
+        { nombre: "Restaurante La Mano de Dios", url: "https://restaurantlamanodedios.netlify.app/", categoria: "restaurantes" },
+        { nombre: "Charcutería Jireh", url: "https://charcuteriajireh.netlify.app/", categoria: "restaurantes" },
+        { nombre: "Restaurante El Sabor de Doña Rosa", url: "https://restauranteelsabordedonarosa.netlify.app/", categoria: "restaurantes" },
+        { nombre: "Proyecto Comedor NGE", url: "https://proyecto-comedor-nge.netlify.app/", categoria: "restaurantes" },
+        { nombre: "El Punto de Jack", url: "https://elpuntode-jack.netlify.app/", categoria: "maquinas" },
+        { nombre: "Hotel La Puerta del Sol", url: "https://hotel-lapuertadelsol.netlify.app/", categoria: "hoteles" },
+        { nombre: "Salón D'Steffy", url: "https://salondebellezadsteffy.pages.dev/", categoria: "belleza" },
+        { nombre: "Liam Stylos Peluquería", url: "https://liam-stylos-peluqueria.netlify.app/", categoria: "belleza" },
+        { nombre: "Ciclorepuestos Biker10", url: "https://ciclorepuestosbiker10.netlify.app/", categoria: "bicicletas" },
+        { nombre: "Bicicletas Alex", url: "https://bicicletas-alex.netlify.app/", categoria: "bicicletas" },
+        { nombre: "Frioaire Vásquez", url: "https://frioaire-vasquez.netlify.app/", categoria: "refrigeracion" },
+        { nombre: "Hidrotec Cúcuta", url: "https://hidrotec-cucuta.netlify.app/", categoria: "hidraulica" },
+        { nombre: "Comercializadora El Campo", url: "https://comercializadoraelcampo.netlify.app/", categoria: "comercializadoras" },
+        { nombre: "Autodiagnóstico y Cerrajería CJI", url: "https://autodiagnostico-ferreteria-cji.pages.dev/", categoria: "puertas" },
+        { nombre: "Hidrocool", url: "https://hidrocool.pages.dev/", categoria: "hidraulica" },
+        { nombre: "Polarizados Julio", url: "https://polarizados-julio.pages.dev/", categoria: "accesorios" }
+    ];
+
+    const categorias = [
+        { id: "todos", nombre: "🔧 Todos" },
+        { id: "ferreterias", nombre: "🏪 Ferreterías" },
+        { id: "mecanica", nombre: "🚗 Mecánica" },
+        { id: "motores", nombre: "⚙️ Motores" },
+        { id: "llantas", nombre: "🛞 Llantas" },
+        { id: "herreria", nombre: "🔩 Herrería" },
+        { id: "tapiceria", nombre: "🪑 Tapicería" },
+        { id: "accesorios", nombre: "🔧 Accesorios" },
+        { id: "acarreos", nombre: "🚛 Acarreos" },
+        { id: "puertas", nombre: "🚪 Puertas" },
+        { id: "celulares", nombre: "📱 Celulares" },
+        { id: "restaurantes", nombre: "🍽️ Restaurantes" },
+        { id: "maquinas", nombre: "🧵 Máquinas de coser" },
+        { id: "hoteles", nombre: "🏨 Hoteles" },
+        { id: "belleza", nombre: "💇 Belleza" },
+        { id: "bicicletas", nombre: "🚴 Bicicletas" },
+        { id: "refrigeracion", nombre: "❄️ Refrigeración" },
+        { id: "hidraulica", nombre: "💧 Hidráulica" },
+        { id: "comercializadoras", nombre: "🏪 Comercializadoras" }
+    ];
+
+    let categoriaActual = "todos";
+    let ofertaActual = '';
+    let empresaActual = '';
+
+    function mostrarNegocios(categoria) {
+        const contenedor = document.getElementById("lista-negocios");
+        const filtrados = categoria === "todos" ? negocios : negocios.filter(n => n.categoria === categoria);
+        if (filtrados.length === 0) {
+            contenedor.innerHTML = `<div class="col-span-2 text-center py-8 text-gray-400">No hay negocios en esta categoría aún.</div>`;
+            return;
+        }
+        contenedor.innerHTML = filtrados.map(n => `
+            <div class="taller-card">
+                <h3 class="text-xl font-bold text-[#fbbf24]">${n.nombre}</h3>
+                <p class="text-sm text-gray-300 mb-3">${obtenerNombreCategoria(n.categoria)}</p>
+                <div class="flex gap-3 flex-wrap">
+                    <button class="btn btn-sitio w-full sm:w-auto" data-url="${n.url}">🔗 Ver sitio</button>
+                </div>
+            </div>
+        `).join("");
+        document.querySelectorAll('.btn-sitio[data-url]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = this.getAttribute('data-url');
+                const textoOriginal = this.innerHTML;
+                this.innerHTML = "⏳ Abriendo sitio...";
+                this.classList.add('btn-loading');
+                setTimeout(() => {
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                    this.innerHTML = textoOriginal;
+                    this.classList.remove('btn-loading');
+                }, 300);
+            });
+        });
+    }
+
+    function obtenerNombreCategoria(catId) {
+        const cat = categorias.find(c => c.id === catId);
+        return cat ? cat.nombre : catId;
+    }
+
+    function generarFiltros() {
+        const contenedor = document.getElementById("filtros");
+        contenedor.innerHTML = categorias.map(cat => `<button class="btn-categoria ${cat.id === categoriaActual ? 'activo' : ''}" data-categoria="${cat.id}">${cat.nombre}</button>`).join("");
+        document.querySelectorAll(".btn-categoria").forEach(btn => {
+            btn.addEventListener("click", () => {
+                categoriaActual = btn.dataset.categoria;
+                mostrarNegocios(categoriaActual);
+                document.querySelectorAll(".btn-categoria").forEach(b => b.classList.remove("activo"));
+                btn.classList.add("activo");
+            });
+        });
+    }
+
+    generarFiltros();
+    mostrarNegocios("todos");
+
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => el.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    }
+
+    const carruselInner = document.getElementById('carruselInner');
+    const slides = document.querySelectorAll('.carrusel-slide');
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicadores = document.getElementById('indicadores');
+
+    function updateCarrusel() {
+        carruselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        document.querySelectorAll('.indicator').forEach((ind, i) => {
+            i === currentIndex ? ind.classList.add('active') : ind.classList.remove('active');
+        });
+    }
+    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarrusel(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarrusel(); }
+
+    for (let i = 0; i < totalSlides; i++) {
+        const ind = document.createElement('span');
+        ind.classList.add('indicator');
+        if (i === 0) ind.classList.add('active');
+        ind.onclick = () => { currentIndex = i; updateCarrusel(); };
+        indicadores.appendChild(ind);
+    }
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    setInterval(nextSlide, 5000);
+
+    const NUEVA_URL = 'https://guiadigitalcucuta.pages.dev';
+
+    function compartirSitio() {
+        if (navigator.share) {
+            navigator.share({ title: 'Guía Digital de Cúcuta', text: 'Directorio de negocios en Cúcuta', url: NUEVA_URL });
+        } else {
+            navigator.clipboard.writeText(NUEVA_URL);
+            alert('📋 Enlace copiado.');
+        }
+    }
+
+    function reenviarGuia() {
+        const texto = '🔧 Guía Digital de Cúcuta - Directorio de negocios, talleres y servicios. ¡Míralo aquí:';
+        if (navigator.share) {
+            navigator.share({ title: 'Guía Digital de Cúcuta', text: texto, url: NUEVA_URL });
+        } else {
+            navigator.clipboard.writeText(NUEVA_URL + ' ' + texto);
+            alert('📋 Enlace copiado.');
+        }
+    }
+
+    const btnBuscar = document.getElementById('btnBuscarLocal');
+    const inputBuscar = document.getElementById('buscadorLocal');
+    const resultadosDiv = document.getElementById('resultadosBusqueda');
+    if (btnBuscar) {
+        btnBuscar.addEventListener('click', function() {
+            const termino = inputBuscar.value.trim().toLowerCase();
+            if (termino === '') { alert('Escribe lo que quieres buscar'); return; }
+            const resultados = negocios.filter(n => n.nombre.toLowerCase().includes(termino) || obtenerNombreCategoria(n.categoria).toLowerCase().includes(termino));
+            if (resultados.length === 0) {
+                resultadosDiv.innerHTML = `<div class="mt-4 p-4 bg-black/30 rounded-xl text-center text-gray-300">❌ No encontramos "${termino}" en nuestra guía.</div>`;
+            } else {
+                resultadosDiv.innerHTML = `<div class="mt-4 p-4 bg-black/30 rounded-xl"><h3 class="text-lg font-bold text-amber-400 mb-3">📋 Resultados para "${termino}":</h3><div class="grid md:grid-cols-2 gap-3">${resultados.map(n => `<div class="bg-black/50 p-3 rounded-xl flex justify-between items-center"><div><p class="font-bold text-white">${n.nombre}</p><p class="text-xs text-gray-400">${obtenerNombreCategoria(n.categoria)}</p></div><button class="btn-sitio text-sm py-1 px-3 rounded-full" data-url="${n.url}">Ver sitio</button></div>`).join('')}</div></div>`;
+                document.querySelectorAll('#resultadosBusqueda .btn-sitio').forEach(btn => {
+                    btn.addEventListener('click', function() { window.open(this.getAttribute('data-url'), '_blank'); });
+                });
+            }
+            resultadosDiv.classList.remove('hidden');
+        });
+    }
+
+    function abrirFormularioOferta(oferta, empresa) {
+        ofertaActual = oferta; empresaActual = empresa;
+        document.getElementById('ofertaNombre').value = oferta;
+        document.getElementById('ofertaEmpresa').value = empresa;
+        document.getElementById('formularioOferta').classList.remove('hidden');
+    }
+    function cerrarFormularioOferta() {
+        document.getElementById('formularioOferta').classList.add('hidden');
+        document.getElementById('formOferta')?.reset();
+    }
+    const formOferta = document.getElementById('formOferta');
+    if (formOferta) {
+        formOferta.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]')?.value || '';
+            const telefono = this.querySelector('[name="telefono"]')?.value || '';
+            const experiencia = this.querySelector('[name="experiencia"]')?.value || '';
+            const texto = `📢 *NUEVO APLICANTE* 📢%0A%0A*Oferta:* ${ofertaActual}%0A*Empresa:* ${empresaActual}%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Experiencia:* ${experiencia}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Solicitud enviada.');
+            this.reset();
+            cerrarFormularioOferta();
+        });
+    }
+
+    function abrirFormularioLocal() {
+        document.getElementById('formularioLocal').classList.remove('hidden');
+        document.getElementById('formularioInfluencer')?.classList.add('hidden');
+    }
+    function abrirFormularioInfluencer() {
+        document.getElementById('formularioInfluencer').classList.remove('hidden');
+        document.getElementById('formularioLocal')?.classList.add('hidden');
+    }
+    function cerrarFormulario(tipo) {
+        document.getElementById(`formulario${tipo === 'local' ? 'Local' : 'Influencer'}`).classList.add('hidden');
+    }
+    const formLocal = document.getElementById('formLocal');
+    if (formLocal) {
+        formLocal.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]')?.value || '';
+            const direccion = this.querySelector('[name="direccion"]')?.value || '';
+            const telefono = this.querySelector('[name="telefono"]')?.value || '';
+            const mensaje = this.querySelector('[name="mensaje"]')?.value || '';
+            const texto = `🏪 *NUEVO LOCAL* 🏪%0A%0A*Negocio:* ${nombre}%0A*Dirección:* ${direccion}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Solicitud enviada.');
+            this.reset();
+            cerrarFormulario('local');
+        });
+    }
+    const formInfluencer = document.getElementById('formInfluencer');
+    if (formInfluencer) {
+        formInfluencer.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]')?.value || '';
+            const redes = this.querySelector('[name="redes"]')?.value || '';
+            const seguidores = this.querySelector('[name="seguidores"]')?.value || '';
+            const telefono = this.querySelector('[name="telefono"]')?.value || '';
+            const texto = `📊 *NUEVO INFLUENCER* 📊%0A%0A*Nombre:* ${nombre}%0A*Redes:* ${redes}%0A*Seguidores:* ${seguidores}%0A*Teléfono:* ${telefono}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Solicitud enviada.');
+            this.reset();
+            cerrarFormulario('influencer');
+        });
+    }
+
+    let pasoChat = 0;
+    let respuestasUsuario = {};
+    function respuestaChat(valor) {
+        const chatMensajes = document.getElementById('chatMensajes');
+        let textoRespuesta = '';
+        switch(pasoChat) {
+            case 0: textoRespuesta = valor.replace('_', ' '); respuestasUsuario.tipo = valor; break;
+            case 1: textoRespuesta = valor; respuestasUsuario.zona = valor; break;
+            case 2: textoRespuesta = valor; respuestasUsuario.hvDigital = valor; break;
+        }
+        chatMensajes.innerHTML += `<div class="bg-blue-600/30 p-3 rounded-xl text-sm text-right">👉 ${textoRespuesta}</div>`;
+        pasoChat++;
+        if (pasoChat === 1) {
+            document.getElementById('preguntaTexto').innerHTML = '📍 ¿En qué zona de Cúcuta buscas empleo?';
+            document.getElementById('preguntaOpciones').innerHTML = `<button onclick="respuestaChat('La Merced')" class="btn-sitio text-sm py-2 px-4 rounded-full">📍 La Merced</button><button onclick="respuestaChat('Centro')" class="btn-sitio text-sm py-2 px-4 rounded-full">🏛️ Centro</button><button onclick="respuestaChat('Pescadero')" class="btn-sitio text-sm py-2 px-4 rounded-full">🐟 Pescadero</button><button onclick="respuestaChat('Cualquiera')" class="btn-sitio text-sm py-2 px-4 rounded-full">🚗 Cualquiera</button>`;
+        } else if (pasoChat === 2) {
+            document.getElementById('preguntaTexto').innerHTML = '📄 ¿Tienes hoja de vida digital?';
+            document.getElementById('preguntaOpciones').innerHTML = `<button onclick="respuestaChat('si')" class="btn-sitio text-sm py-2 px-4 rounded-full">✅ Sí</button><button onclick="respuestaChat('no')" class="btn-wsp text-sm py-2 px-4 rounded-full">❌ No</button>`;
+        } else if (pasoChat === 3) {
+            const mensajeOferta = respuestasUsuario.hvDigital === 'no' ? `<div class="bg-gradient-to-r from-green-800 to-green-900 p-4 rounded-xl text-center mt-2"><i class="fas fa-file-alt text-5xl text-amber-400 mb-2"></i><p class="font-bold text-white">¡No te preocupes! Podemos crear tu Hoja de Vida Digital por solo <strong class="text-amber-400">$5.000</strong>.</p><a href="https://wa.me/573244913371?text=Hola,%20quiero%20crear%20mi%20hoja%20de%20vida%20digital" class="btn-wsp inline-block mt-3 py-2 px-4 rounded-full text-sm font-bold">📄 Quiero mi hoja de vida digital</a></div>` : `<div class="bg-gradient-to-r from-purple-800 to-purple-900 p-4 rounded-xl text-center mt-2"><i class="fas fa-star text-5xl text-amber-400 mb-2"></i><p class="font-bold text-white">¿Quieres destacar tu hoja de vida? Por solo <strong class="text-amber-400">$5.000</strong>.</p><a href="https://wa.me/573244913371?text=Hola,%20quiero%20destacar%20mi%20hoja%20de%20vida%20digital" class="btn-primary inline-block mt-3 py-2 px-4 rounded-full text-sm font-bold">⭐ Destacar mi perfil</a></div>`;
+            chatMensajes.innerHTML += `<div class="bg-amber-400/20 p-3 rounded-xl text-sm">${mensajeOferta}<div class="mt-3 text-center"><p class="text-sm text-gray-300">📢 Ofertas externas:</p><div class="flex flex-wrap justify-center gap-2 mt-2"><a href="https://www.computrabajo.com.co/trabajo-en-cucuta" target="_blank" class="btn-sitio text-xs py-1 px-3 rounded-full">Computrabajo</a><a href="https://co.indeed.com/ofertas?l=C%C3%BAcuta" target="_blank" class="btn-sitio text-xs py-1 px-3 rounded-full">Indeed</a></div></div></div>`;
+            document.getElementById('chatPregunta').classList.add('hidden');
+        }
+        const chatMensajesDiv = document.getElementById('chatMensajes');
+        chatMensajesDiv.scrollTop = chatMensajesDiv.scrollHeight;
+    }
+
+    function abrirFormulario(tipo) {
+        if (tipo === 'impulsador') {
+            document.getElementById('formularioImpulsador').classList.remove('hidden');
+            document.getElementById('formularioDisenador')?.classList.add('hidden');
+        } else if (tipo === 'disenador') {
+            document.getElementById('formularioDisenador').classList.remove('hidden');
+            document.getElementById('formularioImpulsador')?.classList.add('hidden');
+        }
+    }
+    
+    function cerrarFormulario(tipo) {
+        const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
+        document.getElementById(id).classList.add('hidden');
+    }
+    
+    const formImpulsador = document.getElementById('formImpulsador');
+    if (formImpulsador) {
+        formImpulsador.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]')?.value || '';
+            const telefono = this.querySelector('[name="telefono"]')?.value || '';
+            const experiencia = this.querySelector('[name="experiencia"]')?.value || '';
+            const motivacion = this.querySelector('[name="motivacion"]')?.value || '';
+            const texto = `💪 *NUEVO IMPULSADOR* 💪%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Experiencia:* ${experiencia}%0A*Motivación:* ${motivacion}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Postulación enviada. Te contactaremos pronto.');
+            this.reset();
+            cerrarFormulario('impulsador');
+        });
+    }
+    
+    const formDisenador = document.getElementById('formDisenador');
+    if (formDisenador) {
+        formDisenador.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('[name="nombre"]')?.value || '';
+            const telefono = this.querySelector('[name="telefono"]')?.value || '';
+            const portafolio = this.querySelector('[name="portafolio"]')?.value || '';
+            const conocimientos = this.querySelector('[name="conocimientos"]')?.value || '';
+            const texto = `🎨 *NUEVO DISEÑADOR* 🎨%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Portafolio:* ${portafolio}%0A*Conocimientos:* ${conocimientos}`;
+            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+            alert('✅ Postulación enviada. Te contactaremos pronto.');
+            this.reset();
+            cerrarFormulario('disenador');
+        });
+    }
+</script>
+</body>
+</html>        </div>
         <div id="resultadosBusqueda" class="mt-4 hidden"></div>
     </div>
 
