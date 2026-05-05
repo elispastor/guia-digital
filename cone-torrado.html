@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cone Junior Torrado · Taller Multiservicios | Guía Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { background: #0b1c3a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.2s;
+        }
+        .whatsapp-float:hover { transform: scale(1.05); background: #128C7E; }
+        .btn-wsp { background: #25d366; color: white; border-radius: 999px; padding: 10px 20px; font-weight: bold; display: inline-block; transition: 0.2s; text-align: center; }
+        .btn-wsp:hover { background: #128C7E; transform: scale(1.02); }
+        .btn-primary { background: #3b82f6; color: white; border-radius: 999px; padding: 10px 20px; font-weight: bold; display: inline-block; transition: 0.2s; text-align: center; }
+        .btn-primary:hover { background: #2563eb; transform: scale(1.02); }
+        .servicio-item { background: #112b4f; padding: 12px; border-radius: 50px; text-align: center; font-weight: 500; border-left: 4px solid #fbbf24; }
+        .galeria-img { border-radius: 20px; transition: 0.3s; cursor: pointer; object-fit: cover; width: 100%; height: 180px; }
+        .galeria-img:hover { transform: scale(1.02); opacity: 0.9; }
+    </style>
+</head>
+<body class="text-white">
+
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<a href="https://wa.me/573045599522?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="container mx-auto px-4 py-6 max-w-6xl">
+
+    <!-- PORTADA PRINCIPAL -->
+    <div class="mb-6 rounded-2xl overflow-hidden shadow-xl">
+        <img src="portada-cone.jpg" alt="Portada Taller Cone" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/1200x400/112b4f/fbbf24?text=Cone+Torrado'">
+    </div>
+
+    <!-- ENCABEZADO CON LOGO Y TÍTULO -->
+    <div class="bg-gradient-to-r from-[#112b4f] to-[#0b1c3a] rounded-2xl p-6 mb-6 border-b-4 border-[#fbbf24] flex flex-col md:flex-row items-center gap-6 shadow-xl">
+        <div class="bg-white p-3 rounded-2xl w-40 h-40 flex items-center justify-center shadow-lg">
+            <img src="logo-cone.png" alt="Logo Cone Torrado" class="max-w-full max-h-full object-contain" onerror="this.src='https://placehold.co/200x200/0b1c3a/fbbf24?text=CONE'">
+        </div>
+        <div class="text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">CONE · JUNIOR TORRADO</h1>
+            <p class="text-2xl text-[#fbbf24] font-semibold mt-1">TALLER MULTISERVICIOS</p>
+            <div class="flex flex-wrap gap-3 mt-3 justify-center md:justify-start">
+                <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-wrench text-[#fbbf24]"></i> Reparación y mantenimiento</span>
+                <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-truck text-[#fbbf24]"></i> Servicio a domicilio</span>
+                <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-medal text-[#fbbf24]"></i> Calidad y experiencia</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESCRIPCIÓN Y CONTACTO RÁPIDO -->
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="md:col-span-2 bg-[#112b4f] p-6 rounded-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-[#fbbf24] mb-3 flex items-center gap-2"><i class="fas fa-info-circle"></i> Sobre nosotros</h2>
+            <p class="text-gray-300 leading-relaxed">En <strong>Taller Multiservicios Cone Junior Torrado</strong> somos especialistas en reparación y mantenimiento general con amplia experiencia. Ofrecemos servicio a domicilio y atención personalizada para todo tipo de averías.</p>
+            <div class="grid grid-cols-2 gap-3 mt-4">
+                <div><i class="fas fa-map-marker-alt text-[#fbbf24] mr-2"></i> AV 17 CALLE 13 BARRIO EL CONTENTO, Cúcuta</div>
+                <div><i class="fas fa-clock text-[#fbbf24] mr-2"></i> Lun - Sab: 8am - 6pm</div>
+                <div><i class="fas fa-truck text-[#fbbf24] mr-2"></i> Servicio a domicilio</div>
+                <div><i class="fas fa-tools text-[#fbbf24] mr-2"></i> Multiservicios profesionales</div>
+            </div>
+        </div>
+        <div class="bg-[#112b4f] p-6 rounded-2xl shadow-lg text-center">
+            <i class="fas fa-headset text-5xl text-[#fbbf24] mb-3"></i>
+            <h3 class="text-xl font-bold">¿Necesitas ayuda?</h3>
+            <p class="text-gray-300 mb-4">Contáctanos por WhatsApp o llámanos</p>
+            <a href="https://wa.me/573045599522" class="btn-wsp inline-flex items-center gap-2"><i class="fab fa-whatsapp"></i> Escribir por WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- SERVICIOS DESTACADOS -->
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold text-center text-[#fbbf24] mb-6 flex items-center justify-center gap-2"><i class="fas fa-wrench"></i> Nuestros servicios</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <div class="servicio-item"><i class="fas fa-bolt text-[#fbbf24] mr-2"></i> Reparación eléctrica</div>
+            <div class="servicio-item"><i class="fas fa-plug text-[#fbbf24] mr-2"></i> Instalaciones eléctricas</div>
+            <div class="servicio-item"><i class="fas fa-water text-[#fbbf24] mr-2"></i> Plomería y fontanería</div>
+            <div class="servicio-item"><i class="fas fa-tools text-[#fbbf24] mr-2"></i> Mantenimiento general</div>
+            <div class="servicio-item"><i class="fas fa-fire text-[#fbbf24] mr-2"></i> Soldadura y cerrajería</div>
+            <div class="servicio-item"><i class="fas fa-tv text-[#fbbf24] mr-2"></i> Reparación de electrodomésticos</div>
+            <div class="servicio-item"><i class="fas fa-home text-[#fbbf24] mr-2"></i> Servicios para el hogar</div>
+            <div class="servicio-item"><i class="fas fa-truck text-[#fbbf24] mr-2"></i> Servicio a domicilio</div>
+        </div>
+    </div>
+
+    <!-- QR -->
+    <div class="bg-[#112b4f] rounded-2xl p-6 mb-8 text-center shadow-lg max-w-md mx-auto border border-[#fbbf24]/30">
+        <i class="fas fa-qrcode text-5xl text-[#fbbf24] mb-2"></i>
+        <h3 class="text-2xl font-bold text-white mb-3">📲 ESCANEA Y GUARDA</h3>
+        <div class="flex justify-center">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://guia-digital.com/cone-torrado" alt="Código QR para Cone Torrado" class="w-48 h-48 border-4 border-[#fbbf24] rounded-2xl p-1 bg-white">
+        </div>
+        <p class="text-sm text-gray-300 mt-3">Escanea con tu celular para guardar nuestro contacto y acceder rápido a nuestros servicios.</p>
+        <a href="https://guia-digital.com/cone-torrado" class="text-[#fbbf24] hover:underline break-all text-sm">guia-digital.com/cone-torrado</a>
+    </div>
+
+    <!-- INFORMACIÓN DE CONTACTO Y REDES -->
+    <div class="bg-[#112b4f] rounded-2xl p-6 mb-8 grid md:grid-cols-2 gap-6 shadow-lg">
+        <div>
+            <h3 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-address-card"></i> Información de contacto</h3>
+            <p><i class="fas fa-phone-alt text-[#fbbf24] w-6"></i> <a href="tel:+573045599522" class="hover:text-[#fbbf24]">304 559 9522</a></p>
+            <p><i class="fab fa-whatsapp text-[#25d366] w-6"></i> <a href="https://wa.me/573045599522" target="_blank">304 559 9522</a></p>
+            <p><i class="fas fa-map-marker-alt text-[#fbbf24] w-6"></i> AV 17 CALLE 13 BARRIO EL CONTENTO, Cúcuta</p>
+        </div>
+        <div>
+            <h3 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-share-alt"></i> Comparte nuestro perfil</h3>
+            <div class="flex flex-wrap gap-4">
+                <button onclick="window.open('https://api.whatsapp.com/send?text=Mira%20este%20taller%20multiservicios%20en%20Cúcuta%3A%20https%3A%2F%2Fguia-digital.com%2Fcone-torrado','_blank')" class="bg-[#25d366] px-4 py-2 rounded-full text-white flex items-center gap-2"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                <button onclick="navigator.clipboard.writeText('https://guia-digital.com/cone-torrado'); alert('Enlace copiado')" class="bg-[#3b82f6] px-4 py-2 rounded-full text-white flex items-center gap-2"><i class="fas fa-copy"></i> Copiar enlace</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAPA DE UBICACIÓN -->
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-map"></i> ¿Dónde estamos?</h2>
+        <div class="rounded-2xl overflow-hidden shadow-xl h-64">
+            <iframe src="https://maps.google.com/maps?q=AV+17+Calle+13+Barrio+El+Contento+Cúcuta&t=&z=15&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- BOTÓN DE REGRESO A LA GUÍA PRINCIPAL -->
+    <div class="text-center">
+        <a href="https://guia-digital.com" class="btn-primary inline-flex items-center gap-2 px-8 py-3 text-lg"><i class="fas fa-arrow-left"></i> Volver a la Guía Digital de Cúcuta</a>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="text-center mt-12 pt-6 border-t border-gray-700 text-gray-400 text-sm">
+        <p>© 2026 Cone Junior Torrado · Taller Multiservicios. Todos los derechos reservados.</p>
+        <p>Miembro de la <strong class="text-[#fbbf24]">Guía Digital de Cúcuta</strong> | <a href="https://guia-digital.com" class="text-[#fbbf24] hover:underline">guia-digital.com</a></p>
+    </footer>
+</div>
+
+</body>
+</html>
