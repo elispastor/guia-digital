@@ -31,28 +31,23 @@
         .btn-primary { background: #3b82f6; color: white; border-radius: 999px; padding: 10px 20px; font-weight: bold; display: inline-block; transition: 0.2s; text-align: center; }
         .btn-primary:hover { background: #2563eb; transform: scale(1.02); }
         .servicio-item { background: #112b4f; padding: 12px; border-radius: 50px; text-align: center; font-weight: 500; border-left: 4px solid #fbbf24; }
-        .galeria-img { border-radius: 20px; transition: 0.3s; cursor: pointer; object-fit: cover; width: 100%; height: 180px; }
-        .galeria-img:hover { transform: scale(1.02); opacity: 0.9; }
     </style>
 </head>
 <body class="text-white">
 
-<!-- BOTÓN WHATSAPP FLOTANTE -->
 <a href="https://wa.me/573045599522?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
 
 <div class="container mx-auto px-4 py-6 max-w-6xl">
 
-    <!-- PORTADA PRINCIPAL -->
     <div class="mb-6 rounded-2xl overflow-hidden shadow-xl">
-        <img src="portada-cone.jpg" alt="Portada Taller Cone" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/1200x400/112b4f/fbbf24?text=Cone+Torrado'">
+        <img src="portada-cone.jpg" alt="Taller Cone" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/1200x400/112b4f/fbbf24?text=Taller+Cone'">
     </div>
 
-    <!-- ENCABEZADO CON LOGO Y TÍTULO -->
     <div class="bg-gradient-to-r from-[#112b4f] to-[#0b1c3a] rounded-2xl p-6 mb-6 border-b-4 border-[#fbbf24] flex flex-col md:flex-row items-center gap-6 shadow-xl">
         <div class="bg-white p-3 rounded-2xl w-40 h-40 flex items-center justify-center shadow-lg">
-            <img src="logo-cone.png" alt="Logo Cone Torrado" class="max-w-full max-h-full object-contain" onerror="this.src='https://placehold.co/200x200/0b1c3a/fbbf24?text=CONE'">
+            <img src="logo-cone.png" alt="Logo Cone" class="max-w-full max-h-full object-contain" onerror="this.src='https://placehold.co/200x200/0b1c3a/fbbf24?text=Cone'">
         </div>
         <div class="text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-bold text-white">CONE · JUNIOR TORRADO</h1>
@@ -65,7 +60,6 @@
         </div>
     </div>
 
-    <!-- DESCRIPCIÓN Y CONTACTO RÁPIDO -->
     <div class="grid md:grid-cols-3 gap-6 mb-8">
         <div class="md:col-span-2 bg-[#112b4f] p-6 rounded-2xl shadow-lg">
             <h2 class="text-2xl font-bold text-[#fbbf24] mb-3 flex items-center gap-2"><i class="fas fa-info-circle"></i> Sobre nosotros</h2>
@@ -85,7 +79,6 @@
         </div>
     </div>
 
-    <!-- SERVICIOS DESTACADOS -->
     <div class="mb-8">
         <h2 class="text-3xl font-bold text-center text-[#fbbf24] mb-6 flex items-center justify-center gap-2"><i class="fas fa-wrench"></i> Nuestros servicios</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
@@ -100,18 +93,15 @@
         </div>
     </div>
 
-    <!-- QR -->
     <div class="bg-[#112b4f] rounded-2xl p-6 mb-8 text-center shadow-lg max-w-md mx-auto border border-[#fbbf24]/30">
         <i class="fas fa-qrcode text-5xl text-[#fbbf24] mb-2"></i>
         <h3 class="text-2xl font-bold text-white mb-3">📲 ESCANEA Y GUARDA</h3>
         <div class="flex justify-center">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://guia-digital.com/cone-torrado" alt="Código QR para Cone Torrado" class="w-48 h-48 border-4 border-[#fbbf24] rounded-2xl p-1 bg-white">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://guia-digital.com/cone-torrado" alt="QR Cone" class="w-48 h-48 border-4 border-[#fbbf24] rounded-2xl p-1 bg-white">
         </div>
         <p class="text-sm text-gray-300 mt-3">Escanea con tu celular para guardar nuestro contacto y acceder rápido a nuestros servicios.</p>
-        <a href="https://guia-digital.com/cone-torrado" class="text-[#fbbf24] hover:underline break-all text-sm">guia-digital.com/cone-torrado</a>
     </div>
 
-    <!-- INFORMACIÓN DE CONTACTO Y REDES -->
     <div class="bg-[#112b4f] rounded-2xl p-6 mb-8 grid md:grid-cols-2 gap-6 shadow-lg">
         <div>
             <h3 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-address-card"></i> Información de contacto</h3>
@@ -128,7 +118,6 @@
         </div>
     </div>
 
-    <!-- MAPA DE UBICACIÓN -->
     <div class="mb-8">
         <h2 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-map"></i> ¿Dónde estamos?</h2>
         <div class="rounded-2xl overflow-hidden shadow-xl h-64">
@@ -136,17 +125,14 @@
         </div>
     </div>
 
-    <!-- BOTÓN DE REGRESO A LA GUÍA PRINCIPAL -->
     <div class="text-center">
         <a href="https://guia-digital.com" class="btn-primary inline-flex items-center gap-2 px-8 py-3 text-lg"><i class="fas fa-arrow-left"></i> Volver a la Guía Digital de Cúcuta</a>
     </div>
 
-    <!-- PIE DE PÁGINA -->
     <footer class="text-center mt-12 pt-6 border-t border-gray-700 text-gray-400 text-sm">
-        <p>© 2026 Cone Junior Torrado · Taller Multiservicios. Todos los derechos reservados.</p>
+        <p>© 2026 Cone Junior Torrado - Taller Multiservicios. Todos los derechos reservados.</p>
         <p>Miembro de la <strong class="text-[#fbbf24]">Guía Digital de Cúcuta</strong> | <a href="https://guia-digital.com" class="text-[#fbbf24] hover:underline">guia-digital.com</a></p>
     </footer>
 </div>
-
 </body>
 </html>
