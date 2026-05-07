@@ -46,6 +46,22 @@
             .taller-card .flex{flex-direction:column; gap:12px;}
             .btn-sitio,.btn-wsp{text-align:center;}
         }
+        /* FIX TRANSPARENTE DEFINITIVO - GUIA DIGITAL */
+img[src*="logo"], img[alt*="Guía"] {
+  background: transparent !important;
+  background-color: rgba(0,0,0,0) !important;
+}
+
+h1:empty, .portada, .Portada, [class*="portada"] {
+  display: none !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Quitar fondos blancos encabezado */
+header, nav, .header::before, body::before {
+  background: transparent !important;
+}
     </style>
 </head>
 <body>
