@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>WAHL · Servicio Técnico y Asesoría Profesional</title>
+  <!-- Tailwind CSS + Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.05); background: #128C7E; }
+    .btn-wsp { background: #25d366; color: white; border-radius: 999px; padding: 10px 20px; font-weight: bold; display: inline-block; transition: 0.2s; border: none; cursor: pointer; }
+    .btn-wsp:hover { background: #128C7E; transform: scale(1.02); }
+    .hero-bg {
+      background-image: url('portada-wahl.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    .hero-bg > * {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573244913371?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Hero con imagen de portada-wahl.jpg -->
+<section id="inicio" class="hero-bg pt-32 pb-20 text-center text-white min-h-[500px] flex items-center justify-center">
+  <div>
+    <h2 class="text-5xl font-extrabold mb-6 animate-bounce">Servicio Técnico y Asesor Comercial</h2>
+    <p class="text-lg mb-4"><i class="fas fa-cut"></i> Venta de todo tipo de implementos de peluquería</p>
+    <p class="text-lg mb-4"><i class="fas fa-store"></i> Compra y venta de máquinas de peluquería, planchas y secadores profesionales</p>
+    <p class="text-lg mb-4"><i class="fas fa-tools"></i> Reparación y mantenimiento</p>
+    <p class="text-lg mb-4"><i class="fas fa-spray-can"></i> Venta de productos capilares e implementos de barberías</p>
+    <a href="#contacto" class="btn btn-primary mt-6 bg-blue-600 hover:bg-blue-800 text-white px-6 py-3 rounded-lg">Contáctanos</a>
+  </div>
+</section>
+
+<!-- Quiénes Somos -->
+<section id="quienes" class="bg-white py-16 px-6 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h3 class="text-3xl font-bold text-blue-600 mb-6">Quiénes Somos</h3>
+    <p class="text-gray-700 mb-6">
+      Somos un equipo especializado en servicio técnico y comercialización de equipos profesionales para peluquería y barbería. 
+      Ofrecemos productos de alta calidad y atención personalizada para garantizar el mejor rendimiento de tus herramientas.
+    </p>
+    <p class="text-gray-700"><i class="fas fa-map-marker-alt text-blue-600 mr-2"></i> Centro Comercial El Palacio, Local 81 - Cúcuta</p>
+    <p class="text-gray-700 mt-2"><i class="fas fa-phone-alt text-blue-600 mr-2"></i> <a href="tel:3144493239" class="hover:text-blue-600">314 449 3239</a></p>
+    <p class="text-gray-700 mt-2"><i class="fab fa-whatsapp text-green-500 mr-2"></i> Guillermo Ruiz - Asesor Comercial</p>
+  </div>
+</section>
+
+<!-- Servicios detallados -->
+<section id="servicios" class="bg-gray-100 py-16 px-6">
+  <h3 class="text-3xl font-bold text-blue-600 text-center mb-8">Nuestros Servicios</h3>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="card bg-white shadow-lg hover:scale-105 transition p-6 text-center rounded-xl">
+      <i class="fas fa-cut text-5xl text-blue-600 mb-4"></i>
+      <h2 class="text-xl font-bold text-blue-600 mb-2">Máquinas de peluquería</h2>
+      <p class="text-gray-600">Profesionales y de alta durabilidad. Las mejores marcas.</p>
+    </div>
+    <div class="card bg-white shadow-lg hover:scale-105 transition p-6 text-center rounded-xl">
+      <i class="fas fa-brush text-5xl text-blue-600 mb-4"></i>
+      <h2 class="text-xl font-bold text-blue-600 mb-2">Planchas de cabello</h2>
+      <p class="text-gray-600">Diseño moderno y resultados perfectos.</p>
+    </div>
+    <div class="card bg-white shadow-lg hover:scale-105 transition p-6 text-center rounded-xl">
+      <i class="fas fa-wind text-5xl text-blue-600 mb-4"></i>
+      <h2 class="text-xl font-bold text-blue-600 mb-2">Secadores profesionales</h2>
+      <p class="text-gray-600">Potencia, cuidado y tecnología iónica.</p>
+    </div>
+    <div class="card bg-white shadow-lg hover:scale-105 transition p-6 text-center rounded-xl">
+      <i class="fas fa-tools text-5xl text-blue-600 mb-4"></i>
+      <h2 class="text-xl font-bold text-blue-600 mb-2">Reparación y mantenimiento</h2>
+      <p class="text-gray-600">Servicio técnico especializado para todas las marcas.</p>
+    </div>
+    <div class="card bg-white shadow-lg hover:scale-105 transition p-6 text-center rounded-xl">
+      <i class="fas fa-spray-can text-5xl text-blue-600 mb-4"></i>
+      <h2 class="text-xl font-bold text-blue-600 mb-2">Productos capilares</h2>
+      <p class="text-gray-600">Shampoos, acondicionadores, ceras y más.</p>
+    </div>
+    <div class="card bg-white shadow-lg hover:scale-105 transition p-6 text-center rounded-xl">
+      <i class="fas fa-chalkboard-teacher text-5xl text-blue-600 mb-4"></i>
+      <h2 class="text-xl font-bold text-blue-600 mb-2">Asesoría comercial</h2>
+      <p class="text-gray-600">Acompañamiento personalizado para tu barbería o salón.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto con formulario funcional (envía a tu WhatsApp) -->
+<section id="contacto" class="bg-white py-16 px-6 text-center">
+  <div class="max-w-2xl mx-auto">
+    <h3 class="text-3xl font-bold text-blue-600 mb-6">Contáctanos</h3>
+    <p class="text-gray-700 mb-4"><i class="fas fa-map-marker-alt text-blue-600 mr-2"></i> Centro Comercial El Palacio, Local 81 - Cúcuta</p>
+    <p class="text-gray-700 mb-4"><i class="fas fa-phone-alt text-blue-600 mr-2"></i> <a href="tel:3144493239" class="hover:text-blue-600">314 449 3239</a></p>
+    <p class="text-gray-700 mb-6"><i class="fab fa-whatsapp text-green-500 mr-2"></i> Guillermo Ruiz - Asesor Comercial</p>
+
+    <form id="formWAHL" class="space-y-4">
+      <input type="text" id="nombre" placeholder="Nombre completo" class="w-full p-3 border rounded-lg" required>
+      <input type="tel" id="telefono" placeholder="Teléfono" class="w-full p-3 border rounded-lg" required>
+      <textarea id="mensaje" rows="3" placeholder="¿Qué servicio o producto necesitas?" class="w-full p-3 border rounded-lg" required></textarea>
+      <button type="submit" class="btn-wsp w-full"><i class="fab fa-whatsapp mr-2"></i> Enviar consulta</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-blue-600 text-white text-center py-6">
+  <p>© 2026 WAHL Servicio Técnico. Todos los derechos reservados.</p>
+  <p class="text-sm mt-2">Miembro de la <strong class="text-yellow-300">Guía Digital de Cúcuta</strong></p>
+</footer>
+
+<script>
+  // Formulario que envía los datos a TU WhatsApp
+  document.getElementById('formWAHL').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    if (!nombre || !telefono || !mensaje) {
+      alert('Por favor, completa todos los campos.');
+      return;
+    }
+
+    const texto = `📢 *NUEVA CONSULTA* 📢%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje}`;
+    const url = `https://wa.me/573244913371?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+    this.reset();
+    alert('✅ Tu consulta ha sido enviada. Te contactaremos pronto.');
+  });
+</script>
+
+</body>
+</html>
