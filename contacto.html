@@ -6,6 +6,15 @@
     <title>Contacto | Guía Digital de Cúcuta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body{background:#0b1c3a;font-family:'Segoe UI',Arial,sans-serif;color:white;}
+        .card{background:#112b4f;padding:25px;border-radius:20px;border-left:5px solid #fbbf24;margin-bottom:20px;}
+        .btn-primary{background:#3b82f6;color:white;border-radius:999px;padding:10px 20px;font-weight:bold;display:inline-block;transition:0.2s;text-align:center;border:none;cursor:pointer;}
+        .btn-primary:hover{background:#2563eb;transform:scale(1.02);}
+        .btn-wsp{background:#25d366;color:white;border-radius:999px;padding:10px 20px;font-weight:bold;display:inline-block;transition:0.2s;text-align:center;border:none;cursor:pointer;}
+        .btn-wsp:hover{background:#128C7E;transform:scale(1.02);}
+        .hidden{display:none;}
+    </style>
 </head>
 <body class="bg-[#0b1c3a] text-white">
 
@@ -19,7 +28,7 @@
     <h2 class="text-3xl font-bold text-[#fbbf24] text-center mb-6">📢 TRABAJA CON NOSOTROS</h2>
 
     <!-- OPORTUNIDAD LABORAL NGE -->
-    <div class="card text-center" style="border-left-color: #fbbf24;">
+    <div class="card">
         <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
             <span class="bg-amber-400 text-black px-3 py-1 rounded-full text-sm font-bold">🔥 OPORTUNIDAD LABORAL 🔥</span>
             <span class="text-xs text-gray-300">NGE - Nueva Generación Emprendedora</span>
@@ -31,10 +40,87 @@
             <div class="bg-black/30 p-5 rounded-xl text-left">
                 <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
                 <h3 class="text-xl font-bold text-white">💪 IMPULSADOR(A) DIGITAL</h3>
-                <button onclick="abrirFormulario('impulsador')" class="btn-wsp inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme como Impulsador(a)</button>
+                <button onclick="abrirFormulario('impulsador')" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme</button>
             </div>
-            
             <div class="bg-black/30 p-5 rounded-xl text-left">
+                <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
+                <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
+                <button onclick="abrirFormulario('disenador')" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORMULARIOS OCULTOS -->
+    <div id="formularioImpulsador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📋 Impulsador(a)</h3>
+            <button onclick="cerrarFormulario('impulsador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕</button>
+        </div>
+        <form id="formImpulsador" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Teléfono" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar</button>
+        </form>
+    </div>
+
+    <div id="formularioDisenador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📋 Diseñador(a) Web</h3>
+            <button onclick="cerrarFormulario('disenador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕</button>
+        </div>
+        <form id="formDisenador" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Teléfono" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <textarea name="conocimientos" rows="2" placeholder="¿Qué herramientas o lenguajes conoces?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    function abrirFormulario(tipo) {
+        if (tipo === 'impulsador') {
+            document.getElementById('formularioImpulsador').classList.remove('hidden');
+            document.getElementById('formularioDisenador').classList.add('hidden');
+        } else if (tipo === 'disenador') {
+            document.getElementById('formularioDisenador').classList.remove('hidden');
+            document.getElementById('formularioImpulsador').classList.add('hidden');
+        }
+    }
+    function cerrarFormulario(tipo) {
+        const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
+        document.getElementById(id).classList.add('hidden');
+    }
+
+    document.getElementById('formImpulsador')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = this.querySelector('[name="nombre"]')?.value || '';
+        const telefono = this.querySelector('[name="telefono"]')?.value || '';
+        const motivacion = this.querySelector('[name="motivacion"]')?.value || '';
+        const texto = `💪 NUEVO IMPULSADOR%0A%0ANombre: ${nombre}%0ATeléfono: ${telefono}%0AMotivación: ${motivacion}`;
+        window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+        alert('✅ Postulación enviada');
+        this.closest('.hidden').classList.add('hidden');
+        this.reset();
+    });
+
+    document.getElementById('formDisenador')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = this.querySelector('[name="nombre"]')?.value || '';
+        const telefono = this.querySelector('[name="telefono"]')?.value || '';
+        const conocimientos = this.querySelector('[name="conocimientos"]')?.value || '';
+        const texto = `🎨 NUEVO DISEÑADOR%0A%0ANombre: ${nombre}%0ATeléfono: ${telefono}%0AConocimientos: ${conocimientos}`;
+        window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+        alert('✅ Postulación enviada');
+        this.closest('.hidden').classList.add('hidden');
+        this.reset();
+    });
+</script>
+
+</body>
+    </html>            <div class="bg-black/30 p-5 rounded-xl text-left">
                 <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
                 <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
                 <button onclick="abrirFormulario('disenador')" class="btn-primary inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme como Diseñador(a)</button>
