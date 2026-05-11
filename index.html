@@ -599,6 +599,55 @@ function cerrarFormulario(tipo) {
     const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
     document.getElementById(id).classList.add('hidden');
 }
-  
+  // REINICIO CARRUSEL - VERSIÓN SIMPLIFICADA
+document.addEventListener("DOMContentLoaded", function() {
+    const carruselInner = document.getElementById('carruselInner');
+    const slides = document.querySelectorAll('.carrusel-slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicadores = document.getElementById('indicadores');
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    if (!carruselInner || totalSlides === 0) return;
+
+    function updateCarrusel() {
+        carruselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        document.querySelectorAll('.indicator').forEach((ind, i) => {
+            ind.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarrusel();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarrusel();
+    }
+
+    // Crear indicadores si no existen
+    if (indicadores) {
+        indicadores.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const ind = document.createElement('span');
+            ind.classList.add('indicator');
+            if (i === 0) ind.classList.add('active');
+            ind.onclick = () => {
+                currentIndex = i;
+                updateCarrusel();
+            };
+            indicadores.appendChild(ind);
+        }
+    }
+
+    // Eventos de botones
+    if (prevBtn) prevBtn.onclick = prevSlide;
+    if (nextBtn) nextBtn.onclick = nextSlide;
+    setInterval(nextSlide, 5000);
+    updateCarrusel();
+});
 </body>
 </html>
