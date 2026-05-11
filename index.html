@@ -712,7 +712,20 @@ img[alt*="Guía"], img[src*="logo-guia"] {
         const chatMensajesDiv = document.getElementById('chatMensajes');
         chatMensajesDiv.scrollTop = chatMensajesDiv.scrollHeight;
     }
+function abrirFormulario(tipo) {
+    if (tipo === 'impulsador') {
+        document.getElementById('formularioImpulsador').classList.remove('hidden');
+        document.getElementById('formularioDisenador')?.classList.add('hidden');
+    } else if (tipo === 'disenador') {
+        document.getElementById('formularioDisenador').classList.remove('hidden');
+        document.getElementById('formularioImpulsador')?.classList.add('hidden');
+    }
+}
 
+function cerrarFormulario(tipo) {
+    const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
+    document.getElementById(id).classList.add('hidden');
+}
   
 </body>
 </html>
