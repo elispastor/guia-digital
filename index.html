@@ -701,66 +701,6 @@ img[alt*="Guía"], img[src*="logo-guia"] {
         chatMensajesDiv.scrollTop = chatMensajesDiv.scrollHeight;
     }
 
-    function abrirFormulario(tipo) {
-        if (tipo === 'impulsador') {
-            document.getElementById('formularioImpulsador').classList.remove('hidden');
-            document.getElementById('formularioDisenador')?.classList.add('hidden');
-        } else if (tipo === 'disenador') {
-            document.getElementById('formularioDisenador').classList.remove('hidden');
-            document.getElementById('formularioImpulsador')?.classList.add('hidden');
-        }
-    }
-    
-    function cerrarFormulario(tipo) {
-        const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
-        document.getElementById(id).classList.add('hidden');
-    }
-    
-    const formImpulsador = document.getElementById('formImpulsador');
-    if (formImpulsador) {
-        formImpulsador.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = this.querySelector('[name="nombre"]')?.value || '';
-            const telefono = this.querySelector('[name="telefono"]')?.value || '';
-            const experiencia = this.querySelector('[name="experiencia"]')?.value || '';
-            const motivacion = this.querySelector('[name="motivacion"]')?.value || '';
-            const texto = `💪 *NUEVO IMPULSADOR* 💪%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Experiencia:* ${experiencia}%0A*Motivación:* ${motivacion}`;
-            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
-            alert('✅ Postulación enviada. Te contactaremos pronto.');
-            this.reset();
-            cerrarFormulario('impulsador');
-        });
-    }
-    
-    const formDisenador = document.getElementById('formDisenador');
-    if (formDisenador) {
-        formDisenador.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = this.querySelector('[name="nombre"]')?.value || '';
-            const telefono = this.querySelector('[name="telefono"]')?.value || '';
-            const portafolio = this.querySelector('[name="portafolio"]')?.value || '';
-            const conocimientos = this.querySelector('[name="conocimientos"]')?.value || '';
-            const texto = `🎨 *NUEVO DISEÑADOR* 🎨%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Portafolio:* ${portafolio}%0A*Conocimientos:* ${conocimientos}`;
-            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
-            alert('✅ Postulación enviada. Te contactaremos pronto.');
-            this.reset();
-            cerrarFormulario('disenador');
-        });
-    }
-    function abrirFormulario(tipo) {
-    if (tipo === 'impulsador') {
-        document.getElementById('formularioImpulsador').classList.remove('hidden');
-        document.getElementById('formularioDisenador')?.classList.add('hidden');
-    } else if (tipo === 'disenador') {
-        document.getElementById('formularioDisenador').classList.remove('hidden');
-        document.getElementById('formularioImpulsador')?.classList.add('hidden');
-    }
-}
-
-function cerrarFormulario(tipo) {
-    const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
-    document.getElementById(id).classList.add('hidden');
-}
-</script>
+  
 </body>
 </html>
