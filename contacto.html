@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Contacto | Guía Digital de Cúcuta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-[#0b1c3a] text-white">
 
+<div class="container mx-auto px-4 py-6 max-w-4xl">
+
+    <!-- Botón volver -->
+    <div class="mb-6">
+        <a href="https://guia-digital.com" class="text-[#fbbf24] hover:underline">&larr; Volver a la Guía</a>
+    </div>
+
+    <h2 class="text-3xl font-bold text-[#fbbf24] text-center mb-6">📢 TRABAJA CON NOSOTROS</h2>
+
+    <!-- OPORTUNIDAD LABORAL NGE -->
+    <div class="card text-center" style="border-left-color: #fbbf24;">
+        <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
+            <span class="bg-amber-400 text-black px-3 py-1 rounded-full text-sm font-bold">🔥 OPORTUNIDAD LABORAL 🔥</span>
+            <span class="text-xs text-gray-300">NGE - Nueva Generación Emprendedora</span>
+        </div>
+        <h2 class="text-3xl font-bold text-amber-400 mb-2">🚀 ÚNETE AL EQUIPO NGE</h2>
+        <p class="text-gray-300 mb-4">Sé parte de la Evolución digital en Cúcuta. Trabaja con nosotros impulsando la Guía Digital.</p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-black/30 p-5 rounded-xl text-left">
+                <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
+                <h3 class="text-xl font-bold text-white">💪 IMPULSADOR(A) DIGITAL</h3>
+                <button onclick="abrirFormulario('impulsador')" class="btn-wsp inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme como Impulsador(a)</button>
+            </div>
+            
+            <div class="bg-black/30 p-5 rounded-xl text-left">
+                <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
+                <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
+                <button onclick="abrirFormulario('disenador')" class="btn-primary inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme como Diseñador(a)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOLSA DE EMPLEO - OFERTAS -->
+    <div class="card" style="border-left-color: #34B7F1;">
+        <h2 class="text-3xl font-bold text-[#34B7F1] text-center mb-2">💼 BOLSA DE EMPLEO</h2>
+        <p class="text-center text-gray-300 mb-4">Postúlate a ofertas locales o registra tu negocio/influencer</p>
+
+        <!-- Oferta Tapicero -->
+        <div class="bg-black/30 p-4 rounded-xl border border-gray-700 mb-6">
+            <h4 class="text-lg font-bold text-white">Tapicero</h4>
+            <p class="text-sm text-gray-300">📍 Muebles RQ · Cúcuta (Afiliado a la Guía)</p>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
+                <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
+                <span><i class="fas fa-calendar-alt"></i> Salario: A convenir</span>
+            </div>
+            <button onclick="abrirFormularioOferta('Tapicero', 'Muebles RQ')" class="btn-primary mt-3 py-2 px-4 rounded-full text-sm font-bold w-full sm:w-auto">📋 Aplicar a esta oferta</button>
+        </div>
+
+        <!-- Botones para negocios e influencers -->
+        <div class="grid md:grid-cols-2 gap-4 mt-6 pt-4 border-t border-gray-700">
+            <div class="bg-black/30 p-4 rounded-xl text-center">
+                <i class="fas fa-store text-4xl text-blue-400 mb-2"></i>
+                <h3 class="text-xl font-bold text-white">🏪 ¿TIENES UN LOCAL?</h3>
+                <button onclick="abrirFormularioLocal()" class="btn-primary w-full mt-2 py-2 rounded-full text-sm font-bold">📢 Quiero ampliar mi negocio</button>
+            </div>
+            <div class="bg-black/30 p-4 rounded-xl text-center">
+                <i class="fas fa-chart-line text-4xl text-purple-400 mb-2"></i>
+                <h3 class="text-xl font-bold text-white">📊 ¿TIENES SEGUIDORES?</h3>
+                <button onclick="abrirFormularioInfluencer()" class="btn-wsp w-full mt-2 py-2 rounded-full text-sm font-bold">🚀 Quiero generar ingresos</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORMULARIOS OCULTOS -->
+    <div id="formularioImpulsador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Impulsador(a)</h3>
+            <button onclick="cerrarFormulario('impulsador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        <form id="formImpulsador" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+        </form>
+    </div>
+
+    <div id="formularioDisenador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Diseñador(a) Web</h3>
+            <button onclick="cerrarFormulario('disenador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        <form id="formDisenador" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <textarea name="conocimientos" rows="2" placeholder="¿Qué herramientas o lenguajes conoces? (HTML, CSS, etc.)" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function abrirFormulario(tipo) {
+        if (tipo === 'impulsador') {
+            document.getElementById('formularioImpulsador').classList.remove('hidden');
+            document.getElementById('formularioDisenador')?.classList.add('hidden');
+        } else if (tipo === 'disenador') {
+            document.getElementById('formularioDisenador').classList.remove('hidden');
+            document.getElementById('formularioImpulsador')?.classList.add('hidden');
+        }
+    }
+    function cerrarFormulario(tipo) {
+        const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
+        document.getElementById(id).classList.add('hidden');
+    }
+
+    function abrirFormularioOferta(oferta, empresa) {
+        document.getElementById('formularioOferta')?.classList.remove('hidden');
+    }
+    function abrirFormularioLocal() {
+        document.getElementById('formularioLocal')?.classList.remove('hidden');
+    }
+    function abrirFormularioInfluencer() {
+        document.getElementById('formularioInfluencer')?.classList.remove('hidden');
+    }
+
+    // Capturar envíos de formularios (envío a WhatsApp)
+    document.getElementById('formImpulsador')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = this.querySelector('[name="nombre"]')?.value || '';
+        const telefono = this.querySelector('[name="telefono"]')?.value || '';
+        const motivacion = this.querySelector('[name="motivacion"]')?.value || '';
+        const texto = `💪 *NUEVO IMPULSADOR* 💪%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Motivación:* ${motivacion}`;
+        window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+        alert('✅ Postulación enviada. Te contactaremos pronto.');
+        this.closest('.hidden')?.classList.add('hidden');
+        this.reset();
+    });
+
+    document.getElementById('formDisenador')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = this.querySelector('[name="nombre"]')?.value || '';
+        const telefono = this.querySelector('[name="telefono"]')?.value || '';
+        const conocimientos = this.querySelector('[name="conocimientos"]')?.value || '';
+        const texto = `🎨 *NUEVO DISEÑADOR* 🎨%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Conocimientos:* ${conocimientos}`;
+        window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
+        alert('✅ Postulación enviada. Te contactaremos pronto.');
+        this.closest('.hidden')?.classList.add('hidden');
+        this.reset();
+    });
+</script>
+
+<style>
+    .card{background:#112b4f;padding:25px;border-radius:20px;border-left:5px solid #fbbf24;margin-bottom:20px;}.btn-primary{background:#3b82f6;color:white;border-radius:999px;padding:10px 20px;font-weight:bold;display:inline-block;transition:0.2s;text-align:center;border:none;cursor:pointer;}.btn-primary:hover{background:#2563eb;transform:scale(1.02);}.btn-wsp{background:#25d366;color:white;border-radius:999px;padding:10px 20px;font-weight:bold;display:inline-block;transition:0.2s;text-align:center;border:none;cursor:pointer;}.btn-wsp:hover{background:#128C7E;transform:scale(1.02);}
+</style>
+
+</body>
+</html>
