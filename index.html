@@ -222,11 +222,7 @@ img[alt*="Guía"], img[src*="logo-guia"] {
         </div>
     </div>
 
-    <div class="card text-center" style="border-left-color: #fbbf24;">
-        <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
-            <span class="bg-amber-400 text-black px-3 py-1 rounded-full text-sm font-bold">🔥 OPORTUNIDAD LABORAL 🔥</span>
-            <span class="text-xs text-gray-300">NGE - Nueva Generación Emprendedora</span>
-        </div>
+   
         <h2 class="text-3xl font-bold text-amber-400 mb-2">🚀 ÚNETE AL EQUIPO NGE</h2>
         <p class="text-gray-300 mb-4">Sé parte de la Evolución digital en Cúcuta. Trabaja con nosotros impulsando la Guía Digital.</p>
         
@@ -249,87 +245,7 @@ img[alt*="Guía"], img[src*="logo-guia"] {
         </div>
     </div>
 
-    <div id="empleo" class="card" style="border-left-color: #34B7F1;">
-        <h2 class="text-3xl font-bold text-[#34B7F1] text-center mb-2">💼 BOLSA DE EMPLEO</h2>
-        <p class="text-center text-gray-300 mb-4">Encuentra trabajo en los principales portales y postúlate a ofertas locales.</p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-            <a href="https://www.computrabajo.com.co/trabajo-en-cucuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fas fa-briefcase"></i> Computrabajo</a>
-            <a href="https://co.indeed.com/ofertas?l=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fas fa-search"></i> Indeed</a>
-            <a href="https://www.linkedin.com/jobs/search/?location=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        </div>
-
-        <div class="space-y-4 mb-6">
-            <h3 class="text-xl font-semibold text-white border-l-4 border-[#34B7F1] pl-3">📢 OFERTA LABORAL REAL</h3>
-            <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
-                <h4 class="text-lg font-bold text-white">Tapicero</h4>
-                <p class="text-sm text-gray-300">📍 Muebles RQ · Cúcuta (Afiliado a la Guía)</p>
-                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
-                    <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
-                    <span><i class="fas fa-calendar-alt"></i> Salario: A convenir</span>
-                </div>
-                <button onclick="abrirFormularioOferta('Tapicero', 'Muebles RQ')" class="btn-primary mt-3 py-2 px-4 rounded-full text-sm font-bold w-full sm:w-auto">📋 Aplicar a esta oferta</button>
-            </div>
-        </div>
-
-        <div id="formularioOferta" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-amber-400">📋 Aplicar a oferta laboral</h3>
-                <button onclick="cerrarFormularioOferta()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-            </div>
-            <form id="formOferta" class="space-y-3">
-                <input type="text" id="ofertaNombre" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Oferta">
-                <input type="text" id="ofertaEmpresa" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Empresa">
-                <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <textarea name="experiencia" rows="2" placeholder="Cuéntanos tu experiencia" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
-                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar aplicación</button>
-            </form>
-            <p class="text-xs text-gray-400 mt-2">📢 Tu solicitud será enviada al empleador.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6 mt-6 pt-4 border-t border-gray-700">
-            <div class="bg-gradient-to-r from-blue-900/30 to-blue-800/30 p-5 rounded-xl text-center border border-blue-500/30">
-                <i class="fas fa-store text-5xl text-blue-400 mb-3"></i>
-                <h3 class="text-2xl font-bold text-white">🏪 ¿TIENES UN LOCAL?</h3>
-                <button onclick="abrirFormularioLocal()" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">📢 Quiero ampliar mi negocio</button>
-            </div>
-            <div class="bg-gradient-to-r from-purple-900/30 to-purple-800/30 p-5 rounded-xl text-center border border-purple-500/30">
-                <i class="fas fa-chart-line text-5xl text-purple-400 mb-3"></i>
-                <h3 class="text-2xl font-bold text-white">📊 ¿TIENES SEGUIDORES?</h3>
-                <button onclick="abrirFormularioInfluencer()" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">🚀 Quiero generar ingresos</button>
-            </div>
-        </div>
-
-        <div id="formularioLocal" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-amber-400">📋 Amplía tu negocio</h3>
-                <button onclick="cerrarFormulario('local')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-            </div>
-            <form id="formLocal" class="space-y-3">
-                <input type="text" name="nombre" placeholder="Nombre del local" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="text" name="direccion" placeholder="Dirección" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <textarea name="mensaje" rows="2" placeholder="Cuéntanos sobre tu negocio" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
-                <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar solicitud</button>
-            </form>
-        </div>
-
-        <div id="formularioInfluencer" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-amber-400">📊 Genera ingresos con NGE</h3>
-                <button onclick="cerrarFormulario('influencer')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-            </div>
-            <form id="formInfluencer" class="space-y-3">
-                <input type="text" name="nombre" placeholder="Tu nombre" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="text" name="redes" placeholder="Tus redes sociales" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="text" name="seguidores" placeholder="Número de seguidores" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">🚀 Quiero generar ingresos</button>
-            </form>
-        </div>
-    </div>
-
+    
     <!-- FORMULARIO IMPULSADOR -->
     <div id="formularioImpulsador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
         <div class="flex justify-between items-center mb-4">
