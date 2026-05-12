@@ -106,9 +106,47 @@ img[alt*="Guía"], img[src*="logo-guia"] {
         </h2>
     </div>
 
-    <div id="inicio" class="mb-8 rounded-2xl overflow-hidden">
-        <img src="portada-guia-nueva.jpg" alt="Portada" class="w-full h-auto">
-    </div>
+   <!-- PULPITO PARLANTE (SIN DEPENDENCIAS EXTERNAS) -->
+<div class="text-center my-6" id="pulpitoContainer">
+    <img src="pulpito.png" id="pulpitoImg" alt="Pulpito bienvenida" 
+         class="w-28 h-28 mx-auto cursor-pointer transition duration-300 hover:scale-110 animate-float">
+    <div id="mensajePulpito" class="mt-3 text-white text-lg md:text-xl font-semibold"></div>
+    <p class="text-xs text-gray-400 mt-1">✨ Haz clic en el pulpito para saludar ✨</p>
+</div>
+
+<style>
+    @keyframes flotar {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0px); }
+    }
+    .animate-float {
+        animation: flotar 3s ease-in-out infinite;
+    }
+</style>
+
+<script>
+    // Saludo según la hora del día
+    function actualizarSaludo() {
+        const ahora = new Date();
+        const hora = ahora.getHours();
+        let saludo = "";
+        if (hora < 12) saludo = "🌞 Buenos días";
+        else if (hora < 19) saludo = "☀️ Buenas tardes";
+        else saludo = "🌙 Buenas noches";
+        document.getElementById("mensajePulpito").innerHTML = `🐙 ${saludo}, ¡bienvenido a la Guía Digital de Cúcuta! 🔍`;
+    }
+    actualizarSaludo();
+
+    // Hacer que hable al hacer clic
+    document.getElementById('pulpitoImg').addEventListener('click', function() {
+        const mensaje = "Hola, soy el pulpito de la Guía Digital de Cúcuta. Conexión total para todos los negocios de la región.";
+        const voz = new SpeechSynthesisUtterance(mensaje);
+        voz.lang = 'es-ES';
+        voz.rate = 0.9;
+        window.speechSynthesis.speak(voz);
+    });
+</script>
 
     <!-- BUSCADOR DE LA GUÍA -->
     <div class="card mb-6 text-center">
