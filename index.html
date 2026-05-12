@@ -210,7 +210,7 @@ img[alt*="Guía"], img[src*="logo-guia"] {
         </div>
     </div>
 
-    <div class="card text-center" style="border-left-color: #fbbf24;">
+        <div class="card text-center" style="border-left-color: #fbbf24;">
         <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
             <span class="bg-amber-400 text-black px-3 py-1 rounded-full text-sm font-bold">🔥 OPORTUNIDAD LABORAL 🔥</span>
             <span class="text-xs text-gray-300">NGE - Nueva Generación Emprendedora</span>
@@ -219,25 +219,50 @@ img[alt*="Guía"], img[src*="logo-guia"] {
         <p class="text-gray-300 mb-4">Sé parte de la Evolución digital en Cúcuta. Trabaja con nosotros impulsando la Guía Digital.</p>
         
         <div class="grid md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-black/30 p-5 rounded-xl text-left">
-                <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
-                <h3 class="text-xl font-bold text-white">💪 IMPULSADOR(A) DIGITAL</h3>
-                <button onclick="abrirFormulario('impulsador')" class="btn-wsp inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme como Impulsador(a)</button>
+            <!-- IMPULSADOR -->
+            <div>
+                <div class="bg-black/30 p-5 rounded-xl text-left">
+                    <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
+                    <h3 class="text-xl font-bold text-white">💪 IMPULSADOR(A) DIGITAL</h3>
+                    <button onclick="document.getElementById('formImpulsador').classList.toggle('hidden')" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme como Impulsador(a)</button>
+                </div>
+                <div id="formImpulsador" class="hidden mt-4 p-5 bg-black/50 rounded-xl">
+                    <form id="formImpulsadorForm">
+                        <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
+                        <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
+                        <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3"></textarea>
+                        <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+                    </form>
+                </div>
             </div>
-            
-            <div class="bg-black/30 p-5 rounded-xl text-left">
-                <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
-                <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
-                <button onclick="abrirFormulario('disenador')" class="btn-primary inline-block w-full text-center mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme como Diseñador(a)</button>
+            <!-- DISEÑADOR -->
+            <div>
+                <div class="bg-black/30 p-5 rounded-xl text-left">
+                    <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
+                    <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
+                    <button onclick="document.getElementById('formDisenador').classList.toggle('hidden')" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme como Diseñador(a)</button>
+                </div>
+                <div id="formDisenador" class="hidden mt-4 p-5 bg-black/50 rounded-xl">
+                    <form>
+                        <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
+                        <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
+                        <textarea name="conocimientos" rows="2" placeholder="¿Qué herramientas o lenguajes conoces?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3"></textarea>
+                        <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        
-        <div class="bg-amber-400/10 p-4 rounded-xl border border-amber-400/30">
-            <p class="text-sm text-gray-300"><strong class="text-amber-400">🎓 Requisitos:</strong> Estudiantes o recién graduados de informática, diseño o carreras afines. Ganas de aprender.</p>
         </div>
     </div>
 
-    <div id="empleo" class="card" style="border-left-color: #34B7F1;">
+    <script>
+        // Manejar envío de formularios (puedes cambiarlo a correo después)
+        document.getElementById('formImpulsadorForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Postulación enviada. Te contactaremos pronto.');
+            this.reset();
+            document.getElementById('formImpulsador').classList.add('hidden');
+        });
+    </script>
         <h2 class="text-3xl font-bold text-[#34B7F1] text-center mb-2">💼 BOLSA DE EMPLEO</h2>
         <p class="text-center text-gray-300 mb-4">Encuentra trabajo en los principales portales y postúlate a ofertas locales.</p>
 
