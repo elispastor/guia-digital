@@ -747,6 +747,12 @@ img[alt*="Guía"], img[src*="logo-guia"] {
             cerrarFormulario('disenador');
         });
     }
+    // Forzar que los botones funcionen también después de cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    // Ya están definidas las funciones, solo aseguramos que los formularios se oculten al inicio
+    document.getElementById('formularioImpulsador')?.classList.add('hidden');
+    document.getElementById('formularioDisenador')?.classList.add('hidden');
+});
 </script>
 </body>
 </html>
