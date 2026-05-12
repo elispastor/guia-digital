@@ -145,23 +145,23 @@
 </footer>
 
 <script>
-  document.getElementById('formWAHL').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nombre = document.getElementById('nombre').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const mensaje = document.getElementById('mensaje').value.trim();
+    document.getElementById('formWAHL').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
 
-    if (!nombre || !telefono || !mensaje) {
-      alert('Completa todos los campos.');
-      return;
-    }
+        if (!nombre || !telefono || !mensaje) {
+            alert('Completa todos los campos.');
+            return;
+        }
 
-    const texto = `Consulta WAHL - Nombre: ${nombre}, Teléfono: ${telefono}, Mensaje: ${mensaje}`;
-    const url = `https://wa.me/573144493239?text=${encodeURIComponent(texto)}`;
-    window.open(url, '_blank');
-    alert('Mensaje enviado. Gustavo te contactará pronto.');
-    this.reset();
-  });
+        const texto = `Consulta WAHL - Nombre: ${nombre}, Teléfono: ${telefono}, Mensaje: ${mensaje}`;
+        const url = `https://wa.me/573144493239?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
+        alert('Mensaje enviado. Gustavo te contactará pronto.');
+        this.reset();
+    });
 </script>
 
 </body>
