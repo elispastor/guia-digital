@@ -125,23 +125,38 @@ img[alt*="Guía"], img[src*="logo-guia"] {
 </style>
 
 <script>
-    // Saludo según la hora del día
-    function actualizarSaludo() {
+       // Saludo según la hora
+    function mostrarSaludo() {
         const ahora = new Date();
         const hora = ahora.getHours();
         let saludo = "";
         if (hora < 12) saludo = "🌞 Buenos días";
         else if (hora < 19) saludo = "☀️ Buenas tardes";
         else saludo = "🌙 Buenas noches";
-        document.getElementById("mensajePulpito").innerHTML = `🐙 ${saludo}, ¡bienvenido a la Guía Digital de Cúcuta! 🔍`;
+        document.getElementById("mensajePulpito").innerHTML = `🐙 ${saludo}, ¡el pul-pi-to te da la bienvenida a la Guía Digital de Cúcuta! 🔍`;
     }
-    actualizarSaludo();
+    mostrarSaludo();
 
-    // Hacer que hable al hacer clic
+    // Hacer que hable al hacer clic (con voz colombiana)
     document.getElementById('pulpitoImg').addEventListener('click', function() {
-const mensaje = "Hola, soy el pulpitoooo de la Guía Digital de Cúcuta. Conexión total pa' todos los negocios de la región. ¡Bienvenido, parce!";        const voz = new SpeechSynthesisUtterance(mensaje);
-        voz.lang = 'es-ES';
-        voz.rate = 0.9;
+        const mensaje = "Hola, soy el pul - pi - to de la Guía Digital de Cúcuta. Conexión total pa' todos los negocios de la región. ¡Bienvenido, parce!";
+        const voz = new SpeechSynthesisUtterance(mensaje);
+        
+        // Forzar español de Colombia (si existe)
+        voz.lang = 'es-CO';
+        
+        // Velocidad más lenta para que se entienda
+        voz.rate = 0.8;
+        
+        // Intentar seleccionar una voz colombiana si está disponible
+        window.speechSynthesis.onvoiceschanged = () => {
+            const voces = window.speechSynthesis.getVoices();
+            const vozColombiana = voces.find(voz => voz.lang === 'es-CO');
+            if (vozColombiana) voz.voice = vozColombiana;
+            window.speechSynthesis.speak(voz);
+        };
+        
+        // Si no hay voces cargadas, igual intenta
         window.speechSynthesis.speak(voz);
     });
 </script>
