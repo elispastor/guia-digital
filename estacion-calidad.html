@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>La Estación de la Calidad · Ropa Deportiva</title>
+  <title>La Estación de la Calidad · Ropa Deportiva | Guía Digital</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -31,6 +31,20 @@
     .btn-primary { background: #3b82f6; color: white; border-radius: 999px; padding: 10px 20px; font-weight: bold; display: inline-block; transition: 0.2s; text-align: center; }
     .btn-primary:hover { background: #2563eb; transform: scale(1.02); }
     .servicio-item { background: #112b4f; padding: 12px; border-radius: 50px; text-align: center; font-weight: 500; border-left: 4px solid #fbbf24; }
+    /* Estilos para el menú hamburguesa */
+    .menu-movil {
+      position: fixed;
+      top: 70px;
+      left: -100%;
+      width: 100%;
+      height: calc(100vh - 70px);
+      background: #112b4f;
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+    .menu-movil.active {
+      left: 0;
+    }
   </style>
 </head>
 <body class="text-white">
@@ -40,20 +54,50 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- ENCABEZADO CON MENÚ HAMBURGUESA -->
+<nav class="bg-[#112b4f] border-b-4 border-[#fbbf24] py-4 px-6 flex flex-wrap items-center justify-between sticky top-0 z-50 rounded-2xl">
+  <div class="flex flex-col">
+    <div class="text-white text-2xl font-bold tracking-wide">LA ESTACIÓN DE LA CALIDAD</div>
+    <div class="text-[#fbbf24] text-xs font-semibold -mt-1">Ropa Deportiva</div>
+  </div>
+  
+  <!-- Menú escritorio -->
+  <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
+    <a href="#inicio" class="hover:text-[#fbbf24]">INICIO</a>
+    <a href="#productos" class="hover:text-[#fbbf24]">PRODUCTOS</a>
+    <a href="#ubicacion" class="hover:text-[#fbbf24]">UBICACIÓN</a>
+    <a href="#contacto" class="hover:text-[#fbbf24]">CONTACTO</a>
+  </div>
+  
+  <!-- Botón hamburguesa (visible en móvil) -->
+  <button id="menu-btn" class="md:hidden text-2xl text-[#fbbf24]">
+    <i class="fas fa-bars"></i>
+  </button>
+</nav>
+
+<!-- Menú móvil (desplegable) -->
+<div id="mobile-menu" class="menu-movil bg-[#112b4f] p-6 flex flex-col gap-4 text-white text-lg font-semibold">
+  <a href="#inicio" class="hover:text-[#fbbf24] py-2 border-b border-gray-600">INICIO</a>
+  <a href="#productos" class="hover:text-[#fbbf24] py-2 border-b border-gray-600">PRODUCTOS</a>
+  <a href="#ubicacion" class="hover:text-[#fbbf24] py-2 border-b border-gray-600">UBICACIÓN</a>
+  <a href="#contacto" class="hover:text-[#fbbf24] py-2">CONTACTO</a>
+</div>
+
 <div class="container mx-auto px-4 py-6 max-w-6xl">
 
-  <!-- PORTADA PRINCIPAL (debe subirse como estacion-calidad-portada.jpg) -->
-  <div class="mb-6 rounded-2xl overflow-hidden shadow-xl">
+  <!-- PORTADA PRINCIPAL -->
+  <div id="inicio" class="mb-6 rounded-2xl overflow-hidden shadow-xl">
     <img src="estacion-calidad-portada.png" alt="La Estación de la Calidad" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/1200x400/112b4f/fbbf24?text=La+Estación+de+la+Calidad'">
+  </div>
 
-  <!-- ENCABEZADO CON LOGO (si no tiene logo, se muestra el nombre destacado) -->
+  <!-- ENCABEZADO CON LOGO Y TÍTULO -->
   <div class="bg-gradient-to-r from-[#112b4f] to-[#0b1c3a] rounded-2xl p-6 mb-6 border-b-4 border-[#fbbf24] text-center shadow-xl">
     <h1 class="text-4xl md:text-5xl font-bold text-white">LA ESTACIÓN DE LA CALIDAD</h1>
     <p class="text-2xl text-[#fbbf24] font-semibold mt-1">Fabricantes Directos de Ropa Deportiva</p>
     <div class="flex flex-wrap gap-3 mt-3 justify-center">
       <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-tags text-[#fbbf24]"></i> Calidad y eficiencia</span>
       <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-tshirt text-[#fbbf24]"></i> Ropa deportiva personalizada</span>
-      <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-map-marker-alt text-[#fbbf24]"></i> Local 52 - Cúcuta</span>
+      <span class="bg-black/40 px-4 py-1 rounded-full text-sm"><i class="fas fa-map-marker-alt text-[#fbbf24]"></i> C.C. Alejandría, Local 52</span>
     </div>
   </div>
 
@@ -63,10 +107,10 @@
       <h2 class="text-2xl font-bold text-[#fbbf24] mb-3 flex items-center gap-2"><i class="fas fa-info-circle"></i> Sobre nosotros</h2>
       <p class="text-gray-300 leading-relaxed">En <strong>La Estación de la Calidad</strong> somos fabricantes directos de ropa deportiva de alta calidad. Trabajamos con materiales que garantizan durabilidad, comodidad y estilo. Nuestros principios son la <strong>eficacia y la eficiencia</strong> para ofrecerte el mejor producto al mejor precio.</p>
       <div class="grid grid-cols-2 gap-3 mt-4">
-        <div><i class="fas fa-map-marker-alt text-[#fbbf24] mr-2"></i> Frente al C.C. Dinastía, Cúcuta</div>
-        <div><i class="fas fa-building text-[#fbbf24] mr-2"></i> Local 52</div>
+        <div><i class="fas fa-map-marker-alt text-[#fbbf24] mr-2"></i> C.C. Alejandría, Local 52, Cúcuta</div>
         <div><i class="fas fa-clock text-[#fbbf24] mr-2"></i> Lun - Sab: 8am - 6pm</div>
         <div><i class="fas fa-tag text-[#fbbf24] mr-2"></i> Fabricantes directos</div>
+        <div><i class="fas fa-shipping-fast text-[#fbbf24] mr-2"></i> Envíos a todo Colombia</div>
       </div>
     </div>
     <div class="bg-[#112b4f] p-6 rounded-2xl shadow-lg text-center">
@@ -77,16 +121,28 @@
     </div>
   </div>
 
-  <!-- SERVICIOS / PRODUCTOS -->
-  <div class="mb-8">
+  <!-- PRODUCTOS / SERVICIOS -->
+  <div id="productos" class="mb-8">
     <h2 class="text-3xl font-bold text-center text-[#fbbf24] mb-6 flex items-center justify-center gap-2"><i class="fas fa-tshirt"></i> Nuestros productos</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
       <div class="servicio-item"><i class="fas fa-futbol text-[#fbbf24] mr-2"></i> Camisetas deportivas</div>
       <div class="servicio-item"><i class="fas fa-bicycle text-[#fbbf24] mr-2"></i> Shorts y pantalonetas</div>
       <div class="servicio-item"><i class="fas fa-heartbeat text-[#fbbf24] mr-2"></i> Ropa para gimnasio</div>
       <div class="servicio-item"><i class="fas fa-tshirt text-[#fbbf24] mr-2"></i> Uniformes personalizados</div>
-      <div class="servicio-item"><i class="fas fa-shipping-fast text-[#fbbf24] mr-2"></i> Envíos a todo Colombia</div>
       <div class="servicio-item"><i class="fas fa-hand-sparkles text-[#fbbf24] mr-2"></i> Calidad garantizada</div>
+      <div class="servicio-item"><i class="fas fa-truck text-[#fbbf24] mr-2"></i> Envíos a todo el país</div>
+    </div>
+  </div>
+
+  <!-- UBICACIÓN -->
+  <div id="ubicacion" class="mb-8">
+    <h2 class="text-3xl font-bold text-center text-[#fbbf24] mb-6 flex items-center justify-center gap-2"><i class="fas fa-map"></i> ¿Dónde estamos?</h2>
+    <div class="bg-[#112b4f] rounded-2xl p-6 text-center">
+      <p class="text-xl font-semibold">Centro Comercial Alejandría, Local 52</p>
+      <p class="text-gray-300 mt-1">Av. 6 #8-56, Cúcuta, Norte de Santander, Colombia</p>
+      <div class="rounded-2xl overflow-hidden shadow-xl h-64 mt-4">
+        <iframe src="https://maps.google.com/maps?q=Centro+Comercial+Alejandría+Cúcuta&t=&z=16&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
+      </div>
     </div>
   </div>
 
@@ -100,13 +156,13 @@
     <p class="text-sm text-gray-300 mt-3">Escanea con tu celular para guardar nuestro contacto y acceder rápido a nuestros servicios.</p>
   </div>
 
-  <!-- INFORMACIÓN DE CONTACTO Y REDES -->
-  <div class="bg-[#112b4f] rounded-2xl p-6 mb-8 grid md:grid-cols-2 gap-6 shadow-lg">
+  <!-- CONTACTO -->
+  <div id="contacto" class="bg-[#112b4f] rounded-2xl p-6 mb-8 grid md:grid-cols-2 gap-6 shadow-lg">
     <div>
       <h3 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-address-card"></i> Información de contacto</h3>
       <p><i class="fas fa-phone-alt text-[#fbbf24] w-6"></i> <a href="tel:+573027030887" class="hover:text-[#fbbf24]">302 703 0887</a></p>
       <p><i class="fab fa-whatsapp text-[#25d366] w-6"></i> <a href="https://wa.me/573027030887" target="_blank">302 703 0887</a></p>
-      <p><i class="fas fa-map-marker-alt text-[#fbbf24] w-6"></i> Frente al C.C. Dinastía, Local 52, Cúcuta, Norte de Santander, Colombia</p>
+      <p><i class="fas fa-map-marker-alt text-[#fbbf24] w-6"></i> C.C. Alejandría, Local 52, Cúcuta, Colombia</p>
     </div>
     <div>
       <h3 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-share-alt"></i> Comparte nuestro perfil</h3>
@@ -117,20 +173,12 @@
     </div>
   </div>
 
-  <!-- MAPA DE UBICACIÓN -->
-  <div class="mb-8">
-    <h2 class="text-2xl font-bold text-[#fbbf24] mb-3"><i class="fas fa-map"></i> ¿Dónde estamos?</h2>
-    <div class="rounded-2xl overflow-hidden shadow-xl h-64">
-      <iframe src="https://maps.google.com/maps?q=C.C.+Dinastía+Cúcuta&t=&z=15&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-
   <!-- BOTÓN DE REGRESO A LA GUÍA PRINCIPAL -->
   <div class="text-center">
     <a href="https://guia-digital.com" class="btn-primary inline-flex items-center gap-2 px-8 py-3 text-lg"><i class="fas fa-arrow-left"></i> Volver a la Guía Digital de Cúcuta</a>
   </div>
 
-  <!-- PIE DE PÁGINA CON ENLACE A TARJETA DIGITAL -->
+  <!-- PIE DE PÁGINA -->
   <footer class="text-center mt-12 pt-6 border-t border-gray-700 text-gray-400 text-sm">
     <p>© 2026 La Estación de la Calidad - Ropa Deportiva. Todos los derechos reservados.</p>
     <div class="mt-2">
@@ -139,6 +187,23 @@
     <p class="text-sm text-gray-400 mt-1">Miembro de la <strong class="text-[#fbbf24]">Guía Digital de Cúcuta</strong> | <a href="https://guia-digital.com" class="text-[#fbbf24] hover:underline">guia-digital.com</a></p>
   </footer>
 </div>
+
+<script>
+  // Menú hamburguesa
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
+  }
+</script>
 
 </body>
 </html>
