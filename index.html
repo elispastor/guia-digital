@@ -139,13 +139,13 @@ img[alt*="Guía"], img[src*="logo-guia"] {
 
     // Hacer que hable al hacer clic (con voz colombiana)
     document.getElementById('pulpitoImg').addEventListener('click', function() {
-const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión total para todos los negocios del Norte de Santander. ¡Bienvenido, veci!";        const voz = new SpeechSynthesisUtterance(mensaje);
+const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión total para todos los negocios de nuestra amada ciudad de Cúcuta. ¡Bienvenido, veci!";        const voz = new SpeechSynthesisUtterance(mensaje);
         
         // Forzar español de Colombia (si existe)
         voz.lang = 'es-CO';
         
         // Velocidad más lenta para que se entienda
-        voz.rate = 0.8;
+        voz.rate = 0.8; 
         
         // Intentar seleccionar una voz colombiana si está disponible
         window.speechSynthesis.onvoiceschanged = () => {
