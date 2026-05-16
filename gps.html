@@ -293,17 +293,10 @@
     <p class="mt-2">Diseño: <a href="https://wa.me/573244913371" target="_blank">NGE Tarjetas Digitales</a></p>
     <p class="text-sm mt-2">Lunes a sábado 7am - 7pm · Siempre abiertos</p>
   </footer>
-
-  <script>
-    const codigoBase = "NGE-210PROV";
+<script>
+    // Código de afiliado FIJO
+    const codigoUnico = "NGE-210PROV";
     const dominio = "guia-digital.com";
-    
-    let codigoUnico = localStorage.getItem("codigo_afiliado_gps");
-    if (!codigoUnico) {
-      codigoUnico = codigoBase + "-" + Math.random().toString(36).substring(2, 8).toUpperCase();
-      localStorage.setItem("codigo_afiliado_gps", codigoUnico);
-    }
-    
     const urlCompleta = "https://" + dominio + "/gps.html?ref=" + codigoUnico;
     
     document.getElementById("codigoRef").innerText = codigoUnico;
@@ -312,9 +305,9 @@
     
     let visitas = localStorage.getItem("visitas_" + codigoUnico);
     if (visitas === null) {
-      visitas = 1;
+        visitas = 1;
     } else {
-      visitas = Number(visitas) + 1;
+        visitas = Number(visitas) + 1;
     }
     localStorage.setItem("visitas_" + codigoUnico, visitas);
     document.getElementById("visitCounter").innerHTML = `👁️ Esta tarjeta ha sido vista ${visitas} veces | Código: ${codigoUnico}`;
@@ -322,18 +315,18 @@
     const urlParams = new URLSearchParams(window.location.search);
     const refOrigen = urlParams.get('ref');
     if (refOrigen && refOrigen !== codigoUnico) {
-      console.log("🟢 Visita referida por: " + refOrigen);
-      localStorage.setItem("ultimo_referido", refOrigen);
+        console.log("🟢 Visita referida por: " + refOrigen);
+        localStorage.setItem("ultimo_referido", refOrigen);
     }
     
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuBtn) {
-      menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
-      document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
+        document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
     }
     
-    console.log("🎯 Código de afiliado:", codigoUnico);
-  </script>
+    console.log("🎯 Código de afiliado fijo:", codigoUnico);
+</script>
 </body>
 </html>
