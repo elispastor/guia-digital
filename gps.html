@@ -32,7 +32,6 @@
       z-index: 100;
     }
 
-    /* PORTADA CUADRADA RESPONSIVE */
     .portada-container {
       display: flex;
       justify-content: center;
@@ -199,7 +198,6 @@
 </head>
 <body>
 
-  <!-- NAV ESCRITORIO -->
   <nav class="hidden md:flex justify-between items-center">
     <div class="text-white font-bold text-2xl tracking-wide">📍 LA CASA GPS</div>
     <div class="flex gap-8 text-white font-semibold">
@@ -211,7 +209,6 @@
     </div>
   </nav>
 
-  <!-- MENÚ HAMBURGUESA MÓVIL -->
   <div class="md:hidden sticky top-4 z-50 px-4">
     <div class="bg-gradient-to-r from-[#1e3a8a] to-[#111827] p-4 rounded-2xl border-2 border-[#dc2626] flex justify-between items-center">
       <span class="font-bold text-white text-xl">📍 LA CASA GPS</span>
@@ -228,19 +225,17 @@
     </div>
   </div>
 
-  <!-- PORTADA CUADRADA (170x170 RESPONSIVE) -->
+  <!-- PORTADA CON NOMBRE ÚNICO -->
   <div class="portada-container">
-    <img src="portada.jpg" alt="LA CASA GPS" class="portada-cuadrada" onerror="this.src='https://placehold.co/170x170?text=LA+CASA+GPS'">
+    <img src="lacasagps-portada.jpg" alt="LA CASA GPS" class="portada-cuadrada" onerror="this.src='https://placehold.co/170x170?text=LA+CASA+GPS'">
   </div>
 
-  <!-- LOGO PRINCIPAL -->
   <div class="logo-principal">
     <h1>📍 LA CASA GPS</h1>
     <div class="eslogan">Bull Tint · Autopartes · Lujos · Accesorios</div>
     <div class="horario">🕐 Siempre abiertos | Lunes a sábado: 7am - 7pm</div>
   </div>
 
-  <!-- SERVICIOS -->
   <section id="servicios">
     <div class="titulo-seccion"><h2>🛠️ NUESTROS SERVICIOS</h2></div>
     <div class="servicios-grid">
@@ -251,7 +246,6 @@
     </div>
   </section>
 
-  <!-- SOBRE NOSOTROS (sin imágenes vacías) -->
   <section id="nosotros">
     <div class="titulo-seccion"><h2>🏢 SOBRE NOSOTROS</h2></div>
     <div class="bg-white p-8 rounded-3xl shadow-xl border-l-8 border-[#dc2626]">
@@ -261,7 +255,6 @@
     </div>
   </section>
 
-  <!-- CONTACTO + MAPA + FACEBOOK -->
   <section id="contacto">
     <div class="titulo-seccion"><h2>📍 CONTACTO</h2></div>
     <div class="contacto-box">
@@ -276,7 +269,6 @@
     </div>
   </section>
 
-  <!-- PANEL DE AFILIADO -->
   <section id="afiliado">
     <div class="titulo-seccion"><h2>💰 GANA DINERO CON NOSOTROS</h2></div>
     <div class="panel-referido">
@@ -291,13 +283,11 @@
     </div>
   </section>
 
-  <!-- CÓDIGO QR -->
   <div class="text-center mb-8">
     <img id="qrImg" src="" alt="Código QR" class="mx-auto rounded-xl shadow-lg" style="width: 170px;">
     <p class="text-sm text-gray-500 mt-2">Escanea y guarda mi tarjeta digital</p>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <p class="text-xl font-bold">© 2026 LA CASA GPS | Villavicencio, Meta</p>
     <p class="mt-2">Diseño: <a href="https://wa.me/573244913371" target="_blank">NGE Tarjetas Digitales</a></p>
@@ -305,11 +295,7 @@
   </footer>
 
   <script>
-    // ============================================================
-    // 🎯 SISTEMA DE REFERIDOS Y COMISIONES
-    // ============================================================
-    
-    const codigoBase = "GPS";
+    const codigoBase = "NGE-210PROV";
     const dominio = "guia-digital.com";
     
     let codigoUnico = localStorage.getItem("codigo_afiliado_gps");
