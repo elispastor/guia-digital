@@ -16,12 +16,10 @@
     }
     h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
 
-    /* MENÚ HAMBURGUESA */
     #mobile-menu { display: none; }
     #mobile-menu.mostrar { display: flex; }
     .menu-btn { cursor: pointer; }
 
-    /* NAVEGACIÓN PRINCIPAL */
     nav { 
       background: linear-gradient(135deg, #1e3a8a, #111827); 
       border: 2px solid #dc2626; 
@@ -34,93 +32,126 @@
       z-index: 100;
     }
 
-    /* LOGO PRINCIPAL */
+    /* PORTADA CUADRADA RESPONSIVE */
+    .portada-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem auto;
+    }
+    .portada-cuadrada {
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 30px;
+      border: 4px solid #dc2626;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
     .logo-principal {
-      margin: 3rem 1rem 2rem 1rem;
-      padding: 2.5rem 2rem;
+      margin: 1rem 1rem 2rem 1rem;
+      padding: 2rem;
       background: linear-gradient(135deg, #1e3a8a, #111827);
       border-radius: 40px;
       border: 3px solid #dc2626;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       text-align: center;
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
     .logo-principal h1 {
-      font-size: clamp(2rem, 7vw, 4rem);
+      font-size: clamp(1.8rem, 6vw, 3.5rem);
       color: white;
       font-weight: 900;
-      text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
       margin-bottom: 0.5rem;
     }
     .logo-principal .eslogan {
-      font-size: clamp(1rem, 4vw, 1.4rem);
+      font-size: clamp(0.9rem, 3.5vw, 1.2rem);
       color: #fbbf24;
       font-weight: 600;
-      margin-top: 0.5rem;
     }
 
-    /* SECCIONES */
     section { 
       max-width: 1200px; 
-      margin: 0 auto 4rem auto; 
+      margin: 0 auto 3rem auto; 
       padding: 0 1.5rem;
     }
     h2 { 
       color: #1e3a8a; 
       text-align: center; 
-      font-size: clamp(1.8rem, 5vw, 2.5rem); 
+      font-size: clamp(1.5rem, 4.5vw, 2.2rem); 
       margin-bottom: 2rem;
       font-weight: 800;
-      border-left: 5px solid #dc2626;
-      border-right: 5px solid #dc2626;
+      border-left: 4px solid #dc2626;
+      border-right: 4px solid #dc2626;
       display: inline-block;
-      width: auto;
       padding: 0 1rem;
     }
-    .titulo-seccion {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
+    .titulo-seccion { text-align: center; margin-bottom: 2rem; }
 
-    /* TARJETAS DE SERVICIOS */
     .servicios-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
     }
     .servicio-card {
       background: white;
       border-radius: 28px;
-      padding: 2rem 1.5rem;
+      padding: 1.5rem;
       text-align: center;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-      border-bottom: 5px solid #dc2626;
-      transition: transform 0.3s;
-    }
-    .servicio-card:hover { transform: translateY(-8px); }
-    .servicio-card i { font-size: 3rem; color: #1e3a8a; margin-bottom: 1rem; }
-    .servicio-card h3 { font-size: 1.5rem; margin-bottom: 0.8rem; color: #111827; }
-
-    /* GALERÍA */
-    .galeria-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .galeria-grid img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 24px;
-      border: 3px solid #1e3a8a;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-bottom: 4px solid #dc2626;
       transition: transform 0.3s;
     }
-    .galeria-grid img:hover { transform: scale(1.02); }
+    .servicio-card:hover { transform: translateY(-5px); }
+    .servicio-card i { font-size: 2.5rem; color: #1e3a8a; margin-bottom: 0.8rem; }
+    .servicio-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
 
-    /* PANEL REFERIDO */
+    .contacto-box {
+      background: #111827;
+      border-radius: 40px;
+      padding: 2rem;
+      color: white;
+      text-align: center;
+      border: 2px solid #dc2626;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      transition: all 0.3s;
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+    .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); }
+    .btn-maps {
+      background: #dc2626;
+      transition: all 0.3s;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+    .btn-maps:hover { background: #b91c1c; transform: scale(1.02); }
+    .btn-facebook {
+      background: #1877f2;
+      transition: all 0.3s;
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+    .btn-facebook:hover { background: #0e5bcf; transform: scale(1.02); }
+
     .panel-referido {
       background: linear-gradient(135deg, #1e3a8a, #111827);
       border-radius: 40px;
@@ -133,50 +164,22 @@
       background: #fbbf24;
       color: #1e3a8a;
       font-family: monospace;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: bold;
-      padding: 0.6rem 1.2rem;
+      padding: 0.5rem 1rem;
       border-radius: 50px;
       display: inline-block;
       margin: 1rem 0;
     }
-
-    /* BOTONES */
-    .btn-whatsapp {
-      background: #25D366;
-      transition: all 0.3s;
-      display: inline-block;
-      padding: 1rem 2rem;
+    .horario {
+      background: #1e3a8a;
+      color: white;
+      padding: 0.5rem;
       border-radius: 50px;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      margin: 0.5rem;
-    }
-    .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); }
-    .btn-maps {
-      background: #dc2626;
-      transition: all 0.3s;
       display: inline-block;
-      padding: 0.8rem 1.8rem;
-      border-radius: 50px;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
+      margin-top: 1rem;
+      font-size: 0.9rem;
     }
-    .btn-maps:hover { background: #b91c1c; transform: scale(1.02); }
-
-    /* CONTACTO */
-    .contacto-box {
-      background: #111827;
-      border-radius: 40px;
-      padding: 2rem;
-      color: white;
-      text-align: center;
-      border: 2px solid #dc2626;
-    }
-
-    /* FOOTER */
     footer {
       background: #111827;
       color: white;
@@ -187,8 +190,9 @@
     footer a { color: #fbbf24; text-decoration: none; }
 
     @media (max-width: 768px) {
-      .logo-principal { margin: 2rem 1rem; padding: 1.5rem; }
-      .servicio-card { padding: 1.5rem; }
+      .portada-cuadrada { width: 140px; height: 140px; }
+      .logo-principal { padding: 1.5rem; }
+      .servicio-card { padding: 1rem; }
       .codigo-ref { font-size: 1rem; }
     }
   </style>
@@ -224,62 +228,55 @@
     </div>
   </div>
 
-  <!-- PORTADA -->
-  <section id="inicio" class="px-4 mt-6">
-    <img src="portada.jpg" alt="LA CASA GPS" class="w-full rounded-3xl shadow-2xl max-h-[500px] object-cover">
-  </section>
+  <!-- PORTADA CUADRADA (170x170 RESPONSIVE) -->
+  <div class="portada-container">
+    <img src="portada.jpg" alt="LA CASA GPS" class="portada-cuadrada" onerror="this.src='https://placehold.co/170x170?text=LA+CASA+GPS'">
+  </div>
 
   <!-- LOGO PRINCIPAL -->
   <div class="logo-principal">
     <h1>📍 LA CASA GPS</h1>
     <div class="eslogan">Bull Tint · Autopartes · Lujos · Accesorios</div>
-    <p class="text-white text-lg mt-3">Villavicencio, Meta | Siempre abiertos</p>
+    <div class="horario">🕐 Siempre abiertos | Lunes a sábado: 7am - 7pm</div>
   </div>
 
   <!-- SERVICIOS -->
   <section id="servicios">
     <div class="titulo-seccion"><h2>🛠️ NUESTROS SERVICIOS</h2></div>
     <div class="servicios-grid">
-      <div class="servicio-card"><i class="fas fa-car"></i><h3>Autopartes</h3><p>Repuestos originales y alternativos para todo tipo de vehículo.</p></div>
-      <div class="servicio-card"><i class="fas fa-gem"></i><h3>Lujos y Accesorios</h3><p>Detalles que marcan la diferencia: tapices, luces, estética.</p></div>
-      <div class="servicio-card"><i class="fas fa-satellite-dish"></i><h3>GPS y Seguridad</h3><p>Rastreo satelital, alarmas y monitoreo 24/7 para tu tranquilidad.</p></div>
-      <div class="servicio-card"><i class="fas fa-tachometer-alt"></i><h3>Diagnóstico</h3><p>Escaneo electrónico y revisión técnica de tu vehículo.</p></div>
+      <div class="servicio-card"><i class="fas fa-car"></i><h3>Autopartes</h3><p>Repuestos originales y alternativos para todo vehículo.</p></div>
+      <div class="servicio-card"><i class="fas fa-gem"></i><h3>Lujos y Accesorios</h3><p>Tapices, luces, estética y detalles exclusivos.</p></div>
+      <div class="servicio-card"><i class="fas fa-satellite-dish"></i><h3>GPS y Seguridad</h3><p>Rastreo satelital y monitoreo 24/7.</p></div>
+      <div class="servicio-card"><i class="fas fa-tachometer-alt"></i><h3>Diagnóstico</h3><p>Escaneo electrónico y revisión técnica.</p></div>
     </div>
   </section>
 
-  <!-- GALERÍA -->
-  <section>
-    <div class="titulo-seccion"><h2>📸 INSTALACIONES Y PRODUCTOS</h2></div>
-    <div class="galeria-grid">
-      <img src="portada2.jpg" alt="Local LA CASA GPS">
-      <img src="portada3.jpg" alt="Productos y accesorios">
-      <img src="portada4.jpg" alt="Atención al cliente">
-    </div>
-    <p class="text-center text-gray-600 mt-4 font-semibold">📍 Cl. 35, Av. Catama #17A-37, Villavicencio</p>
-  </section>
-
-  <!-- SOBRE NOSOTROS -->
+  <!-- SOBRE NOSOTROS (sin imágenes vacías) -->
   <section id="nosotros">
     <div class="titulo-seccion"><h2>🏢 SOBRE NOSOTROS</h2></div>
     <div class="bg-white p-8 rounded-3xl shadow-xl border-l-8 border-[#dc2626]">
       <p class="text-lg mb-3"><strong>LA CASA GPS · BULL TINT</strong> es una empresa dedicada a <strong>autopartes, lujos y accesorios para vehículo</strong> en Villavicencio.</p>
-      <p class="text-lg">Con amplia experiencia y atención personalizada, ofrecemos calidad, confianza y los mejores precios del mercado. ¡Siempre abiertos para servirte!</p>
+      <p class="text-lg">Con amplia experiencia y atención personalizada, ofrecemos calidad, confianza y los mejores precios. ¡Siempre abiertos para servirte!</p>
+      <p class="text-md text-gray-600 mt-4"><i class="fas fa-clock text-[#dc2626] mr-2"></i> Horario: Lunes a sábado 7am - 7pm</p>
     </div>
   </section>
 
-  <!-- CONTACTO + MAPA -->
+  <!-- CONTACTO + MAPA + FACEBOOK -->
   <section id="contacto">
     <div class="titulo-seccion"><h2>📍 CONTACTO</h2></div>
     <div class="contacto-box">
       <p class="text-2xl md:text-3xl mb-3"><i class="fab fa-whatsapp text-green-400 mr-2"></i> 302 817 2176</p>
       <p class="text-lg mb-2"><i class="fas fa-envelope mr-2"></i> yadinfapuerta@gmail.com</p>
       <p class="text-lg mb-4"><i class="fab fa-instagram mr-2"></i> @la_casa_del_gps_villavicencio</p>
-      <a href="https://wa.me/573028172176?text=Hola%20LA%20CASA%20GPS%2C%20vi%20su%20tarjeta%20digital%20y%20me%20interesa%20sus%20productos" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp mr-2"></i> ESCRIBIR POR WHATSAPP</a>
-      <a href="https://www.google.com/maps/search/?api=1&query=Cl.+35+Av.+Catama+%2317A-37+Villavicencio" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt mr-2"></i> VER UBICACIÓN</a>
+      <p class="text-md mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Cl. 35, Av. Catama #17A-37, Villavicencio, Meta</p>
+      
+      <a href="https://wa.me/573028172176?text=Hola%20LA%20CASA%20GPS%2C%20vi%20su%20tarjeta%20digital%20y%20me%20interesa" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp mr-2"></i> WhatsApp</a>
+      <a href="https://www.facebook.com/share/18Sd3j2sao/" target="_blank" class="btn-facebook"><i class="fab fa-facebook-f mr-2"></i> Facebook</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Cl.+35+Av.+Catama+%2317A-37+Villavicencio" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt mr-2"></i> Ver mapa</a>
     </div>
   </section>
 
-  <!-- PANEL DE AFILIADO (el juguete más importante) -->
+  <!-- PANEL DE AFILIADO -->
   <section id="afiliado">
     <div class="titulo-seccion"><h2>💰 GANA DINERO CON NOSOTROS</h2></div>
     <div class="panel-referido">
@@ -296,7 +293,7 @@
 
   <!-- CÓDIGO QR -->
   <div class="text-center mb-8">
-    <img id="qrImg" src="" alt="Código QR" class="mx-auto rounded-xl shadow-lg" style="width: 180px;">
+    <img id="qrImg" src="" alt="Código QR" class="mx-auto rounded-xl shadow-lg" style="width: 170px;">
     <p class="text-sm text-gray-500 mt-2">Escanea y guarda mi tarjeta digital</p>
   </div>
 
@@ -304,7 +301,7 @@
   <footer>
     <p class="text-xl font-bold">© 2026 LA CASA GPS | Villavicencio, Meta</p>
     <p class="mt-2">Diseño: <a href="https://wa.me/573244913371" target="_blank">NGE Tarjetas Digitales</a></p>
-    <p class="text-sm mt-2">Siempre abiertos · Calidad y confianza</p>
+    <p class="text-sm mt-2">Lunes a sábado 7am - 7pm · Siempre abiertos</p>
   </footer>
 
   <script>
@@ -315,7 +312,6 @@
     const codigoBase = "GPS";
     const dominio = "guia-digital.com";
     
-    // Generar o recuperar código único
     let codigoUnico = localStorage.getItem("codigo_afiliado_gps");
     if (!codigoUnico) {
       codigoUnico = codigoBase + "-" + Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -326,9 +322,8 @@
     
     document.getElementById("codigoRef").innerText = codigoUnico;
     document.getElementById("enlaceRef").innerHTML = `<a href="${urlCompleta}" target="_blank" class="text-[#fbbf24] underline break-all">${urlCompleta}</a>`;
-    document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(urlCompleta)}`;
+    document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${encodeURIComponent(urlCompleta)}`;
     
-    // Contador de visitas
     let visitas = localStorage.getItem("visitas_" + codigoUnico);
     if (visitas === null) {
       visitas = 1;
@@ -338,7 +333,6 @@
     localStorage.setItem("visitas_" + codigoUnico, visitas);
     document.getElementById("visitCounter").innerHTML = `👁️ Esta tarjeta ha sido vista ${visitas} veces | Código: ${codigoUnico}`;
     
-    // Capturar referido desde URL
     const urlParams = new URLSearchParams(window.location.search);
     const refOrigen = urlParams.get('ref');
     if (refOrigen && refOrigen !== codigoUnico) {
@@ -346,7 +340,6 @@
       localStorage.setItem("ultimo_referido", refOrigen);
     }
     
-    // Menú hamburguesa
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuBtn) {
