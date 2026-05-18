@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>KATA | Servicio Técnico de Celulares</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Open Sans', sans-serif; 
+      background: #f4f4f4; 
+      color: #1f2937;
+    }
+    h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+
+    #mobile-menu { display: none; }
+    #mobile-menu.mostrar { display: flex; }
+    .menu-btn { cursor: pointer; }
+
+    nav { 
+      background: linear-gradient(135deg, #0f172a, #1e293b); 
+      border: 2px solid #3b82f6; 
+      border-radius: 50px;
+      margin: 1rem;
+      padding: 0.8rem 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+    }
+
+    .portada-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem auto;
+    }
+    .portada-cuadrada {
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 30px;
+      border: 4px solid #3b82f6;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .logo-principal {
+      max-width: 90%;
+      width: auto;
+      margin: 1rem auto 2rem auto;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border-radius: 40px;
+      border: 3px solid #3b82f6;
+      text-align: center;
+      overflow-x: hidden;
+      word-break: break-word;
+      box-sizing: border-box;
+    }
+    .logo-principal h1 {
+      font-size: clamp(2rem, 7vw, 4rem);
+      color: white;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+    .logo-principal .subtitulo {
+      font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+      color: #3b82f6;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    .logo-principal .descripcion {
+      font-size: clamp(0.7rem, 3vw, 0.9rem);
+      color: #cbd5e1;
+      margin-bottom: 0.5rem;
+    }
+    .logo-principal .horario {
+      font-size: 0.75rem;
+      white-space: normal;
+      word-break: break-word;
+      padding: 0.3rem 0.8rem;
+      display: inline-block;
+      max-width: 90%;
+      background: #1e293b;
+      color: #3b82f6;
+      border-radius: 50px;
+      margin-top: 0.5rem;
+    }
+
+    section { 
+      max-width: 1200px; 
+      margin: 0 auto 3rem auto; 
+      padding: 0 1.5rem;
+    }
+    h2 { 
+      color: #0f172a; 
+      text-align: center; 
+      font-size: clamp(1.5rem, 4.5vw, 2.2rem); 
+      margin-bottom: 2rem;
+      font-weight: 800;
+      border-left: 4px solid #3b82f6;
+      border-right: 4px solid #3b82f6;
+      display: inline-block;
+      padding: 0 1rem;
+    }
+    .titulo-seccion { text-align: center; margin-bottom: 2rem; }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .servicio-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-bottom: 4px solid #3b82f6;
+      transition: transform 0.3s;
+    }
+    .servicio-card:hover { transform: translateY(-5px); }
+    .servicio-card i { font-size: 2.5rem; color: #0f172a; margin-bottom: 0.8rem; }
+    .servicio-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+
+    .marcas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+    }
+    .marca-item {
+      background: white;
+      padding: 0.8rem 0.5rem;
+      border-radius: 20px;
+      text-align: center;
+      font-weight: 600;
+      border: 1px solid #3b82f6;
+      transition: all 0.3s;
+    }
+    .marca-item:hover { background: #3b82f6; color: white; transform: scale(1.02); }
+
+    .contacto-box {
+      background: #0f172a;
+      border-radius: 40px;
+      padding: 2rem;
+      color: white;
+      text-align: center;
+      border: 2px solid #3b82f6;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      transition: all 0.3s;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .btn-whatsapp:hover { background: #128C7E; transform: scale(1.02); }
+    .btn-whatsapp-secundario {
+      background: #075e54;
+      transition: all 0.3s;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .btn-whatsapp-secundario:hover { background: #054740; transform: scale(1.02); }
+    .btn-maps {
+      background: #3b82f6;
+      transition: all 0.3s;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+    .btn-maps:hover { background: #2563eb; transform: scale(1.02); }
+
+    .panel-referido {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border-radius: 40px;
+      padding: 2rem;
+      color: white;
+      text-align: center;
+      border: 2px solid #3b82f6;
+    }
+    .codigo-ref {
+      background: #3b82f6;
+      color: #0f172a;
+      font-family: monospace;
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      display: inline-block;
+      margin: 1rem 0;
+    }
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    footer a { color: #3b82f6; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .portada-cuadrada { width: 140px; height: 140px; }
+      .logo-principal { padding: 1rem; }
+      .servicio-card { padding: 1rem; }
+      .codigo-ref { font-size: 1rem; }
+      .btn-whatsapp, .btn-whatsapp-secundario, .btn-maps { padding: 0.6rem 1rem; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="hidden md:flex justify-between items-center">
+    <div class="text-white font-bold text-2xl tracking-wide">📱 KATA</div>
+    <div class="flex gap-8 text-white font-semibold">
+      <a href="#inicio" class="hover:text-[#3b82f6] transition">Inicio</a>
+      <a href="#servicios" class="hover:text-[#3b82f6] transition">Servicios</a>
+      <a href="#marcas" class="hover:text-[#3b82f6] transition">Marcas</a>
+      <a href="#contacto" class="hover:text-[#3b82f6] transition">Contacto</a>
+      <a href="#afiliado" class="hover:text-[#3b82f6] transition">💰 Afiliado</a>
+    </div>
+  </nav>
+
+  <div class="md:hidden sticky top-4 z-50 px-4">
+    <div class="bg-gradient-to-r from-[#0f172a] to-[#1e293b] p-4 rounded-2xl border-2 border-[#3b82f6] flex justify-between items-center">
+      <span class="font-bold text-white text-xl">📱 KATA</span>
+      <button id="menu-btn" class="menu-btn text-white text-3xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="bg-[#0f172a] text-white p-5 rounded-2xl flex-col gap-3 border-2 border-[#3b82f6] mt-2 text-lg font-bold">
+      <a href="#inicio" class="block py-2 hover:text-[#3b82f6]">Inicio</a>
+      <a href="#servicios" class="block py-2 hover:text-[#3b82f6]">Servicios</a>
+      <a href="#marcas" class="block py-2 hover:text-[#3b82f6]">Marcas</a>
+      <a href="#contacto" class="block py-2 hover:text-[#3b82f6]">Contacto</a>
+      <a href="#afiliado" class="block py-2 hover:text-[#3b82f6]">💰 Afiliado</a>
+    </div>
+  </div>
+
+  <div class="portada-container">
+    <img src="portada-kata.jpg" alt="KATA" class="portada-cuadrada" onerror="this.src='https://placehold.co/170x170?text=KATA'">
+
+  <div class="logo-principal">
+    <h1>📱 KATA</h1>
+    <div class="subtitulo">SERVICIO TÉCNICO CELULAR | COMPRA Y VENTA DE CELULARES DE TODAS LAS MARCAS</div>
+    <div class="descripcion">Reparación de todas las marcas. Calidad, rapidez y garantía.</div>
+    <div class="horario">🕐 Lunes a sábado: 9am - 7pm</div>
+  </div>
+
+  <section id="servicios">
+    <div class="titulo-seccion"><h2>🛠️ NUESTROS SERVICIOS</h2></div>
+    <div class="servicios-grid">
+      <div class="servicio-card"><i class="fas fa-mobile-alt"></i><h3>Reparación</h3><p>Todas las marcas y modelos. Diagnóstico sin costo.</p></div>
+      <div class="servicio-card"><i class="fas fa-hand-holding-usd"></i><h3>Compra y Venta</h3><p>Compramos tu celular usado. Vendemos equipos revisados.</p></div>
+      <div class="servicio-card"><i class="fas fa-shield-alt"></i><h3>Garantía</h3><p>3 meses de garantía en todas nuestras reparaciones.</p></div>
+      <div class="servicio-card"><i class="fas fa-tachometer-alt"></i><h3>Diagnóstico</h3><p>Revisión técnica completa y rápida.</p></div>
+    </div>
+  </section>
+
+  <section id="marcas">
+    <div class="titulo-seccion"><h2>📱 MARCAS QUE MANEJAMOS</h2></div>
+    <div class="marcas-grid">
+      <div class="marca-item">SAMSUNG</div><div class="marca-item">MI</div><div class="marca-item">HUAWEI</div>
+      <div class="marca-item">LG</div><div class="marca-item">NOKIA</div><div class="marca-item">SONY</div>
+      <div class="marca-item">Pixel</div><div class="marca-item">oppo</div><div class="marca-item">vivo</div>
+      <div class="marca-item">realme</div><div class="marca-item">iHONOR</div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="titulo-seccion"><h2>📍 CONTACTO</h2></div>
+    <div class="contacto-box">
+      <p class="text-lg mb-2"><i class="fas fa-map-marker-alt text-blue-400 mr-2"></i> Palacio Rojo, Local 120, Calle 9 #4-32 - Cúcuta</p>
+      <p class="text-md mb-3"><i class="fas fa-phone-alt text-green-400 mr-2"></i> Teléfono: 321 216 8600</p>
+      
+      <a href="https://wa.me/573212168600?text=Hola%20KATA%2C%20vi%20su%20tarjeta%20digital%20y%20me%20interesa%20sus%20servicios" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp mr-2"></i> WhatsApp 321 216 8600</a>
+      <a href="https://wa.me/573244529284?text=Hola%20KATA%2C%20vi%20su%20tarjeta%20digital%20y%20me%20interesa%20sus%20servicios" target="_blank" class="btn-whatsapp-secundario"><i class="fab fa-whatsapp mr-2"></i> WhatsApp 324 452 9284</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Palacio+Rojo+Local+120+Calle+9+%234-32+C%C3%BAcuta" target="_blank" class="btn-maps"><i class="fas fa-map-marker-alt mr-2"></i> Ver ubicación</a>
+    </div>
+  </section>
+
+  <section id="afiliado">
+    <div class="titulo-seccion"><h2>💰 GANA DINERO CON NOSOTROS</h2></div>
+    <div class="panel-referido" id="panelReferido">
+      <i class="fas fa-handshake text-5xl text-[#3b82f6] mb-3"></i>
+      <h3 class="text-2xl font-bold mb-2">Programa de Afiliados</h3>
+      <p class="mb-3">Comparte esta tarjeta digital y gana el <strong class="text-[#3b82f6] text-xl">20% de comisión</strong> por cada cliente que nos refieras.</p>
+      <p>Tu código de referido único es:</p>
+      <div class="codigo-ref" id="codigoRef">CARGANDO...</div>
+      <p class="mt-3 text-sm">📲 Comparte este enlace con tus contactos:</p>
+      <p class="text-sm bg-black bg-opacity-30 p-2 rounded-xl break-all" id="enlaceRef">cargando...</p>
+      <div class="mt-4 text-sm" id="visitCounter">👁️ Cargando visitas...</div>
+    </div>
+  </section>
+
+  <div class="text-center mb-8">
+    <img id="qrImg" src="" alt="Código QR" class="mx-auto rounded-xl shadow-lg" style="width: 170px;">
+    <p class="text-sm text-gray-500 mt-2">Escanea y guarda mi tarjeta digital</p>
+  </div>
+
+  <footer>
+    <p class="text-xl font-bold">© 2026 KATA | Servicio Técnico de Celulares</p>
+    <p class="mt-2">Diseño: <a href="https://wa.me/573244913371" target="_blank">NGE Tarjetas Digitales</a></p>
+    <p class="text-sm mt-2">Calidad, rapidez y garantía</p>
+  </footer>
+
+  <script>
+    const codigoBase = "KATA";
+    const dominio = "guia-digital.com";
+    
+    let codigoUnico = localStorage.getItem("codigo_afiliado_kata");
+    if (!codigoUnico) {
+      codigoUnico = codigoBase + "-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+      localStorage.setItem("codigo_afiliado_kata", codigoUnico);
+    }
+    
+    const urlCompleta = "https://" + dominio + "/kata.html?ref=" + codigoUnico;
+    
+    document.getElementById("codigoRef").innerText = codigoUnico;
+    document.getElementById("enlaceRef").innerHTML = `<a href="${urlCompleta}" target="_blank" class="text-[#3b82f6] underline break-all">${urlCompleta}</a>`;
+    document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${encodeURIComponent(urlCompleta)}`;
+    
+    let visitas = localStorage.getItem("visitas_" + codigoUnico);
+    if (visitas === null) {
+      visitas = 1;
+    } else {
+      visitas = Number(visitas) + 1;
+    }
+    localStorage.setItem("visitas_" + codigoUnico, visitas);
+    document.getElementById("visitCounter").innerHTML = `👁️ Esta tarjeta ha sido vista ${visitas} veces | Código: ${codigoUnico}`;
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const refOrigen = urlParams.get('ref');
+    if (refOrigen && refOrigen !== codigoUnico) {
+      console.log("🟢 Visita referida por: " + refOrigen);
+      localStorage.setItem("ultimo_referido", refOrigen);
+    }
+    
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
+      document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
+    }
+    
+    console.log("🎯 Código de afiliado KATA:", codigoUnico);
+  </script>
+</body>
+</html>
