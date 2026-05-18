@@ -32,7 +32,6 @@
       z-index: 100;
     }
 
-    /* PORTADA GRANDE - RESPONSIVE */
     .portada-container {
       width: 100%;
       margin: 1rem auto;
@@ -250,7 +249,6 @@
     </div>
   </div>
 
-  <!-- PORTADA GRANDE -->
   <div class="portada-container px-4">
     <img src="portada-kata.jpg" alt="KATA" class="portada-grande" onerror="this.src='https://placehold.co/1200x400?text=KATA'">
   </div>
@@ -300,13 +298,22 @@
     </div>
   </section>
 
- // Botones de compartir
-const urlParaCompartir = encodeURIComponent(urlCompleta);
-const textoCompartir = encodeURIComponent("📱 Te invito a conocer KATA - Servicio Técnico de Celulares. Calidad, rapidez y garantía.");
-
-document.getElementById('compartirWhatsApp').href = `https://wa.me/?text=${textoCompartir}%20${urlParaCompartir}`;
-document.getElementById('compartirFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${urlParaCompartir}`;
-document.getElementById('compartirTwitter').href = `https://twitter.com/intent/tweet?text=${textoCompartir}&url=${urlParaCompartir}`;
+  <section id="afiliado">
+    <div class="titulo-seccion"><h2>💰 PROGRAMA DE AFILIADOS</h2></div>
+    <div class="panel-referido" id="panelReferido">
+      <i class="fas fa-handshake text-5xl text-[#fbbf24] mb-3"></i>
+      <h3 class="text-2xl font-bold mb-2">Comparte y genera ingreso</h3>
+      <p class="mb-3">Comparte esta tarjeta digital y <strong class="text-[#fbbf24] text-xl">genera ingreso del 20%</strong> por cada cliente que nos refieras.</p>
+      <p>Tu código de referido único es:</p>
+      <div class="codigo-ref" id="codigoRef">CARGANDO...</div>
+      <p class="mt-3 text-sm">📲 Comparte en tus redes:</p>
+      <div class="flex justify-center gap-4 mt-2 flex-wrap">
+        <a href="#" id="compartirWhatsApp" target="_blank" class="bg-[#25D366] text-white px-4 py-2 rounded-full text-sm font-bold hover:scale-105 transition inline-flex items-center gap-2"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#" id="compartirFacebook" target="_blank" class="bg-[#1877f2] text-white px-4 py-2 rounded-full text-sm font-bold hover:scale-105 transition inline-flex items-center gap-2"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="#" id="compartirTwitter" target="_blank" class="bg-[#1da1f2] text-white px-4 py-2 rounded-full text-sm font-bold hover:scale-105 transition inline-flex items-center gap-2"><i class="fab fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="mt-4 text-sm" id="visitCounter">👁️ Cargando visitas...</div>
+    </div>
   </section>
 
   <div class="text-center mb-8">
@@ -333,7 +340,6 @@ document.getElementById('compartirTwitter').href = `https://twitter.com/intent/t
     const urlCompleta = "https://" + dominio + "/kata.html?ref=" + codigoUnico;
     
     document.getElementById("codigoRef").innerText = codigoUnico;
-    document.getElementById("enlaceRef").innerHTML = `<a href="${urlCompleta}" target="_blank" class="text-[#fbbf24] underline break-all">${urlCompleta}</a>`;
     document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${encodeURIComponent(urlCompleta)}`;
     
     let visitas = localStorage.getItem("visitas_" + codigoUnico);
@@ -352,18 +358,20 @@ document.getElementById('compartirTwitter').href = `https://twitter.com/intent/t
       localStorage.setItem("ultimo_referido", refOrigen);
     }
     
+    // Botones de compartir
+    const urlParaCompartir = encodeURIComponent(urlCompleta);
+    const textoCompartir = encodeURIComponent("📱 Te invito a conocer KATA - Servicio Técnico de Celulares. Calidad, rapidez y garantía.");
+    
+    document.getElementById('compartirWhatsApp').href = `https://wa.me/?text=${textoCompartir}%20${urlParaCompartir}`;
+    document.getElementById('compartirFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${urlParaCompartir}`;
+    document.getElementById('compartirTwitter').href = `https://twitter.com/intent/tweet?text=${textoCompartir}&url=${urlParaCompartir}`;
+    
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuBtn) {
       menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
       document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
-// Botones de compartir
-const urlParaCompartir = encodeURIComponent(urlCompleta);
-const textoCompartir = encodeURIComponent("📱 Te invito a conocer KATA - Servicio Técnico de Celulares. Calidad, rapidez y garantía.");
-
-document.getElementById('compartirWhatsApp').href = `https://wa.me/?text=${textoCompartir}%20${urlParaCompartir}`;
-document.getElementById('compartirFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${urlParaCompartir}`;
-document.getElementById('compartirTwitter').href = `https://twitter.com/intent/tweet?text=${textoCompartir}&url=${urlParaCompartir}`;}
+    }
     
     console.log("🎯 Código de afiliado KATA:", codigoUnico);
   </script>
