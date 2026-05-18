@@ -332,9 +332,10 @@
     const dominio = "guia-digital.com";
     
     let codigoUnico = localStorage.getItem("codigo_afiliado_kata");
-    if (!codigoUnico) {
-      codigoUnico = codigoBase + "-" + Math.random().toString(36).substring(2, 8).toUpperCase();
-      localStorage.setItem("codigo_afiliado_kata", codigoUnico);
+if (!codigoUnico) {
+  codigoUnico = "NGE-220-KATA";
+  localStorage.setItem("codigo_afiliado_kata", codigoUnico);
+}
     }
     
     const urlCompleta = "https://" + dominio + "/kata.html?ref=" + codigoUnico;
