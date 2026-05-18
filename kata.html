@@ -32,18 +32,16 @@
       z-index: 100;
     }
 
+    /* PORTADA GRANDE - RESPONSIVE */
     .portada-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 2rem auto;
+      width: 100%;
+      margin: 1rem auto;
     }
-    .portada-cuadrada {
-      width: 170px;
-      height: 170px;
+    .portada-grande {
+      width: 100%;
+      max-height: 400px;
       object-fit: cover;
-      border-radius: 30px;
-      border: 4px solid #dc2626;
+      border-radius: 20px;
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
 
@@ -215,7 +213,7 @@
     footer a { color: #fbbf24; text-decoration: none; }
 
     @media (max-width: 768px) {
-      .portada-cuadrada { width: 140px; height: 140px; }
+      .portada-grande { max-height: 250px; }
       .logo-principal { padding: 1rem; }
       .servicio-card { padding: 1rem; }
       .codigo-ref { font-size: 1rem; }
@@ -252,8 +250,9 @@
     </div>
   </div>
 
-  <div class="portada-container">
-    <img src="portada-kata.jpg" alt="KATA" class="portada-cuadrada" onerror="this.src='https://placehold.co/170x170?text=KATA'">
+  <!-- PORTADA GRANDE -->
+  <div class="portada-container px-4">
+    <img src="portada-kata.jpg" alt="KATA" class="portada-grande" onerror="this.src='https://placehold.co/1200x400?text=KATA'">
   </div>
 
   <div class="logo-principal">
@@ -276,10 +275,17 @@
   <section id="marcas">
     <div class="titulo-seccion"><h2>📱 MARCAS QUE MANEJAMOS</h2></div>
     <div class="marcas-grid">
-      <div class="marca-item">SAMSUNG</div><div class="marca-item">MI</div><div class="marca-item">HUAWEI</div>
-      <div class="marca-item">LG</div><div class="marca-item">NOKIA</div><div class="marca-item">SONY</div>
-      <div class="marca-item">Pixel</div><div class="marca-item">oppo</div><div class="marca-item">vivo</div>
-      <div class="marca-item">realme</div><div class="marca-item">iHONOR</div>
+      <div class="marca-item">SAMSUNG</div>
+      <div class="marca-item">XIAOMI</div>
+      <div class="marca-item">HUAWEI</div>
+      <div class="marca-item">LG</div>
+      <div class="marca-item">NOKIA</div>
+      <div class="marca-item">MOTOROLA</div>
+      <div class="marca-item">IPHONE</div>
+      <div class="marca-item">ONE PLUS</div>
+      <div class="marca-item">ZTE</div>
+      <div class="marca-item">LENOVO</div>
+      <div class="marca-item">SONY</div>
     </div>
   </section>
 
