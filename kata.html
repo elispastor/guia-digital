@@ -338,8 +338,7 @@ if (!codigoUnico) {
 }
     }
     
-    const urlCompleta = "https://" + dominio + "/kata.html?ref=" + codigoUnico;
-    
+if(document.getElementById("codigoRef")) document.getElementById("codigoRef").innerText = "NGE-220-KATA";    
     document.getElementById("codigoRef").innerText = codigoUnico;
     document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${encodeURIComponent(urlCompleta)}`;
     
