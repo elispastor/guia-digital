@@ -300,18 +300,13 @@
     </div>
   </section>
 
-  <section id="afiliado">
-    <div class="titulo-seccion"><h2>💰 GANA DINERO CON NOSOTROS</h2></div>
-    <div class="panel-referido" id="panelReferido">
-      <i class="fas fa-handshake text-5xl text-[#fbbf24] mb-3"></i>
-      <h3 class="text-2xl font-bold mb-2">Programa de Afiliados</h3>
-      <p class="mb-3">Comparte esta tarjeta digital y gana el <strong class="text-[#fbbf24] text-xl">20% de comisión</strong> por cada cliente que nos refieras.</p>
-      <p>Tu código de referido único es:</p>
-      <div class="codigo-ref" id="codigoRef">CARGANDO...</div>
-      <p class="mt-3 text-sm">📲 Comparte este enlace con tus contactos:</p>
-      <p class="text-sm bg-black bg-opacity-30 p-2 rounded-xl break-all" id="enlaceRef">cargando...</p>
-      <div class="mt-4 text-sm" id="visitCounter">👁️ Cargando visitas...</div>
-    </div>
+ // Botones de compartir
+const urlParaCompartir = encodeURIComponent(urlCompleta);
+const textoCompartir = encodeURIComponent("📱 Te invito a conocer KATA - Servicio Técnico de Celulares. Calidad, rapidez y garantía.");
+
+document.getElementById('compartirWhatsApp').href = `https://wa.me/?text=${textoCompartir}%20${urlParaCompartir}`;
+document.getElementById('compartirFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${urlParaCompartir}`;
+document.getElementById('compartirTwitter').href = `https://twitter.com/intent/tweet?text=${textoCompartir}&url=${urlParaCompartir}`;
   </section>
 
   <div class="text-center mb-8">
@@ -362,7 +357,13 @@
     if (menuBtn) {
       menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
       document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
-    }
+// Botones de compartir
+const urlParaCompartir = encodeURIComponent(urlCompleta);
+const textoCompartir = encodeURIComponent("📱 Te invito a conocer KATA - Servicio Técnico de Celulares. Calidad, rapidez y garantía.");
+
+document.getElementById('compartirWhatsApp').href = `https://wa.me/?text=${textoCompartir}%20${urlParaCompartir}`;
+document.getElementById('compartirFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${urlParaCompartir}`;
+document.getElementById('compartirTwitter').href = `https://twitter.com/intent/tweet?text=${textoCompartir}&url=${urlParaCompartir}`;}
     
     console.log("🎯 Código de afiliado KATA:", codigoUnico);
   </script>
