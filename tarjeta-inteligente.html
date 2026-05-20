@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjeta Digital Multinivel - La Única que Te Paga a Ti</title>
+    <title>Tarjeta Inteligente - La Única que Te Paga a Ti</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -31,6 +31,48 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+        }
+
+        .menu {
+            background: white;
+            border-radius: 60px;
+            padding: 15px 30px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .logo-menu {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo-menu span {
+            color: var(--secondary);
+        }
+
+        .menu a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .menu a:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-menu {
+            background: var(--secondary);
+            color: white !important;
         }
 
         .hero {
@@ -161,6 +203,25 @@
             font-size: 2.5em;
             margin-bottom: 30px;
             text-align: center;
+        }
+
+        .btn-directorio-horizontal {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn-directorio-horizontal:hover {
+            background: #e65100;
+            transform: scale(1.02);
         }
 
         .comparison {
@@ -317,6 +378,15 @@
 </head>
 <body>
     <div class="container">
+        <!-- MENÚ -->
+        <div class="menu">
+            <div class="logo-menu">🐙 <span>Tarjeta</span> Inteligente</div>
+            <div>
+                <a href="https://guia-digital.com" class="btn-menu" target="_blank">📌 GUÍA DIGITAL</a>
+            </div>
+        </div>
+
+        <!-- HERO CON PORTADA DEL PULPO -->
         <section class="hero">
             <div class="portada-pulpo">
                 <img src="pulpitotar.png" alt="Pulpo - Tarjeta Digital Multinivel">
@@ -361,6 +431,19 @@
             </a>
         </section>
 
+        <!-- DIRECTORIO GUÍA DIGITAL -->
+        <section class="section">
+            <h2>📌 DIRECTORIO GUÍA DIGITAL</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 20px;">
+                <strong>TODOS NUESTROS AFILIADOS QUE TIENEN UNA TARJETA DIGITAL FORMAN PARTE DEL DIRECTORIO DE LA GUÍA DIGITAL DE CÚCUTA.</strong>
+            </p>
+            <div style="text-align: center;">
+                <a href="https://guia-digital.com" class="btn-directorio-horizontal" target="_blank">
+                    <i class="fas fa-search"></i> VER DIRECTORIO COMPLETO
+                </a>
+            </div>
+        </section>
+
         <section class="section">
             <h2>¿Por Qué Esta Tarjeta es una <span style="color: var(--secondary);">Evolución</span>?</h2>
             
@@ -398,49 +481,37 @@
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-sitemap"></i></div>
                     <h3>Sistema Multinivel Integrado</h3>
                     <p>Gana comisiones por cada persona que invites. Tu red crece y tus ingresos también.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
                     <h3>Sitio Web Profesional</h3>
                     <p>Con derechos de autor ©️ que demuestran seriedad y profesionalismo.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-qrcode"></i></div>
                     <h3>Tecnología QR Avanzada</h3>
                     <p>Comparte tu tarjeta digital al instante. Moderno, rápido y efectivo.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3>Completamente Móvil</h3>
                     <p>Diseñada para el mundo actual. Funciona perfecto en cualquier dispositivo.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-share-alt"></i></div>
                     <h3>Viralización Automática</h3>
                     <p>Cada persona que invites puede invitar a más personas. Tu red se expande solo.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-hand-holding-usd"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
                     <h3>Ingresos Pasivos</h3>
                     <p>Gana dinero mientras duermes. Tu tarjeta trabaja por ti 24/7.</p>
                 </div>
@@ -500,7 +571,7 @@
 
         <div class="footer">
             <p style="font-size: 1.1em; margin-bottom: 10px;">
-                <strong>©️ 2025 Tarjeta Digital Multinivel. Todos los derechos reservados.</strong>
+                <strong>©️ 2025 Tarjeta Digital Inteligente. Todos los derechos reservados.</strong>
             </p>
             <p style="opacity: 0.8;">
                 La evolución digital que genera ingresos para tu negocio
