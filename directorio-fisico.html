@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio Físico - Guía Digital de Cúcuta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: white;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #ff6d00;
+        }
+
+        .logo-personalizado {
+            margin-bottom: 20px;
+        }
+
+        .logo-personalizado img {
+            max-height: 80px;
+            width: auto;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #1a237e;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .header .sub {
+            font-size: 0.95em;
+            color: #ff6d00;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .comedor-section {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .comedor-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .comedor-section p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .comedor-section .qr-comedor {
+            background: white;
+            display: inline-block;
+            padding: 15px;
+            border-radius: 20px;
+            margin: 10px 0;
+        }
+
+        .comedor-section .qr-comedor img {
+            width: 160px;
+            height: 160px;
+        }
+
+        .section-title {
+            font-size: 1.6em;
+            color: #1a237e;
+            margin: 30px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #ff6d00;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .icono {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 1em;
+            color: #1a237e;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .categoria {
+            font-size: 0.7em;
+            color: #ff6d00;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .qr {
+            background: white;
+            padding: 8px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .qr img {
+            width: 90px;
+            height: 90px;
+            display: block;
+        }
+
+        .url {
+            font-size: 0.6em;
+            color: #777;
+            word-break: break-all;
+            background: #e9ecef;
+            padding: 4px;
+            border-radius: 5px;
+            margin-top: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.8em;
+            color: #777;
+            border-top: 1px solid #ddd;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            .card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            .comedor-section {
+                background: #1a237e;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- ESPACIO PARA TU PULPO -->
+            <div class="logo-personalizado">
+                <img src="tu-pulpo.png" alt="Tu marca" onerror="this.style.display='none'">
+            </div>
+            <h1>GUÍA DIGITAL DE CÚCUTA</h1>
+            <p>Negocios que ya confían en su tarjeta digital</p>
+            <p class="sub">📲 Escanea el QR y conoce su tarjeta digital</p>
+        </div>
+
+        <div class="comedor-section">
+            <h2>🏗️ PROYECTO COMEDOR SOCIAL</h2>
+            <p>Cada tarjeta digital activada es un ladrillo para construir el comedor de Cúcuta.<br>Adultos mayores, migrantes, trabajadores y todos los que necesiten comer balanceado y a precio justo.</p>
+            <div class="qr-comedor">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://guia-digital.com/comedor" alt="QR Comedor Social">
+            </div>
+            <p><strong>MURAL DE BENEFACTORES:</strong> Tu nombre aparecerá aquí</p>
+        </div>
+
+        <div class="section-title">
+            📌 NEGOCIOS AFILIADOS
+        </div>
+
+        <div class="grid" id="directorio-grid"></div>
+
+        <div class="footer">
+            <p>📍 Cúcuta, Colombia | 📞 WhatsApp: 324 491 3371</p>
+            <p>¿Quieres aparecer aquí? Activa tu tarjeta digital en <strong>guia-digital.com</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const negocios = [
+            { nombre: "Fajas Edi", url: "https://fajasedi.netlify.app/", categoria: "belleza", icono: "💄" },
+            { nombre: "La Estación de la Calidad", url: "https://guia-digital.com/estacion-calidad", categoria: "accesorios", icono: "🔧" },
+            { nombre: "Ferretería La 17", url: "https://ferreteria-la-17.pages.dev/", categoria: "ferreterias", icono: "🔩" },
+            { nombre: "Tracto Auto M.F.", url: "https://tracto-auto-mf.pages.dev/", categoria: "mecanica", icono: "🚛" },
+            { nombre: "Taller Barney", url: "https://taller-barney.netlify.app/", categoria: "mecanica", icono: "🔧" },
+            { nombre: "Autotaller Murillo", url: "https://autotallermurillo.netlify.app/", categoria: "mecanica", icono: "🔨" },
+            { nombre: "Taller Mecánico TS", url: "https://taller-mecanico-ts.netlify.app/", categoria: "mecanica", icono: "⚙️" },
+            { nombre: "Mecánica Willson y Gustavo", url: "https://mecanicaautomotrizwillsonygustavo.netlify.app/", categoria: "mecanica", icono: "🔧" },
+            { nombre: "Taller Osama", url: "https://guia-digital.com/taller-osama", categoria: "mecanica", icono: "🔩" },
+            { nombre: "Multiservicios Los Torres", url: "https://multiserviciosautomotrizlostorres.netlify.app/", categoria: "mecanica", icono: "🔧" },
+            { nombre: "Electroauto El Rolo", url: "https://electroautoelrolo.netlify.app/", categoria: "mecanica", icono: "⚡" },
+            { nombre: "Papa Barney", url: "https://papa-barney.netlify.app/", categoria: "mecanica", icono: "🔧" },
+            { nombre: "Cone Junior Torrado", url: "https://guia-digital.com/cone-torrado", categoria: "mecanica", icono: "🔌" },
+            { nombre: "Gustavo Rojas", url: "https://guia-digital.com/gustavo-rojas", categoria: "mecanica", icono: "📊" },
+            { nombre: "Jhon Rubio III", url: "https://guia-digital.com/jhon-rubio", categoria: "mecanica", icono: "🔧" },
+            { nombre: "Motores Jesús", url: "https://motores-motoreductores-jesus.netlify.app/", categoria: "motores", icono: "⚙️" },
+            { nombre: "Embobinados Dacoor", url: "https://embobinadosdacoor.netlify.app/", categoria: "motores", icono: "⚡" },
+            { nombre: "Montallantas El Indio", url: "https://montallantas-el-indio.netlify.app/", categoria: "llantas", icono: "🛞" },
+            { nombre: "Ruedas y Rodamientos El Shaddai", url: "https://ruedasyrodamientoselshaddai.netlify.app/", categoria: "llantas", icono: "⚙️" },
+            { nombre: "Servigomas", url: "https://servigomas.netlify.app/", categoria: "llantas", icono: "🛞" },
+            { nombre: "Herrería Duarte", url: "https://tallerdeherreriaduarte.netlify.app/", categoria: "herreria", icono: "🔨" },
+            { nombre: "Acero y Gas", url: "https://aceroygas.netlify.app/", categoria: "herreria", icono: "🔥" },
+            { nombre: "Aceros PC", url: "https://acerospc.netlify.app/", categoria: "herreria", icono: "🔩" },
+            { nombre: "Herramientas El Segundazo", url: "https://herramientas-el-segundazo.netlify.app/", categoria: "herreria", icono: "🛠️" },
+            { nombre: "Muebles RQ", url: "https://mueblesrq.netlify.app/", categoria: "tapiceria", icono: "🛋️" },
+            { nombre: "La Clínica del Mueble", url: "https://laclinicadelmueble.netlify.app/", categoria: "tapiceria", icono: "🪑" },
+            { nombre: "Carpintería JK", url: "https://carpinteriajk.netlify.app/", categoria: "tapiceria", icono: "🔨" },
+            { nombre: "Carpintería 10 con 2da", url: "https://carpinteria10con2da.netlify.app/", categoria: "tapiceria", icono: "🪚" },
+            { nombre: "Muebles Diseños y Punto", url: "https://mueblesdisenosypunto.netlify.app/", categoria: "tapiceria", icono: "🛋️" },
+            { nombre: "TOYOMACK", url: "https://toyomack.pages.dev/", categoria: "accesorios", icono: "🚗" },
+            { nombre: "WAHL · Servicio Técnico", url: "https://guia-digital.com/wahl", categoria: "accesorios", icono: "🔧" },
+            { nombre: "Quincallería Blanca", url: "https://quincalleriablanca.netlify.app/", categoria: "accesorios", icono: "🔩" },
+            { nombre: "Fabrigomas", url: "https://fabrigomas.netlify.app/", categoria: "accesorios", icono: "🔧" },
+            { nombre: "Otoniel Acarreos", url: "https://otoniel-acarreos.netlify.app/", categoria: "acarreos", icono: "🚚" },
+            { nombre: "Acarreos Carlos", url: "https://acarreoscarlos.netlify.app/", categoria: "acarreos", icono: "🚛" },
+            { nombre: "Acarreos Luis Bueno", url: "https://acarreosluisbueno.netlify.app/", categoria: "acarreos", icono: "🚚" },
+            { nombre: "Acarreos Isidro", url: "https://acarreos-isidro.netlify.app/", categoria: "acarreos", icono: "🚛" },
+            { nombre: "Gatos Hidráulicos María", url: "https://gatoshidraulicosmaria.netlify.app/", categoria: "acarreos", icono: "🔧" },
+            { nombre: "Servipuertas", url: "https://servipuertas.netlify.app/", categoria: "puertas", icono: "🚪" },
+            { nombre: "Cerrajería El Mago", url: "https://cerrajeriaelmago.netlify.app/", categoria: "puertas", icono: "🔑" },
+            { nombre: "Marianacell", url: "https://marianacell.netlify.app/", categoria: "celulares", icono: "📱" },
+            { nombre: "Davidcell", url: "https://davidcell.netlify.app/", categoria: "celulares", icono: "📱" },
+            { nombre: "KATA - Servicio Técnico Celular", url: "https://guia-digital.com/kata", categoria: "servicios tecnicos celulares", icono: "📱" },
+            { nombre: "HDMovil2", url: "https://hdmovil2.netlify.app/", categoria: "celulares", icono: "📱" },
+            { nombre: "Esbedcell", url: "https://esbedcell.netlify.app/", categoria: "celulares", icono: "📱" },
+            { nombre: "Mis Antojos", url: "https://mis-antojos-restaurante.netlify.app/", categoria: "restaurantes", icono: "🍽️" },
+            { nombre: "Restaurante La Mano de Dios", url: "https://restaurantlamanodedios.netlify.app/", categoria: "restaurantes", icono: "🙌" },
+            { nombre: "Charcutería Jireh", url: "https://charcuteriajireh.netlify.app/", categoria: "restaurantes", icono: "🥩" },
+            { nombre: "Restaurante El Sabor de Doña Rosa", url: "https://restauranteelsabordedonarosa.netlify.app/", categoria: "restaurantes", icono: "🍲" },
+            { nombre: "Proyecto Comedor NGE", url: "https://proyecto-comedor-nge.netlify.app/", categoria: "restaurantes", icono: "🏗️" },
+            { nombre: "El Punto de Jack", url: "https://elpuntode-jack.netlify.app/", categoria: "maquinas", icono: "🎰" },
+            { nombre: "Hotel La Puerta del Sol", url: "https://hotel-lapuertadelsol.netlify.app/", categoria: "hoteles", icono: "🏨" },
+            { nombre: "Salón D'Steffy", url: "https://salondebellezadsteffy.pages.dev/", categoria: "belleza", icono: "💇" },
+            { nombre: "Liam Stylos Peluquería", url: "https://liam-stylos-peluqueria.netlify.app/", categoria: "belleza", icono: "✂️" },
+            { nombre: "Ciclorepuestos Biker10", url: "https://ciclorepuestosbiker10.netlify.app/", categoria: "bicicletas", icono: "🚲" },
+            { nombre: "Bicicletas Alex", url: "https://bicicletas-alex.netlify.app/", categoria: "bicicletas", icono: "🚲" },
+            { nombre: "Frioaire Vásquez", url: "https://frioaire-vasquez.netlify.app/", categoria: "refrigeracion", icono: "❄️" },
+            { nombre: "Hidrotec Cúcuta", url: "https://hidrotec-cucuta.netlify.app/", categoria: "hidraulica", icono: "💧" },
+            { nombre: "Comercializadora El Campo", url: "https://comercializadoraelcampo.netlify.app/", categoria: "comercializadoras", icono: "🌾" },
+            { nombre: "Autodiagnóstico y Cerrajería CJI", url: "https://autodiagnostico-ferreteria-cji.pages.dev/", categoria: "puertas", icono: "🔧" },
+            { nombre: "Hidrocool", url: "https://hidrocool.pages.dev/", categoria: "hidraulica", icono: "💧" },
+            { nombre: "Polarizados Julio", url: "https://polarizados-julio.pages.dev/", categoria: "accesorios", icono: "🕶️" }
+        ];
+
+        function generarQR(url, size = 90) {
+            return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(url)}`;
+        }
+
+        const grid = document.getElementById('directorio-grid');
+        
+        negocios.forEach(negocio => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="icono">${negocio.icono}</div>
+                <h3>${negocio.nombre}</h3>
+                <div class="categoria">${negocio.categoria}</div>
+                <div class="qr">
+                    <img src="${generarQR(negocio.url)}" alt="QR ${negocio.nombre}">
+                </div>
+                <div class="url">${negocio.url.replace('https://', '').replace('http://', '')}</div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
