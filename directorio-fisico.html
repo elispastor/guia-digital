@@ -86,6 +86,7 @@
         .comedor-section .qr-comedor img {
             width: 160px;
             height: 160px;
+            display: block;
         }
 
         .section-title {
@@ -183,26 +184,30 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+            .qr a, .qr-comedor a {
+                text-decoration: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <!-- ESPACIO PARA TU PULPO -->
             <div class="logo-personalizado">
                 <img src="tu-pulpo.png" alt="Tu marca" onerror="this.style.display='none'">
             </div>
             <h1>GUÍA DIGITAL DE CÚCUTA</h1>
             <p>Negocios que ya confían en su tarjeta digital</p>
-            <p class="sub">📲 Escanea el QR y conoce su tarjeta digital</p>
+            <p class="sub">📲 Escanea el QR o haz clic en él para conocer su tarjeta digital</p>
         </div>
 
         <div class="comedor-section">
             <h2>🏗️ PROYECTO COMEDOR SOCIAL</h2>
             <p>Cada tarjeta digital activada es un ladrillo para construir el comedor de Cúcuta.<br>Adultos mayores, migrantes, trabajadores y todos los que necesiten comer balanceado y a precio justo.</p>
             <div class="qr-comedor">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://guia-digital.com/comedor" alt="QR Comedor Social">
+                <a href="https://guia-digital.com/comedor" target="_blank">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://guia-digital.com/comedor" alt="QR Comedor Social">
+                </a>
             </div>
             <p><strong>MURAL DE BENEFACTORES:</strong> Tu nombre aparecerá aquí</p>
         </div>
@@ -299,7 +304,9 @@
                 <h3>${negocio.nombre}</h3>
                 <div class="categoria">${negocio.categoria}</div>
                 <div class="qr">
-                    <img src="${generarQR(negocio.url)}" alt="QR ${negocio.nombre}">
+                    <a href="${negocio.url}" target="_blank">
+                        <img src="${generarQR(negocio.url)}" alt="QR ${negocio.nombre}">
+                    </a>
                 </div>
                 <div class="url">${negocio.url.replace('https://', '').replace('http://', '')}</div>
             `;
