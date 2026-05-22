@@ -468,7 +468,28 @@ const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión to
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://guiadigitalcucuta.pages.dev" alt="QR Guía" class="mx-auto my-2">
             <button onclick="reenviarGuia()" class="mt-3 bg-[#fbbf24] text-[#0b1c3a] font-bold py-2 px-4 rounded-full shadow-md hover:scale-105 transition">📲 Reenviar esta guía</button>
         </div>
+    </div><!-- CONTADOR DE VISITAS PÚBLICO -->
+<div class="text-center my-6" id="contadorVisitas">
+    <div class="inline-block bg-black/40 backdrop-blur-sm rounded-2xl px-6 py-4 border border-[#fbbf24]/30">
+        <p class="text-sm text-gray-300 uppercase tracking-wide">📊 VISITAS A ESTA GUÍA</p>
+        <p class="text-4xl font-bold text-[#fbbf24]" id="numeroVisitas">200</p>
+        <p class="text-xs text-gray-400 mt-1">Comerciantes y ciudadanos conectándose</p>
     </div>
+</div>
+
+<script>
+    // CONTADOR QUE EMPIEZA EN 200 Y SUMA DESDE AHÍ
+    let visitas = localStorage.getItem("contadorGuiaDigital");
+    if (visitas === null) {
+        // Primera vez que alguien abre después de poner el contador
+        visitas = 200;
+    } else {
+        // Si ya había visitas, suma 1
+        visitas = Number(visitas) + 1;
+    }
+    localStorage.setItem("contadorGuiaDigital", visitas);
+    document.getElementById("numeroVisitas").innerText = visitas;
+</script>
 
     <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
         <p>© 2026 Guía Digital de Cúcuta · Directorio de negocios</p>
