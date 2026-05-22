@@ -2,17 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Ruedas y Rodamientos El Shaddai · Cúcuta</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://guia-digital.com/pulpo-icono.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://guia-digital.com/pulpo-icono.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://guia-digital.com/pulpo-icono.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: #0b1c3a;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: white;
-    }
+    body { background: #0b1c3a; font-family: 'Segoe UI', Arial, sans-serif; color: white; }
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
     .menu {
       background: #112b4f;
@@ -53,9 +52,6 @@
     .btn-compartir { background: #fbbf24; color: #0b1c3a; padding: 8px 15px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; margin: 5px; transition: all 0.3s; }
     .btn-compartir:hover { transform: scale(1.02); background: #e5a800; }
   </style>
-  <link rel="icon" type="image/png" href="https://guia-digital.com/pulpo-icono.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://guia-digital.com/pulpo-icono.png">
-<link rel="icon" type="image/png" sizes="192x192" href="https://guia-digital.com/pulpo-icono.png">
 </head>
 <body>
 
@@ -115,18 +111,27 @@
 
   <!-- SISTEMA MULTINIVEL -->
   <div id="afiliado" class="card">
-    <h2 style="color: #fbbf24;">💰 GANA DINERO CON NOSOTROS</h2>
+    <h2 style="color: #fbbf24;">💰 SISTEMA MULTINIVEL</h2>
     <div class="panel-referido">
       <i class="fas fa-handshake text-4xl text-[#fbbf24] mb-3"></i>
       <h3 class="text-xl font-bold mb-2">Programa de Afiliados</h3>
-      <p class="mb-3">Comparte esta tarjeta digital y <strong style="color: #fbbf24;">genera ingreso del 40%</strong> por cada cliente que nos refieras.</p>
+      
+      <p class="text-sm">🏆 <strong>Nivel:</strong> ELITE</p>
+      <p class="text-sm">💰 <strong>Mi comisión directa:</strong> 40%</p>
+      <p class="text-sm">📌 <strong>Mis referidos:</strong> El Indio (NGE-212)</p>
+      <p class="text-sm">💰 <strong>Comisión por este referido:</strong> 20%</p>
+      <p class="text-sm">💵 <strong>Ganancia acumulada:</strong> $5.000 COP</p>
+      
+      <p class="mt-3">Comparte esta tarjeta digital y <strong style="color: #fbbf24;">genera ingreso del 40%</strong> por cada cliente que nos refieras.</p>
       <p>Tu código de referido único es:</p>
       <div class="codigo-ref">NGE-211</div>
+      
       <p class="mt-3 text-sm">📲 Comparte en tus redes:</p>
       <div class="flex justify-center gap-2 mt-2 flex-wrap">
         <a href="#" id="compartirWhatsApp" target="_blank" class="btn-compartir"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         <a href="#" id="compartirFacebook" target="_blank" class="btn-compartir"><i class="fab fa-facebook-f"></i> Facebook</a>
       </div>
+      
       <div class="mt-3 text-sm">👁️ Visitas: <span id="visitCounter">0</span></div>
       <div class="mt-3">
         <img id="qrImg" src="" alt="Código QR" style="width: 120px; margin: 0 auto;">
@@ -144,8 +149,8 @@
     </div>
   </div>
 
-  <footer class="text-center py-6 text-gray-500 border-t-2 border-[#fbbf24] mt-8">
-    <p>© 2026 Ruedas y Rodamientos El Shaddai · Diseño: <a href="https://wa.me/573244913371" target="_blank" style="color: #fbbf24; text-decoration: underline;">NGE Tarjetas Digitales</a></p>
+  <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
+    <p>© 2026 Ruedas y Rodamientos El Shaddai · Diseño: NGE Tarjetas Digitales</p>
   </footer>
 </div>
 
@@ -162,7 +167,7 @@
     visitas = Number(visitas) + 1;
   }
   localStorage.setItem("visitas_shaddai", visitas);
-  document.getElementById("visitCounter").innerText = visitas;
+  document.getElementById("visitCounter").innerHTML = visitas;
   
   const urlParams = new URLSearchParams(window.location.search);
   const refOrigen = urlParams.get('ref');
@@ -171,7 +176,7 @@
     localStorage.setItem("ref_shaddai_" + codigoUnico, refOrigen);
   }
   
-  const textoCompartir = encodeURIComponent("🛞 Ruedas y Rodamientos El Shaddai - Todo en ruedas, rodamientos y rodachines en Cúcuta. ¡Conoce más!");
+  const textoCompartir = encodeURIComponent("🛞 Ruedas y Rodamientos El Shaddai - Todo en ruedas en Cúcuta. ¡Conoce más!");
   const urlCompartir = encodeURIComponent("https://guia-digital.com/shaddai.html?ref=" + codigoUnico);
   document.getElementById("compartirWhatsApp").href = "https://wa.me/?text=" + textoCompartir + "%20" + urlCompartir;
   document.getElementById("compartirFacebook").href = "https://www.facebook.com/sharer/sharer.php?u=" + urlCompartir;
