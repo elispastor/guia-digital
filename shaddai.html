@@ -243,29 +243,26 @@
     </div>
   </div>
 
-  <!-- SISTEMA MULTINIVEL - PANEL DE AFILIADO -->
-  <div id="afiliado" class="card">
-    <h2 style="color: #fbbf24;">💰 GANA DINERO CON NOSOTROS</h2>
-    <div class="panel-referido" id="panelReferido">
-      <i class="fas fa-handshake text-4xl text-[#fbbf24] mb-3"></i>
-      <h3 class="text-xl font-bold mb-2">Programa de Afiliados</h3>
-      <p class="mb-3">Comparte esta tarjeta digital y <strong style="color: #fbbf24;">genera ingreso del 40%</strong> por cada cliente que nos refieras.</p>
-      <p>Tu código de referido único es:</p>
-      <div class="codigo-ref" id="codigoRef">CARGANDO...</div>
-      <p class="mt-3 text-sm">📲 Comparte en tus redes:</p>
-      <div class="flex justify-center gap-2 mt-2 flex-wrap">
-        <a href="#" id="compartirWhatsApp" target="_blank" class="btn-compartir"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="#" id="compartirFacebook" target="_blank" class="btn-compartir"><i class="fab fa-facebook-f"></i> Facebook</a>
-        <a href="#" id="compartirTwitter" target="_blank" class="btn-compartir"><i class="fab fa-twitter"></i> Twitter</a>
-      </div>
-      <div class="mt-3 text-sm" id="visitCounter">👁️ Cargando visitas...</div>
-      <div class="mt-3">
-        <img id="qrImg" src="" alt="Código QR" style="width: 120px; margin: 0 auto;">
-        <p class="text-xs mt-1">Escanea y guarda mi tarjeta</p>
-      </div>
+ <!-- SISTEMA MULTINIVEL - PANEL DE AFILIADO -->
+<div id="afiliado" class="card">
+  <h2 style="color: #fbbf24;">💰 GANA DINERO CON NOSOTROS</h2>
+  <div class="panel-referido">
+    <i class="fas fa-handshake text-4xl text-[#fbbf24] mb-3"></i>
+    <h3 class="text-xl font-bold mb-2">Programa de Afiliados</h3>
+    <p class="mb-3">Comparte esta tarjeta digital y <strong style="color: #fbbf24;">genera ingreso del 40%</strong> por cada cliente que nos refieras.</p>
+    <p>Tu código de referido único es:</p>
+    <div class="codigo-ref">NGE-211</div>
+    <p class="mt-3 text-sm">📲 Comparte en tus redes:</p>
+    <div class="flex justify-center gap-2 mt-2 flex-wrap">
+      <a href="https://wa.me/?text=🛞%20Ruedas%20y%20Rodamientos%20El%20Shaddai%20-%20https://guia-digital.com/shaddai.html" target="_blank" class="btn-compartir"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://guia-digital.com/shaddai.html" target="_blank" class="btn-compartir"><i class="fab fa-facebook-f"></i> Facebook</a>
+    </div>
+    <div class="mt-3 text-sm">👁️ Visitas: <span id="visitCounter">0</span></div>
+    <div class="mt-3">
+      <img id="qrImg" src="" alt="Código QR" style="width: 120px; margin: 0 auto;">
     </div>
   </div>
-
+</div>
   <!-- CONTACTO -->
   <div id="contacto" class="card" style="text-align: center;">
     <h2 style="color: #fbbf24;">📍 CONTACTO</h2>
@@ -287,63 +284,27 @@
 </div>
 
 <script>
-  // SISTEMA MULTINIVEL
-  const codigoBase = "NGE-211";
-  const dominio = "ruedasyrodamientoselshaddai.netlify.app";
+  // Sistema multinivel - El Shaddai
+  const codigoUnico = "NGE-211";
+  const urlCompleta = "https://guia-digital.com/shaddai.html?ref=" + codigoUnico;
   
-  let codigoUnico = localStorage.getItem("codigo_afiliado_shaddai");
-  if (!codigoUnico) {
-    codigoUnico = codigoBase;
-    localStorage.setItem("codigo_afiliado_shaddai", codigoUnico);
-  }
+  document.getElementById("qrImg").src = "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=" + encodeURIComponent(urlCompleta);
   
-  const urlCompleta = "https://" + dominio + "/?ref=" + codigoUnico;
-  
-  document.getElementById("codigoRef").innerText = codigoUnico;
-  document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(urlCompleta)}`;
-  
-  let visitas = localStorage.getItem("visitas_" + codigoUnico);
+  let visitas = localStorage.getItem("visitas_shaddai");
   if (visitas === null) {
     visitas = 1;
   } else {
     visitas = Number(visitas) + 1;
   }
-  localStorage.setItem("visitas_" + codigoUnico, visitas);
-  document.getElementById("visitCounter").innerHTML = `👁️ Esta página ha sido visitada ${visitas} veces | Código: ${codigoUnico}`;
+  localStorage.setItem("visitas_shaddai", visitas);
+  document.getElementById("visitCounter").innerText = visitas;
   
-  // Botones de compartir
-  const urlParaCompartir = encodeURIComponent(urlCompleta);
-  const textoCompartir = encodeURIComponent("🛞 Ruedas y Rodamientos El Shaddai - Todo en ruedas, rodamientos y rodachines en Cúcuta. ¡Conoce más!");
-  
-  const whatsappBtn = document.getElementById('compartirWhatsApp');
-  const facebookBtn = document.getElementById('compartirFacebook');
-  const twitterBtn = document.getElementById('compartirTwitter');
-  
-  if (whatsappBtn) whatsappBtn.href = `https://wa.me/?text=${textoCompartir}%20${urlParaCompartir}`;
-  if (facebookBtn) facebookBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${urlParaCompartir}`;
-  if (twitterBtn) twitterBtn.href = `https://twitter.com/intent/tweet?text=${textoCompartir}&url=${urlParaCompartir}`;
-  
-  // Capturar referido desde URL
   const urlParams = new URLSearchParams(window.location.search);
   const refOrigen = urlParams.get('ref');
   if (refOrigen && refOrigen !== codigoUnico) {
-    console.log("🟢 Visita referida por: " + refOrigen);
-    localStorage.setItem("ultimo_referido_" + codigoUnico, refOrigen);
+    console.log("Visitante referido por: " + refOrigen);
+    localStorage.setItem("ref_shaddai_" + codigoUnico, refOrigen);
   }
-  
-  // Menú hamburguesa
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.style.display = mobileMenu.style.display === 'none' || mobileMenu.style.display === '' ? 'flex' : 'none';
-    });
-    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
-      mobileMenu.style.display = 'none';
-    }));
-  }
-  
-  console.log("🎯 Código de afiliado El Shaddai:", codigoUnico);
 </script>
 </body>
 </html>
