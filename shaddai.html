@@ -14,7 +14,6 @@
       color: white;
     }
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-
     .menu {
       background: #112b4f;
       border-bottom: 4px solid #fbbf24;
@@ -25,136 +24,34 @@
       border-radius: 30px;
       margin-bottom: 20px;
     }
-    .menu a, .menu button {
-      color: white;
-      text-decoration: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
+    .menu a, .menu button { color: white; text-decoration: none; background: none; border: none; cursor: pointer; font-size: 1rem; }
     .menu a:hover, .menu button:hover { color: #fbbf24; }
-    .menu-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+    .menu-links { display: flex; gap: 20px; align-items: center; }
     .menu-links.desktop { display: flex; }
-    .menu-links.mobile {
-      display: none;
-      flex-direction: column;
-      background: #112b4f;
-      padding: 15px;
-      border-radius: 20px;
-      margin-top: 10px;
-      gap: 10px;
-    }
-    .menu-links.mobile a, .menu-links.mobile button {
-      display: block;
-      padding: 8px 0;
-    }
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: #fbbf24;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+    .menu-links.mobile { display: none; flex-direction: column; background: #112b4f; padding: 15px; border-radius: 20px; margin-top: 10px; gap: 10px; }
+    .menu-btn { display: none; background: none; border: none; color: #fbbf24; font-size: 1.5rem; cursor: pointer; }
     @media (max-width: 768px) {
       .menu-links.desktop { display: none; }
       .menu-btn { display: block; }
     }
-
     .portada {
       width: 100%;
-      background-image: url('portada.jpg');
-      background-size: contain;
-      background-repeat: no-repeat;
+      background-size: cover;
       background-position: center;
       background-color: #0b1c3a;
       border-radius: 20px;
       margin-bottom: 20px;
       aspect-ratio: 16 / 9;
     }
-
-    .card {
-      background: #112b4f;
-      padding: 25px;
-      border-radius: 20px;
-      border-left: 5px solid #fbbf24;
-      margin-bottom: 20px;
-    }
-    .btn {
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-    }
+    .card { background: #112b4f; padding: 25px; border-radius: 20px; border-left: 5px solid #fbbf24; margin-bottom: 20px; }
+    .btn { padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; }
     .btn-wsp { background: #25d366; color: white; }
     .btn-llamar { background: #fbbf24; color: #0b1c3a; }
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2em;
-      text-decoration: none;
-      color: white;
-      border: 2px solid #fbbf24;
-      z-index: 1000;
-    }
-    .valor-item {
-      margin-bottom: 15px;
-    }
-    .valor-titulo {
-      color: #fbbf24;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-    .panel-referido {
-      background: #0b1c3a;
-      border: 2px solid #fbbf24;
-      border-radius: 20px;
-      padding: 20px;
-      margin-top: 20px;
-      text-align: center;
-    }
-    .codigo-ref {
-      background: #fbbf24;
-      color: #0b1c3a;
-      font-family: monospace;
-      font-size: 1.5rem;
-      font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 50px;
-      display: inline-block;
-      margin: 10px 0;
-    }
-    .btn-compartir {
-      background: #fbbf24;
-      color: #0b1c3a;
-      padding: 8px 15px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 5px;
-      transition: all 0.3s;
-    }
-    .btn-compartir:hover {
-      transform: scale(1.02);
-      background: #e5a800;
-    }
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2em; text-decoration: none; color: white; border: 2px solid #fbbf24; z-index: 1000; }
+    .panel-referido { background: #0b1c3a; border: 2px solid #fbbf24; border-radius: 20px; padding: 20px; margin-top: 20px; text-align: center; }
+    .codigo-ref { background: #fbbf24; color: #0b1c3a; font-family: monospace; font-size: 1.5rem; font-weight: bold; padding: 10px 20px; border-radius: 50px; display: inline-block; margin: 10px 0; }
+    .btn-compartir { background: #fbbf24; color: #0b1c3a; padding: 8px 15px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; margin: 5px; transition: all 0.3s; }
+    .btn-compartir:hover { transform: scale(1.02); background: #e5a800; }
   </style>
 </head>
 <body>
@@ -163,7 +60,6 @@
 
 <div class="container">
 
-  <!-- MENÚ -->
   <div class="menu">
     <span style="font-weight: bold; color: #fbbf24;">🛞 RUEDAS Y RODAMIENTOS EL SHADDAI</span>
     <div class="menu-links desktop">
@@ -176,7 +72,6 @@
     <button class="menu-btn" id="menuBtn">☰</button>
   </div>
 
-  <!-- MENÚ MÓVIL -->
   <div id="mobileMenu" class="menu-links mobile" style="display: none;">
     <a href="#inicio">INICIO</a>
     <a href="#servicios">SERVICIOS</a>
@@ -185,9 +80,8 @@
     <a href="#afiliado">💰 AFILIADO</a>
   </div>
 
-  <!-- PORTADA -->
-<div class="portada" style="background-image: url('shaddai-portada.jpg'); ..."></div>  
-  <!-- TÍTULO -->
+  <div class="portada" style="background-image: url('shaddai-portada.jpg'); background-size: cover;"></div>
+
   <div style="text-align: center; margin: 20px 0;">
     <h1 style="color: #fbbf24;">🛞 RUEDAS Y RODAMIENTOS EL SHADDAI</h1>
     <p class="text-lg">Álvaro Ramírez · Todo en ruedas, rodamientos y rodachines</p>
@@ -195,7 +89,6 @@
     <p class="text-sm italic mt-2" style="color: #fbbf24;">יֵשׁוּעַ</p>
   </div>
 
-  <!-- SERVICIOS / PRODUCTOS -->
   <div id="servicios" class="card">
     <h2 style="color: #fbbf24;">🔧 NUESTROS PRODUCTOS Y SERVICIOS</h2>
     <div class="grid md:grid-cols-2 gap-4 mt-4">
@@ -210,65 +103,38 @@
     </div>
   </div>
 
-  <!-- MISIÓN, VISIÓN Y VALORES -->
   <div id="mv" class="card">
     <h2 style="color: #fbbf24;">🎯 MISIÓN</h2>
-    <p>Brindar a nuestros clientes la mejor solución en movilidad, ofreciendo una amplia variedad de ruedas, rodamientos y rodachines en diferentes diámetros y medidas. Contamos con ruedas nuevas importadas y nacionales, así como opciones reconstruidas de alta calidad para ajustarse a todas las necesidades económicas. Nos especializamos en ruedas para carretas, carretillas, carruchas, bicicletas, zorras, rines y cauchos para toda clase de vehículos. También atendemos el sector comercial con ruedas para carros de ventas ambulantes, comidas, bebidas, pinchos, dulcería y más. Además, reparamos, reconstruimos y adaptamos diferentes tipos de ruedas para garantizar la movilidad de nuestros clientes con seguridad y confianza.</p>
-    
+    <p>Brindar a nuestros clientes la mejor solución en movilidad, ofreciendo una amplia variedad de ruedas, rodamientos y rodachines en diferentes diámetros y medidas. Contamos con ruedas nuevas importadas y nacionales, así como opciones reconstruidas de alta calidad para ajustarse a todas las necesidades económicas.</p>
     <h2 style="color: #fbbf24; margin-top: 30px;">👁️ VISIÓN</h2>
-    <p>Ser reconocidos en Cúcuta y el norte de Santander como el principal referente en venta, reparación y adaptación de ruedas y rodamientos, destacándonos por nuestra variedad, calidad, precios justos y asesoramiento personalizado. Buscamos crecer junto a nuestros clientes, ofreciendo siempre lo mejor en movilidad para el hogar, la industria y el comercio.</p>
-    
-    <h2 style="color: #fbbf24; margin-top: 30px;">⭐ VALORES</h2>
-    <div class="mt-2 space-y-3">
-      <div class="valor-item">
-        <div class="valor-titulo">Honestidad</div>
-        <p>Transparencia en precios, calidad y recomendaciones. Decimos siempre la verdad sobre lo que ofrecemos.</p>
+    <p>Ser reconocidos en Cúcuta y el norte de Santander como el principal referente en venta, reparación y adaptación de ruedas y rodamientos, destacándonos por nuestra variedad, calidad, precios justos y asesoramiento personalizado.</p>
+  </div>
+
+  <!-- SISTEMA MULTINIVEL -->
+  <div id="afiliado" class="card">
+    <h2 style="color: #fbbf24;">💰 GANA DINERO CON NOSOTROS</h2>
+    <div class="panel-referido">
+      <i class="fas fa-handshake text-4xl text-[#fbbf24] mb-3"></i>
+      <h3 class="text-xl font-bold mb-2">Programa de Afiliados</h3>
+      <p class="mb-3">Comparte esta tarjeta digital y <strong style="color: #fbbf24;">genera ingreso del 40%</strong> por cada cliente que nos refieras.</p>
+      <p>Tu código de referido único es:</p>
+      <div class="codigo-ref">NGE-211</div>
+      <p class="mt-3 text-sm">📲 Comparte en tus redes:</p>
+      <div class="flex justify-center gap-2 mt-2 flex-wrap">
+        <a href="#" id="compartirWhatsApp" target="_blank" class="btn-compartir"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#" id="compartirFacebook" target="_blank" class="btn-compartir"><i class="fab fa-facebook-f"></i> Facebook</a>
       </div>
-      <div class="valor-item">
-        <div class="valor-titulo">Calidad</div>
-        <p>Productos duraderos, confiables y adaptados a cada necesidad. No negociamos la seguridad de nuestros clientes.</p>
-      </div>
-      <div class="valor-item">
-        <div class="valor-titulo">Servicio</div>
-        <p>Atención personalizada, rápida y con asesoramiento experto. Cada cliente recibe la mejor recomendación.</p>
-      </div>
-      <div class="valor-item">
-        <div class="valor-titulo">Compromiso</div>
-        <p>Con la seguridad y movilidad de nuestros clientes. Estamos para servirle como usted lo merece.</p>
-      </div>
-      <div class="valor-item">
-        <div class="valor-titulo">Solidaridad</div>
-        <p>Ofrecemos opciones económicas sin sacrificar calidad, para que todos puedan acceder a una movilidad segura.</p>
+      <div class="mt-3 text-sm">👁️ Visitas: <span id="visitCounter">0</span></div>
+      <div class="mt-3">
+        <img id="qrImg" src="" alt="Código QR" style="width: 120px; margin: 0 auto;">
       </div>
     </div>
   </div>
 
- <!-- SISTEMA MULTINIVEL - PANEL DE AFILIADO -->
-<div id="afiliado" class="card">
-  <h2 style="color: #fbbf24;">💰 GANA DINERO CON NOSOTROS</h2>
-  <div class="panel-referido">
-    <i class="fas fa-handshake text-4xl text-[#fbbf24] mb-3"></i>
-    <h3 class="text-xl font-bold mb-2">Programa de Afiliados</h3>
-    <p class="mb-3">Comparte esta tarjeta digital y <strong style="color: #fbbf24;">genera ingreso del 40%</strong> por cada cliente que nos refieras.</p>
-    <p>Tu código de referido único es:</p>
-    <div class="codigo-ref">NGE-211</div>
-    <p class="mt-3 text-sm">📲 Comparte en tus redes:</p>
-    <div class="flex justify-center gap-2 mt-2 flex-wrap">
-      <a href="https://wa.me/?text=🛞%20Ruedas%20y%20Rodamientos%20El%20Shaddai%20-%20https://guia-digital.com/shaddai.html" target="_blank" class="btn-compartir"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://guia-digital.com/shaddai.html" target="_blank" class="btn-compartir"><i class="fab fa-facebook-f"></i> Facebook</a>
-    </div>
-    <div class="mt-3 text-sm">👁️ Visitas: <span id="visitCounter">0</span></div>
-    <div class="mt-3">
-      <img id="qrImg" src="" alt="Código QR" style="width: 120px; margin: 0 auto;">
-    </div>
-  </div>
-</div>
-  <!-- CONTACTO -->
   <div id="contacto" class="card" style="text-align: center;">
     <h2 style="color: #fbbf24;">📍 CONTACTO</h2>
     <p style="font-size: 2em; color: #fbbf24;">311 851 5706</p>
     <p>Avenida 6 # 3-64 · Barrio El Callejón · Cúcuta, Colombia</p>
-    <p class="mt-2 text-sm text-gray-300">Álvaro Ramírez · Te atiende con gusto</p>
     <div class="flex justify-center gap-4 mt-4">
       <a href="https://wa.me/573118515706" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
       <a href="tel:573118515706" class="btn btn-llamar">📞 Llamar</a>
@@ -276,15 +142,11 @@
   </div>
 
   <footer class="text-center py-6 text-gray-500 border-t-2 border-[#fbbf24] mt-8">
-    <p>© 2026 Ruedas y Rodamientos El Shaddai · 
-      Diseño: <a href="https://wa.me/573244913371" target="_blank" style="color: #fbbf24; text-decoration: underline;">NGE Tarjetas Digitales</a>
-    </p>
+    <p>© 2026 Ruedas y Rodamientos El Shaddai · Diseño: <a href="https://wa.me/573244913371" target="_blank" style="color: #fbbf24; text-decoration: underline;">NGE Tarjetas Digitales</a></p>
   </footer>
-
 </div>
 
 <script>
-  // Sistema multinivel - El Shaddai
   const codigoUnico = "NGE-211";
   const urlCompleta = "https://guia-digital.com/shaddai.html?ref=" + codigoUnico;
   
@@ -304,6 +166,20 @@
   if (refOrigen && refOrigen !== codigoUnico) {
     console.log("Visitante referido por: " + refOrigen);
     localStorage.setItem("ref_shaddai_" + codigoUnico, refOrigen);
+  }
+  
+  const textoCompartir = encodeURIComponent("🛞 Ruedas y Rodamientos El Shaddai - Todo en ruedas, rodamientos y rodachines en Cúcuta. ¡Conoce más!");
+  const urlCompartir = encodeURIComponent("https://guia-digital.com/shaddai.html?ref=" + codigoUnico);
+  document.getElementById("compartirWhatsApp").href = "https://wa.me/?text=" + textoCompartir + "%20" + urlCompartir;
+  document.getElementById("compartirFacebook").href = "https://www.facebook.com/sharer/sharer.php?u=" + urlCompartir;
+  
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.style.display = mobileMenu.style.display === 'none' || mobileMenu.style.display === '' ? 'flex' : 'none';
+    });
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => { mobileMenu.style.display = 'none'; }));
   }
 </script>
 </body>
