@@ -461,6 +461,38 @@ const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión to
             $25.000 COP <span class="text-gray-400 text-sm">(~6 USD)</span>
         </div>
     </div>
+        <!-- BOTÓN ACTIVAR PLAN Y SECCIÓN DE INSTRUCCIONES -->
+    <div class="text-center mt-6">
+        <button onclick="mostrarInstruccionesPago()" class="bg-[#fbbf24] text-[#0b1c3a] font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:scale-105 transition">💳 ACTIVAR PLAN</button>
+    </div>
+
+    <div id="instruccionesPago" class="mt-6 p-5 bg-black/50 rounded-xl hidden">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-[#fbbf24]">📋 ACTIVAR TU TARJETA EN LA GUÍA</h3>
+            <button onclick="cerrarInstruccionesPago()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        <div class="space-y-3">
+            <p>🔹 <strong>1. Paga por Nequi al número:</strong> <span class="text-[#fbbf24] font-bold">[NÚMERO DE NEQUI DE TU HIJA]</span></p>
+            <p>🔹 <strong>2. Monto:</strong> <span class="text-[#fbbf24] font-bold">$25.000 COP</span> (anual) o <span class="text-[#fbbf24] font-bold">$5.000 COP</span> (mensual)</p>
+            <p>🔹 <strong>3. Referencia:</strong> Escribe tu <strong>CÓDIGO DE AFILIADO</strong> (ej: NGE-220)</p>
+            <p>🔹 <strong>4. Envía el comprobante</strong> por WhatsApp al <strong>324 491 3371</strong></p>
+            <p>🔹 <strong>5. En 15 minutos</strong> tu negocio estará visible en la Guía Digital</p>
+            <div class="mt-4 p-3 bg-green-600/30 rounded-xl text-center">
+                <p class="font-bold">📲 ¿Ya pagaste? Envía tu comprobante aquí:</p>
+                <a href="https://wa.me/573244913371" class="inline-block mt-2 bg-[#25D366] text-white px-6 py-2 rounded-full font-bold">ENVIAR COMPROBANTE</a>
+            </div>
+        </div>
+    </div>
+
+<script>
+    function mostrarInstruccionesPago() {
+        document.getElementById("instruccionesPago").classList.remove("hidden");
+        document.getElementById("instruccionesPago").scrollIntoView({ behavior: 'smooth' });
+    }
+    function cerrarInstruccionesPago() {
+        document.getElementById("instruccionesPago").classList.add("hidden");
+    }
+</script>
 </div>
     <!-- CONTACTO Y QR -->
     <div id="contacto" class="card text-center">
