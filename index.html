@@ -461,6 +461,26 @@ const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión to
             $25.000 COP <span class="text-gray-400 text-sm">(~6 USD)</span>
         </div>
     </div>
+        
+    </div>
+
+<script>
+    function mostrarInstruccionesPago() {
+        document.getElementById("instruccionesPago").classList.remove("hidden");
+        document.getElementById("instruccionesPago").scrollIntoView({ behavior: 'smooth' });
+    }
+    function cerrarInstruccionesPago() {
+        document.getElementById("instruccionesPago").classList.add("hidden");
+    }
+</script>
+</div>
+    <!-- CONTACTO Y QR -->
+    <div id="contacto" class="card text-center">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
+        <div class="flex justify-center gap-4 my-4 flex-wrap">
+            <a href="https://wa.me/573244913371" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
+            <button onclick="compartirSitio()" class="btn" style="background:#3b82f6; color:white;">📤 Compartir guía</button>
+        </div>
         <!-- BOTÓN ACTIVAR PLAN Y SECCIÓN DE INSTRUCCIONES -->
     <div class="text-center mt-6">
         <button onclick="mostrarInstruccionesPago()" class="bg-[#fbbf24] text-[#0b1c3a] font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:scale-105 transition">💳 ACTIVAR PLAN</button>
@@ -481,25 +501,6 @@ const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión to
                 <p class="font-bold">📲 ¿Ya pagaste? Envía tu comprobante aquí:</p>
                 <a href="https://wa.me/573244913371" class="inline-block mt-2 bg-[#25D366] text-white px-6 py-2 rounded-full font-bold">ENVIAR COMPROBANTE</a>
             </div>
-        </div>
-    </div>
-
-<script>
-    function mostrarInstruccionesPago() {
-        document.getElementById("instruccionesPago").classList.remove("hidden");
-        document.getElementById("instruccionesPago").scrollIntoView({ behavior: 'smooth' });
-    }
-    function cerrarInstruccionesPago() {
-        document.getElementById("instruccionesPago").classList.add("hidden");
-    }
-</script>
-</div>
-    <!-- CONTACTO Y QR -->
-    <div id="contacto" class="card text-center">
-        <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
-        <div class="flex justify-center gap-4 my-4 flex-wrap">
-            <a href="https://wa.me/573244913371" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
-            <button onclick="compartirSitio()" class="btn" style="background:#3b82f6; color:white;">📤 Compartir guía</button>
         </div>
         <div class="mt-4">
             <h3 class="text-[#fbbf24]">📱 ESCANEA Y GUARDA ESTA GUÍA</h3>
