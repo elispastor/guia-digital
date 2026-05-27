@@ -91,7 +91,8 @@ img[alt*="Guía"], img[src*="logo-guia"] {
         <a href="#planes" class="block py-2 hover:text-[#fbbf24]">PLANES</a>
         <a href="#contacto" class="block py-2 hover:text-[#fbbf24]">CONTACTO</a>
         <button onclick="compartirSitio()" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">📤 COMPARTIR</button>
-    </div>
+<button onclick="instalarPulpito(); return false;" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">🐙 GUARDAR PULPITO</button>    </div>
+    
 
     <!-- LOGO GRANDE COMO PORTADA -->
 <!-- LOGO GRANDE COMO PORTADA -->
@@ -913,6 +914,26 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('formularioImpulsador')?.classList.add('hidden');
     document.getElementById('formularioDisenador')?.classList.add('hidden');
 });
+</script>
+    <script>
+    function instalarPulpito() {
+        if (window.deferredPrompt) {
+            window.deferredPrompt.prompt();
+            window.deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('Pulpito instalado en pantalla de inicio');
+                }
+                window.deferredPrompt = null;
+            });
+        } else {
+            alert("En tu navegador, ve a los tres puntos ⋮ y selecciona 'Agregar a pantalla de inicio'");
+        }
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        window.deferredPrompt = e;
+    });
 </script>
 </body>
 </html>
