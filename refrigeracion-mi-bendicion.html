@@ -6,6 +6,8 @@
     <title>Taller de Refrigeración Mi Bendición | Cúcuta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://guia-digital.com/pulpo-icono.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://guia-digital.com/pulpo-icono.png">
     <style>
         * {
             margin: 0;
@@ -38,21 +40,22 @@
             flex-wrap: wrap;
         }
 
-        .menu a {
+        .menu-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .menu-links a, .menu-links button {
             color: white;
             text-decoration: none;
             font-weight: 600;
             padding: 8px 15px;
         }
 
-        .menu a:hover {
+        .menu-links a:hover, .menu-links button:hover {
             color: #ff9800;
-        }
-
-        .menu-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
         }
 
         .menu-btn {
@@ -299,8 +302,6 @@
             text-decoration: none;
         }
     </style>
-    <link rel="icon" type="image/png" sizes="192x192" href="https://guia-digital.com/pulpo-icono.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://guia-digital.com/pulpo-icono.png">
 </head>
 <body>
 
@@ -308,14 +309,16 @@
     <!-- MENÚ -->
     <div class="menu">
         <span style="font-weight: bold; color: #ff9800;">❄️ Mi Bendición</span>
-       <div class="menu-links" id="menuLinks">
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#galeria">Galería</a>
-    <a href="#oficina">Oficina</a>
-    <a href="#contacto">Contacto</a>
-    <button onclick="instalarPulpito(); return false;" class="hover:text-[#ff9800] bg-transparent border-none cursor-pointer text-white">🐙 GUARDAR PULPITO</button>
-</div>
+        <div class="menu-links" id="menuLinks">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#galeria">Galería</a>
+            <a href="#oficina">Oficina</a>
+            <a href="#contacto">Contacto</a>
+            <button onclick="instalarPulpito(); return false;" class="hover:text-[#ff9800] bg-transparent border-none cursor-pointer text-white">🐙 GUARDAR PULPITO</button>
+        </div>
+        <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
 
     <!-- PORTADA -->
     <div id="inicio" class="portada">
@@ -492,8 +495,7 @@
     const btnFacebook = document.getElementById('compartirFacebook');
     if (btnWhatsapp) btnWhatsapp.href = "https://wa.me/?text=" + textoCompartir + "%20" + urlCompartir;
     if (btnFacebook) btnFacebook.href = "https://www.facebook.com/sharer/sharer.php?u=" + urlCompartir;
-</script>
-    <script>
+
     function instalarPulpito() {
         if (window.deferredPrompt) {
             window.deferredPrompt.prompt();
