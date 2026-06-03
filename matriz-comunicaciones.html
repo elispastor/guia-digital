@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Matriz Comunicaciones - Tarjeta Digital</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .phone-card {
+            max-width: 450px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background: #121826;
+            padding: 20px 20px 20px 20px;
+            color: white;
+            position: relative;
+        }
+
+        .menu-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-area img {
+            max-width: 120px;
+            height: auto;
+            filter: brightness(0) invert(1);
+            max-height: 50px;
+        }
+        
+        .logo-placeholder {
+            font-size: 28px;
+            font-weight: 800;
+            background: #2563eb;
+            padding: 8px 16px;
+            border-radius: 40px;
+            color: white;
+        }
+
+        .hamburger {
+            background: rgba(255,255,255,0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 24px;
+        }
+        .hamburger:hover { background: #2563eb; }
+
+        .profile-info {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .profile-info h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .profile-info p {
+            font-size: 14px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+        .badge-code {
+            background: #00000040;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 8px;
+            font-family: monospace;
+        }
+
+        /* PORTADA - Imagen después del encabezado */
+        .portada {
+            width: 100%;
+            display: block;
+        }
+        .portada img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .offcanvas-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: #111827;
+            z-index: 1000;
+            padding: 30px 25px;
+            transition: 0.4s ease-in-out;
+            box-shadow: 5px 0 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .offcanvas-menu.open {
+            left: 0;
+        }
+        .overlay-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            display: none;
+        }
+        .overlay-blur.active {
+            display: block;
+        }
+        .close-menu {
+            text-align: right;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+        }
+        .menu-items a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #2d3748;
+            font-size: 16px;
+        }
+        .menu-items a i { width: 25px; font-size: 20px; color: #3b82f6; }
+
+        .card-body {
+            padding: 20px;
+            background: white;
+            border-radius: 32px;
+            margin-left: 16px;
+            margin-right: 16px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .btn-wa, .btn-call {
+            flex: 1;
+            padding: 14px 0;
+            border-radius: 60px;
+            text-align: center;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .btn-wa {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 8px 14px -6px #25d36680;
+        }
+        .btn-call {
+            background: #1e293b;
+            color: white;
+            box-shadow: 0 8px 14px -6px #1e293b80;
+        }
+        .btn-wa:hover, .btn-call:hover { transform: scale(0.97); opacity: 0.9; }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eef2ff;
+        }
+        .info-row i {
+            width: 30px;
+            color: #2563eb;
+            font-size: 18px;
+        }
+        .info-row a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 10px 0;
+        }
+        .social-icon {
+            background: #f1f5f9;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            font-size: 24px;
+            transition: 0.2s;
+            text-decoration: none;
+            color: #1e293b;
+        }
+        .social-icon:hover { background: #2563eb; color: white; transform: translateY(-5px); }
+
+        .map-container {
+            margin: 20px 0;
+            border-radius: 24px;
+            overflow: hidden;
+            height: 150px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: #94a3b8;
+            padding: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="overlay" class="overlay-blur" onclick="closeMenu()"></div>
+
+<div id="sideMenu" class="offcanvas-menu">
+    <div class="close-menu" onclick="closeMenu()"><i class="fas fa-times"></i></div>
+    <div class="menu-items">
+        <a href="#"><i class="fas fa-store"></i> Catálogo de Productos</a>
+        <a href="#"><i class="fas fa-headset"></i> Soporte Técnico</a>
+        <a href="#"><i class="fas fa-download"></i> Guardar Contacto (vCard)</a>
+        <a href="#"><i class="fas fa-chart-line"></i> Ver Promociones</a>
+        <a href="#"><i class="fas fa-share-alt"></i> Compartir Tarjeta</a>
+    </div>
+</div>
+
+<div class="phone-card">
+    <!-- HEADER -->
+    <div class="header">
+        <div class="menu-bar">
+            <div class="logo-area">
+                <!-- LOGO: cambia esta línea cuando tengas la imagen -->
+                <!-- <img src="tu-logo.png" alt="Matriz Comunicaciones"> -->
+                <div class="logo-placeholder">MATRIZ</div>
+            </div>
+            <div class="hamburger" onclick="openMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="profile-info">
+            <h1>Matriz Comunicaciones</h1>
+            <p><i class="fas fa-microchip"></i> CELULARES · ACCESORIOS · SOFTWARE</p>
+            <span class="badge-code"><i class="fas fa-id-card"></i> Código: NGE-290</span>
+        </div>
+    </div>
+
+    <!-- PORTADA - Imagen después del encabezado (tú le pones portada-matriz.jpg) -->
+    <div class="portada">
+        <img src="portada-matriz.jpg" alt="Portada Matriz Comunicaciones">
+    </div>
+
+    <!-- CUERPO PRINCIPAL -->
+    <div class="card-body">
+        
+        <div class="action-buttons">
+            <a href="https://wa.me/573192597622?text=Hola%2C%20vi%20su%20tarjeta%20digital%20y%20quiero%20informaci%C3%B3n" class="btn-wa" target="_blank">
+                <i class="fab fa-whatsapp fa-lg"></i> WhatsApp
+            </a>
+            <a href="tel:+573192597622" class="btn-call">
+                <i class="fas fa-phone-alt"></i> Llamar
+            </a>
+        </div>
+
+        <div class="info-row">
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+573192597622">319 259 7622</a>
+        </div>
+        <div class="info-row">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+578872922222">(887) 292 2222</a>
+        </div>
+        <div class="info-row">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:vargaswilliamalberto@gmail.com">vargaswilliamalberto@gmail.com</a>
+        </div>
+        <div class="info-row">
+            <i class="fas fa-map-marker-alt"></i>
+            <a href="https://maps.google.com/?q=AV.+6+CON+CALLE+4ta+N%C2%B0+4-20+CUCUTA" target="_blank">
+                AV. 6 CON CALLE 4ta - N° 4-20 - CÚCUTA
+            </a>
+        </div>
+        <div class="info-row">
+            <i class="fas fa-id-card"></i>
+            <span>NIT: 882002293-1 · Rég. Simplificado</span>
+        </div>
+
+        <div class="social-grid">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://maps.google.com/maps?q=AV.%206%20CON%20CALLE%204ta%20%234-20%2C%20C%C3%BAcuta&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <div style="margin-top: 15px; background: #f8fafc; padding: 12px; border-radius: 20px; text-align: center;">
+            <p style="font-weight: 600; color:#0f172a;">✅ Actualizaciones • ✅ Soporte • ✅ Garantía</p>
+            <p style="font-size: 12px; color:#475569;">"Expertos en tecnología con más de 10 años en el mercado"</p>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-qrcode"></i> Escanea para compartir | Haz clic en el menú para más opciones
+    </div>
+</div>
+
+<script>
+    function openMenu() {
+        document.getElementById('sideMenu').classList.add('open');
+        document.getElementById('overlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        document.getElementById('sideMenu').classList.remove('open');
+        document.getElementById('overlay').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+</script>
+</body>
+</html>
