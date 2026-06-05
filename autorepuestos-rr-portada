@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AUTOREPUESTOS RR | Compra y venta de repuestos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f4f7fc; scroll-behavior: smooth; }
+        .menu-toggle { position: fixed; top: 20px; right: 20px; background: #1e3c72; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; z-index: 1001; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: 0.2s; }
+        .menu-toggle:hover { background: #e67e22; }
+        .side-menu { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #0f2c39; color: white; z-index: 1002; padding: 80px 20px 30px; transition: 0.3s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.2); }
+        .side-menu.open { right: 0; }
+        .side-menu a { display: block; color: white; text-decoration: none; padding: 12px 15px; margin: 8px 0; border-radius: 30px; font-weight: 500; transition: 0.2s; }
+        .side-menu a:hover { background: #e67e22; padding-left: 20px; }
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .main-header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 40px; padding: 40px 30px; margin-bottom: 30px; text-align: center; color: white; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.3); }
+        .logo-icon { font-size: 4rem; background: rgba(255,255,255,0.2); width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+        .business-name { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+        .portada { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 40px; margin-bottom: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); display: block; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .card-section { background: white; border-radius: 32px; padding: 28px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .card-section:hover { transform: translateY(-5px); }
+        .section-title { display: flex; align-items: center; gap: 10px; font-size: 1.4rem; font-weight: 700; color: #1e3c72; margin-bottom: 20px; border-left: 5px solid #e67e22; padding-left: 15px; }
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .plan-card { background: #f8fafd; border-radius: 24px; padding: 15px; text-align: center; border: 1px solid #e2e8f0; }
+        .plan-price { font-weight: 800; color: #e67e22; font-size: 1.2rem; margin: 8px 0; }
+        .ganancias { background: #e8f0fe; border-radius: 24px; padding: 20px; margin-top: 20px; }
+        .nivel-ganancia { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #cbd5e1; }
+        .qr-container { text-align: center; padding: 20px; background: white; border-radius: 28px; }
+        .btn-whatsapp { background: #25D366; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; border-radius: 60px; font-weight: bold; width: 100%; border: none; cursor: pointer; margin: 15px 0; }
+        .float-whatsapp { position: fixed; bottom: 20px; left: 20px; background: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; cursor: pointer; z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .business-name { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <div class="side-menu" id="sideMenu">
+        <a href="#inicio"><i class="fas fa-home"></i> Inicio</a>
+        <a href="#servicios"><i class="fas fa-tools"></i> Servicios</a>
+        <a href="#planes"><i class="fas fa-crown"></i> Planes</a>
+        <a href="#oficina"><i class="fas fa-building"></i> Oficina Virtual</a>
+        <a href="#contacto"><i class="fas fa-map-pin"></i> Contacto</a>
+        <a href="#qr"><i class="fas fa-qrcode"></i> Compartir</a>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="container" id="inicio">
+        <div class="main-header">
+            <div class="logo-icon"><i class="fas fa-car"></i></div>
+            <h1 class="business-name">AUTOREPUESTOS RR</h1>
+            <p>Compra y venta de repuestos nuevos y usados · Chatarrización</p>
+        </div>
+
+        <!-- PORTADA: imagen generada por Lovart con ese prompt -->
+        <img class="portada" src="autorepuestos-rr-portada.jpg" alt="Portada AUTOREPUESTOS RR" onerror="this.src='https://placehold.co/1200x675/1e3c72/white?text=AUTOREPUESTOS+RR'">
+
+        <div id="servicios" class="card-section" style="margin-bottom: 30px;">
+            <div class="section-title"><i class="fas fa-tools"></i> Nuestros Servicios</div>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <span style="background:#f1f5f9; padding:8px 18px; border-radius:40px;">💰 COMPRAMOS SU CARRO PARA CHATARRIZAR</span>
+                <span style="background:#f1f5f9; padding:8px 18px; border-radius:40px;">🛒 VENTA DE REPUESTOS NUEVOS Y USADOS</span>
+                <span style="background:#f1f5f9; padding:8px 18px; border-radius:40px;">🔧 ESPECIALISTAS EN Ford</span>
+                <span style="background:#f1f5f9; padding:8px 18px; border-radius:40px;">📦 TODO TIPO DE REPUESTOS</span>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div id="planes" class="card-section">
+                <div class="section-title"><i class="fas fa-crown"></i> Planes Multinivel</div>
+                <div class="plans-grid">
+                    <div class="plan-card"><strong>Básico</strong><div class="plan-price">$25.000</div><small>Beneficios iniciales</small></div>
+                    <div class="plan-card"><strong>Pro</strong><div class="plan-price">$50.000</div><small>Descuentos especiales</small></div>
+                    <div class="plan-card"><strong>Élite</strong><div class="plan-price">$100.000</div><small>Prioridad + Garantía</small></div>
+                    <div class="plan-card"><strong>Élite-Plus</strong><div class="plan-price">$200.000</div><small>Atención VIP 24/7</small></div>
+                    <div class="plan-card"><strong>Recarga</strong><div class="plan-price">$5.000/mes</div><small>Plan básico mensual</small></div>
+                </div>
+            </div>
+
+            <div id="oficina" class="card-section">
+                <div class="section-title"><i class="fas fa-chart-line"></i> Oficina Virtual</div>
+                <div class="ganancias">
+                    <h3>💰 Tus Ganancias por Nivel</h3>
+                    <div class="nivel-ganancia"><span>Nivel 1 (Directos):</span><strong>10%</strong></div>
+                    <div class="nivel-ganancia"><span>Nivel 2:</span><strong>5%</strong></div>
+                    <div class="nivel-ganancia"><span>Nivel 3:</span><strong>3%</strong></div>
+                    <div class="nivel-ganancia"><span>Nivel 4:</span><strong>2%</strong></div>
+                    <div class="nivel-ganancia"><span>Nivel 5:</span><strong>1%</strong></div>
+                    <button class="btn-whatsapp" style="background:#1e3c72; margin-top:15px;" onclick="alert('Simulador: Tus comisiones se acumulan automáticamente.')">📊 Simular Ganancias</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div id="contacto" class="card-section">
+                <div class="section-title"><i class="fas fa-map-marker-alt"></i> Ubicación y Contacto</div>
+                <p><i class="fas fa-location-dot"></i> #8-21 B. CALLEJON, CUCUTA</p>
+                <p><i class="fas fa-location-dot"></i> Calle 2 No. 8-21 B. Entre Avenida 8 y 9 - El Callejón. Cúcuta. Colombia</p>
+                <p><i class="fas fa-phone"></i> 322 275 4096</p>
+                <button class="btn-whatsapp" onclick="window.open('https://wa.me/573222754096','_blank')">📱 WhatsApp Directo</button>
+            </div>
+
+            <div id="qr" class="card-section" style="text-align: center;">
+                <div class="section-title"><i class="fas fa-share-alt"></i> Comparte esta tarjeta</div>
+                <div class="qr-container">
+                    <i class="fas fa-qrcode" style="font-size: 4rem; color:#1e3c72;"></i>
+                    <div id="qr-code"></div>
+                    <p style="margin-top: 10px;">Escanea para compartir</p>
+                    <button class="btn-whatsapp" style="background:#1e3c72;" onclick="window.open('https://wa.me/?text=Mira%20la%20tarjeta%20de%20AUTOREPUESTOS%20RR%20https://guia-digital.com/autorepuestos-rr','_blank')">📤 Compartir por WhatsApp</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 20px; color: #64748b;">
+            © 2026 AUTOREPUESTOS RR - Confianza y calidad en repuestos
+        </div>
+    </div>
+
+    <div class="float-whatsapp" onclick="window.open('https://wa.me/573222754096','_blank')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('menuOverlay');
+        function openMenu() { menu.classList.add('open'); overlay.style.display = 'block'; }
+        function closeMenu() { menu.classList.remove('open'); overlay.style.display = 'none'; }
+        toggle.onclick = () => { if(menu.classList.contains('open')) closeMenu(); else openMenu(); };
+        overlay.onclick = closeMenu;
+        document.querySelectorAll('.side-menu a').forEach(link => { link.onclick = closeMenu; });
+
+        const qrDiv = document.getElementById('qr-code');
+        const currentURL = 'https://guia-digital.com/autorepuestos-rr';
+        const qrImg = document.createElement('img');
+        qrImg.src = `https://chart.googleapis.com/chart?chs=180x180&cht=qr&chl=${encodeURIComponent(currentURL)}&choe=UTF-8`;
+        qrImg.style.width = '150px';
+        qrImg.style.margin = '10px auto';
+        qrDiv.appendChild(qrImg);
+    </script>
+</body>
+</html>
