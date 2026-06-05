@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TECNI GOMAS | Fabricamos todo tipo de Gomas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f4f7fc; scroll-behavior: smooth; }
+        .menu-toggle { position: fixed; top: 20px; right: 20px; background: #1e3c72; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; z-index: 1001; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: 0.2s; }
+        .menu-toggle:hover { background: #e67e22; }
+        .side-menu { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #0f2c39; color: white; z-index: 1002; padding: 80px 20px 30px; transition: 0.3s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.2); }
+        .side-menu.open { right: 0; }
+        .side-menu a { display: block; color: white; text-decoration: none; padding: 12px 15px; margin: 8px 0; border-radius: 30px; font-weight: 500; transition: 0.2s; }
+        .side-menu a:hover { background: #e67e22; padding-left: 20px; }
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .main-header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 40px; padding: 40px 30px; margin-bottom: 30px; text-align: center; color: white; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.3); }
+        .logo-icon { font-size: 4rem; background: rgba(255,255,255,0.2); width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+        .business-name { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+        .portada { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 40px; margin-bottom: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); display: block; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .card-section { background: white; border-radius: 32px; padding: 28px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .card-section:hover { transform: translateY(-5px); }
+        .section-title { display: flex; align-items: center; gap: 10px; font-size: 1.4rem; font-weight: 700; color: #1e3c72; margin-bottom: 20px; border-left: 5px solid #e67e22; padding-left: 15px; }
+        .btn-generador { background: #e67e22; color: white; padding: 12px; border-radius: 60px; text-align: center; font-weight: bold; cursor: pointer; margin: 20px 0 10px; width: 100%; border: none; font-size: 1rem; }
+        .planes-horizontal { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin: 15px 0; }
+        .plan-card { background: #f8fafd; border-radius: 20px; padding: 12px 8px; text-align: center; flex: 1; min-width: 100px; border: 1px solid #e2e8f0; cursor: pointer; transition: 0.2s; }
+        .plan-card:hover { transform: translateY(-3px); background: #e8f0fe; }
+        .plan-nombre { font-weight: 800; font-size: 1rem; }
+        .plan-precio { font-weight: 800; color: #e67e22; margin: 5px 0; }
+        .plan-comision { font-size: 0.7rem; color: #2a5298; font-weight: 600; }
+        .whatsapp-btn { background: #25D366; color: white; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 60px; font-weight: bold; border: none; cursor: pointer; }
+        .compartir-botones { display: flex; gap: 12px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+        .compartir-btn { background: #1e3c72; color: white; width: 45px; height: 45px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer; transition: 0.2s; }
+        .compartir-btn:hover { transform: scale(1.05); background: #e67e22; }
+        .footer { text-align: center; padding: 20px; font-size: 0.75rem; color: #64748b; border-top: 1px solid #e2e8f0; margin-top: 20px; }
+        .footer a { color: #e67e22; text-decoration: none; }
+        .visitas { font-size: 0.9rem; background: #e8f0fe; display: inline-block; padding: 6px 16px; border-radius: 40px; margin-top: 12px; font-weight: bold; }
+        .float-whatsapp { position: fixed; bottom: 20px; left: 20px; background: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; cursor: pointer; z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .business-name { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <div class="side-menu" id="sideMenu">
+        <a href="#inicio"><i class="fas fa-home"></i> Inicio</a>
+        <a href="#servicios"><i class="fas fa-tools"></i> Servicios</a>
+        <a href="#generador"><i class="fas fa-chart-line"></i> Generador de Ingresos</a>
+        <a href="#contacto"><i class="fas fa-map-pin"></i> Contacto</a>
+        <a href="#qr"><i class="fas fa-qrcode"></i> Compartir</a>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="container" id="inicio">
+        <div class="main-header">
+            <div class="logo-icon"><i class="fas fa-industry"></i></div>
+            <h1 class="business-name">TECNI GOMAS</h1>
+            <p>Fabricamos todo tipo de Gomas</p>
+        </div>
+
+        <img class="portada" src="tecni-gomas-portada.jpg" alt="Portada TECNI GOMAS" onerror="this.src='https://placehold.co/1200x675/1e3c72/white?text=TECNI+GOMAS'">
+
+        <div id="servicios" class="card-section" style="margin-bottom: 30px;">
+            <div class="section-title"><i class="fas fa-tools"></i> Nuestros Servicios</div>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <span style="background:#f1f5f9; padding:8px 18px; border-radius:40px;">📦 VENTA DE BANDA TRANSPORTADORA</span>
+                <span style="background:#f1f5f9; padding:8px 18px; border-radius:40px;">🔧 Fabricación de Gomas</span>
+                <span style="background:#f1f5f9; padding:8px 18px; border-radius:40px;">🛠️ Gomas industriales</span>
+            </div>
+            <div style="margin-top: 15px;">
+                <p><i class="fas fa-user"></i> <strong>Martin Silva</strong> - Especialista</p>
+            </div>
+        </div>
+
+        <!-- Generador de Ingresos -->
+        <div id="generador" class="card-section" style="margin-bottom: 30px;">
+            <div class="section-title"><i class="fas fa-chart-line"></i> Generador de Ingresos</div>
+            <div class="planes-horizontal">
+                <div class="plan-card" onclick="alert('Plan BÁSICO: Inversión $25.000. Ganas 20% por cada persona que refieras.')">
+                    <div class="plan-nombre">Básico</div>
+                    <div class="plan-precio">$25.000</div>
+                    <div class="plan-comision">💰 20% comisión</div>
+                </div>
+                <div class="plan-card" onclick="alert('Plan PRO: Inversión $50.000. Ganas 30% por cada persona que refieras.')">
+                    <div class="plan-nombre">Pro</div>
+                    <div class="plan-precio">$50.000</div>
+                    <div class="plan-comision">💰 30% comisión</div>
+                </div>
+                <div class="plan-card" onclick="alert('Plan ÉLITE: Inversión $100.000. Ganas 40% por cada persona que refieras.')">
+                    <div class="plan-nombre">Élite</div>
+                    <div class="plan-precio">$100.000</div>
+                    <div class="plan-comision">💰 40% comisión</div>
+                </div>
+                <div class="plan-card" onclick="alert('Plan ÉLITE-PLUS: Inversión $200.000. Ganas 50% por cada persona que refieras.')">
+                    <div class="plan-nombre">Élite-Plus</div>
+                    <div class="plan-precio">$200.000</div>
+                    <div class="plan-comision">💰 50% comisión</div>
+                </div>
+                <div class="plan-card" onclick="alert('Plan RECARGA: Inversión $5.000/mes. Ganas 5% por cada persona que refieras.')">
+                    <div class="plan-nombre">Recarga</div>
+                    <div class="plan-precio">$5.000/mes</div>
+                    <div class="plan-comision">💰 5% comisión</div>
+                </div>
+            </div>
+            <button class="btn-generador" id="btnGenerador">📊 Ver Ganancias por Nivel (Detallado)</button>
+        </div>
+
+        <div class="grid-2">
+            <div id="contacto" class="card-section">
+                <div class="section-title"><i class="fas fa-map-marker-alt"></i> Ubicación y Contacto</div>
+                <p><i class="fas fa-location-dot"></i> Av. 8 N° 2-33 B. Callejón - Junto al Terminal de Transporte</p>
+                <p><i class="fas fa-phone"></i> 300 274 4888 - Cúcuta - Col.</p>
+                <button class="whatsapp-btn" onclick="window.open('https://wa.me/573002744888','_blank')"><i class="fab fa-whatsapp"></i> WhatsApp Directo</button>
+            </div>
+
+            <div id="qr" class="card-section" style="text-align: center;">
+                <div class="section-title"><i class="fas fa-share-alt"></i> Comparte esta tarjeta</div>
+                <div id="qr-code"></div>
+                <p style="margin-top: 8px;">Escanea para compartir</p>
+                <div class="compartir-botones">
+                    <div class="compartir-btn" onclick="compartirWhatsApp()"><i class="fab fa-whatsapp"></i></div>
+                    <div class="compartir-btn" onclick="compartirFacebook()"><i class="fab fa-facebook-f"></i></div>
+                    <div class="compartir-btn" onclick="compartirTwitter()"><i class="fab fa-twitter"></i></div>
+                    <div class="compartir-btn" onclick="compartirMessenger()"><i class="fab fa-facebook-messenger"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 TECNI GOMAS - Todos los derechos reservados</p>
+            <p style="margin-top: 6px;">
+                <i class="fas fa-id-card"></i> Tarjeta Digital NGE · 
+                <a href="https://guia-digital.com" target="_blank">🌐 Guía Digital de Cúcuta</a>
+            </p>
+            <div class="visitas"><i class="fas fa-eye"></i> Visitas totales: <span id="contador">0</span></div>
+        </div>
+    </div>
+
+    <div class="float-whatsapp" onclick="window.open('https://wa.me/573002744888','_blank')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('menuOverlay');
+        function openMenu() { menu.classList.add('open'); overlay.style.display = 'block'; }
+        function closeMenu() { menu.classList.remove('open'); overlay.style.display = 'none'; }
+        toggle.onclick = () => { if(menu.classList.contains('open')) closeMenu(); else openMenu(); };
+        overlay.onclick = closeMenu;
+        document.querySelectorAll('.side-menu a').forEach(link => { link.onclick = closeMenu; });
+
+        const qrDiv = document.getElementById('qr-code');
+        const currentURL = 'https://guia-digital.com/tecni-gomas';
+        const qrImg = document.createElement('img');
+        qrImg.src = `https://chart.googleapis.com/chart?chs=180x180&cht=qr&chl=${encodeURIComponent(currentURL)}&choe=UTF-8`;
+        qrImg.style.width = '150px';
+        qrImg.style.margin = '10px auto';
+        qrDiv.appendChild(qrImg);
+
+        document.getElementById('btnGenerador').onclick = () => {
+            alert("💰 GENERADOR DE INGRESOS NGE\n\n" +
+                  "Plan Básico ($25.000): 20% por referido\n" +
+                  "Plan Pro ($50.000): 30% por referido\n" +
+                  "Plan Élite ($100.000): 40% por referido\n" +
+                  "Plan Élite-Plus ($200.000): 50% por referido\n" +
+                  "Plan Recarga ($5.000/mes): 5% por referido\n\n" +
+                  "¡Más referidos = más ganancias!");
+        };
+
+        let visitas = localStorage.getItem('visitas_tecni');
+        if (visitas === null) visitas = 1;
+        else visitas = Number(visitas) + 1;
+        localStorage.setItem('visitas_tecni', visitas);
+        document.getElementById('contador').innerText = visitas;
+
+        const shareURL = encodeURIComponent(currentURL);
+        const shareText = encodeURIComponent("Mira la tarjeta digital de TECNI GOMAS - Fabricamos todo tipo de Gomas.");
+
+        function compartirWhatsApp() { window.open(`https://wa.me/?text=${shareText}%20${shareURL}`, '_blank'); }
+        function compartirFacebook() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareURL}`, '_blank'); }
+        function compartirTwitter() { window.open(`https://twitter.com/intent/tweet?text=${shareText}&url=${shareURL}`, '_blank'); }
+        function compartirMessenger() { window.open(`https://www.facebook.com/dialog/send?link=${shareURL}&app_id=123456789`, '_blank'); }
+    </script>
+</body>
+</html>
