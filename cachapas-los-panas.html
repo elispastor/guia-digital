@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cachapas Los Panas | Sabor Venezolano</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .card {
+            max-width: 450px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .portada {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+        .body {
+            padding: 25px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        .eslogan {
+            color: #e67e22;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .seccion {
+            margin-bottom: 20px;
+        }
+        .seccion h3 {
+            color: #1e3c72;
+            font-size: 1.2rem;
+            border-left: 4px solid #e67e22;
+            padding-left: 12px;
+            margin-bottom: 10px;
+        }
+        .seccion p {
+            color: #334155;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+        .contacto {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .contacto i {
+            font-size: 1.5rem;
+            color: #e67e22;
+        }
+        .contacto .info {
+            font-weight: 600;
+            color: #0f2c39;
+        }
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 60px;
+            font-weight: bold;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .footer {
+            background: #f8fafd;
+            text-align: center;
+            padding: 16px;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img class="portada" src="portada-cachapas-los-panas.jpg" alt="Portada Cachapas Los Panas" onerror="this.src='https://placehold.co/800x450/1e3c72/white?text=Cachapas+Los+Panas'">
+        
+        <div class="body">
+            <h1>Cachapas Los Panas</h1>
+            <div class="eslogan">🇻🇪 Sabor Venezolano</div>
+
+            <div class="seccion">
+                <h3>📖 ¿Quiénes somos?</h3>
+                <p>Somos un emprendimiento familiar que trae lo mejor de la gastronomía venezolana a Cúcuta. Cachapas, arepas, tequeños y más, hechos con amor y con los ingredientes más frescos para que disfrutes el auténtico sabor de nuestra tierra.</p>
+            </div>
+
+            <div class="seccion">
+                <h3>🍽️ Para pedidos a domicilio</h3>
+                <p>Escanea el código QR o contáctanos directamente por WhatsApp. ¡Te llevamos tu pedido a la puerta de tu casa!</p>
+            </div>
+
+            <div class="contacto">
+                <i class="fab fa-whatsapp"></i>
+                <div class="info">
+                    📞 +57 301 8484452
+                    <br>
+                    <small>Cúcuta - Colombia</small>
+                </div>
+            </div>
+
+            <button class="btn-whatsapp" onclick="window.open('https://wa.me/573018484452?text=Hola%2C%20quiero%20hacer%20un%20pedido', '_blank')">
+                <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+            </button>
+        </div>
+
+        <div class="footer">
+            <i class="fas fa-check-circle" style="color: #e67e22;"></i> Cachapas Los Panas · Sabor que une
+        </div>
+    </div>
+
+    <div class="whatsapp-float" onclick="window.open('https://wa.me/573018484452?text=Hola%2C%20quiero%20hacer%20un%20pedido', '_blank')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+</body>
+</html>
