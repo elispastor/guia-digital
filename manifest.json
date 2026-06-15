@@ -3,7 +3,7 @@
   "short_name": "Guía",
   "start_url": "/",
   "scope": "/",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "description": "Guía Digital mi conexión total",
