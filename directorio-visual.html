@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio Visual - Guía Digital de Cúcuta</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{background:#0b1c3a;font-family:'Segoe UI',Arial,sans-serif;color:#fff;padding:20px;}
+        .container{max-width:1200px;margin:0 auto;}
+        h1{text-align:center;color:#fbbf24;font-size:2rem;margin-bottom:8px;}
+        .sub{text-align:center;color:#94a3b8;margin-bottom:30px;font-size:1rem;}
+        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
+        .card{background:#112b4f;border-radius:20px;overflow:hidden;transition:0.3s;border:1px solid #1e3a5f;cursor:pointer;}
+        .card:hover{transform:translateY(-5px);border-color:#fbbf24;}
+        .card img{width:100%;height:150px;object-fit:cover;display:block;}
+        .card .info{padding:12px;text-align:center;}
+        .card .info .nombre{font-weight:bold;color:#fff;font-size:0.95rem;}
+        .card .info .link{color:#fbbf24;font-size:0.75rem;text-decoration:none;}
+        .card .info .link:hover{text-decoration:underline;}
+        .footer{text-align:center;color:#64748b;font-size:0.7rem;margin-top:40px;}
+        @media(max-width:600px){.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🐙 Directorio de Negocios</h1>
+    <p class="sub">Negocios que ya confían en la Guía Digital de Cúcuta</p>
+
+    <div class="grid" id="directorioGrid">
+        <!-- Los negocios se cargarán con JavaScript -->
+    </div>
+
+    <div class="footer">
+        Guía Digital de Cúcuta · Conecta · Comparte · Construye
+    </div>
+</div>
+
+<script>
+    // Lista de negocios (nombre, portada, enlace)
+    const negocios = [
+        { nombre: "AUTOCUCUTA", portada: "autocucuta-portada.jpg", enlace: "autocucuta.html" },
+        { nombre: "AUTOREPUESTOS RR", portada: "autorepuestos-rr-portada.jpg", enlace: "autorepuestos-rr.html" },
+        { nombre: "CACHAPAS LOS PANAS", portada: "portada-cachapas-los-panas.jpg", enlace: "cachapas-los-panas.html" },
+        { nombre: "CONE TORRADO", portada: "portada-cone-torrado.jpg", enlace: "cone-torrado.html" },
+        { nombre: "EL SABOR DE DOÑA ROSA", portada: "portada-el-sabor-de-doña-rosa.jpg", enlace: "el-sabor-de-doña-rosa-cucuta.html" },
+        { nombre: "EL SUIZO", portada: "portada-el-suizo.jpg", enlace: "el-suizo.html" },
+        { nombre: "ESTACION CALIDAD", portada: "estacion-calidad-portada.png", enlace: "estacion-calidad.html" },
+        { nombre: "GOMAS Y SOPORTES", portada: "gomas-y-soportes-portada.jpg", enlace: "gomas-y-soportes.html" },
+        { nombre: "GUSTAVO ROJAS", portada: "portada-gustavo.jpg", enlace: "gustavo-rojas.html" },
+        { nombre: "HECTOR QUINTERO", portada: "portada-hector.jpg", enlace: "hector-quintero.html" },
+        { nombre: "JHON RUBIO", portada: "portada-jhon-rubio.jpg", enlace: "jhon-rubio.html" },
+        { nombre: "JULIAN BETANCUR", portada: "julian-betancur-portada.jpg", enlace: "julian-betancur.html" },
+        { nombre: "KATA", portada: "portada-kata.jpg", enlace: "kata.html" },
+        { nombre: "LLANTAS DON MANUEL", portada: "portada-llantas-donmanuel.jpg", enlace: "llantas-donmanuel.html" },
+        { nombre: "LUIS DIAZ", portada: "portada-luis1.jpg", enlace: "luis-diaz.html" },
+        { nombre: "MATRIZ COMUNICACIONES", portada: "portada-matriz.jpg", enlace: "matriz-comunicaciones.html" },
+        { nombre: "NGE TRANSPORTES", portada: "portada-nge-transportes.jpg", enlace: "nge-transportes.html" },
+        { nombre: "PEDRO OBANDO", portada: "pedro.jpg", enlace: "pedro-obando.html" },
+        { nombre: "REFRIGERACION MI BENDICION", portada: "portada-refrigeracion.jpg", enlace: "refrigeracion-mi-bendicion.html" },
+        { nombre: "REPUESTOS EXPRESS", portada: "portada-repuestos-express.jpg", enlace: "repuestos-express.html" },
+        { nombre: "SHADDAI", portada: "shaddai-portada.jpg", enlace: "shaddai.html" },
+        { nombre: "TALLER OSAMA", portada: "portada-osama.jpg", enlace: "taller-osama.html" },
+        { nombre: "TECNI GOMAS", portada: "tecni-gomas-portada.jpg", enlace: "tecni-gomas.html" },
+        { nombre: "WAHL", portada: "portada-wahl.jpg", enlace: "wahl.html" }
+    ];
+
+    // Ordenar alfabéticamente
+    negocios.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+    // Renderizar
+    const grid = document.getElementById('directorioGrid');
+    negocios.forEach(n => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.onclick = () => window.open(n.enlace, '_blank');
+        card.innerHTML = `
+            <img src="${n.portada}" alt="${n.nombre}" loading="lazy" onerror="this.src='https://placehold.co/300x200/112b4f/fbbf24?text=${encodeURIComponent(n.nombre)}'">
+            <div class="info">
+                <div class="nombre">${n.nombre}</div>
+                <a class="link" href="${n.enlace}" target="_blank">Ver tarjeta →</a>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+</script>
+</body>
+</html>
