@@ -8,36 +8,41 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{background:#0b1c3a;font-family:'Segoe UI',Arial,sans-serif;color:#fff;padding:20px;}
         .container{max-width:1200px;margin:0 auto;}
-        h1{text-align:center;color:#fbbf24;font-size:2rem;margin-bottom:8px;}
-        .sub{text-align:center;color:#94a3b8;margin-bottom:30px;font-size:1rem;}
-        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
-        .card{background:#112b4f;border-radius:20px;overflow:hidden;transition:0.3s;border:1px solid #1e3a5f;cursor:pointer;}
-        .card:hover{transform:translateY(-5px);border-color:#fbbf24;}
-        .card img{width:100%;height:150px;object-fit:cover;display:block;}
-        .card .info{padding:12px;text-align:center;}
-        .card .info .nombre{font-weight:bold;color:#fff;font-size:0.95rem;}
-        .card .info .link{color:#fbbf24;font-size:0.75rem;text-decoration:none;}
+        .header{text-align:center;margin-bottom:30px;padding-bottom:20px;border-bottom:2px solid rgba(251,191,36,0.3);}
+        .header h1{color:#fbbf24;font-size:2.2rem;}
+        .header p{color:#94a3b8;font-size:1rem;margin-top:5px;}
+        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:25px;}
+        .card{background:#112b4f;border-radius:20px;overflow:hidden;transition:0.3s;border:1px solid #1e3a5f;cursor:pointer;display:flex;flex-direction:column;}
+        .card:hover{transform:translateY(-6px);border-color:#fbbf24;box-shadow:0 12px 30px rgba(251,191,36,0.2);}
+        .card .img-wrap{width:100%;padding-top:56.25%;position:relative;background:#0a1a2e;overflow:hidden;}
+        .card .img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;transition:0.3s;}
+        .card:hover .img-wrap img{transform:scale(1.02);}
+        .card .info{padding:14px 16px;text-align:center;flex:1;display:flex;flex-direction:column;justify-content:center;}
+        .card .info .nombre{font-weight:700;color:#fff;font-size:1rem;letter-spacing:0.3px;}
+        .card .info .link{color:#fbbf24;font-size:0.75rem;text-decoration:none;margin-top:4px;font-weight:500;}
         .card .info .link:hover{text-decoration:underline;}
-        .footer{text-align:center;color:#64748b;font-size:0.7rem;margin-top:40px;}
-        @media(max-width:600px){.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}}
+        .footer{text-align:center;color:#64748b;font-size:0.75rem;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);}
+        .footer a{color:#fbbf24;text-decoration:none;}
+        .contador{display:inline-block;background:#fbbf24;color:#0b1c3a;padding:4px 14px;border-radius:30px;font-weight:700;font-size:0.85rem;margin-top:6px;}
+        @media(max-width:640px){.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px;}}
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>🐙 Directorio de Negocios</h1>
-    <p class="sub">Negocios que ya confían en la Guía Digital de Cúcuta</p>
-
-    <div class="grid" id="directorioGrid">
-        <!-- Los negocios se cargarán con JavaScript -->
+    <div class="header">
+        <h1>🐙 Directorio de Negocios</h1>
+        <p>Negocios que ya confían en la Guía Digital de Cúcuta</p>
+        <span class="contador" id="contadorNegocios">0 negocios</span>
     </div>
 
+    <div class="grid" id="directorioGrid"></div>
+
     <div class="footer">
-        Guía Digital de Cúcuta · Conecta · Comparte · Construye
+        Guía Digital de Cúcuta · <a href="https://guia-digital.com">guia-digital.com</a> · Conecta · Comparte · Construye
     </div>
 </div>
 
 <script>
-    // Lista de negocios (nombre, portada, enlace)
     const negocios = [
         { nombre: "AUTOCUCUTA", portada: "autocucuta-portada.jpg", enlace: "autocucuta.html" },
         { nombre: "AUTOREPUESTOS RR", portada: "autorepuestos-rr-portada.jpg", enlace: "autorepuestos-rr.html" },
@@ -65,17 +70,17 @@
         { nombre: "WAHL", portada: "portada-wahl.jpg", enlace: "wahl.html" }
     ];
 
-    // Ordenar alfabéticamente
-    negocios.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    negocios.sort((a,b) => a.nombre.localeCompare(b.nombre));
 
-    // Renderizar
     const grid = document.getElementById('directorioGrid');
     negocios.forEach(n => {
         const card = document.createElement('div');
         card.className = 'card';
         card.onclick = () => window.open(n.enlace, '_blank');
         card.innerHTML = `
-            <img src="${n.portada}" alt="${n.nombre}" loading="lazy" onerror="this.src='https://placehold.co/300x200/112b4f/fbbf24?text=${encodeURIComponent(n.nombre)}'">
+            <div class="img-wrap">
+                <img src="${n.portada}" alt="${n.nombre}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;color:#fbbf24;font-size:0.8rem;\\'>${n.nombre}</div>'">
+            </div>
             <div class="info">
                 <div class="nombre">${n.nombre}</div>
                 <a class="link" href="${n.enlace}" target="_blank">Ver tarjeta →</a>
@@ -83,6 +88,8 @@
         `;
         grid.appendChild(card);
     });
+
+    document.getElementById('contadorNegocios').innerText = negocios.length + ' negocios';
 </script>
 </body>
 </html>
