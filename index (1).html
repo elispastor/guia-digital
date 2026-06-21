@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>FAJAS EDI · La Clínica de Las Fajas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --vino: #722f37;
+      --dorado: #b8860b;
+      --crema: #fff9f0;
+      --gris: #f0eae3;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--crema);
+      color: #2c2c2c;
+      scroll-behavior: smooth;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    header {
+      background: var(--vino);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 4px solid var(--dorado);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dorado);
+      animation: neon 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes neon {
+      from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--dorado), 0 0 20px var(--dorado);
+      }
+      to {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--dorado), 0 0 40px var(--dorado);
+      }
+    }
+
+    .logo span {
+      font-size: 0.9rem;
+      color: white;
+      display: block;
+      text-shadow: none;
+      animation: none;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: var(--dorado);
+    }
+
+    .menu .btn-tarjeta-menu {
+      background: var(--dorado);
+      color: var(--vino);
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      border: 1px solid white;
+    }
+
+    .menu .btn-tarjeta-menu:hover {
+      background: white;
+      color: var(--vino);
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .seccion-botones {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-personalizado {
+      background: var(--vino);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--dorado);
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn-personalizado:hover {
+      background: var(--dorado);
+      color: var(--vino);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, var(--vino) 0%, #5a2a30 100%);
+      border-radius: 40px;
+      overflow: hidden;
+      border: 3px solid var(--dorado);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: 50% 25%;
+      border-bottom: 3px solid var(--dorado);
+    }
+
+    .hero-content {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      color: var(--dorado);
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content h2 {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* NUEVA SECCIÓN PARA LA MODELO */
+    .seccion-modelo {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .modelo-card {
+      background: linear-gradient(135deg, var(--vino) 0%, #5a2a30 100%);
+      border-radius: 40px;
+      overflow: hidden;
+      border: 3px solid var(--dorado);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .modelo-card h3 {
+      color: var(--dorado);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modelo-img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 20px;
+      border: 3px solid var(--dorado);
+      margin: 0 auto 1.5rem;
+      display: block;
+    }
+
+    .modelo-card p {
+      color: white;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .seccion {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .seccion h2 {
+      color: var(--vino);
+      font-size: 2.5rem;
+      text-align: center;
+      border-bottom: 3px solid var(--dorado);
+      padding-bottom: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .texto-centrado {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .servicios-lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .servicio-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      border-bottom: 5px solid var(--vino);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      font-size: 1.1rem;
+    }
+
+    .servicio-item::before {
+      content: "✨";
+      margin-right: 0.5rem;
+    }
+
+    .firma {
+      font-size: 2rem;
+      color: var(--vino);
+      text-align: center;
+      margin: 3rem 0;
+      font-style: italic;
+    }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .testimonio-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--dorado);
+    }
+
+    .testimonio-card p {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testimonio-card .cliente {
+      color: var(--vino);
+      font-weight: 600;
+    }
+
+    .chat-container {
+      background: white;
+      border-radius: 30px;
+      padding: 2rem;
+      border: 2px solid var(--vino);
+      margin: 3rem 0;
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .chat-avatar {
+      width: 50px;
+      height: 50px;
+      background: var(--vino);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dorado);
+      font-size: 1.5rem;
+      border: 2px solid var(--dorado);
+    }
+
+    .chat-mensajes {
+      background: var(--gris);
+      border-radius: 20px;
+      padding: 1.5rem;
+      min-height: 150px;
+      margin-bottom: 1.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .chat-control {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chat-control input {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid var(--dorado);
+      border-radius: 50px;
+    }
+
+    .chat-control button {
+      background: var(--vino);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .chat-control button:hover {
+      background: #8a3a44;
+    }
+
+    .contacto-box {
+      background: var(--vino);
+      color: white;
+      padding: 3rem;
+      border-radius: 40px;
+      text-align: center;
+      border: 3px solid var(--dorado);
+    }
+
+    .contacto-box h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .contacto-box .telefono {
+      font-size: 2.5rem;
+      color: var(--dorado);
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+
+    footer {
+      background: var(--vino);
+      color: white;
+      padding: 3rem 1rem;
+      margin-top: 4rem;
+      border-top: 5px solid var(--dorado);
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .footer-credits {
+      grid-column: span 2;
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--dorado);
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background: var(--vino);
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        gap: 1rem;
+        border-top: 2px solid var(--dorado);
+      }
+      .menu.mostrar { display: flex; }
+      .hamburger { display: block; }
+      .hero-img { height: 400px; }
+      .hero-content h1 { font-size: 2rem; }
+      .hero-content h2 { font-size: 1.5rem; }
+      .testimonios-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">FAJAS EDI<span>La Clínica de Las Fajas</span></div>
+    <button class="hamburger" id="hamburger">☰</button>
+    <ul class="menu" id="menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#modelo">Nuestra Modelo</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="https://wa.me/573244913371?text=Hola,%20quiero%20mi%20tarjeta%20como%20FAJAS%20EDI" class="btn-tarjeta-menu">💳 QUIERO MI TARJETA</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="seccion-botones">
+  <a href="https://wa.me/573007245058" class="btn-personalizado">📱 WhatsApp</a>
+  <a href="tel:+573007245058" class="btn-personalizado">📞 Llamar</a>
+  <a href="#" onclick="compartirSite(); return false;" class="btn-personalizado">📢 Compartir</a>
+  <a href="https://wa.me/573244913371?text=Hola,%20quiero%20mi%20tarjeta%20como%20FAJAS%20EDI" class="btn-personalizado">💳 QUIERO MI TARJETA</a>
+</div>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="hero-card">
+      <img src="./portada.jpg" alt="Mujer con faja postquirúrgica - Fajas Edi" class="hero-img">
+      <div class="hero-content">
+        <h1>ALTA CONFECCIÓN EN<br>FAJAS A LA MEDIDA</h1>
+        <h2>Especialistas en diseño postquirúrgico y cuidado avanzado de la piel</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVA SECCIÓN DE LA MODELO -->
+  <section id="modelo" class="seccion-modelo">
+    <div class="modelo-card">
+      <h3>Nuestra modelo exclusiva</h3>
+      <img src="./modelo.jpg" alt="Modelo con faja postquirúrgica Fajas Edi" class="modelo-img">
+      <p>Diseños que realzan la belleza natural de cada mujer. Confeccionados con los más altos estándares de calidad.</p>
+    </div>
+  </section>
+
+  <section id="servicios" class="seccion">
+    <h2>Creamos fajas exclusivas</h2>
+    <p class="texto-centrado">Diseñadas con precisión, adaptadas a cada cuerpo y pensadas para brindar:</p>
+    
+    <div class="servicios-lista">
+      <div class="servicio-item">Fajas postquirúrgicas especializadas</div>
+      <div class="servicio-item">Confección totalmente personalizada</div>
+      <div class="servicio-item">Diseños para piel sensible y procesos de cicatrización</div>
+      <div class="servicio-item">Ajustes para quemaduras y tratamientos</div>
+      <div class="servicio-item">Reparación y perfeccionamiento profesional</div>
+    </div>
+
+    <div class="firma">
+      "No es solo una faja. Es confianza, cuidado y elegancia en cada detalle."
+    </div>
+  </section>
+
+  <section id="testimonios" class="seccion">
+    <h2>Lo que dicen nuestras clientas</h2>
+    <div class="testimonios-grid">
+      <div class="testimonio-card">
+        <p>"Después de mi cesárea, la faja de Edilse fue mi mejor aliada. Recuperé mi figura y mi confianza."</p>
+        <p class="cliente">— María G.</p>
+      </div>
+      <div class="testimonio-card">
+        <p>"Diseño impecable, materiales de primera. Uso mis fajas a diario y son una maravilla."</p>
+        <p class="cliente">— Ana L.</p>
+      </div>
+      <div class="testimonio-card">
+        <p>"La atención personalizada de Edilse hace la diferencia. Me guió en todo el proceso."</p>
+        <p class="cliente">— Carmen R.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <h2>💬 Asistente Virtual EDI</h2>
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="chat-avatar">👩‍⚕️</div>
+        <div>
+          <h3 style="color: var(--vino);">¡Hola! Soy EDI, tu asistente virtual</h3>
+          <p style="color: #666;">¿En qué puedo ayudarte hoy?</p>
+        </div>
+      </div>
+      <div class="chat-mensajes" id="chatMensajes">
+        <p><strong>EDI:</strong> ¡Bienvenida! Puedo responder tus dudas sobre fajas, postoperatorios, envíos y más.</p>
+      </div>
+      <div class="chat-control">
+        <input type="text" id="chatInput" placeholder="Escribe tu pregunta...">
+        <button onclick="enviarChat()">Enviar</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="seccion">
+    <div class="contacto-box">
+      <h3>Agenda tu asesoría personalizada</h3>
+      <div class="telefono">📞 +57 300 724 5058</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 style="color: var(--dorado);">FAJAS EDI</h3>
+      <p>La Clínica de Las Fajas</p>
+    </div>
+    <div style="text-align: right;">
+      <p>📍 Barrio Lleras, Calle 1a · Cúcuta</p>
+      <p>📱 300 724 5058</p>
+    </div>
+    <div class="footer-credits">
+      <p>✨ Diseño NGE · <a href="https://wa.me/573244913371" style="color: var(--dorado);">Contáctame para tu tarjeta digital</a></p>
+      <p>© 2026 FAJAS EDI · Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
+  hamburger.addEventListener('click', () => menu.classList.toggle('mostrar'));
+  document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => menu.classList.remove('mostrar')));
+
+  function compartirSite() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'FAJAS EDI',
+        text: 'La Clinica de Las Fajas - Fajas postquirúrgicas de alta confección',
+        url: window.location.href
+      }).catch(() => {
+        alert('Copia este enlace: ' + window.location.href);
+      });
+    } else {
+      alert('Comparte este enlace: ' + window.location.href);
+    }
+  }
+
+  const chatMensajes = document.getElementById('chatMensajes');
+  const chatInput = document.getElementById('chatInput');
+
+  function agregarMensaje(quien, texto) {
+    const p = document.createElement('p');
+    p.innerHTML = `<strong>${quien}:</strong> ${texto}`;
+    chatMensajes.appendChild(p);
+    chatMensajes.scrollTop = chatMensajes.scrollHeight;
+  }
+
+  function enviarChat() {
+    const pregunta = chatInput.value.trim();
+    if (!pregunta) return;
+    agregarMensaje('Tú', pregunta);
+    chatInput.value = '';
+
+    setTimeout(() => {
+      let respuesta = '';
+      const p = pregunta.toLowerCase();
+      if (p.includes('hola') || p.includes('buenas')) respuesta = '¡Hola! Encantada de saludarte. ¿En qué puedo ayudarte?';
+      else if (p.includes('cesárea') || p.includes('cesarea')) respuesta = 'Para cesárea tenemos fajas postquirúrgicas con compresión media. Debes usarla de 4 a 6 semanas. ¿Quieres que te asesore?';
+      else if (p.includes('precio') || p.includes('cuesta')) respuesta = 'Nuestras fajas personalizadas desde $250.000. Escríbeme al WhatsApp para presupuesto exacto.';
+      else if (p.includes('envío') || p.includes('envios')) respuesta = 'Sí, enviamos a todo Colombia y Latinoamérica. El costo depende del país.';
+      else respuesta = 'Gracias por tu pregunta. Para más detalle, ¿me escribes por WhatsApp?';
+      agregarMensaje('EDI', respuesta);
+    }, 800);
+  }
+</script>
+
+</body>
+</html>

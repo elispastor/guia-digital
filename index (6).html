@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>FAJAS EDI · La Clínica de Las Fajas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --fondo-principal: #fdf3e0;
+      --marron-texto: #5d3a1a;
+      --terracota: #c97b5a;
+      --dorado-suave: #e3c9a0;
+      --blanco: #ffffff;
+      --texto-oscuro: #2c2c2c;
+      --fondo-tarjetas: #fff9f0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--fondo-principal);
+      color: var(--texto-oscuro);
+      scroll-behavior: smooth;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    header {
+      background: var(--marron-texto);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 4px solid var(--dorado-suave);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dorado-suave);
+    }
+
+    .logo span {
+      font-size: 0.9rem;
+      color: white;
+      display: block;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: var(--dorado-suave);
+    }
+
+    .menu .btn-tarjeta-menu {
+      background: var(--terracota);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      border: 1px solid var(--dorado-suave);
+    }
+
+    .menu .btn-tarjeta-menu:hover {
+      background: white;
+      color: var(--marron-texto);
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .seccion-botones {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-personalizado {
+      background: var(--terracota);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--dorado-suave);
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn-personalizado:hover {
+      background: var(--dorado-suave);
+      color: var(--marron-texto);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .btn-facebook {
+      background: #4267B2;
+      border-color: white;
+    }
+
+    .btn-facebook:hover {
+      background: white;
+      color: #4267B2;
+    }
+
+    #modelo-principal {
+      max-width: 1200px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+    }
+
+    .card-modelo {
+      background: var(--marron-texto);
+      border-radius: 50px;
+      padding: 3rem 2rem 2rem 2rem;
+      border: 4px solid var(--dorado-suave);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .card-modelo h2 {
+      color: var(--dorado-suave);
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+    }
+
+    .card-modelo h3 {
+      color: white;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .contenido-modelo {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .imagen-modelo {
+      flex: 1 1 350px;
+      text-align: center;
+    }
+
+    .imagen-modelo img {
+      max-width: 100%;
+      max-height: 500px;
+      width: auto;
+      height: auto;
+      border-radius: 40px;
+      border: 4px solid var(--dorado-suave);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .texto-modelo {
+      flex: 1 1 350px;
+      color: white;
+    }
+
+    .texto-modelo h4 {
+      color: var(--dorado-suave);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .texto-modelo p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .texto-modelo .firma {
+      font-size: 1.3rem;
+      color: var(--dorado-suave);
+      font-style: italic;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .card-modelo h2 {
+        font-size: 2rem;
+      }
+      .card-modelo h3 {
+        font-size: 1.4rem;
+      }
+      .contenido-modelo {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .hero-card {
+      background: var(--marron-texto);
+      border-radius: 40px;
+      overflow: hidden;
+      border: 3px solid var(--dorado-suave);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: 50% 25%;
+      border-bottom: 3px solid var(--dorado-suave);
+    }
+
+    .hero-content {
+      padding: 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content h1 {
+      color: var(--dorado-suave);
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content h2 {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content p {
+      color: white;
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .carrusel-container {
+      position: relative;
+      max-width: 900px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      background: var(--marron-texto);
+    }
+
+    .carrusel-slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carrusel-item {
+      min-width: 100%;
+      position: relative;
+    }
+
+    .carrusel-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carrusel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(93,58,26,0.95));
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .carrusel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--terracota);
+      color: white;
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      z-index: 10;
+      opacity: 0.8;
+      border: 2px solid var(--dorado-suave);
+    }
+
+    .carrusel-control:hover {
+      opacity: 1;
+      background: white;
+      color: var(--marron-texto);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carrusel-prev {
+      left: 15px;
+    }
+
+    .carrusel-next {
+      right: 15px;
+    }
+
+    .carrusel-dots {
+      position: absolute;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      z-index: 10;
+      padding: 0 1rem;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid var(--dorado-suave);
+    }
+
+    .dot:hover {
+      background: white;
+    }
+
+    .active-dot {
+      background: var(--terracota);
+      transform: scale(1.3);
+    }
+
+    .seccion {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .seccion h2 {
+      color: var(--marron-texto);
+      font-size: 2.5rem;
+      text-align: center;
+      border-bottom: 3px solid var(--dorado-suave);
+      padding-bottom: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .texto-centrado {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--texto-oscuro);
+    }
+
+    .servicios-lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .servicio-item {
+      background: var(--fondo-tarjetas);
+      padding: 2rem;
+      border-radius: 20px;
+      border-bottom: 5px solid var(--terracota);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      font-size: 1.1rem;
+      color: var(--texto-oscuro);
+    }
+
+    .servicio-item::before {
+      content: "✨";
+      margin-right: 0.5rem;
+    }
+
+    .firma {
+      font-size: 2rem;
+      color: var(--marron-texto);
+      text-align: center;
+      margin: 3rem 0;
+      font-style: italic;
+    }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .testimonio-card {
+      background: var(--fondo-tarjetas);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--dorado-suave);
+    }
+
+    .testimonio-card p {
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: var(--texto-oscuro);
+    }
+
+    .testimonio-card .cliente {
+      color: var(--marron-texto);
+      font-weight: 600;
+    }
+
+    .chat-container {
+      background: var(--fondo-tarjetas);
+      border-radius: 30px;
+      padding: 2rem;
+      border: 2px solid var(--marron-texto);
+      margin: 3rem 0;
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .chat-avatar {
+      width: 50px;
+      height: 50px;
+      background: var(--terracota);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      border: 2px solid var(--dorado-suave);
+    }
+
+    .chat-mensajes {
+      background: var(--fondo-principal);
+      border-radius: 20px;
+      padding: 1.5rem;
+      min-height: 150px;
+      margin-bottom: 1.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .chat-control {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chat-control input {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid var(--dorado-suave);
+      border-radius: 50px;
+    }
+
+    .chat-control button {
+      background: var(--terracota);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .chat-control button:hover {
+      background: #b05a3a;
+    }
+
+    .contacto-box {
+      background: var(--marron-texto);
+      color: white;
+      padding: 3rem;
+      border-radius: 40px;
+      text-align: center;
+      border: 3px solid var(--dorado-suave);
+    }
+
+    .contacto-box h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--dorado-suave);
+    }
+
+    .contacto-box .telefono {
+      font-size: 2.5rem;
+      color: var(--dorado-suave);
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+
+    .contacto-box p {
+      color: white;
+      margin: 0.5rem 0;
+    }
+
+    .contacto-box a {
+      color: var(--dorado-suave);
+      text-decoration: none;
+    }
+
+    footer {
+      background: var(--marron-texto);
+      color: white;
+      padding: 3rem 1rem;
+      margin-top: 4rem;
+      border-top: 5px solid var(--dorado-suave);
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-derechos {
+      font-size: 1rem;
+      color: white;
+    }
+
+    .footer-credits {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .footer-credits a {
+      color: var(--dorado-suave);
+      text-decoration: none;
+    }
+
+    .seccion-qr {
+      max-width: 600px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: var(--fondo-tarjetas);
+      border: 3px solid var(--dorado-suave);
+      border-radius: 40px;
+      text-align: center;
+    }
+
+    .seccion-qr h2 {
+      color: var(--marron-texto);
+    }
+
+    .qr-img {
+      max-width: 250px;
+      margin: 1rem auto;
+      display: block;
+    }
+
+    .btn-imprimir {
+      background: var(--terracota);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 1rem;
+      border: 2px solid var(--dorado-suave);
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background: var(--marron-texto);
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        gap: 1rem;
+        border-top: 2px solid var(--dorado-suave);
+      }
+      .menu.mostrar { display: flex; }
+      .hamburger { display: block; }
+      .hero-img { height: 400px; }
+      .hero-content h1 { font-size: 2rem; }
+      .hero-content h2 { font-size: 1.5rem; }
+      .hero-content p { font-size: 1rem; }
+      .testimonios-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">FAJAS EDI<span style="font-family: 'Montserrat', sans-serif; font-weight: 500; color: var(--dorado-suave); font-size: 16px; margin-left: 5px; display: inline-block; vertical-align: middle;">La Clínica de Las Fajas</span></div>
+    <button class="hamburger" id="hamburger">☰</button>
+    <ul class="menu" id="menu">
+      <li><a href="#modelo-principal">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#modelo-principal">Edilsa</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+<li style="margin-right: 20px;"><a href="/formulario-correcciones.html" class="hover:text-[#e3c9a0]">📝 Actualizar</a></li> 
+    <li><a href="https://wa.me/573007245058?text=Hola,%20quiero%20una%20faja%20personalizada" class="btn-tarjeta-menu">💳 QUIERO UNA FAJA</a></li>
+    </ul>
+</div>
+<!-- ===== FIN MENÚ ===== -->
+  <!-- TARJETA PRINCIPAL (EFECTO TELA) -->
+</header>
+
+<div class="seccion-botones">
+  <a href="https://wa.me/573007245058" class="btn-personalizado">📱 WhatsApp</a>
+  <a href="tel:+573007245058" class="btn-personalizado">📞 Llamar</a>
+  <a href="#" onclick="compartirSite(); return false;" class="btn-personalizado">📢 Compartir</a>
+  <a href="https://wa.me/573007245058?text=Hola,%20quiero%20una%20faja%20personalizada" class="btn-personalizado">💳 QUIERO UNA FAJA</a>
+  <a href="https://www.facebook.com/la.clinica.de.las.fajas.Edi" target="_blank" class="btn-personalizado btn-facebook">📘 Facebook (864 seguidores)</a>
+</div>
+
+<section id="modelo-principal">
+  <div class="card-modelo">
+    <h2>✨ BIENVENID@S a nuestro sitio web ✨</h2>
+    <h3 style="font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--dorado-suave); font-size: 26px; margin: 40px 0 30px 0; text-align: center; letter-spacing: 1px;">La Clínica de Las Fajas</h3>
+    <div class="contenido-modelo" style="margin-top: 20px;">
+      <div class="imagen-modelo">
+        <img src="./modelo.jpg" alt="Edilsa - Fundadora de Fajas EDI">
+      </div>
+      <div class="texto-modelo">
+        <h4>✂️ Hecho a mano con amor</h4>
+        <p>Detrás de cada faja hay una historia de dedicación. <strong>Edilsa</strong>, nuestra fundadora, confecciona personalmente cada pieza con más de 25 años de experiencia.</p>
+        <p>Su pasión por el diseño y el cuidado de la mujer se refleja en cada puntada, garantizando calidad, confort y resultados excepcionales.</p>
+        <p class="firma">"No es solo una faja. Es confianza, cuidado y elegancia en cada detalle."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="hero">
+    <div class="hero-card">
+      <img src="./portada.jpg" alt="Mujer con faja postquirúrgica - Fajas Edi" class="hero-img">
+      <div class="hero-content">
+        <h1>ALTA CONFECCIÓN EN FAJAS A LA MEDIDA</h1>
+        <h2>Especialistas en diseño postquirúrgico y cuidado avanzado de la piel</h2>
+      </div>
+    </div>
+  </section>
+
+<section style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+  <a href="https://wa.me/573007245058?text=Hola,%20quiero%20agendar%20una%20videollamada%20para%20tomar%20medidas%20de%20fajas" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+    <div style="background: linear-gradient(135deg, var(--marron-texto) 0%, #7a4f2a 100%); border-radius: 40px; overflow: hidden; border: 4px solid var(--dorado-suave); box-shadow: 0 15px 30px rgba(0,0,0,0.2); transition: transform 0.3s;">
+      <img src="./portada2.jpeg" alt="Asesoría por videollamada - Fajas Edi" style="width: 100%; max-height: 400px; object-fit: cover; border-bottom: 3px solid var(--dorado-suave); display: block;">
+      <div style="padding: 2rem; text-align: center; color: white;">
+        <h2 style="color: var(--dorado-suave); font-size: 2.2rem; margin-bottom: 0.5rem;">¡No puedes visitarnos?</h2>
+        <h3 style="color: white; font-size: 1.8rem; margin-bottom: 1rem;">¡Tomamos tus medidas por videollamada!</h3>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">Obtén tus fajas ideales sin salir de casa</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+          <span style="background: var(--dorado-suave); color: var(--marron-texto); padding: 0.5rem 1rem; border-radius: 50px; font-weight: bold;">✔ Sin importar dónde estés</span>
+          <span style="background: var(--dorado-suave); color: var(--marron-texto); padding: 0.5rem 1rem; border-radius: 50px; font-weight: bold;">✔ Asesoría personalizada</span>
+        </div>
+        <p style="font-size: 1.5rem; font-weight: bold; color: var(--dorado-suave); margin: 1rem 0;">Fajas Edi</p>
+        <p style="font-size: 1.2rem; font-style: italic; margin-bottom: 1.5rem;">"La elegancia en cada curva"</p>
+        <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem;">Agenda tu cita virtual y toma tus medidas desde la comodidad de tu hogar. <strong>¡Así de fácil!</strong></p>
+        <div style="margin-top: 1rem;">
+          <span style="background: var(--terracota); color: white; padding: 1rem 3rem; border-radius: 60px; font-weight: bold; font-size: 1.5rem; display: inline-block; border: 2px solid var(--dorado-suave);">
+            📞 +57 300 724 5058
+          </span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">Haz clic en cualquier parte de esta tarjeta para contactarnos por WhatsApp</p>
+      </div>
+    </div>
+  </a>
+</section>
+
+  <section id="catalogo" class="seccion">
+    <h2>📸 Nuestro catálogo</h2>
+    <p class="texto-centrado">38 diseños exclusivos creados para realzar tu belleza</p>
+    
+    <div class="carrusel-container">
+      <div class="carrusel-slides" id="carruselSlides"></div>
+      <button class="carrusel-control carrusel-prev" onclick="cambiarSlide(-1)">❮</button>
+      <button class="carrusel-control carrusel-next" onclick="cambiarSlide(1)">❯</button>
+      <div class="carrusel-dots" id="carruselDots"></div>
+    </div>
+  </section>
+
+<section id="edilsa-cosiendo" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+  <div style="background: var(--principal, #5d3a1a); border-radius: 40px; padding: 1.5rem; border: 4px solid var(--dorado, #e3c9a0); display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.5rem;">
+    <div style="flex: 1 1 350px; min-width: 280px;">
+      <img src="./cociendo.jpg" alt="Edilsa confeccionando fajas a mano" style="width: 100%; height: 100%; max-height: 500px; object-fit: cover; border-radius: 30px; border: 4px solid var(--dorado, #e3c9a0); display: block;">
+    </div>
+    <div style="flex: 1 1 300px; color: white; display: flex; flex-direction: column; justify-content: center; padding: 0 0.5rem;">
+      <h3 style="color: var(--dorado, #e3c9a0); font-size: 2.2rem; margin: 0 0 0.5rem 0;">✂️ Hecho a mano con amor</h3>
+      <p style="font-size: 1.1rem; line-height: 1.4; margin: 0 0 0.8rem 0;">Cada faja es confeccionada personalmente por Edilsa, garantizando calidad, atención al detalle y el cariño que solo un trabajo artesanal puede ofrecer.</p>
+      <p style="font-size: 1.1rem; line-height: 1.4; margin: 0;">Más de 25 años de experiencia respaldan cada puntada, cada diseño, cada faja que llega a ti.</p>
+    </div>
+  </div>
+</section>
+
+  <section id="servicios" class="seccion">
+    <h2>Creamos fajas exclusivas</h2>
+    <p class="texto-centrado">Diseñadas con precisión, adaptadas a cada cuerpo y pensadas para brindar:</p>
+    <div class="servicios-lista">
+      <div class="servicio-item">Fajas postquirúrgicas especializadas</div>
+      <div class="servicio-item">Confección totalmente personalizada</div>
+      <div class="servicio-item">Diseños para piel sensible y procesos de cicatrización</div>
+      <div class="servicio-item">Ajustes para quemaduras y tratamientos</div>
+      <div class="servicio-item">Reparación y perfeccionamiento profesional</div>
+    </div>
+  </section>
+
+  <section id="testimonios" class="seccion">
+    <h2>Lo que dicen nuestras clientas</h2>
+    <div class="testimonios-grid">
+      <div class="testimonio-card">
+        <p>"Después de mi cesárea, la faja de Edilsa fue mi mejor aliada. Recuperé mi figura y mi confianza."</p>
+        <p class="cliente">— María G.</p>
+      </div>
+      <div class="testimonio-card">
+        <p>"Diseño impecable, materiales de primera. Uso mis fajas a diario y son una maravilla."</p>
+        <p class="cliente">— Ana L.</p>
+      </div>
+      <div class="testimonio-card">
+        <p>"La atención personalizada de Edilsa hace la diferencia. Me guió en todo el proceso."</p>
+        <p class="cliente">— Carmen R.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <h2>💬 Asistente Virtual EDI</h2>
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="chat-avatar">👩‍⚕️</div>
+        <div>
+          <h3 style="color: var(--marron-texto);">¡Hola! Soy EDI, tu asistente virtual</h3>
+          <p style="color: var(--texto-oscuro);">¿En qué puedo ayudarte hoy?</p>
+        </div>
+      </div>
+      <div class="chat-mensajes" id="chatMensajes">
+        <p><strong>EDI:</strong> ¡Bienvenida! Puedo responder tus dudas sobre fajas, postoperatorios, envíos y más.</p>
+      </div>
+      <div class="chat-control">
+        <input type="text" id="chatInput" placeholder="Escribe tu pregunta...">
+        <button onclick="enviarChat()">Enviar</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="seccion">
+    <div class="contacto-box">
+      <h3>Agenda tu asesoría personalizada</h3>
+      <div class="telefono">📞 +57 300 724 5058</div>
+      <p>📍 Barrio Lleras, Calle 1a #0-107 · Cúcuta</p>
+      <p>📧 <a href="mailto:FajasEdi@gmail.com">FajasEdi@gmail.com</a></p>
+    </div>
+  </section>
+</main>
+
+<div class="seccion-botones" style="margin: 3rem auto 1rem auto;">
+  <a href="https://wa.me/573007245058" class="btn-personalizado">📱 WhatsApp</a>
+  <a href="tel:+573007245058" class="btn-personalizado">📞 Llamar</a>
+  <a href="#" onclick="compartirSite(); return false;" class="btn-personalizado">📢 Compartir</a>
+  <a href="https://wa.me/573007245058?text=Hola,%20quiero%20una%20faja%20personalizada" class="btn-personalizado">💳 QUIERO UNA FAJA</a>
+  <a href="https://www.facebook.com/la.clinica.de.las.fajas.Edi" target="_blank" class="btn-personalizado btn-facebook">📘 Facebook</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-derechos">
+      © 2026 <span style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 16px;">La Clínica de Las Fajas</span> · Todos los derechos reservados
+    </div>
+    <div class="footer-credits">
+      <a href="https://wa.me/573244913371" target="_blank">Diseño NG</a>
+    </div>
+  </div>
+</footer>
+
+<section class="seccion-qr" id="qr">
+  <h2>📲 Escaneá y llevá el catálogo siempre con vos</h2>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://fajasedi.netlify.app" alt="QR de Fajas EDI" class="qr-img">
+  <p style="margin: 1rem 0;">Escaneá este código con la cámara de tu celular</p>
+  <button class="btn-imprimir" onclick="window.print()">🖨️ Imprimir QR</button>
+</section>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
+  hamburger.addEventListener('click', () => menu.classList.toggle('mostrar'));
+  document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => menu.classList.remove('mostrar')));
+
+  function compartirSite() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'FAJAS EDI',
+        text: 'La Clinica de Las Fajas - Fajas postquirúrgicas de alta confección',
+        url: window.location.href
+      }).catch(() => {
+        alert('Copia este enlace: ' + window.location.href);
+      });
+    } else {
+      alert('Comparte este enlace: ' + window.location.href);
+    }
+  }
+
+  // ===== CARRUSEL CON FAJAS PRIMERO =====
+  let slides = [];
+  let dots = [];
+  let slideIndex = 0;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const slidesContainer = document.querySelector('.carrusel-slides');
+    const dotsContainer = document.getElementById('carruselDots');
+    
+    slidesContainer.innerHTML = '';
+    dotsContainer.innerHTML = '';
+
+    // 📌 Números de las fajas (las que van PRIMERO)
+    let fajas = [17, 11, 32, 38, 35, 14, 13, 23, 24, 28, 31, 16, 12, 18, 20, 33, 21, 22];
+    
+    // 📌 Resto de números del 1 al 38 (sin repetir los de fajas)
+    let resto = [];
+    for (let i = 1; i <= 38; i++) {
+      if (!fajas.includes(i)) {
+        resto.push(i);
+      }
+    }
+
+    // 📌 Orden final: primero fajas, luego resto
+    let ordenFinal = fajas.concat(resto);
+
+    // 📌 Crear slides en ese orden
+    for (let idx = 0; idx < ordenFinal.length; idx++) {
+      let i = ordenFinal[idx];
+      
+      const slideDiv = document.createElement('div');
+      slideDiv.className = 'carrusel-item';
+      
+      const img = document.createElement('img');
+      img.src = `./Foto (${i}).jpeg`;
+      img.alt = `Diseño exclusivo ${i}`;
+      img.className = 'carrusel-img';
+      img.onerror = function() { 
+        this.src = `./foto (${i}).jpeg`;
+        this.onerror = function() { 
+          this.src = './portada.jpg'; 
+        };
+      };
+      
+      const caption = document.createElement('div');
+      caption.className = 'carrusel-caption';
+      caption.textContent = `Diseño exclusivo ${i} - Consulte disponibilidad`;
+      
+      slideDiv.appendChild(img);
+      slideDiv.appendChild(caption);
+      slidesContainer.appendChild(slideDiv);
+      
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      dot.setAttribute('onclick', `irASlide(${idx})`);
+      dotsContainer.appendChild(dot);
+    }
+    
+    slides = document.querySelectorAll('.carrusel-item');
+    dots = document.querySelectorAll('.dot');
+    
+    mostrarSlide(0);
+    
+    setInterval(() => {
+      cambiarSlide(1);
+    }, 4000);
+  });
+
+  function mostrarSlide(n) {
+    if (n >= slides.length) slideIndex = 0;
+    if (n < 0) slideIndex = slides.length - 1;
+    else slideIndex = n;
+    
+    document.querySelector('.carrusel-slides').style.transform = `translateX(-${slideIndex * 100}%)`;
+    
+    dots.forEach(dot => dot.classList.remove('active-dot'));
+    dots[slideIndex].classList.add('active-dot');
+  }
+
+  function cambiarSlide(direccion) {
+    let nuevoIndex = slideIndex + direccion;
+    if (nuevoIndex >= slides.length) nuevoIndex = 0;
+    if (nuevoIndex < 0) nuevoIndex = slides.length - 1;
+    mostrarSlide(nuevoIndex);
+  }
+
+  function irASlide(n) {
+    mostrarSlide(n);
+  }
+
+  // ===== CHAT =====
+  const chatMensajes = document.getElementById('chatMensajes');
+  const chatInput = document.getElementById('chatInput');
+
+  function agregarMensaje(quien, texto) {
+    const p = document.createElement('p');
+    p.innerHTML = `<strong>${quien}:</strong> ${texto}`;
+    chatMensajes.appendChild(p);
+    chatMensajes.scrollTop = chatMensajes.scrollHeight;
+  }
+
+  function enviarChat() {
+    const pregunta = chatInput.value.trim();
+    if (!pregunta) return;
+    agregarMensaje('Tú', pregunta);
+    chatInput.value = '';
+
+    setTimeout(() => {
+      let respuesta = '';
+      const p = pregunta.toLowerCase();
+      if (p.includes('hola') || p.includes('buenas')) respuesta = '¡Hola! Encantada de saludarte. ¿En qué puedo ayudarte?';
+      else if (p.includes('cesárea') || p.includes('cesarea')) respuesta = 'Para cesárea tenemos fajas postquirúrgicas con compresión media. Debes usarla de 4 a 6 semanas. ¿Quieres que te asesore?';
+      else if (p.includes('precio') || p.includes('cuesta')) respuesta = 'Nuestras fajas personalizadas desde $150.000. Escríbeme al WhatsApp para presupuesto exacto.';
+      else if (p.includes('envío') || p.includes('envios')) respuesta = 'Sí, enviamos a todo Colombia y Latinoamérica. El costo depende del país.';
+      else respuesta = 'Gracias por tu pregunta. Para más detalle, ¿me escribes por WhatsApp?';
+      agregarMensaje('EDI', respuesta);
+    }, 800);
+  }
+</script>
+
+</body>
+</html>

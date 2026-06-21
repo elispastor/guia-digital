@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Correcciones</title>
+  <style>
+    body { background: #f3f4f6; font-family: Arial, sans-serif; }
+    .campo { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; }
+    .boton { background: #5d3a1a; color: white; padding: 15px; border: none; border-radius: 5px; font-weight: bold; width: 100%; }
+  </style>
+</head>
+<body>
+<div style="max-width: 800px; margin: auto; padding: 20px;">
+  <div style="background: white; border-radius: 20px; padding: 20px;">
+    <h1 style="color: #e3c9a0; text-align: center;">📋 FORMULARIO DE CORRECCIONES</h1>
+    <form name="correcciones" method="POST" data-netlify="true" enctype="multipart/form-data">
+      <input type="hidden" name="form-name" value="correcciones">
+      
+      <label>Nombre completo*</label>
+      <input class="campo" type="text" name="nombre" required>
+      
+      <label>WhatsApp*</label>
+      <input class="campo" type="tel" name="telefono" required>
+      
+      <label>Correo electrónico*</label>
+      <input class="campo" type="email" name="email" required>
+      
+      <label>Nombre del negocio*</label>
+      <input class="campo" type="text" name="negocio" required>
+      
+      <label>URL de tu tarjeta digital</label>
+      <input class="campo" type="url" name="url_sitio" placeholder="https://tusitio.netlify.app">
+      
+      <label>Tipo de cambio*</label>
+      <select class="campo" name="tipo_cambio" required>
+        <option value="">Selecciona</option>
+        <option value="texto">📝 Cambiar texto</option>
+        <option value="imagen">🖼️ Cambiar imagen</option>
+        <option value="precio">💰 Actualizar precio</option>
+        <option value="seccion">➕ Agregar sección</option>
+        <option value="color">🎨 Cambiar color</option>
+        <option value="otro">🔧 Otro</option>
+      </select>
+      
+      <label>Describe el cambio*</label>
+      <textarea class="campo" name="descripcion" rows="4" required></textarea>
+      
+      <label>Adjunta imagen (opcional)</label>
+      <input class="campo" type="file" name="adjunto" accept="image/*,.pdf">
+      
+      <button class="boton" type="submit">ENVIAR SOLICITUD</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

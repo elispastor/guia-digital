@@ -1,941 +1,551 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5949598980404445"
-     crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Guía Digital de Cúcuta | Directorio de negocios</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{background:#0b1c3a;font-family:'Segoe UI',Arial,sans-serif;color:white;}
-        .container{max-width:1200px;margin:0 auto;padding:20px;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repuestos Castillo · Taller y Autorepuestos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+    }
 
-        .carrusel{position:relative;width:100%;margin:30px 0;overflow:hidden;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.3);background:#000;}
-        .carrusel-inner{display:flex;transition:transform 0.5s ease;}
-        .carrusel-slide{min-width:100%;flex-shrink:0;}
-        .carrusel-slide img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;}
-        .carrusel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);color:white;border:none;font-size:2rem;padding:0 15px;cursor:pointer;z-index:10;border-radius:30px;}
-        .carrusel-btn.prev{left:10px;}
-        .carrusel-btn.next{right:10px;}
-        .carrusel-indicators{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:8px;background:rgba(0,0,0,0.5);padding:5px 12px;border-radius:30px;z-index:10;}
-        .indicator{width:10px;height:10px;background:rgba(255,255,255,0.5);border-radius:50%;cursor:pointer;}
-        .indicator.active{background:#fbbf24;}
+    :root {
+      --rojo: #c0392b;
+      --gris-oscuro: #2c3e50;
+      --gris-claro: #ecf0f1;
+      --amarillo: #f1c40f;
+    }
 
-        .card{background:#112b4f;padding:25px;border-radius:20px;border-left:5px solid #fbbf24;margin-bottom:20px;}
-        .taller-card{background:#112b4f;border-radius:20px;padding:20px;margin-bottom:20px;transition:0.3s;border:1px solid #1e3a5f;}
-        .taller-card:hover{transform:translateY(-5px);background:#1e3a5f;border-color:#fbbf24;}
-        .btn{padding:10px 20px;border-radius:30px;font-weight:bold;display:inline-block;font-size:0.9rem;transition:0.2s;text-align:center;}
-        .btn-wsp{background:#25d366;color:white;}
-        .btn-sitio{background:#3b82f6;color:white;border:none;cursor:pointer;}
-        .btn-sitio:active,.btn-wsp:active{transform:scale(0.96);}
-        .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25d366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2em;text-decoration:none;color:white;border:2px solid #fbbf24;z-index:1000;}
-        .btn-categoria{background:#112b4f;padding:8px 16px;border-radius:30px;color:white;cursor:pointer;border:none;font-size:0.8rem;transition:0.2s;}
-        .btn-categoria.activo{background:#fbbf24;color:#0b1c3a;font-weight:bold;}
-        .filtros-container{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px;}
-        .btn-loading{opacity:0.6;pointer-events:none;position:relative;}
-        .btn-loading::after{content:"⏳";font-size:1rem;margin-left:8px;animation:parpadeo 0.8s infinite;}
-        @keyframes parpadeo{0%,100%{opacity:1;}50%{opacity:0.3;}}
-        @media (max-width: 768px) {
-            .container{padding:12px;}
-            .carrusel-slide img{height:200px; aspect-ratio:auto; object-fit:cover;}
-            #inicio img{max-height:200px; object-fit:cover; width:100%;}
-            .btn{padding:12px; font-size:1rem; width:100%;}
-            .taller-card .flex{flex-direction:column; gap:12px;}
-            .btn-sitio,.btn-wsp{text-align:center;}
-        }
-        /* FIX TOTAL - NADA BLANCO */
-* [class*="portada"], h1:empty, header::before, body::before,
-header, nav::before, nav::after, .header {
-  display: none !important;
-  background: none !important;
-  height: 0 !important;
-}
+    body {
+      background: #f5f5f5;
+    }
 
-img[alt*="Guía"], img[src*="logo-guia"] {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-    </style>
-        </style>
-<link rel="icon" type="image/png" sizes="32x32" href="https://guia-digital.com/pulpo-icono.png">
-<link rel="icon" type="image/png" sizes="192x192" href="https://guia-digital.com/pulpo-icono.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://guia-digital.com/pulpo-icono.png">
-<body class>
+    header {
+      background: linear-gradient(135deg, var(--rojo), #a8231a);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--amarillo);
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu li a:hover {
+      color: var(--amarillo);
+    }
+
+    .hamburguesa {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 3px solid var(--rojo);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-imagen {
+      min-height: 350px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      /* ✅ AHORA SÍ: la imagen del carro de Castillo */
+      background-image: url('autocastillo.jpg');
+    }
+
+    .hero-content {
+      padding: 2rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      color: var(--rojo);
+      line-height: 1.2;
+    }
+
+    .hero-content h1 small {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--gris-oscuro);
+      font-weight: 300;
+    }
+
+    .badge-taller {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .servicios-destacados {
+      background: #f0f0f0;
+      padding: 1rem;
+      border-radius: 15px;
+      margin: 1rem 0;
+      border-left: 6px solid var(--rojo);
+    }
+
+    .direccion {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin: 1rem 0;
+    }
+
+    .botones {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .btn-wsp {
+      background: #25D366;
+      color: white;
+      padding: 0.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-llamada {
+      background: var(--rojo);
+      color: white;
+      padding: 0.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-compartir {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 2px solid var(--rojo);
+    }
+
+    .qr-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 30px;
+      border: 3px solid var(--rojo);
+      text-align: center;
+    }
+
+    .qr-container img {
+      max-width: 200px;
+      border-radius: 20px;
+      border: 4px solid var(--amarillo);
+    }
+
+    .filosofia {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .filosofia-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 20px;
+      text-align: center;
+      border-top: 5px solid var(--rojo);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .filosofia-item h3 {
+      color: var(--rojo);
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .servicios-grid {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .servicio-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      border-bottom: 4px solid var(--rojo);
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .servicio-card h3 {
+      color: var(--rojo);
+      margin-bottom: 1rem;
+    }
+
+    .contacto-box {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      border: 2px solid var(--rojo);
+      text-align: center;
+    }
+
+    .telefonos-destacados {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .telefono-item {
+      background: var(--rojo);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .servicio-domicilio {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-weight: bold;
+      display: inline-block;
+      margin: 1rem 0;
+    }
+
+    footer {
+      background: var(--gris-oscuro);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    #planes-page {
+      display: none;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 30px;
+      border: 3px solid var(--rojo);
+    }
+
+    #planes-page:target {
+      display: block;
+    }
+
+    .planes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .plan-card {
+      background: #f9f9f9;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      border-bottom: 5px solid;
+    }
+
+    .plan-basico { border-bottom-color: #3498db; }
+    .plan-pro { border-bottom-color: #e67e22; }
+    .plan-elite { border-bottom-color: var(--rojo); }
+
+    .precio {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 1rem 0;
+    }
+
+    .comision {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.5rem;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin: 1rem 0;
+    }
+
+    .beneficios {
+      list-style: none;
+      text-align: left;
+    }
+
+    .beneficios li {
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .beneficios li::before {
+      content: "✅";
+    }
+
+    .pool-badge {
+      background: var(--rojo);
+      color: white;
+      padding: 0.5rem;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero, .filosofia, .servicios-grid, .planes-grid {
+        grid-template-columns: 1fr;
+      }
+      .hamburguesa {
+        display: block;
+      }
+      .menu {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--rojo);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+      }
+      .menu.mostrar {
+        display: flex;
+      }
+      .telefonos-destacados {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
-<body class>
-<a href="https://wa.me/573244913371" class="whatsapp-float" target="_blank">💬</a>
+<body>
 
-<div class="container">
+<header>
+  <div class="nav-container">
+    <div class="logo">REPUESTOS <span>CASTILLO</span></div>
+    <button class="hamburguesa" id="menuBtn">☰</button>
+    <ul class="menu" id="menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#filosofia">Filosofía</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#qr">QR</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#planes-page" style="background: var(--amarillo); color: var(--rojo); padding: 0.5rem 1rem; border-radius: 30px;">📱 Quiero mi tarjeta</a></li>
+    </ul>
+  </div>
+</header>
 
-    <!-- MENÚ PRINCIPAL -->
-    <nav class="bg-[#112b4f] border-b-4 border-[#fbbf24] py-4 px-6 mb-8 flex flex-wrap items-center justify-between sticky top-0 z-50 rounded-2xl">
-        <div class="flex flex-col">
-            <div class="text-white text-2xl font-bold tracking-wide">GUÍA DIGITAL</div>
-            <div class="text-[#fbbf24] text-xs font-semibold -mt-1">Cúcuta</div>
-        </div>
-        <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
-            <a href="#inicio" class="hover:text-[#fbbf24]">INICIO</a>
-            <a href="#directorio" class="hover:text-[#fbbf24]">DIRECTORIO</a>
-            <a href="#planes" class="hover:text-[#fbbf24]">PLANES</a>
-            <a href="#contacto" class="hover:text-[#fbbf24]">CONTACTO</a>
-            <button onclick="compartirSitio()" class="hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white text-sm font-semibold">📤 COMPARTIR</button>
-        </div>
-        <button id="menu-btn" class="md:hidden text-2xl text-[#fbbf24]"><i class="fas fa-bars"></i></button>
-    </nav>
+<main id="inicio">
+  <section class="hero">
+    <!-- ✅ AHORA SÍ: la imagen del carro de Castillo -->
+    <div class="hero-imagen"></div>
+    <div class="hero-content">
+      <span class="badge-taller">🏆 TALLER Y AUTOREPUESTOS</span>
+      <h1>REPUESTOS <small>CASTILLO</small></h1>
+      
+      <div class="servicios-destacados">
+        <strong>🔧 Servicio a domicilio</strong><br>
+        • Venta de repuestos para toda clase de vehículos<br>
+        • Mantenimiento preventivo y correctivo
+      </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-[#112b4f] p-4 mb-4 rounded-2xl flex-col gap-3 border-l-4 border-[#fbbf24]">
-        <a href="#inicio" class="block py-2 hover:text-[#fbbf24]">INICIO</a>
-        <a href="#directorio" class="block py-2 hover:text-[#fbbf24]">DIRECTORIO</a>
-        <a href="#planes" class="block py-2 hover:text-[#fbbf24]">PLANES</a>
-        <a href="#contacto" class="block py-2 hover:text-[#fbbf24]">CONTACTO</a>
-        <button onclick="compartirSitio()" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">📤 COMPARTIR</button>
-<button onclick="instalarPulpito(); return false;" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">🐙 GUARDAR PULPITO</button>    </div>
-    
+      <div class="direccion">
+        📍 <strong>AV. SA N° 0-50</strong><br>
+        La Merced · Cúcuta, Colombia
+      </div>
 
-    <!-- LOGO GRANDE COMO PORTADA -->
-<!-- LOGO GRANDE COMO PORTADA -->
-<div class="text-center my-6">
-    <div class="inline-block p-4 rounded-xl" style="background: rgba(255, 255, 200, 0.15); border: 2px solid rgba(255, 255, 150, 0.5);">
-        <img src="logo-guia-digital.png" alt="Guía Digital" class="w-64 h-auto mx-auto md:w-80">
+      <div class="botones">
+        <a href="https://wa.me/573166227219?text=Hola%20Repuestos%20Castillo" class="btn-wsp">📱 WhatsApp 316 622 7219</a>
+        <a href="https://wa.me/573209641869?text=Hola%20Repuestos%20Castillo" class="btn-wsp">📱 WhatsApp 320 964 1869</a>
+        <a href="tel:+573166227219" class="btn-llamada">📞 Llamar ahora</a>
+        <a href="https://wa.me/?text=¡Mira%20lo%20que%20encontré!%20Repuestos%20Castillo%20👉%20https://repuestoscastillo.netlify.app" class="btn-compartir">🎁 Compartir con un amigo</a>
+      </div>
     </div>
-    <div class="mt-2 text-[#fbbf24] text-lg md:text-xl font-semibold italic tracking-wide">
-        CONEXIÓN TOTAL
-    </div>
-        <div class="text-center my-4 px-4">
-        <p class="text-2xl md:text-3xl font-bold italic text-[#fbbf24] drop-shadow-lg">
-            "En Cúcuta, todos los negocios están aquí"
-        </p>
-        <p class="text-sm text-gray-300 mt-2">⭐ Bienvenid@s a la red de comercios que ya HACEN PARTE de Guía-Digital.com</p>
-    </div>
-</div>
-    <div class="text-center my-8 px-4">
-        <h2 class="text-3xl md:text-4xl font-bold italic text-white drop-shadow-lg">
-            Directorio de negocios, talleres y servicios
-        </h2>
+  </section>
+</main>
+
+<section id="filosofia" class="filosofia">
+  <div class="filosofia-item">
+    <h3>🔧 Misión</h3>
+    <p>Ofrecer repuestos de calidad y servicio mecánico honesto, con atención rápida y precios justos.</p>
+  </div>
+  <div class="filosofia-item">
+    <h3>🔩 Visión</h3>
+    <p>Ser el taller y repuestos de confianza para los conductores de Cúcuta y su área metropolitana.</p>
+  </div>
+  <div class="filosofia-item">
+    <h3>⚙️ Valores</h3>
+    <p>Honestidad, rapidez, garantía y servicio a domicilio.</p>
+  </div>
+</section>
+
+<section id="servicios" class="servicios-grid">
+  <div class="servicio-card">
+    <h3>🔧 Mantenimiento</h3>
+    <p>Preventivo y correctivo para todas las marcas.</p>
+  </div>
+  <div class="servicio-card">
+    <h3>⚙️ Repuestos</h3>
+    <p>Venta de repuestos originales y alternativos.</p>
+  </div>
+  <div class="servicio-card">
+    <h3>🛞 Domicilio</h3>
+    <p>Servicio a domicilio rápido y seguro.</p>
+  </div>
+</section>
+
+<section id="qr" class="qr-section">
+  <div class="qr-container">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://repuestoscastillo.netlify.app" alt="Código QR">
+    <h3 style="color: var(--rojo); margin-top: 1rem;">📲 ESCANEA Y COMPARTE</h3>
+    <p>Guarda este código QR para ver la tarjeta digital al instante.</p>
+  </div>
+</section>
+
+<section id="contacto" class="contacto-box">
+  <h2 style="color: var(--rojo);">📞 Contáctenos</h2>
+  <div class="telefonos-destacados">
+    <div class="telefono-item">📱 316 622 7219</div>
+    <div class="telefono-item">📱 320 964 1869</div>
+    <div class="telefono-item">📞 (607) 548 7859</div>
+  </div>
+  <p>📍 AV. SA N° 0-50, La Merced · Cúcuta</p>
+  <div class="servicio-domicilio">
+    🚚 SERVICIO A DOMICILIO
+  </div>
+</section>
+
+<section id="planes-page">
+  <h2 style="color: var(--rojo); text-align: center;">📊 PLANES TARJETA DIGITAL</h2>
+  <div class="planes-grid">
+    <div class="plan-card plan-basico">
+      <h3>BÁSICO</h3>
+      <div class="precio">$25.000</div>
+      <div class="comision">20% · $5.000 x referido</div>
+      <ul class="beneficios">
+        <li>Tarjeta digital profesional</li>
+        <li>Botón WhatsApp</li>
+        <li>Misión/Visión/Valores</li>
+        <li>Menú de servicios</li>
+      </ul>
     </div>
 
-   <!-- PULPITO PARLANTE (SIN DEPENDENCIAS EXTERNAS) -->
-<div class="text-center my-6" id="pulpitoContainer">
-    <img src="pulpito.png" id="pulpitoImg" alt="Pulpito bienvenida" class="w-56 h-56 mx-auto cursor-pointer transition duration-300 hover:scale-110 animate-float">
-    <div id="mensajePulpito" class="mt-3 text-white text-lg md:text-xl font-semibold"></div>
-    <p class="text-xs text-gray-400 mt-1">✨ Haz clic en el pulpito para saludar ✨</p>
-</div>
+    <div class="plan-card plan-pro">
+      <h3>PRO</h3>
+      <div class="precio">$50.000</div>
+      <div class="comision">30% · $15.000 x referido</div>
+      <ul class="beneficios">
+        <li>Todo lo del Básico</li>
+        <li>Código QR personalizado</li>
+        <li>Botón compartir</li>
+        <li>Diseño mejorado</li>
+      </ul>
+    </div>
 
-<style>
-    @keyframes flotar {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-8px); }
-        100% { transform: translateY(0px); }
-    }
-    .animate-float {
-        animation: flotar 3s ease-in-out infinite;
-    }
-</style>
+    <div class="plan-card plan-elite">
+      <h3>ÉLITE</h3>
+      <div class="precio">$100.000</div>
+      <div class="comision">40% · $40.000 x referido</div>
+      <ul class="beneficios">
+        <li>Todo lo del Pro</li>
+        <li>Posicionamiento SEO</li>
+        <li>Participación en POOL anual</li>
+      </ul>
+      <div class="pool-badge">
+        🏆 POOL ANUAL: 10% de todas las ventas repartido entre ÉLITES
+      </div>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 2rem;">📲 Para contratar, haz clic en "Quiero mi tarjeta" en el menú</p>
+</section>
+
+<footer>
+  <p>&copy; 2026 Repuestos Castillo · Todos los derechos reservados</p>
+  <p>📍 AV. SA N° 0-50, La Merced · Cúcuta</p>
+  <p>📱 316 622 7219 · 320 964 1869 · 📞 (607) 548 7859</p>
+</footer>
 
 <script>
-       // Saludo según la hora
-    function mostrarSaludo() {
-        const ahora = new Date();
-        const hora = ahora.getHours();
-        let saludo = "";
-        if (hora < 12) saludo = "🌞 Buenos días";
-        else if (hora < 19) saludo = "☀️ Buenas tardes";
-        else saludo = "🌙 Buenas noches";
-        document.getElementById("mensajePulpito").innerHTML = `🐙 ${saludo}, ¡"puuul piiii tooo" te da la bienvenida a la Guía Digital de Cúcuta! 🔍`;
-    }
-    mostrarSaludo();
-
-    // Hacer que hable al hacer clic (con voz colombiana)
-    document.getElementById('pulpitoImg').addEventListener('click', function() {
-const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión total para todos los negocios de nuestra amada ciudad de Cúcuta. ¡Bienvenido, veci!";        const voz = new SpeechSynthesisUtterance(mensaje);
-        
-        // Forzar español de Colombia (si existe)
-        voz.lang = 'es-CO';
-        
-        // Velocidad más lenta para que se entienda
-        voz.rate = 0.8; 
-        
-        // Intentar seleccionar una voz colombiana si está disponible
-        window.speechSynthesis.onvoiceschanged = () => {
-            const voces = window.speechSynthesis.getVoices();
-            const vozColombiana = voces.find(voz => voz.lang === 'es-CO');
-            if (vozColombiana) voz.voice = vozColombiana;
-            window.speechSynthesis.speak(voz);
-        };
-        
-        // Si no hay voces cargadas, igual intenta
-        window.speechSynthesis.speak(voz);
-    });
+  const menuBtn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  menuBtn.addEventListener('click', () => menu.classList.toggle('mostrar'));
 </script>
 
-    <!-- BUSCADOR DE LA GUÍA -->
-    <div class="card mb-6 text-center">
-        <h2 class="text-3xl font-bold text-[#fbbf24] mb-2">🔍 ENCUENTRA TODO EN CÚCUTA</h2>
-        <p class="text-gray-300 mb-4">Busca negocios, talleres, restaurantes y servicios en nuestra guía.</p>
-        <div class="max-w-2xl mx-auto">
-            <div class="flex flex-col sm:flex-row gap-2">
-                <input type="text" id="buscadorLocal" placeholder="Ej: taller, ferretería, restaurante, hotel..." 
-                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
-                <button id="btnBuscarLocal" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
-                    <i class="fas fa-search mr-2"></i> Buscar en la Guía
-                </button>
-            </div>
-            <p class="text-xs text-gray-400 mt-2">🔎 Escribe lo que buscas y te mostraremos los negocios relacionados.</p>
-        </div>
-        <div id="resultadosBusqueda" class="mt-4 hidden"></div>
-    </div>
-
-    <!-- BUSCADOR DE GOOGLE -->
-    <div class="card mb-6 text-center" style="border-left-color: #34B7F1;">
-        <h2 class="text-2xl font-bold text-[#34B7F1] mb-2">🌐 ¿NO ENCUENTRAS LO QUE BUSCAS?</h2>
-        <p class="text-gray-300 mb-3">Búscalo directamente en Google. Se abrirá una nueva pestaña.</p>
-        <div class="max-w-2xl mx-auto">
-            <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
-                <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería..." 
-                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
-                <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
-                    <i class="fas fa-search mr-2"></i> Buscar en Google
-                </button>
-            </form>
-            <p class="text-xs text-gray-400 mt-2">🔎 Al buscar, se abrirá una nueva pestaña con los resultados de Google.</p>
-        </div>
-    </div>
-
-    <!-- CARRUSEL -->
-    <div class="carrusel" id="carrusel">
-       <div class="carrusel-inner" id="carruselInner">
-    <div class="carrusel-slide">
-        <div style="width:100%; height:100%; background: linear-gradient(135deg, #6a3093, #a044ff); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; font-family: 'Segoe UI', sans-serif;">
-            <i class="fas fa-tshirt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-            <h2 style="font-size: 1.8rem; font-weight: bold; margin: 0;">Fajas Edi</h2>
-            <p style="font-size: 1rem; margin-top: 0.5rem;">Reducción · Moldeado · Fajas Postquirúrgicas</p>
-            <p style="font-size: 0.8rem; margin-top: 1rem;">¡Escanea y conoce la calidad que transforma!</p>
-            <i class="fas fa-qrcode" style="font-size: 2rem; margin-top: 0.5rem; color: #fbbf24;"></i>
-        </div>
-    </div>
-    <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Hotel'"></div>
-    <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=TOYOMACK'"></div>
-    <div class="carrusel-slide"><img src="https://restaurantlamanodedios.netlify.app/portada.jpg" alt="Restaurante" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Restaurante'"></div>
-    <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Motores'"></div>
-<div class="carrusel-slide"><img src="https://guia-digital.com/portada-principal-luis.jpg" alt="Acarreos Luis Díaz" onerror="this.src='https://placehold.co/1200x675/1e3c72/fbbf24?text=Luis+Diaz'"></div></div>
-        <button class="carrusel-btn prev" id="prevBtn">❮</button>
-        <button class="carrusel-btn next" id="nextBtn">❯</button>
-        <div class="carrusel-indicators" id="indicadores"></div>
-    </div>
-
-    <div class="card mb-6 text-center">
-        <h2 class="text-3xl font-bold text-[#fbbf24] mb-2">📍 GUÍA DE TODOS LOS NEGOCIOS DE CÚCUTA</h2>
-        <p class="text-xl text-amber-300 mb-2">✨ EN CONSTRUCCIÓN ✨</p>
-        <p class="text-gray-300 mb-4">Mientras crecemos, todo lo que quieras encontrar está aquí, desde Google, desde esta guía.</p>
-        <div class="max-w-2xl mx-auto">
-            <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
-                <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería, empleo..." 
-                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
-                <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
-                    <i class="fas fa-search mr-2"></i> Buscar en Google
-                </button>
-            </form>
-            <p class="text-xs text-gray-400 mt-2">🔎 Busca cualquier negocio, servicio o empleo. Se abrirá una nueva pestaña.</p>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2 class="text-2xl font-bold text-[#fbbf24] mb-2">🎯 ¿Qué es la Guía Digital de Cúcuta?</h2>
-        <p>El directorio más completo de talleres, tiendas y servicios de Cúcuta. Cada negocio tiene su propia tarjeta digital con WhatsApp, ubicación y más.</p>
-        <p class="mt-2"><strong>💡 ¿Cómo puedes ganar?</strong> Refiere otros negocios y cuando ellos se unan, tú ganas una comisión. Pregúntanos cómo.</p>
-        <p class="mt-2 text-sm text-gray-300">✅ Todos los negocios aquí listados ya tienen su tarjeta digital activa.</p>
-    </div>
-
-    <!-- CHATBOT DE EMPLEO -->
-    <div class="bg-black/40 rounded-xl p-5 mb-6">
-        <div class="flex items-center gap-2 mb-3">
-            <i class="fas fa-robot text-3xl text-amber-400"></i>
-            <h3 class="text-xl font-bold text-white">🤖 Asistente de Empleo</h3>
-        </div>
-        <div id="chatEmpleo" class="space-y-3">
-            <div id="chatMensajes" class="space-y-2 mb-3 max-h-80 overflow-y-auto">
-                <div class="bg-amber-400/20 p-3 rounded-xl text-sm">👋 ¡Hola! Soy tu asistente. Te ayudaré a encontrar empleo en Cúcuta.</div>
-            </div>
-            <div id="chatPregunta" class="bg-black/50 p-3 rounded-xl">
-                <p class="text-amber-400 font-bold mb-2" id="preguntaTexto">¿Qué tipo de empleo buscas?</p>
-                <div id="preguntaOpciones" class="flex flex-wrap gap-2">
-                    <button onclick="respuestaChat('tiempo_completo')" class="btn-sitio text-sm py-2 px-4 rounded-full">⏱️ Tiempo completo</button>
-                    <button onclick="respuestaChat('medio_tiempo')" class="btn-sitio text-sm py-2 px-4 rounded-full">🕒 Medio tiempo</button>
-                    <button onclick="respuestaChat('temporal')" class="btn-sitio text-sm py-2 px-4 rounded-full">📅 Temporal</button>
-                    <button onclick="respuestaChat('indistinto')" class="btn-sitio text-sm py-2 px-4 rounded-full">🔧 Indistinto</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-        <div class="card text-center" style="border-left-color: #fbbf24;">
-        <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
-            <span class="bg-amber-400 text-black px-3 py-1 rounded-full text-sm font-bold">🔥 OPORTUNIDAD LABORAL 🔥</span>
-            <span class="text-xs text-gray-300">NGE - Nueva Generación Emprendedora</span>
-        </div>
-        <h2 class="text-3xl font-bold text-amber-400 mb-2">🚀 ÚNETE AL EQUIPO NGE</h2>
-        <p class="text-gray-300 mb-4">Sé parte de la Evolución digital en Cúcuta. Trabaja con nosotros impulsando la Guía Digital.</p>
-        
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
-            <!-- IMPULSADOR -->
-            <div>
-                <div class="bg-black/30 p-5 rounded-xl text-left">
-                    <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
-                    <h3 class="text-xl font-bold text-white">💪 IMPULSADOR(A) DIGITAL</h3>
-                    <button onclick="document.getElementById('formImpulsador').classList.toggle('hidden')" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme como Impulsador(a)</button>
-                </div>
-                <div id="formImpulsador" class="hidden mt-4 p-5 bg-black/50 rounded-xl">
-                    <form id="formImpulsadorForm">
-                        <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
-                        <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
-                        <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3"></textarea>
-                        <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
-                    </form>
-                </div>
-            </div>
-            <!-- DISEÑADOR -->
-            <div>
-                <div class="bg-black/30 p-5 rounded-xl text-left">
-                    <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
-                    <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
-                    <button onclick="document.getElementById('formDisenador').classList.toggle('hidden')" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme como Diseñador(a)</button>
-                </div>
-                <div id="formDisenador" class="hidden mt-4 p-5 bg-black/50 rounded-xl">
-                    <form>
-                        <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
-                        <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
-                        <textarea name="conocimientos" rows="2" placeholder="¿Qué herramientas o lenguajes conoces?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3"></textarea>
-                        <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Manejar envío de formularios (puedes cambiarlo a correo después)
-        document.getElementById('formImpulsadorForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Postulación enviada. Te contactaremos pronto.');
-            this.reset();
-            document.getElementById('formImpulsador').classList.add('hidden');
-        });
-    </script>
-        <h2 class="text-3xl font-bold text-[#34B7F1] text-center mb-2">💼 BOLSA DE EMPLEO</h2>
-        <p class="text-center text-gray-300 mb-4">Encuentra trabajo en los principales portales y postúlate a ofertas locales.</p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-            <a href="https://www.computrabajo.com.co/trabajo-en-cucuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fas fa-briefcase"></i> Computrabajo</a>
-            <a href="https://co.indeed.com/ofertas?l=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fas fa-search"></i> Indeed</a>
-            <a href="https://www.linkedin.com/jobs/search/?location=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        </div>
-
-        <div class="space-y-4 mb-6">
-            <h3 class="text-xl font-semibold text-white border-l-4 border-[#34B7F1] pl-3">📢 OFERTA LABORAL REAL</h3>
-            <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
-                <h4 class="text-lg font-bold text-white">Tapicero</h4>
-                <p class="text-sm text-gray-300">📍 Muebles RQ · Cúcuta (Afiliado a la Guía)</p>
-                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
-                    <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
-                    <span><i class="fas fa-calendar-alt"></i> Salario: A convenir</span>
-                </div>
-                <button onclick="abrirFormularioOferta('Tapicero', 'Muebles RQ')" class="btn-primary mt-3 py-2 px-4 rounded-full text-sm font-bold w-full sm:w-auto">📋 Aplicar a esta oferta</button>
-            </div>
-        </div>
-
-        <div id="formularioOferta" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-amber-400">📋 Aplicar a oferta laboral</h3>
-                <button onclick="cerrarFormularioOferta()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-            </div>
-            <form id="formOferta" class="space-y-3">
-                <input type="text" id="ofertaNombre" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Oferta">
-                <input type="text" id="ofertaEmpresa" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Empresa">
-                <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <textarea name="experiencia" rows="2" placeholder="Cuéntanos tu experiencia" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
-                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar aplicación</button>
-            </form>
-            <p class="text-xs text-gray-400 mt-2">📢 Tu solicitud será enviada al empleador.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6 mt-6 pt-4 border-t border-gray-700">
-            <div class="bg-gradient-to-r from-blue-900/30 to-blue-800/30 p-5 rounded-xl text-center border border-blue-500/30">
-                <i class="fas fa-store text-5xl text-blue-400 mb-3"></i>
-                <h3 class="text-2xl font-bold text-white">🏪 ¿TIENES UN LOCAL?</h3>
-                <button onclick="abrirFormularioLocal()" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">📢 Quiero ampliar mi negocio</button>
-            </div>
-            <div class="bg-gradient-to-r from-purple-900/30 to-purple-800/30 p-5 rounded-xl text-center border border-purple-500/30">
-                <i class="fas fa-chart-line text-5xl text-purple-400 mb-3"></i>
-                <h3 class="text-2xl font-bold text-white">📊 ¿TIENES SEGUIDORES?</h3>
-                <button onclick="abrirFormularioInfluencer()" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">🚀 Quiero generar ingresos</button>
-            </div>
-        </div>
-
-        <div id="formularioLocal" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-amber-400">📋 Amplía tu negocio</h3>
-                <button onclick="cerrarFormulario('local')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-            </div>
-            <form id="formLocal" class="space-y-3">
-                <input type="text" name="nombre" placeholder="Nombre del local" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="text" name="direccion" placeholder="Dirección" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <textarea name="mensaje" rows="2" placeholder="Cuéntanos sobre tu negocio" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
-                <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar solicitud</button>
-            </form>
-        </div>
-
-        <div id="formularioInfluencer" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-amber-400">📊 Genera ingresos con NGE</h3>
-                <button onclick="cerrarFormulario('influencer')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-            </div>
-            <form id="formInfluencer" class="space-y-3">
-                <input type="text" name="nombre" placeholder="Tu nombre" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="text" name="redes" placeholder="Tus redes sociales" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="text" name="seguidores" placeholder="Número de seguidores" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">🚀 Quiero generar ingresos</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- FORMULARIO IMPULSADOR -->
-    <div id="formularioImpulsador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Impulsador(a)</h3>
-            <button onclick="cerrarFormulario('impulsador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-        </div>
-        <form id="formImpulsador" class="space-y-3">
-            <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-            <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-            <input type="text" name="experiencia" placeholder="¿Tienes experiencia en ventas o promoción?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-            <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
-            <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
-        </form>
-    </div>
-
-    <!-- FORMULARIO DISEÑADOR -->
-    <div id="formularioDisenador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Diseñador(a) Web</h3>
-            <button onclick="cerrarFormulario('disenador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-        </div>
-        <form id="formDisenador" class="space-y-3">
-            <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-            <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
-            <input type="text" name="portafolio" placeholder="Enlace a tu portafolio o GitHub (opcional)" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white">
-            <textarea name="conocimientos" rows="2" placeholder="¿Qué herramientas o lenguajes conoces? (HTML, CSS, etc.)" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
-            <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
-        </form>
-    </div>
-
-    <!-- FILTROS Y DIRECTORIO -->
-    <div class="filtros-container" id="filtros"></div>
-
-    <div id="directorio" class="mb-8">
-        <h2 class="text-3xl font-bold text-[#fbbf24] mb-4 text-center">📋 DIRECTORIO POR CATEGORÍA</h2>
-        <div id="lista-negocios" class="grid md:grid-cols-2 gap-6"></div>
-    </div>
-
-   <!-- PLANES -->
-<div id="planes" class="card">
-    <h2 class="text-2xl font-bold text-[#fbbf24] text-center mb-4">📊 PLANES PARA TU NEGOCIO</h2>
-    <div class="grid md:grid-cols-4 gap-4 text-center">
-        <div class="bg-black/30 p-3 rounded-xl">
-            <strong class="text-[#fbbf24]">Élite-Plus</strong><br>
-            $200.000 COP <span class="text-gray-400 text-sm">(~50 USD)</span>
-        </div>
-        <div class="bg-black/30 p-3 rounded-xl">
-            <strong class="text-[#fbbf24]">Élite</strong><br>
-            $100.000 COP <span class="text-gray-400 text-sm">(~25 USD)</span>
-        </div>
-        <div class="bg-black/30 p-3 rounded-xl">
-            <strong class="text-[#fbbf24]">Pro</strong><br>
-            $50.000 COP <span class="text-gray-400 text-sm">(~12 USD)</span>
-        </div>
-        <div class="bg-black/30 p-3 rounded-xl">
-            <strong class="text-[#fbbf24]">Básico</strong><br>
-            $25.000 COP <span class="text-gray-400 text-sm">(~6 USD)</span>
-        </div>
-    </div>
-        
-    </div>
-
-<script>
-    function mostrarInstruccionesPago() {
-        document.getElementById("instruccionesPago").classList.remove("hidden");
-        document.getElementById("instruccionesPago").scrollIntoView({ behavior: 'smooth' });
-    }
-    function cerrarInstruccionesPago() {
-        document.getElementById("instruccionesPago").classList.add("hidden");
-    }
-</script>
-</div>
-    <!-- CONTACTO Y QR -->
-    <div id="contacto" class="card text-center">
-        <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
-        <div class="flex justify-center gap-4 my-4 flex-wrap">
-            <a href="https://wa.me/573244913371" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
-            <button onclick="compartirSitio()" class="btn" style="background:#3b82f6; color:white;">📤 Compartir guía</button>
-        </div>
-        <!-- BOTÓN ACTIVAR PLAN Y SECCIÓN DE INSTRUCCIONES -->
-    <div class="text-center mt-6">
-        <button onclick="mostrarInstruccionesPago()" class="bg-[#fbbf24] text-[#0b1c3a] font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:scale-105 transition">💳 ACTIVAR PLAN</button>
-    </div>
-
-    <div id="instruccionesPago" class="mt-6 p-5 bg-black/50 rounded-xl hidden">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold text-[#fbbf24]">📋 ACTIVAR TU TARJETA EN LA GUÍA</h3>
-            <button onclick="cerrarInstruccionesPago()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
-        </div>
-        <div class="space-y-3">
-            <p>🔹 <strong>1. Paga por Nequi al número:</strong> <span class="text-[#fbbf24] font-bold">3187954327</span></p>
-            <p>🔹 <strong>2. Monto:</strong> <span class="text-[#fbbf24] font-bold">$25.000 COP</span> (anual) o <span class="text-[#fbbf24] font-bold">$5.000 COP</span> (mensual)</p>
-            <p>🔹 <strong>3. Referencia:</strong> Escribe tu <strong>CÓDIGO DE AFILIADO</strong> (ej: NGE-220)</p>
-            <p>🔹 <strong>4. Envía el comprobante</strong> por WhatsApp al <strong>324 491 3371</strong></p>
-            <p>🔹 <strong>5. En 15 minutos</strong> tu negocio estará visible en la Guía Digital</p>
-            <div class="mt-4 p-3 bg-green-600/30 rounded-xl text-center">
-                <p class="font-bold">📲 ¿Ya pagaste? Envía tu comprobante aquí:</p>
-                <a href="https://wa.me/573244913371" class="inline-block mt-2 bg-[#25D366] text-white px-6 py-2 rounded-full font-bold">ENVIAR COMPROBANTE</a>
-            </div>
-        </div>
-        <div class="mt-4">
-            <h3 class="text-[#fbbf24]">📱 ESCANEA Y GUARDA ESTA GUÍA</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://guiadigitalcucuta.pages.dev" alt="QR Guía" class="mx-auto my-2">
-            <button onclick="reenviarGuia()" class="mt-3 bg-[#fbbf24] text-[#0b1c3a] font-bold py-2 px-4 rounded-full shadow-md hover:scale-105 transition">📲 Reenviar esta guía</button>
-        </div>
-    </div><!-- CONTADOR DE VISITAS PÚBLICO -->
-<div class="text-center my-6" id="contadorVisitas">
-    <div class="inline-block bg-black/40 backdrop-blur-sm rounded-2xl px-6 py-4 border border-[#fbbf24]/30">
-        <p class="text-sm text-gray-300 uppercase tracking-wide">📊 VISITAS A ESTA GUÍA</p>
-        <p class="text-4xl font-bold text-[#fbbf24]" id="numeroVisitas">200</p>
-        <p class="text-xs text-gray-400 mt-1">Comerciantes y ciudadanos conectándose</p>
-    </div>
-</div>
-
-<script>
-    // CONTADOR QUE EMPIEZA EN 200 Y SUMA DESDE AHÍ
-    let visitas = localStorage.getItem("contadorGuiaDigital");
-    if (visitas === null) {
-        // Primera vez que alguien abre después de poner el contador
-        visitas = 2424;
-    } else {
-        // Si ya había visitas, suma 1
-        visitas = Number(visitas) + 1;
-    }
-    localStorage.setItem("contadorGuiaDigital", visitas);
-    document.getElementById("numeroVisitas").innerText = visitas;
-</script>
-
-    <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
-        <p>© 2026 Guía Digital de Cúcuta · Directorio de negocios</p>
-<div class="mt-2"><a href="https://guia-digital.com/tarjeta-inteligente" class="text-[#fbbf24] font-bold">📱 Tu Tarjeta Digital</a></div>        <p class="text-sm text-gray-400 mt-1">Guía Digital Cúcuta - Unidos Ganamos Más</p>
-    </footer>
-</div>
-
-<script>
-const negocios = [
-    { nombre: "Fajas Edi", url: "https://fajasedi.netlify.app/", categoria: "belleza" },
-    { nombre: "La Estación de la Calidad", url: "https://guia-digital.com/estacion-calidad", categoria: "accesorios" },
-    { nombre: "Ferretería La 17", url: "https://ferreteria-la-17.pages.dev/", categoria: "ferreterias" },
-    { nombre: "Tracto Auto M.F.", url: "https://tracto-auto-mf.pages.dev/", categoria: "mecanica" },
-    { nombre: "Taller Barney", url: "https://taller-barney.netlify.app/", categoria: "mecanica" },
-    { nombre: "Autotaller Murillo", url: "https://autotallermurillo.netlify.app/", categoria: "mecanica" },
-    { nombre: "Taller Mecánico TS", url: "https://taller-mecanico-ts.netlify.app/", categoria: "mecanica" },
-    { nombre: "Mecánica Willson y Gustavo", url: "https://mecanicaautomotrizwillsonygustavo.netlify.app/", categoria: "mecanica" },
-    { nombre: "Taller Osama", url: "https://guia-digital.com/taller-osama", categoria: "mecanica" },
-    { nombre: "Multiservicios Los Torres", url: "https://multiserviciosautomotrizlostorres.netlify.app/", categoria: "mecanica" },
-    { nombre: "Electroauto El Rolo", url: "https://electroautoelrolo.netlify.app/", categoria: "mecanica" },
-    { nombre: "Papa Barney", url: "https://papa-barney.netlify.app/", categoria: "mecanica" },
-    { nombre: "Cone Junior Torrado", url: "https://guia-digital.com/cone-torrado", categoria: "mecanica" },
-    { nombre: "Gustavo Rojas", url: "https://guia-digital.com/gustavo-rojas", categoria: "mecanica" },
-    { nombre: "Jhon Rubio III", url: "https://guia-digital.com/jhon-rubio", categoria: "mecanica" },
-    { nombre: "Motores Jesús", url: "https://motores-motoreductores-jesus.netlify.app/", categoria: "motores" },
-    { nombre: "Embobinados Dacoor", url: "https://embobinadosdacoor.netlify.app/", categoria: "motores" },
-    { nombre: "Montallantas El Indio", url: "https://montallantas-el-indio.netlify.app/", categoria: "llantas" },
-    { nombre: "Ruedas y Rodamientos El Shaddai", url: "https://ruedasyrodamientoselshaddai.netlify.app/", categoria: "llantas" },
-    { nombre: "Servigomas", url: "https://servigomas.netlify.app/", categoria: "llantas" },
-    { nombre: "Herrería Duarte", url: "https://tallerdeherreriaduarte.netlify.app/", categoria: "herreria" },
-    { nombre: "Acero y Gas", url: "https://aceroygas.netlify.app/", categoria: "herreria" },
-    { nombre: "Aceros PC", url: "https://acerospc.netlify.app/", categoria: "herreria" },
-    { nombre: "Herramientas El Segundazo", url: "https://herramientas-el-segundazo.netlify.app/", categoria: "herreria" },
-    { nombre: "Muebles RQ", url: "https://mueblesrq.netlify.app/", categoria: "tapiceria" },
-    { nombre: "La Clínica del Mueble", url: "https://laclinicadelmueble.netlify.app/", categoria: "tapiceria" },
-    { nombre: "Carpintería JK", url: "https://carpinteriajk.netlify.app/", categoria: "tapiceria" },
-    { nombre: "Carpintería 10 con 2da", url: "https://carpinteria10con2da.netlify.app/", categoria: "tapiceria" },
-    { nombre: "Muebles Diseños y Punto", url: "https://mueblesdisenosypunto.netlify.app/", categoria: "tapiceria" },
-    { nombre: "TOYOMACK", url: "https://toyomack.pages.dev/", categoria: "accesorios" },
-    { nombre: "WAHL · Servicio Técnico", url: "https://guia-digital.com/wahl", categoria: "accesorios" },
-    { nombre: "Quincallería Blanca", url: "https://quincalleriablanca.netlify.app/", categoria: "accesorios" },
-    { nombre: "Fabrigomas", url: "https://fabrigomas.netlify.app/", categoria: "accesorios" },
-    { nombre: "Otoniel Acarreos", url: "https://otoniel-acarreos.netlify.app/", categoria: "acarreos" },
-    { nombre: "Acarreos Carlos", url: "https://acarreoscarlos.netlify.app/", categoria: "acarreos" },
-    { nombre: "Acarreos y Viajes Luis Díaz", url: "https://guia-digital.com/luis-diaz.html", categoria: "acarreos" },
-    { nombre: "Acarreos Luis Bueno", url: "https://acarreosluisbueno.netlify.app/", categoria: "acarreos" },
-    { nombre: "Acarreos Isidro", url: "https://acarreos-isidro.netlify.app/", categoria: "acarreos" },
-    { nombre: "Gatos Hidráulicos María", url: "https://gatoshidraulicosmaria.netlify.app/", categoria: "acarreos" },
-    { nombre: "Servipuertas", url: "https://servipuertas.netlify.app/", categoria: "puertas" },
-    { nombre: "Cerrajería El Mago", url: "https://cerrajeriaelmago.netlify.app/", categoria: "puertas" },
-    { nombre: "Marianacell", url: "https://marianacell.netlify.app/", categoria: "celulares" },
-    { nombre: "Davidcell", url: "https://davidcell.netlify.app/", categoria: "celulares" },
-    { nombre: "KATA - Servicio Técnico Celular", url: "https://guia-digital.com/kata", categoria: "servicios-tecnicos-celulares" },
-    { nombre: "HDMovil2", url: "https://hdmovil2.netlify.app/", categoria: "celulares" },
-    { nombre: "Esbedcell", url: "https://esbedcell.netlify.app/", categoria: "celulares" },
-    { nombre: "Mis Antojos", url: "https://mis-antojos-restaurante.netlify.app/", categoria: "restaurantes" },
-    { nombre: "Restaurante La Mano de Dios", url: "https://restaurantlamanodedios.netlify.app/", categoria: "restaurantes" },
-    { nombre: "Charcutería Jireh", url: "https://charcuteriajireh.netlify.app/", categoria: "restaurantes" },
-    { nombre: "Restaurante El Sabor de Doña Rosa", url: "https://restauranteelsabordedonarosa.netlify.app/", categoria: "restaurantes" },
-    { nombre: "Proyecto Comedor NGE", url: "https://proyecto-comedor-nge.netlify.app/", categoria: "restaurantes" },
-    { nombre: "El Punto de Jack", url: "https://elpuntode-jack.netlify.app/", categoria: "maquinas" },
-    { nombre: "Hotel La Puerta del Sol", url: "https://hotel-lapuertadelsol.netlify.app/", categoria: "hoteles" },
-    { nombre: "Salón D'Steffy", url: "https://salondebellezadsteffy.pages.dev/", categoria: "belleza" },
-    { nombre: "Liam Stylos Peluquería", url: "https://liam-stylos-peluqueria.netlify.app/", categoria: "belleza" },
-    { nombre: "Ciclorepuestos Biker10", url: "https://ciclorepuestosbiker10.netlify.app/", categoria: "bicicletas" },
-    { nombre: "Bicicletas Alex", url: "https://bicicletas-alex.netlify.app/", categoria: "bicicletas" },
-    { nombre: "Frioaire Vásquez", url: "https://frioaire-vasquez.netlify.app/", categoria: "refrigeracion" },
-    { nombre: "Hidrotec Cúcuta", url: "https://hidrotec-cucuta.netlify.app/", categoria: "hidraulica" },
-    { nombre: "Comercializadora El Campo", url: "https://comercializadoraelcampo.netlify.app/", categoria: "comercializadoras" },
-    { nombre: "Autodiagnóstico y Cerrajería CJI", url: "https://autodiagnostico-ferreteria-cji.pages.dev/", categoria: "puertas" },
-    { nombre: "Hidrocool", url: "https://hidrocool.pages.dev/", categoria: "hidraulica" },
-    { nombre: "Polarizados Julio", url: "https://polarizados-julio.pages.dev/", categoria: "accesorios" },
-    { nombre: "AUTO REPUESTOS MUNDO CHINO", url: "https://auto-repuestos-mundochino.netlify.app", categoria: "repuestos", icono: "🚗" },
-    { nombre: "Taller El Gaterito", url: "https://taller-el-gaterito.netlify.app", categoria: "taller mecanico", icono: "🔧" },
-    { nombre: "Repuestos Taller César", url: "https://repuestos-taller-cesar.netlify.app", categoria: "repuestos", icono: "🔩" },
-    { nombre: "GRUPO OCCIDENTAL", url: "https://grupooccidental.netlify.app", categoria: "tramites", icono: "📄" },
-    { nombre: "Generador de Ingresos NGE", url: "https://generador-de-ingresos-nge.netlify.app", categoria: "emprendimiento", icono: "💰" },
-    { nombre: "EmprendeWorld NGE", url: "https://gane-dinero-con-la-publicidad.netlify.app", categoria: "publicidad", icono: "📢" },
-    { nombre: "Tarjeta Digital Online", url: "https://tarjetaonline.netlify.app", categoria: "tarjetas digitales", icono: "💳" },
-    { nombre: "Metalicas VALDERRAMA", url: "https://metalicas-valderrama.vercel.app", categoria: "soldadura", icono: "🔨" }
-    
-];
-
-    const categorias = [
-        { id: "todos", nombre: "🔧 Todos" },
-        { id: "ferreterias", nombre: "🏪 Ferreterías" },
-        { id: "mecanica", nombre: "🚗 Mecánica" },
-        { id: "motores", nombre: "⚙️ Motores" },
-        { id: "llantas", nombre: "🛞 Llantas" },
-        { id: "herreria", nombre: "🔩 Herrería" },
-        { id: "tapiceria", nombre: "🪑 Tapicería" },
-        { id: "accesorios", nombre: "🔧 Accesorios" },
-        { id: "acarreos", nombre: "🚛 Acarreos" },
-        { id: "puertas", nombre: "🚪 Puertas" },
-        { id: "celulares", nombre: "📱 Celulares" },
-        { id: "restaurantes", nombre: "🍽️ Restaurantes" },
-        { id: "maquinas", nombre: "🧵 Máquinas de coser" },
-        { id: "hoteles", nombre: "🏨 Hoteles" },
-        { id: "belleza", nombre: "💇 Belleza" },
-        { id: "bicicletas", nombre: "🚴 Bicicletas" },
-        { id: "refrigeracion", nombre: "❄️ Refrigeración" },
-        { id: "hidraulica", nombre: "💧 Hidráulica" },
-        { id: "comercializadoras", nombre: "🏪 Comercializadoras" }
-    ];
-
-    let categoriaActual = "todos";
-    let ofertaActual = '';
-    let empresaActual = '';
-
-    function mostrarNegocios(categoria) {
-        const contenedor = document.getElementById("lista-negocios");
-        const filtrados = categoria === "todos" ? negocios : negocios.filter(n => n.categoria === categoria);
-        if (filtrados.length === 0) {
-            contenedor.innerHTML = `<div class="col-span-2 text-center py-8 text-gray-400">No hay negocios en esta categoría aún.</div>`;
-            return;
-        }
-        contenedor.innerHTML = filtrados.map(n => `
-            <div class="taller-card">
-                <h3 class="text-xl font-bold text-[#fbbf24]">${n.nombre}</h3>
-                <p class="text-sm text-gray-300 mb-3">${obtenerNombreCategoria(n.categoria)}</p>
-                <div class="flex gap-3 flex-wrap">
-                    <button class="btn btn-sitio w-full sm:w-auto" data-url="${n.url}">🔗 Ver sitio</button>
-                </div>
-            </div>
-        `).join("");
-        document.querySelectorAll('.btn-sitio[data-url]').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = this.getAttribute('data-url');
-                const textoOriginal = this.innerHTML;
-                this.innerHTML = "⏳ Abriendo sitio...";
-                this.classList.add('btn-loading');
-                setTimeout(() => {
-                    window.open(url, '_blank', 'noopener,noreferrer');
-                    this.innerHTML = textoOriginal;
-                    this.classList.remove('btn-loading');
-                }, 300);
-            });
-        });
-    }
-
-    function obtenerNombreCategoria(catId) {
-        const cat = categorias.find(c => c.id === catId);
-        return cat ? cat.nombre : catId;
-    }
-
-    function generarFiltros() {
-        const contenedor = document.getElementById("filtros");
-        contenedor.innerHTML = categorias.map(cat => `<button class="btn-categoria ${cat.id === categoriaActual ? 'activo' : ''}" data-categoria="${cat.id}">${cat.nombre}</button>`).join("");
-        document.querySelectorAll(".btn-categoria").forEach(btn => {
-            btn.addEventListener("click", () => {
-                categoriaActual = btn.dataset.categoria;
-                mostrarNegocios(categoriaActual);
-                document.querySelectorAll(".btn-categoria").forEach(b => b.classList.remove("activo"));
-                btn.classList.add("activo");
-            });
-        });
-    }
-
-    generarFiltros();
-    mostrarNegocios("todos");
-
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => el.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-    }
-
-    const carruselInner = document.getElementById('carruselInner');
-    const slides = document.querySelectorAll('.carrusel-slide');
-    const totalSlides = slides.length;
-    let currentIndex = 0;
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const indicadores = document.getElementById('indicadores');
-
-    function updateCarrusel() {
-        carruselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-        document.querySelectorAll('.indicator').forEach((ind, i) => {
-            i === currentIndex ? ind.classList.add('active') : ind.classList.remove('active');
-        });
-    }
-    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarrusel(); }
-    function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarrusel(); }
-
-    for (let i = 0; i < totalSlides; i++) {
-        const ind = document.createElement('span');
-        ind.classList.add('indicator');
-        if (i === 0) ind.classList.add('active');
-        ind.onclick = () => { currentIndex = i; updateCarrusel(); };
-        indicadores.appendChild(ind);
-    }
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-    setInterval(nextSlide, 5000);
-
-    const NUEVA_URL = 'https://guiadigitalcucuta.pages.dev';
-
-    function compartirSitio() {
-        if (navigator.share) {
-            navigator.share({ title: 'Guía Digital de Cúcuta', text: 'Directorio de negocios en Cúcuta', url: NUEVA_URL });
-        } else {
-            navigator.clipboard.writeText(NUEVA_URL);
-            alert('📋 Enlace copiado.');
-        }
-    }
-
-    function reenviarGuia() {
-        const texto = '🔧 Guía Digital de Cúcuta - Directorio de negocios, talleres y servicios. ¡Míralo aquí:';
-        if (navigator.share) {
-            navigator.share({ title: 'Guía Digital de Cúcuta', text: texto, url: NUEVA_URL });
-        } else {
-            navigator.clipboard.writeText(NUEVA_URL + ' ' + texto);
-            alert('📋 Enlace copiado.');
-        }
-    }
-
-    const btnBuscar = document.getElementById('btnBuscarLocal');
-    const inputBuscar = document.getElementById('buscadorLocal');
-    const resultadosDiv = document.getElementById('resultadosBusqueda');
-    if (btnBuscar) {
-        btnBuscar.addEventListener('click', function() {
-            const termino = inputBuscar.value.trim().toLowerCase();
-            if (termino === '') { alert('Escribe lo que quieres buscar'); return; }
-            const resultados = negocios.filter(n => n.nombre.toLowerCase().includes(termino) || obtenerNombreCategoria(n.categoria).toLowerCase().includes(termino));
-            if (resultados.length === 0) {
-                resultadosDiv.innerHTML = `<div class="mt-4 p-4 bg-black/30 rounded-xl text-center text-gray-300">❌ No encontramos "${termino}" en nuestra guía.</div>`;
-            } else {
-                resultadosDiv.innerHTML = `<div class="mt-4 p-4 bg-black/30 rounded-xl"><h3 class="text-lg font-bold text-amber-400 mb-3">📋 Resultados para "${termino}":</h3><div class="grid md:grid-cols-2 gap-3">${resultados.map(n => `<div class="bg-black/50 p-3 rounded-xl flex justify-between items-center"><div><p class="font-bold text-white">${n.nombre}</p><p class="text-xs text-gray-400">${obtenerNombreCategoria(n.categoria)}</p></div><button class="btn-sitio text-sm py-1 px-3 rounded-full" data-url="${n.url}">Ver sitio</button></div>`).join('')}</div></div>`;
-                document.querySelectorAll('#resultadosBusqueda .btn-sitio').forEach(btn => {
-                    btn.addEventListener('click', function() { window.open(this.getAttribute('data-url'), '_blank'); });
-                });
-            }
-            resultadosDiv.classList.remove('hidden');
-        });
-    }
-
-    function abrirFormularioOferta(oferta, empresa) {
-        ofertaActual = oferta; empresaActual = empresa;
-        document.getElementById('ofertaNombre').value = oferta;
-        document.getElementById('ofertaEmpresa').value = empresa;
-        document.getElementById('formularioOferta').classList.remove('hidden');
-    }
-    function cerrarFormularioOferta() {
-        document.getElementById('formularioOferta').classList.add('hidden');
-        document.getElementById('formOferta')?.reset();
-    }
-    const formOferta = document.getElementById('formOferta');
-    if (formOferta) {
-        formOferta.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = this.querySelector('[name="nombre"]')?.value || '';
-            const telefono = this.querySelector('[name="telefono"]')?.value || '';
-            const experiencia = this.querySelector('[name="experiencia"]')?.value || '';
-            const texto = `📢 *NUEVO APLICANTE* 📢%0A%0A*Oferta:* ${ofertaActual}%0A*Empresa:* ${empresaActual}%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Experiencia:* ${experiencia}`;
-            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
-            alert('✅ Solicitud enviada.');
-            this.reset();
-            cerrarFormularioOferta();
-        });
-    }
-
-    function abrirFormularioLocal() {
-        document.getElementById('formularioLocal').classList.remove('hidden');
-        document.getElementById('formularioInfluencer')?.classList.add('hidden');
-    }
-    function abrirFormularioInfluencer() {
-        document.getElementById('formularioInfluencer').classList.remove('hidden');
-        document.getElementById('formularioLocal')?.classList.add('hidden');
-    }
-    function cerrarFormulario(tipo) {
-        document.getElementById(`formulario${tipo === 'local' ? 'Local' : 'Influencer'}`).classList.add('hidden');
-    }
-    const formLocal = document.getElementById('formLocal');
-    if (formLocal) {
-        formLocal.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = this.querySelector('[name="nombre"]')?.value || '';
-            const direccion = this.querySelector('[name="direccion"]')?.value || '';
-            const telefono = this.querySelector('[name="telefono"]')?.value || '';
-            const mensaje = this.querySelector('[name="mensaje"]')?.value || '';
-            const texto = `🏪 *NUEVO LOCAL* 🏪%0A%0A*Negocio:* ${nombre}%0A*Dirección:* ${direccion}%0A*Teléfono:* ${telefono}%0A*Mensaje:* ${mensaje}`;
-            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
-            alert('✅ Solicitud enviada.');
-            this.reset();
-            cerrarFormulario('local');
-        });
-    }
-    const formInfluencer = document.getElementById('formInfluencer');
-    if (formInfluencer) {
-        formInfluencer.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = this.querySelector('[name="nombre"]')?.value || '';
-            const redes = this.querySelector('[name="redes"]')?.value || '';
-            const seguidores = this.querySelector('[name="seguidores"]')?.value || '';
-            const telefono = this.querySelector('[name="telefono"]')?.value || '';
-            const texto = `📊 *NUEVO INFLUENCER* 📊%0A%0A*Nombre:* ${nombre}%0A*Redes:* ${redes}%0A*Seguidores:* ${seguidores}%0A*Teléfono:* ${telefono}`;
-            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
-            alert('✅ Solicitud enviada.');
-            this.reset();
-            cerrarFormulario('influencer');
-        });
-    }
-
-    let pasoChat = 0;
-    let respuestasUsuario = {};
-    function respuestaChat(valor) {
-        const chatMensajes = document.getElementById('chatMensajes');
-        let textoRespuesta = '';
-        switch(pasoChat) {
-            case 0: textoRespuesta = valor.replace('_', ' '); respuestasUsuario.tipo = valor; break;
-            case 1: textoRespuesta = valor; respuestasUsuario.zona = valor; break;
-            case 2: textoRespuesta = valor; respuestasUsuario.hvDigital = valor; break;
-        }
-        chatMensajes.innerHTML += `<div class="bg-blue-600/30 p-3 rounded-xl text-sm text-right">👉 ${textoRespuesta}</div>`;
-        pasoChat++;
-        if (pasoChat === 1) {
-            document.getElementById('preguntaTexto').innerHTML = '📍 ¿En qué zona de Cúcuta buscas empleo?';
-            document.getElementById('preguntaOpciones').innerHTML = `<button onclick="respuestaChat('La Merced')" class="btn-sitio text-sm py-2 px-4 rounded-full">📍 La Merced</button><button onclick="respuestaChat('Centro')" class="btn-sitio text-sm py-2 px-4 rounded-full">🏛️ Centro</button><button onclick="respuestaChat('Pescadero')" class="btn-sitio text-sm py-2 px-4 rounded-full">🐟 Pescadero</button><button onclick="respuestaChat('Cualquiera')" class="btn-sitio text-sm py-2 px-4 rounded-full">🚗 Cualquiera</button>`;
-        } else if (pasoChat === 2) {
-            document.getElementById('preguntaTexto').innerHTML = '📄 ¿Tienes hoja de vida digital?';
-            document.getElementById('preguntaOpciones').innerHTML = `<button onclick="respuestaChat('si')" class="btn-sitio text-sm py-2 px-4 rounded-full">✅ Sí</button><button onclick="respuestaChat('no')" class="btn-wsp text-sm py-2 px-4 rounded-full">❌ No</button>`;
-        } else if (pasoChat === 3) {
-            const mensajeOferta = respuestasUsuario.hvDigital === 'no' ? `<div class="bg-gradient-to-r from-green-800 to-green-900 p-4 rounded-xl text-center mt-2"><i class="fas fa-file-alt text-5xl text-amber-400 mb-2"></i><p class="font-bold text-white">¡No te preocupes! Podemos crear tu Hoja de Vida Digital por solo <strong class="text-amber-400">$5.000</strong>.</p><a href="https://wa.me/573244913371?text=Hola,%20quiero%20crear%20mi%20hoja%20de%20vida%20digital" class="btn-wsp inline-block mt-3 py-2 px-4 rounded-full text-sm font-bold">📄 Quiero mi hoja de vida digital</a></div>` : `<div class="bg-gradient-to-r from-purple-800 to-purple-900 p-4 rounded-xl text-center mt-2"><i class="fas fa-star text-5xl text-amber-400 mb-2"></i><p class="font-bold text-white">¿Quieres destacar tu hoja de vida? Por solo <strong class="text-amber-400">$5.000</strong>.</p><a href="https://wa.me/573244913371?text=Hola,%20quiero%20destacar%20mi%20hoja%20de%20vida%20digital" class="btn-primary inline-block mt-3 py-2 px-4 rounded-full text-sm font-bold">⭐ Destacar mi perfil</a></div>`;
-            chatMensajes.innerHTML += `<div class="bg-amber-400/20 p-3 rounded-xl text-sm">${mensajeOferta}<div class="mt-3 text-center"><p class="text-sm text-gray-300">📢 Ofertas externas:</p><div class="flex flex-wrap justify-center gap-2 mt-2"><a href="https://www.computrabajo.com.co/trabajo-en-cucuta" target="_blank" class="btn-sitio text-xs py-1 px-3 rounded-full">Computrabajo</a><a href="https://co.indeed.com/ofertas?l=C%C3%BAcuta" target="_blank" class="btn-sitio text-xs py-1 px-3 rounded-full">Indeed</a></div></div></div>`;
-            document.getElementById('chatPregunta').classList.add('hidden');
-        }
-        const chatMensajesDiv = document.getElementById('chatMensajes');
-        chatMensajesDiv.scrollTop = chatMensajesDiv.scrollHeight;
-    }
-
-    function abrirFormulario(tipo) {
-        if (tipo === 'impulsador') {
-            document.getElementById('formularioImpulsador').classList.remove('hidden');
-            document.getElementById('formularioDisenador')?.classList.add('hidden');
-        } else if (tipo === 'disenador') {
-            document.getElementById('formularioDisenador').classList.remove('hidden');
-            document.getElementById('formularioImpulsador')?.classList.add('hidden');
-        }
-    }
-    
-    function cerrarFormulario(tipo) {
-        const id = tipo === 'impulsador' ? 'formularioImpulsador' : 'formularioDisenador';
-        document.getElementById(id).classList.add('hidden');
-    }
-    
-    const formImpulsador = document.getElementById('formImpulsador');
-    if (formImpulsador) {
-        formImpulsador.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = this.querySelector('[name="nombre"]')?.value || '';
-            const telefono = this.querySelector('[name="telefono"]')?.value || '';
-            const experiencia = this.querySelector('[name="experiencia"]')?.value || '';
-            const motivacion = this.querySelector('[name="motivacion"]')?.value || '';
-            const texto = `💪 *NUEVO IMPULSADOR* 💪%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Experiencia:* ${experiencia}%0A*Motivación:* ${motivacion}`;
-            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
-            alert('✅ Postulación enviada. Te contactaremos pronto.');
-            this.reset();
-            cerrarFormulario('impulsador');
-        });
-    }
-    
-    const formDisenador = document.getElementById('formDisenador');
-    if (formDisenador) {
-        formDisenador.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = this.querySelector('[name="nombre"]')?.value || '';
-            const telefono = this.querySelector('[name="telefono"]')?.value || '';
-            const portafolio = this.querySelector('[name="portafolio"]')?.value || '';
-            const conocimientos = this.querySelector('[name="conocimientos"]')?.value || '';
-            const texto = `🎨 *NUEVO DISEÑADOR* 🎨%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Portafolio:* ${portafolio}%0A*Conocimientos:* ${conocimientos}`;
-            window.open(`https://wa.me/573244913371?text=${encodeURIComponent(texto)}`, '_blank');
-            alert('✅ Postulación enviada. Te contactaremos pronto.');
-            this.reset();
-            cerrarFormulario('disenador');
-        });
-    }
-    // Forzar que los botones funcionen también después de cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-    // Ya están definidas las funciones, solo aseguramos que los formularios se oculten al inicio
-    document.getElementById('formularioImpulsador')?.classList.add('hidden');
-    document.getElementById('formularioDisenador')?.classList.add('hidden');
-});
-</script>
-    <script>
-    function instalarPulpito() {
-        if (window.deferredPrompt) {
-            window.deferredPrompt.prompt();
-            window.deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('Pulpito instalado en pantalla de inicio');
-                }
-                window.deferredPrompt = null;
-            });
-        } else {
-            alert("En tu navegador, ve a los tres puntos ⋮ y selecciona 'Agregar a pantalla de inicio'");
-        }
-    }
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        window.deferredPrompt = e;
-    });
-</script>
 </body>
 </html>
