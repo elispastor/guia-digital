@@ -529,34 +529,14 @@
         <div class="qr-footer">
             <p>📱 Escanea para ir al sitio</p>
             <div class="qr-placeholder">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="200" height="200" fill="white" />
-                    <rect x="20" y="20" width="40" height="40" fill="black" />
-                    <rect x="70" y="20" width="10" height="10" fill="black" />
-                    <rect x="90" y="20" width="10" height="10" fill="black" />
-                    <rect x="70" y="40" width="10" height="10" fill="black" />
-                    <rect x="90" y="40" width="10" height="10" fill="black" />
-                    <rect x="20" y="70" width="10" height="10" fill="black" />
-                    <rect x="40" y="70" width="10" height="10" fill="black" />
-                    <rect x="20" y="90" width="10" height="10" fill="black" />
-                    <rect x="40" y="90" width="10" height="10" fill="black" />
-                    <rect x="140" y="20" width="40" height="40" fill="black" />
-                    <rect x="140" y="70" width="10" height="10" fill="black" />
-                    <rect x="160" y="70" width="10" height="10" fill="black" />
-                    <rect x="140" y="90" width="10" height="10" fill="black" />
-                    <rect x="160" y="90" width="10" height="10" fill="black" />
-                    <rect x="20" y="140" width="40" height="40" fill="black" />
-                    <rect x="90" y="140" width="10" height="10" fill="black" />
-                    <rect x="110" y="140" width="10" height="10" fill="black" />
-                    <rect x="140" y="140" width="40" height="40" fill="black" />
-                    <rect x="70" y="110" width="10" height="10" fill="black" />
-                    <rect x="90" y="110" width="10" height="10" fill="black" />
-                    <rect x="110" y="110" width="10" height="10" fill="black" />
-                    <rect x="70" y="130" width="10" height="10" fill="black" />
-                    <rect x="110" y="130" width="10" height="10" fill="black" />
-                    <rect x="70" y="70" width="10" height="10" fill="black" />
-                    <rect x="110" y="70" width="10" height="10" fill="black" />
-                </svg>
+                     <!-- ===== QR REAL (con librería) ===== -->
+        <div id="qr-container" style="max-width:1200px; margin:0 auto; padding:0 16px 30px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:12px; padding:20px; background:#1a1a1a; border-radius:16px; border:1px solid #2a2a2a;">
+                <p style="color:#aaa; font-size:0.9rem;">📱 Escanea para ir al sitio</p>
+                <div id="qr-code" style="background:#fff; padding:16px; border-radius:16px; display:inline-block; box-shadow:0 4px 20px rgba(0,0,0,0.6);"></div>
+                <p style="font-size:0.7rem; color:#888;">Sitio: ALEX Y SU MARIACHI</p>
+            </div>
+        </div>
             </div>
             <p style="font-size:0.7rem; color:#888;">Sitio: ALEX Y SU MARIACHI</p>
         </div>
@@ -622,7 +602,20 @@
                     prompt('Copia este enlace:', url);
                 });
             }
-        }
+        }    <!-- ===== LIBRERÍA PARA GENERAR QR REAL ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script>
+        // Genera el QR real con la URL exacta
+        new QRCode(document.getElementById("qr-code"), {
+            text: "https://guia-digital.com/alex-mariachi",
+            width: 150,
+            height: 150,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
+</body>
     </script>
 
 </body>
