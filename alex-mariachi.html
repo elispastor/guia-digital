@@ -271,15 +271,6 @@
             transform: scale(1.03);
         }
 
-        .btn-qr {
-            background: #2d2d2d;
-            border: 2px solid #c9a84c;
-        }
-        .btn-qr:hover {
-            background: #3d3d3d;
-            transform: scale(1.03);
-        }
-
         /* ===== REDES SOCIALES ===== */
         .redes-sociales {
             display: flex;
@@ -314,16 +305,20 @@
             font-size: 1.4rem;
         }
 
-        /* ===== QR ===== */
-        .qr-container {
+        /* ===== QR (nuevo en footer) ===== */
+        .qr-footer {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
-            margin: 20px 0;
+            margin: 30px 0 10px 0;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 16px;
+            border: 1px solid #2a2a2a;
         }
 
-        .qr-placeholder {
+        .qr-footer .qr-placeholder {
             background: #fff;
             padding: 16px;
             border-radius: 16px;
@@ -331,10 +326,15 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
-        .qr-placeholder svg {
+        .qr-footer .qr-placeholder svg {
             display: block;
             width: 150px;
             height: 150px;
+        }
+
+        .qr-footer p {
+            color: #aaa;
+            font-size: 0.9rem;
         }
 
         /* ===== FOOTER ===== */
@@ -349,6 +349,17 @@
 
         footer span {
             color: #c9a84c;
+        }
+
+        footer .footer-link {
+            color: #c9a84c;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        footer .footer-link:hover {
+            color: #e0d5c0;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -413,14 +424,12 @@
         </button>
     </header>
 
-    <!-- ===== MENÚ DESPLEGABLE ===== -->
+    <!-- ===== MENÚ DESPLEGABLE (CORREGIDO) ===== -->
     <nav class="nav-menu" id="navMenu">
         <button class="nav-close" id="navClose">✕</button>
         <a href="#inicio" class="nav-link">Inicio</a>
-        <a href="#alex" class="nav-link">Alex</a>
-        <a href="#mision" class="nav-link">Misión</a>
-        <a href="#vision" class="nav-link">Visión</a>
-        <a href="#valores" class="nav-link">Valores</a>
+        <a href="#alex" class="nav-link">Quién es Alex</a>
+        <a href="#valores" class="nav-link">Nuestros Valores</a>
         <a href="#servicios" class="nav-link">Servicios</a>
         <a href="#contacto" class="nav-link">Contacto</a>
     </nav>
@@ -436,29 +445,25 @@
             </div>
         </section>
 
-        <!-- ===== ALEX ===== -->
+        <!-- ===== QUIÉN ES ALEX ===== -->
         <section id="alex" class="seccion">
-            <h2>🎤 Alex</h2>
+            <h2>🎤 Quién es Alex</h2>
             <p>
                 Alex, un joven artista Venezolano nacido en San Felipe estado Yaracuy. Actualmente hace vida en la ciudad de Bucaramanga Colombia desde hace más de ocho años. Desde muy pequeño su padre es profesor de música egresado del sistema de orquesta en Venezuela ha inculcado la música este gran talento intérprete. Alex en su corta edad ha logrado alcanzar muchas metas relevantes. Comenzó su carrera artística en la ciudad de Bucaramanga Santander Colombia desde el año 2020 en pandemia. Donde destacó en cada uno de los rincones de esa ciudad deleitando a las personas en eventos privados y públicos. En vista de su gran evolución y aceptación por parte del público Colombiano, fue invitado a las audiciones del reality shows la "Voz Kids Colombia" 2022 transmitido por el prestigioso canal de televisión Caracol TV, programa televisivo que por su alta audiencia a nivel internacional logró atraer la atención de toda Colombia y parte de Latinoamérica por sus destacadas presentaciones en cada uno de los programas.
             </p>
         </section>
 
-        <!-- ===== MISIÓN ===== -->
-        <section id="mision" class="seccion">
-            <h2>🎯 Misión</h2>
-            <p>Llevar la música de Michoacán a cada rincón, con calidad, pasión y profesionalismo, haciendo felices a las personas en cada evento.</p>
-        </section>
-
-        <!-- ===== VISIÓN ===== -->
-        <section id="vision" class="seccion">
-            <h2>🌟 Visión</h2>
-            <p>Ser el mariachi referente en Colombia y Latinoamérica, reconocido por su talento, carisma y entrega.</p>
-        </section>
-
-        <!-- ===== VALORES ===== -->
+        <!-- ===== NUESTROS VALORES (MISIÓN + VISIÓN + VALORES JUNTOS) ===== -->
         <section id="valores" class="seccion">
-            <h2>💎 Valores</h2>
+            <h2>💎 Nuestros Valores</h2>
+            
+            <h3>🎯 Misión</h3>
+            <p>Llevar la música de Michoacán a cada rincón, con calidad, pasión y profesionalismo, haciendo felices a las personas en cada evento.</p>
+
+            <h3>🌟 Visión</h3>
+            <p>Ser el mariachi referente en Colombia y Latinoamérica, reconocido por su talento, carisma y entrega.</p>
+
+            <h3>💫 Nuestros Principios</h3>
             <ul>
                 <li><strong>Respeto</strong> – Por el público, la música y la tradición.</li>
                 <li><strong>Disciplina</strong> – Ensayo y mejora constante.</li>
@@ -501,9 +506,6 @@
                 <button onclick="compartir()" class="btn btn-compartir">
                     📤 Compartir
                 </button>
-                <button onclick="window.location.href='#inicio'" class="btn btn-qr">
-                    📱 Ver QR
-                </button>
             </div>
 
             <!-- ===== REDES SOCIALES ===== -->
@@ -521,52 +523,53 @@
                     <span class="icono">▶️</span> YouTube
                 </a>
             </div>
-
-            <!-- ===== CÓDIGO QR ===== -->
-            <div class="qr-container">
-                <p style="color:#aaa; font-size:0.9rem;">Escanea para ir al sitio</p>
-                <div class="qr-placeholder">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="200" height="200" fill="white" />
-                        <!-- Simulación de QR decorativo -->
-                        <rect x="20" y="20" width="40" height="40" fill="black" />
-                        <rect x="70" y="20" width="10" height="10" fill="black" />
-                        <rect x="90" y="20" width="10" height="10" fill="black" />
-                        <rect x="70" y="40" width="10" height="10" fill="black" />
-                        <rect x="90" y="40" width="10" height="10" fill="black" />
-                        <rect x="20" y="70" width="10" height="10" fill="black" />
-                        <rect x="40" y="70" width="10" height="10" fill="black" />
-                        <rect x="20" y="90" width="10" height="10" fill="black" />
-                        <rect x="40" y="90" width="10" height="10" fill="black" />
-                        <rect x="140" y="20" width="40" height="40" fill="black" />
-                        <rect x="140" y="70" width="10" height="10" fill="black" />
-                        <rect x="160" y="70" width="10" height="10" fill="black" />
-                        <rect x="140" y="90" width="10" height="10" fill="black" />
-                        <rect x="160" y="90" width="10" height="10" fill="black" />
-                        <rect x="20" y="140" width="40" height="40" fill="black" />
-                        <rect x="90" y="140" width="10" height="10" fill="black" />
-                        <rect x="110" y="140" width="10" height="10" fill="black" />
-                        <rect x="140" y="140" width="40" height="40" fill="black" />
-                        <rect x="70" y="110" width="10" height="10" fill="black" />
-                        <rect x="90" y="110" width="10" height="10" fill="black" />
-                        <rect x="110" y="110" width="10" height="10" fill="black" />
-                        <rect x="70" y="130" width="10" height="10" fill="black" />
-                        <rect x="110" y="130" width="10" height="10" fill="black" />
-                        <rect x="70" y="70" width="10" height="10" fill="black" />
-                        <rect x="110" y="70" width="10" height="10" fill="black" />
-                    </svg>
-                </div>
-                <p style="font-size:0.7rem; color:#888;">Sitio: ALEX Y SU MARIACHI</p>
-            </div>
-
         </section>
+
+        <!-- ===== QR EN EL FOOTER (nueva ubicación) ===== -->
+        <div class="qr-footer">
+            <p>📱 Escanea para ir al sitio</p>
+            <div class="qr-placeholder">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="200" fill="white" />
+                    <rect x="20" y="20" width="40" height="40" fill="black" />
+                    <rect x="70" y="20" width="10" height="10" fill="black" />
+                    <rect x="90" y="20" width="10" height="10" fill="black" />
+                    <rect x="70" y="40" width="10" height="10" fill="black" />
+                    <rect x="90" y="40" width="10" height="10" fill="black" />
+                    <rect x="20" y="70" width="10" height="10" fill="black" />
+                    <rect x="40" y="70" width="10" height="10" fill="black" />
+                    <rect x="20" y="90" width="10" height="10" fill="black" />
+                    <rect x="40" y="90" width="10" height="10" fill="black" />
+                    <rect x="140" y="20" width="40" height="40" fill="black" />
+                    <rect x="140" y="70" width="10" height="10" fill="black" />
+                    <rect x="160" y="70" width="10" height="10" fill="black" />
+                    <rect x="140" y="90" width="10" height="10" fill="black" />
+                    <rect x="160" y="90" width="10" height="10" fill="black" />
+                    <rect x="20" y="140" width="40" height="40" fill="black" />
+                    <rect x="90" y="140" width="10" height="10" fill="black" />
+                    <rect x="110" y="140" width="10" height="10" fill="black" />
+                    <rect x="140" y="140" width="40" height="40" fill="black" />
+                    <rect x="70" y="110" width="10" height="10" fill="black" />
+                    <rect x="90" y="110" width="10" height="10" fill="black" />
+                    <rect x="110" y="110" width="10" height="10" fill="black" />
+                    <rect x="70" y="130" width="10" height="10" fill="black" />
+                    <rect x="110" y="130" width="10" height="10" fill="black" />
+                    <rect x="70" y="70" width="10" height="10" fill="black" />
+                    <rect x="110" y="70" width="10" height="10" fill="black" />
+                </svg>
+            </div>
+            <p style="font-size:0.7rem; color:#888;">Sitio: ALEX Y SU MARIACHI</p>
+        </div>
 
     </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER (ACTUALIZADO) ===== -->
     <footer>
-        <p>&copy; 2026 <span>ALEX Y SU MARIACHI</span> · LOS POTRILLOS DE MICHOACÁN</p>
-        <p style="margin-top:6px; font-size:0.75rem;">Música que enamora · Tradición que une</p>
+        <p>© 2026 <span>ALEX Y SU MARIACHI</span> · LOS POTRILLOS DE MICHOACÁN · Todos los derechos reservados.</p>
+        <p style="margin-top:8px; font-size:0.8rem;">
+            ¿Quieres un sitio como este? Visita 
+            <a href="https://guia-digital.com" target="_blank" class="footer-link">Guía Digital</a>
+        </p>
     </footer>
 
     <!-- ===== SCRIPTS ===== -->
@@ -594,7 +597,6 @@
             link.addEventListener('click', closeMenu);
         });
 
-        // Cerrar al hacer clic fuera del menú
         document.addEventListener('click', function(e) {
             if (navMenu.classList.contains('open')) {
                 if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
@@ -614,7 +616,6 @@
                     url: url
                 }).catch(() => {});
             } else {
-                // Fallback: copiar enlace
                 navigator.clipboard.writeText(url + '\n' + texto).then(() => {
                     alert('✅ Enlace copiado al portapapeles. ¡Compártelo donde quieras!');
                 }).catch(() => {
