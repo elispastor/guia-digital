@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licencia Plan PRO - Guía Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .recibo {
+            max-width: 700px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            padding: 40px 35px;
+            border-top: 6px solid #c9a84c;
+            width: 100%;
+        }
+
+        .recibo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-pulpo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .logo-pulpo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .recibo-header h1 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .recibo-header h1 span {
+            color: #c9a84c;
+        }
+
+        .recibo-header .logo-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #c9a84c;
+            background: #faf6f0;
+            padding: 8px 18px;
+            border-radius: 40px;
+        }
+
+        .recibo-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: #f9f7f4;
+            padding: 18px 20px;
+            border-radius: 12px;
+        }
+
+        .recibo-info p {
+            margin: 4px 0;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .recibo-info strong {
+            color: #1a1a1a;
+        }
+
+        .detalle {
+            margin: 25px 0;
+        }
+
+        .detalle h2 {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            border-bottom: 2px solid #c9a84c;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .detalle ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detalle ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .detalle ul li:last-child {
+            border-bottom: none;
+        }
+
+        .detalle ul li .check {
+            color: #c9a84c;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        .detalle ul li .precio {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .total {
+            background: #faf6f0;
+            padding: 20px 25px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 25px 0 20px 0;
+            border-left: 4px solid #c9a84c;
+        }
+
+        .total .monto {
+            color: #c9a84c;
+            font-size: 1.6rem;
+        }
+
+        .fechas {
+            background: #f9f7f4;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0 25px 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .fechas strong {
+            color: #1a1a1a;
+        }
+
+        .pago-box {
+            background: #eafaf1;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 18px 0 10px 0;
+            border-left: 4px solid #1a7a4c;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pago-box .label {
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 1rem;
+        }
+
+        .pago-box .numero {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a7a4c;
+            letter-spacing: 1px;
+            background: #fff;
+            padding: 6px 18px;
+            border-radius: 40px;
+            border: 1px solid #c9a84c;
+        }
+
+        .btn-copiar {
+            background: #c9a84c;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-copiar:hover {
+            background: #b8973a;
+        }
+
+        .btn-copiar.copiado {
+            background: #1a7a4c;
+        }
+
+        .footer-recibo {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eaeaea;
+            text-align: center;
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        .footer-recibo .link {
+            color: #c9a84c;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer-recibo .link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .recibo {
+                padding: 25px 18px;
+            }
+            .recibo-header h1 {
+                font-size: 1.4rem;
+            }
+            .total {
+                font-size: 1.1rem;
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .total .monto {
+                font-size: 1.4rem;
+            }
+            .fechas {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .recibo-info {
+                flex-direction: column;
+            }
+            .pago-box {
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+                text-align: center;
+            }
+            .pago-box .numero {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            .btn-copiar {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="recibo">
+
+    <!-- ===== HEADER CON PULPO ===== -->
+    <div class="recibo-header">
+        <div class="header-left">
+            <div class="logo-pulpo">
+                <img src="pulpo-icono.png" alt="Guía Digital - Pulpo">
+            </div>
+            <h1><span>Guía</span>Digital</h1>
+        </div>
+        <div class="logo-text">LICENCIA PRO</div>
+    </div>
+
+    <!-- ===== INFO DEL RECIBO ===== -->
+    <div class="recibo-info">
+        <div>
+            <p><strong>Cliente:</strong> Alex y su Mariachi</p>
+            <p><strong>Teléfono:</strong> 320 415 1726</p>
+        </div>
+        <div>
+            <p><strong>Recibo N°:</strong> #GD-2026-001</p>
+            <p><strong>Fecha de emisión:</strong> 26 de junio de 2026</p>
+        </div>
+    </div>
+
+    <!-- ===== DETALLE DEL PLAN ===== -->
+    <div class="detalle">
+        <h2>✅ Plan PRO - Licencia Anual</h2>
+        <ul>
+            <li><span><span class="check">✔</span> Inclusión en el catálogo digital de Guía Digital</span> <span class="precio">Incluido</span></li>
+            <li><span><span class="check">✔</span> Botón de WhatsApp (mensaje directo)</span> <span class="precio">Incluido</span></li>
+            <li><span><span class="check">✔</span> Botón de llamada directa</span> <span class="precio">Incluido</span></li>
+            <li><span><span class="check">✔</span> Botón de compartir en redes sociales</span> <span class="precio">Incluido</span></li>
+            <li><span><span class="check">✔</span> Menú hamburguesa con navegación completa</span> <span class="precio">Incluido</span></li>
+            <li><span><span class="check">✔</span> Página web responsiva (móvil + escritorio)</span> <span class="precio">Incluido</span></li>
+            <li><span><span class="check">✔</span> Soporte técnico durante 1 año</span> <span class="precio">Incluido</span></li>
+        </ul>
+    </div>
+
+    <!-- ===== FECHAS ===== -->
+    <div class="fechas">
+        <span><strong>📅 Fecha de inicio:</strong> 26 de junio de 2026</span>
+        <span><strong>⏳ Fecha de vencimiento:</strong> 26 de junio de 2027</span>
+    </div>
+
+    <!-- ===== TOTAL ===== -->
+    <div class="total">
+        <span>💳 Total a pagar (COP)</span>
+        <span class="monto">$ 50.000</span>
+    </div>
+
+    <!-- ===== DATOS DE PAGO (NEQUI) ===== -->
+    <div class="pago-box">
+        <span class="label">📲 Paga con Nequi a este número:</span>
+        <span class="numero" id="numeroPago">3244913371</span>
+        <button class="btn-copiar" id="btnCopiar">📋 Copiar número</button>
+    </div>
+
+    <!-- ===== FOOTER CORREGIDO ===== -->
+    <div class="footer-recibo">
+        <p>© 2026 <strong>Guía Digital</strong> · Todos los derechos reservados</p>
+        <p style="margin-top:6px;">
+            <a href="https://guia-digital.com" target="_blank" class="link">guia-digital.com</a>
+        </p>
+        <p style="margin-top:10px; font-size:0.7rem; color:#aaa;">
+            Este documento es un comprobante de licencia digital. No requiere firma física.
+        </p>
+    </div>
+
+</div>
+
+<script>
+    // ===== COPIAR NÚMERO DE NEQUI =====
+    document.getElementById('btnCopiar').addEventListener('click', function() {
+        const numero = document.getElementById('numeroPago').textContent;
+        navigator.clipboard.writeText(numero).then(() => {
+            const btn = document.getElementById('btnCopiar');
+            btn.textContent = '✅ ¡Copiado!';
+            btn.classList.add('copiado');
+            setTimeout(() => {
+                btn.textContent = '📋 Copiar número';
+                btn.classList.remove('copiado');
+            }, 3000);
+        }).catch(() => {
+            alert('No se pudo copiar. El número es: ' + numero);
+        });
+    });
+</script>
+
+</body>
+</html>
