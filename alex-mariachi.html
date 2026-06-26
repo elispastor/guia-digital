@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>ALEX Y SU MARIACHI | Los Potrillos de Michoacán</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #f5f0e8;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #0d0d0d;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #c9a84c;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .logo h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #c9a84c;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.7rem;
+            color: #e0d5c0;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* ===== MENÚ HAMBURGUESA ===== */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+            z-index: 1100;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #c9a84c;
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* ===== MENÚ DESPLEGABLE ===== */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(13, 13, 13, 0.97);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+            z-index: 1050;
+            backdrop-filter: blur(6px);
+            padding: 20px;
+        }
+
+        .nav-menu.open {
+            transform: translateX(0);
+        }
+
+        .nav-menu a {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #f5f0e8;
+            letter-spacing: 2px;
+            border-bottom: 2px solid transparent;
+            padding: 8px 16px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #c9a84c;
+            border-bottom-color: #c9a84c;
+        }
+
+        .nav-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2.2rem;
+            color: #c9a84c;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* ===== PORTADAS ===== */
+        .portadas {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 24px 0 40px 0;
+        }
+
+        .portadas img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+            border: 1px solid #2a2a2a;
+        }
+
+        /* ===== SECCIONES ===== */
+        .seccion {
+            background: #222222;
+            padding: 40px 24px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            border-left: 4px solid #c9a84c;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .seccion h2 {
+            font-size: 1.8rem;
+            color: #c9a84c;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .seccion h3 {
+            color: #e0d5c0;
+            font-size: 1.2rem;
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
+
+        .seccion p,
+        .seccion li {
+            color: #d0c8b8;
+            font-size: 1rem;
+        }
+
+        .seccion ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .seccion ul li {
+            padding: 6px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .seccion ul li::before {
+            content: "🎵";
+            position: absolute;
+            left: 0;
+            color: #c9a84c;
+        }
+
+        /* ===== BOTONES ===== */
+        .botones-contacto {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 20px 0 10px 0;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+            color: #fff;
+            text-align: center;
+            flex: 1 1 auto;
+            min-width: 140px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+        }
+        .btn-whatsapp:hover {
+            background: #1ebe5c;
+            transform: scale(1.03);
+        }
+
+        .btn-llamada {
+            background: #34B7F1;
+        }
+        .btn-llamada:hover {
+            background: #28a3d9;
+            transform: scale(1.03);
+        }
+
+        .btn-compartir {
+            background: #6c5b7b;
+        }
+        .btn-compartir:hover {
+            background: #5a4a69;
+            transform: scale(1.03);
+        }
+
+        .btn-whatsapp-sec {
+            background: #128C7E;
+        }
+        .btn-whatsapp-sec:hover {
+            background: #0e6e62;
+            transform: scale(1.03);
+        }
+
+        .btn-qr {
+            background: #2d2d2d;
+            border: 2px solid #c9a84c;
+        }
+        .btn-qr:hover {
+            background: #3d3d3d;
+            transform: scale(1.03);
+        }
+
+        /* ===== REDES SOCIALES ===== */
+        .redes-sociales {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin: 24px 0 10px 0;
+        }
+
+        .red-social {
+            background: #2a2a2a;
+            padding: 12px 22px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #f5f0e8;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 1px solid #444;
+        }
+
+        .red-social:hover {
+            background: #c9a84c;
+            color: #0d0d0d;
+            border-color: #c9a84c;
+            transform: translateY(-3px);
+        }
+
+        .red-social .icono {
+            font-size: 1.4rem;
+        }
+
+        /* ===== QR ===== */
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .qr-placeholder {
+            background: #fff;
+            padding: 16px;
+            border-radius: 16px;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .qr-placeholder svg {
+            display: block;
+            width: 150px;
+            height: 150px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px 16px 20px;
+            border-top: 2px solid #2a2a2a;
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        footer span {
+            color: #c9a84c;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 768px) {
+            .portadas {
+                flex-direction: row;
+            }
+            .portadas img {
+                width: 50%;
+            }
+            .botones-contacto .btn {
+                flex: 0 1 auto;
+            }
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+            .seccion {
+                padding: 50px 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 40px;
+            }
+            .seccion h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn {
+                font-size: 0.85rem;
+                padding: 12px 18px;
+                min-width: 100px;
+            }
+            .red-social {
+                font-size: 0.75rem;
+                padding: 8px 14px;
+            }
+            .logo h1 {
+                font-size: 1rem;
+            }
+            .nav-menu a {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">
+            <h1>ALEX Y SU MARIACHI</h1>
+            <span>LOS POTRILLOS DE MICHOACÁN</span>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- ===== MENÚ DESPLEGABLE ===== -->
+    <nav class="nav-menu" id="navMenu">
+        <button class="nav-close" id="navClose">✕</button>
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#alex" class="nav-link">Alex</a>
+        <a href="#mision" class="nav-link">Misión</a>
+        <a href="#vision" class="nav-link">Visión</a>
+        <a href="#valores" class="nav-link">Valores</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <main class="container">
+
+        <!-- ===== INICIO / PORTADAS ===== -->
+        <section id="inicio">
+            <div class="portadas">
+                <img src="portada-alex1.jpg" alt="ALEX Y SU MARIACHI - Portada 1" loading="lazy" />
+                <img src="portada-alex2.jpg" alt="ALEX Y SU MARIACHI - Portada 2" loading="lazy" />
+            </div>
+        </section>
+
+        <!-- ===== ALEX ===== -->
+        <section id="alex" class="seccion">
+            <h2>🎤 Alex</h2>
+            <p>
+                Alex, un joven artista Venezolano nacido en San Felipe estado Yaracuy. Actualmente hace vida en la ciudad de Bucaramanga Colombia desde hace más de ocho años. Desde muy pequeño su padre es profesor de música egresado del sistema de orquesta en Venezuela ha inculcado la música este gran talento intérprete. Alex en su corta edad ha logrado alcanzar muchas metas relevantes. Comenzó su carrera artística en la ciudad de Bucaramanga Santander Colombia desde el año 2020 en pandemia. Donde destacó en cada uno de los rincones de esa ciudad deleitando a las personas en eventos privados y públicos. En vista de su gran evolución y aceptación por parte del público Colombiano, fue invitado a las audiciones del reality shows la "Voz Kids Colombia" 2022 transmitido por el prestigioso canal de televisión Caracol TV, programa televisivo que por su alta audiencia a nivel internacional logró atraer la atención de toda Colombia y parte de Latinoamérica por sus destacadas presentaciones en cada uno de los programas.
+            </p>
+        </section>
+
+        <!-- ===== MISIÓN ===== -->
+        <section id="mision" class="seccion">
+            <h2>🎯 Misión</h2>
+            <p>Llevar la música de Michoacán a cada rincón, con calidad, pasión y profesionalismo, haciendo felices a las personas en cada evento.</p>
+        </section>
+
+        <!-- ===== VISIÓN ===== -->
+        <section id="vision" class="seccion">
+            <h2>🌟 Visión</h2>
+            <p>Ser el mariachi referente en Colombia y Latinoamérica, reconocido por su talento, carisma y entrega.</p>
+        </section>
+
+        <!-- ===== VALORES ===== -->
+        <section id="valores" class="seccion">
+            <h2>💎 Valores</h2>
+            <ul>
+                <li><strong>Respeto</strong> – Por el público, la música y la tradición.</li>
+                <li><strong>Disciplina</strong> – Ensayo y mejora constante.</li>
+                <li><strong>Alegría</strong> – Contagiamos felicidad con cada nota.</li>
+                <li><strong>Pasión</strong> – Vivimos y sentimos la música.</li>
+                <li><strong>Compromiso</strong> – Con cada evento y cada cliente.</li>
+            </ul>
+        </section>
+
+        <!-- ===== SERVICIOS ===== -->
+        <section id="servicios" class="seccion">
+            <h2>🎶 Servicios</h2>
+            <ul>
+                <li>🎵 Eventos privados</li>
+                <li>💍 Bodas</li>
+                <li>🎂 Cumpleaños</li>
+                <li>🌹 Serenatas</li>
+                <li>🏢 Eventos empresariales</li>
+                <li>🎤 Shows en vivo</li>
+            </ul>
+        </section>
+
+        <!-- ===== CONTACTO ===== -->
+        <section id="contacto" class="seccion">
+            <h2>📲 Contacto</h2>
+
+            <div class="botones-contacto">
+                <a href="https://wa.me/573204151726?text=Hola%20Alex%2C%20quiero%20contratar%20tu%20mariachi" target="_blank" class="btn btn-whatsapp">
+                    💬 WhatsApp Principal
+                </a>
+                <a href="https://wa.me/573143513096?text=Hola%20Alex%2C%20quiero%20contratar%20tu%20mariachi" target="_blank" class="btn btn-whatsapp-sec">
+                    💬 WhatsApp Secundario
+                </a>
+                <a href="tel:3204151726" class="btn btn-llamada">
+                    📞 Llamar ahora
+                </a>
+            </div>
+
+            <div class="botones-contacto">
+                <button onclick="compartir()" class="btn btn-compartir">
+                    📤 Compartir
+                </button>
+                <button onclick="window.location.href='#inicio'" class="btn btn-qr">
+                    📱 Ver QR
+                </button>
+            </div>
+
+            <!-- ===== REDES SOCIALES ===== -->
+            <div class="redes-sociales">
+                <a href="https://facebook.com/ALEXYLOSPOTRILLOSDEMICHOACAN" target="_blank" class="red-social">
+                    <span class="icono">📘</span> Facebook
+                </a>
+                <a href="https://instagram.com/ALEXMAREH" target="_blank" class="red-social">
+                    <span class="icono">📸</span> Instagram
+                </a>
+                <a href="https://tiktok.com/@ALEX_LOSPOTRILLOSDEMICHOACAN" target="_blank" class="red-social">
+                    <span class="icono">🎵</span> TikTok
+                </a>
+                <a href="https://youtube.com/@ALEXYSEBASLOSPOTRILLOSDEMICHOACAN" target="_blank" class="red-social">
+                    <span class="icono">▶️</span> YouTube
+                </a>
+            </div>
+
+            <!-- ===== CÓDIGO QR ===== -->
+            <div class="qr-container">
+                <p style="color:#aaa; font-size:0.9rem;">Escanea para ir al sitio</p>
+                <div class="qr-placeholder">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="white" />
+                        <!-- Simulación de QR decorativo -->
+                        <rect x="20" y="20" width="40" height="40" fill="black" />
+                        <rect x="70" y="20" width="10" height="10" fill="black" />
+                        <rect x="90" y="20" width="10" height="10" fill="black" />
+                        <rect x="70" y="40" width="10" height="10" fill="black" />
+                        <rect x="90" y="40" width="10" height="10" fill="black" />
+                        <rect x="20" y="70" width="10" height="10" fill="black" />
+                        <rect x="40" y="70" width="10" height="10" fill="black" />
+                        <rect x="20" y="90" width="10" height="10" fill="black" />
+                        <rect x="40" y="90" width="10" height="10" fill="black" />
+                        <rect x="140" y="20" width="40" height="40" fill="black" />
+                        <rect x="140" y="70" width="10" height="10" fill="black" />
+                        <rect x="160" y="70" width="10" height="10" fill="black" />
+                        <rect x="140" y="90" width="10" height="10" fill="black" />
+                        <rect x="160" y="90" width="10" height="10" fill="black" />
+                        <rect x="20" y="140" width="40" height="40" fill="black" />
+                        <rect x="90" y="140" width="10" height="10" fill="black" />
+                        <rect x="110" y="140" width="10" height="10" fill="black" />
+                        <rect x="140" y="140" width="40" height="40" fill="black" />
+                        <rect x="70" y="110" width="10" height="10" fill="black" />
+                        <rect x="90" y="110" width="10" height="10" fill="black" />
+                        <rect x="110" y="110" width="10" height="10" fill="black" />
+                        <rect x="70" y="130" width="10" height="10" fill="black" />
+                        <rect x="110" y="130" width="10" height="10" fill="black" />
+                        <rect x="70" y="70" width="10" height="10" fill="black" />
+                        <rect x="110" y="70" width="10" height="10" fill="black" />
+                    </svg>
+                </div>
+                <p style="font-size:0.7rem; color:#888;">Sitio: ALEX Y SU MARIACHI</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2026 <span>ALEX Y SU MARIACHI</span> · LOS POTRILLOS DE MICHOACÁN</p>
+        <p style="margin-top:6px; font-size:0.75rem;">Música que enamora · Tradición que une</p>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ===== MENÚ HAMBURGUESA =====
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navClose = document.getElementById('navClose');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('open');
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('open');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        navClose.addEventListener('click', closeMenu);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Cerrar al hacer clic fuera del menú
+        document.addEventListener('click', function(e) {
+            if (navMenu.classList.contains('open')) {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    closeMenu();
+                }
+            }
+        });
+
+        // ===== COMPARTIR =====
+        function compartir() {
+            const url = window.location.href;
+            const texto = '🎵 ALEX Y SU MARIACHI - LOS POTRILLOS DE MICHOACÁN 🎵\nMúsica que enamora, tradición que une.\n¡Contrátalos ya!';
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ALEX Y SU MARIACHI',
+                    text: texto,
+                    url: url
+                }).catch(() => {});
+            } else {
+                // Fallback: copiar enlace
+                navigator.clipboard.writeText(url + '\n' + texto).then(() => {
+                    alert('✅ Enlace copiado al portapapeles. ¡Compártelo donde quieras!');
+                }).catch(() => {
+                    prompt('Copia este enlace:', url);
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>
