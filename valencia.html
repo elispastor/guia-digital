@@ -388,4 +388,314 @@ const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión to
             </form>
         </div>
 
-        <div id="formulario
+                <div id="formularioInfluencer" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📊 Genera ingresos con NGE</h3>
+                <button onclick="cerrarFormulario('influencer')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formInfluencer" class="space-y-3">
+                <input type="text" name="nombre" placeholder="Tu nombre" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="text" name="redes" placeholder="Tus redes sociales" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="text" name="seguidores" placeholder="Número de seguidores" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">🚀 Quiero generar ingresos</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FORMULARIO IMPULSADOR -->
+    <div id="formularioImpulsador" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-amber-400">📋 Postularse como Impulsador(a)</h3>
+            <button onclick="cerrarFormulario('impulsador')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+        </div>
+        <form id="formImpulsador" class="space-y-3">
+            <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <input type="text" name="experiencia" placeholder="¿Tienes experiencia en ventas o promoción?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+            <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+            <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+        </form>
+    </div>
+
+    <!-- FILTROS Y DIRECTORIO -->
+    <div class="filtros-container" id="filtros"></div>
+
+    <div id="directorio" class="mb-8">
+        <h2 class="text-3xl font-bold text-[#fbbf24] mb-4 text-center">📋 DIRECTORIO POR CATEGORÍA</h2>
+        <div id="lista-negocios" class="grid md:grid-cols-2 gap-6"></div>
+    </div>
+
+    <!-- PLANES -->
+    <div id="planes" class="card">
+        <h2 class="text-2xl font-bold text-[#fbbf24] text-center mb-4">📊 PLANES PARA TU NEGOCIO</h2>
+        <div class="grid md:grid-cols-4 gap-4 text-center">
+            <div class="bg-black/30 p-3 rounded-xl">
+                <strong class="text-[#fbbf24]">Élite-Plus</strong><br>
+                $200.000 COP <span class="text-gray-400 text-sm">(~50 USD)</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl">
+                <strong class="text-[#fbbf24]">Élite</strong><br>
+                $100.000 COP <span class="text-gray-400 text-sm">(~25 USD)</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl">
+                <strong class="text-[#fbbf24]">Pro</strong><br>
+                $50.000 COP <span class="text-gray-400 text-sm">(~12 USD)</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl">
+                <strong class="text-[#fbbf24]">Básico</strong><br>
+                $25.000 COP <span class="text-gray-400 text-sm">(~6 USD)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACTO Y QR -->
+    <div id="contacto" class="card text-center">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
+        <div class="flex justify-center gap-4 my-4 flex-wrap">
+            <a href="https://wa.me/573244913371" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
+            <button onclick="compartirSitio()" class="btn" style="background:#3b82f6; color:white;">📤 Compartir guía</button>
+        </div>
+        
+        <div class="text-center mt-6">
+            <button onclick="mostrarInstruccionesPago()" class="bg-[#fbbf24] text-[#0b1c3a] font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:scale-105 transition">💳 ACTIVAR PLAN</button>
+        </div>
+
+        <div id="instruccionesPago" class="mt-6 p-5 bg-black/50 rounded-xl hidden">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-[#fbbf24]">📋 ACTIVAR TU TARJETA EN LA GUÍA</h3>
+                <button onclick="cerrarInstruccionesPago()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <div class="space-y-3">
+                <p>🔹 <strong>1. Paga por Nequi al número:</strong> <span class="text-[#fbbf24] font-bold">3187954327</span></p>
+                <p>🔹 <strong>2. Monto:</strong> <span class="text-[#fbbf24] font-bold">$25.000 COP</span> (anual) o <span class="text-[#fbbf24] font-bold">$5.000 COP</span> (mensual)</p>
+                <p>🔹 <strong>3. Referencia:</strong> Escribe tu <strong>CÓDIGO DE AFILIADO</strong> (ej: NGE-220)</p>
+                <p>🔹 <strong>4. Envía el comprobante</strong> por WhatsApp al <strong>324 491 3371</strong></p>
+                <p>🔹 <strong>5. En 15 minutos</strong> tu negocio estará visible en la Guía Digital</p>
+                <div class="mt-4 p-3 bg-green-600/30 rounded-xl text-center">
+                    <p class="font-bold">📲 ¿Ya pagaste? Envía tu comprobante aquí:</p>
+                    <a href="https://wa.me/573244913371" class="inline-block mt-2 bg-[#25D366] text-white px-6 py-2 rounded-full font-bold">ENVIAR COMPROBANTE</a>
+                </div>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-[#fbbf24]">📱 ESCANEA Y GUARDA ESTA GUÍA</h3>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://guiadigitalcucuta.pages.dev" alt="QR Guía" class="mx-auto my-2">
+                <button onclick="reenviarGuia()" class="mt-3 bg-[#fbbf24] text-[#0b1c3a] font-bold py-2 px-4 rounded-full shadow-md hover:scale-105 transition">📲 Reenviar esta guía</button>
+            </div>
+        </div>
+
+        <!-- CONTADOR DE VISITAS PÚBLICO -->
+        <div class="text-center my-6" id="contadorVisitas">
+            <div class="inline-block bg-black/40 backdrop-blur-sm rounded-2xl px-6 py-4 border border-[#fbbf24]/30">
+                <p class="text-sm text-gray-300 uppercase tracking-wide">📊 VISITAS A ESTA GUÍA</p>
+                <p class="text-4xl font-bold text-[#fbbf24]" id="numeroVisitas">200</p>
+                <p class="text-xs text-gray-400 mt-1">Comerciantes y ciudadanos conectándose</p>
+            </div>
+        </div>
+
+        <script>
+            // CONTADOR QUE EMPIEZA EN 200 Y SUMA DESDE AHÍ
+            let visitas = localStorage.getItem("contadorGuiaDigital");
+            if (visitas === null) {
+                visitas = 2424;
+            } else {
+                visitas = Number(visitas) + 1;
+            }
+            localStorage.setItem("contadorGuiaDigital", visitas);
+            document.getElementById("numeroVisitas").innerText = visitas;
+        </script>
+    </div>
+
+    <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
+        <p>© 2026 Guía Digital de Valencia · Directorio de negocios</p>
+        <div class="mt-2"><a href="https://guia-digital.com/tarjeta-inteligente" class="text-[#fbbf24] font-bold">📱 Tu Tarjeta Digital</a></div>
+        <p class="text-sm text-gray-400 mt-1">Guía Digital Valencia - Unidos Ganamos Más</p>
+    </footer>
+</div>
+
+<script>
+// ===== NEGOCIOS DE VALENCIA (INICIALMENTE VACÍO) =====
+const negocios = [];
+
+const categorias = [
+    { id: "todos", nombre: "🔧 Todos" }
+];
+
+let categoriaActual = "todos";
+
+function mostrarNegocios(categoria) {
+    const contenedor = document.getElementById("lista-negocios");
+    const filtrados = categoria === "todos" ? negocios : negocios.filter(n => n.categoria === categoria);
+    if (filtrados.length === 0) {
+        contenedor.innerHTML = `<div class="col-span-2 text-center py-8 text-gray-400">No hay negocios en esta categoría aún.</div>`;
+        return;
+    }
+    contenedor.innerHTML = filtrados.map(n => `
+        <div class="taller-card">
+            <h3 class="text-xl font-bold text-[#fbbf24]">${n.nombre}</h3>
+            <p class="text-sm text-gray-300 mb-3">${obtenerNombreCategoria(n.categoria)}</p>
+            <div class="flex gap-3 flex-wrap">
+                <button class="btn btn-sitio w-full sm:w-auto" data-url="${n.url}">🔗 Ver sitio</button>
+            </div>
+        </div>
+    `).join("");
+    document.querySelectorAll('.btn-sitio[data-url]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = this.getAttribute('data-url');
+            const textoOriginal = this.innerHTML;
+            this.innerHTML = "⏳ Abriendo sitio...";
+            this.classList.add('btn-loading');
+            setTimeout(() => {
+                window.open(url, '_blank', 'noopener,noreferrer');
+                this.innerHTML = textoOriginal;
+                this.classList.remove('btn-loading');
+            }, 300);
+        });
+    });
+}
+
+function obtenerNombreCategoria(catId) {
+    const cat = categorias.find(c => c.id === catId);
+    return cat ? cat.nombre : catId;
+}
+
+function generarFiltros() {
+    const contenedor = document.getElementById("filtros");
+    contenedor.innerHTML = categorias.map(cat => `<button class="btn-categoria ${cat.id === categoriaActual ? 'activo' : ''}" data-categoria="${cat.id}">${cat.nombre}</button>`).join("");
+    document.querySelectorAll(".btn-categoria").forEach(btn => {
+        btn.addEventListener("click", () => {
+            categoriaActual = btn.dataset.categoria;
+            mostrarNegocios(categoriaActual);
+            document.querySelectorAll(".btn-categoria").forEach(b => b.classList.remove("activo"));
+            btn.classList.add("activo");
+        });
+    });
+}
+
+generarFiltros();
+mostrarNegocios("todos");
+
+// ===== FUNCIONES DEL MENÚ Y OTROS SCRIPTS =====
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+if (menuBtn) {
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => el.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+}
+
+const carruselInner = document.getElementById('carruselInner');
+const slides = document.querySelectorAll('.carrusel-slide');
+const totalSlides = slides.length;
+let currentIndex = 0;
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const indicadores = document.getElementById('indicadores');
+
+function updateCarrusel() {
+    carruselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+    document.querySelectorAll('.indicator').forEach((ind, i) => {
+        i === currentIndex ? ind.classList.add('active') : ind.classList.remove('active');
+    });
+}
+function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarrusel(); }
+function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarrusel(); }
+
+for (let i = 0; i < totalSlides; i++) {
+    const ind = document.createElement('span');
+    ind.classList.add('indicator');
+    if (i === 0) ind.classList.add('active');
+    ind.onclick = () => { currentIndex = i; updateCarrusel(); };
+    indicadores.appendChild(ind);
+}
+prevBtn.addEventListener('click', prevSlide);
+nextBtn.addEventListener('click', nextSlide);
+setInterval(nextSlide, 5000);
+
+const NUEVA_URL = window.location.href;
+
+function compartirSitio() {
+    if (navigator.share) {
+        navigator.share({ title: 'Guía Digital de Valencia', text: 'Directorio de negocios en Valencia', url: NUEVA_URL });
+    } else {
+        navigator.clipboard.writeText(NUEVA_URL);
+        alert('📋 Enlace copiado.');
+    }
+}
+
+function reenviarGuia() {
+    const texto = '🔧 Guía Digital de Valencia - Directorio de negocios, talleres y servicios. ¡Míralo aquí:';
+    if (navigator.share) {
+        navigator.share({ title: 'Guía Digital de Valencia', text: texto, url: NUEVA_URL });
+    } else {
+        navigator.clipboard.writeText(NUEVA_URL + ' ' + texto);
+        alert('📋 Enlace copiado.');
+    }
+}
+
+const btnBuscar = document.getElementById('btnBuscarLocal');
+const inputBuscar = document.getElementById('buscadorLocal');
+const resultadosDiv = document.getElementById('resultadosBusqueda');
+if (btnBuscar) {
+    btnBuscar.addEventListener('click', function() {
+        const termino = inputBuscar.value.trim().toLowerCase();
+        if (termino === '') { alert('Escribe lo que quieres buscar'); return; }
+        const resultados = negocios.filter(n => n.nombre.toLowerCase().includes(termino) || obtenerNombreCategoria(n.categoria).toLowerCase().includes(termino));
+        if (resultados.length === 0) {
+            resultadosDiv.innerHTML = `<div class="mt-4 p-4 bg-black/30 rounded-xl text-center text-gray-300">❌ No encontramos "${termino}" en nuestra guía.</div>`;
+        } else {
+            resultadosDiv.innerHTML = `<div class="mt-4 p-4 bg-black/30 rounded-xl"><h3 class="text-lg font-bold text-amber-400 mb-3">📋 Resultados para "${termino}":</h3><div class="grid md:grid-cols-2 gap-3">${resultados.map(n => `<div class="bg-black/50 p-3 rounded-xl flex justify-between items-center"><div><p class="font-bold text-white">${n.nombre}</p><p class="text-xs text-gray-400">${obtenerNombreCategoria(n.categoria)}</p></div><button class="btn-sitio text-sm py-1 px-3 rounded-full" data-url="${n.url}">Ver sitio</button></div>`).join('')}</div></div>`;
+            document.querySelectorAll('#resultadosBusqueda .btn-sitio').forEach(btn => {
+                btn.addEventListener('click', function() { window.open(this.getAttribute('data-url'), '_blank'); });
+            });
+        }
+        resultadosDiv.classList.remove('hidden');
+    });
+}
+
+// Funciones para formularios (deben estar definidas aunque no se usen)
+function abrirFormularioOferta(oferta, empresa) {
+    // Placeholder
+}
+function cerrarFormularioOferta() {
+    // Placeholder
+}
+function abrirFormularioLocal() {
+    // Placeholder
+}
+function abrirFormularioInfluencer() {
+    // Placeholder
+}
+function cerrarFormulario(tipo) {
+    // Placeholder
+}
+function mostrarInstruccionesPago() {
+    document.getElementById("instruccionesPago").classList.remove("hidden");
+    document.getElementById("instruccionesPago").scrollIntoView({ behavior: 'smooth' });
+}
+function cerrarInstruccionesPago() {
+    document.getElementById("instruccionesPago").classList.add("hidden");
+}
+</script>
+<script>
+function instalarPulpito() {
+    if (window.deferredPrompt) {
+        window.deferredPrompt.prompt();
+        window.deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('Pulpito instalado en pantalla de inicio');
+            }
+            window.deferredPrompt = null;
+        });
+    } else {
+        alert("En tu navegador, ve a los tres puntos ⋮ y selecciona 'Agregar a pantalla de inicio'");
+    }
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    window.deferredPrompt = e;
+});
+</script>
+</body>
+</html>
