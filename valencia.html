@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5949598980404445"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Guía Digital de Valencia | Directorio de negocios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{background:#0b1c3a;font-family:'Segoe UI',Arial,sans-serif;color:white;}
+        .container{max-width:1200px;margin:0 auto;padding:20px;}
+
+        .carrusel{position:relative;width:100%;margin:30px 0;overflow:hidden;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.3);background:#000;}
+        .carrusel-inner{display:flex;transition:transform 0.5s ease;}
+        .carrusel-slide{min-width:100%;flex-shrink:0;}
+        .carrusel-slide img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;}
+        .carrusel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);color:white;border:none;font-size:2rem;padding:0 15px;cursor:pointer;z-index:10;border-radius:30px;}
+        .carrusel-btn.prev{left:10px;}
+        .carrusel-btn.next{right:10px;}
+        .carrusel-indicators{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:8px;background:rgba(0,0,0,0.5);padding:5px 12px;border-radius:30px;z-index:10;}
+        .indicator{width:10px;height:10px;background:rgba(255,255,255,0.5);border-radius:50%;cursor:pointer;}
+        .indicator.active{background:#fbbf24;}
+
+        .card{background:#112b4f;padding:25px;border-radius:20px;border-left:5px solid #fbbf24;margin-bottom:20px;}
+        .taller-card{background:#112b4f;border-radius:20px;padding:20px;margin-bottom:20px;transition:0.3s;border:1px solid #1e3a5f;}
+        .taller-card:hover{transform:translateY(-5px);background:#1e3a5f;border-color:#fbbf24;}
+        .btn{padding:10px 20px;border-radius:30px;font-weight:bold;display:inline-block;font-size:0.9rem;transition:0.2s;text-align:center;}
+        .btn-wsp{background:#25d366;color:white;}
+        .btn-sitio{background:#3b82f6;color:white;border:none;cursor:pointer;}
+        .btn-sitio:active,.btn-wsp:active{transform:scale(0.96);}
+        .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25d366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2em;text-decoration:none;color:white;border:2px solid #fbbf24;z-index:1000;}
+        .btn-categoria{background:#112b4f;padding:8px 16px;border-radius:30px;color:white;cursor:pointer;border:none;font-size:0.8rem;transition:0.2s;}
+        .btn-categoria.activo{background:#fbbf24;color:#0b1c3a;font-weight:bold;}
+        .filtros-container{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px;}
+        .btn-loading{opacity:0.6;pointer-events:none;position:relative;}
+        .btn-loading::after{content:"⏳";font-size:1rem;margin-left:8px;animation:parpadeo 0.8s infinite;}
+        @keyframes parpadeo{0%,100%{opacity:1;}50%{opacity:0.3;}}
+        @media (max-width: 768px) {
+            .container{padding:12px;}
+            .carrusel-slide img{height:200px; aspect-ratio:auto; object-fit:cover;}
+            #inicio img{max-height:200px; object-fit:cover; width:100%;}
+            .btn{padding:12px; font-size:1rem; width:100%;}
+            .taller-card .flex{flex-direction:column; gap:12px;}
+            .btn-sitio,.btn-wsp{text-align:center;}
+        }
+        /* FIX TOTAL - NADA BLANCO */
+* [class*="portada"], h1:empty, header::before, body::before,
+header, nav::before, nav::after, .header {
+  display: none !important;
+  background: none !important;
+  height: 0 !important;
+}
+
+img[alt*="Guía"], img[src*="logo-guia"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+    </style>
+        </style>
+<link rel="icon" type="image/png" sizes="32x32" href="https://guia-digital.com/pulpo-icono.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://guia-digital.com/pulpo-icono.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://guia-digital.com/pulpo-icono.png">
+<body class>
+</head>
+<body class>
+<a href="https://wa.me/573244913371" class="whatsapp-float" target="_blank">💬</a>
+
+<div class="container">
+
+    <!-- MENÚ PRINCIPAL -->
+    <nav class="bg-[#112b4f] border-b-4 border-[#fbbf24] py-4 px-6 mb-8 flex flex-wrap items-center justify-between sticky top-0 z-50 rounded-2xl">
+        <div class="flex flex-col">
+            <div class="text-white text-2xl font-bold tracking-wide">GUÍA DIGITAL</div>
+            <div class="text-[#fbbf24] text-xs font-semibold -mt-1">Valencia</div>
+        </div>
+        <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
+            <a href="#inicio" class="hover:text-[#fbbf24]">INICIO</a>
+            <a href="#directorio" class="hover:text-[#fbbf24]">DIRECTORIO</a>
+            <a href="#planes" class="hover:text-[#fbbf24]">PLANES</a>
+            <a href="#contacto" class="hover:text-[#fbbf24]">CONTACTO</a>
+            <button onclick="compartirSitio()" class="hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white text-sm font-semibold">📤 COMPARTIR</button>
+        </div>
+        <button id="menu-btn" class="md:hidden text-2xl text-[#fbbf24]"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-[#112b4f] p-4 mb-4 rounded-2xl flex-col gap-3 border-l-4 border-[#fbbf24]">
+        <a href="#inicio" class="block py-2 hover:text-[#fbbf24]">INICIO</a>
+        <a href="#directorio" class="block py-2 hover:text-[#fbbf24]">DIRECTORIO</a>
+        <a href="#planes" class="block py-2 hover:text-[#fbbf24]">PLANES</a>
+        <a href="#contacto" class="block py-2 hover:text-[#fbbf24]">CONTACTO</a>
+        <button onclick="compartirSitio()" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">📤 COMPARTIR</button>
+<button onclick="instalarPulpito(); return false;" class="text-left py-2 hover:text-[#fbbf24] bg-transparent border-none cursor-pointer text-white">🐙 GUARDAR PULPITO</button>    </div>
+    
+
+    <!-- LOGO GRANDE COMO PORTADA -->
+<div class="text-center my-6">
+    <div class="inline-block p-4 rounded-xl" style="background: rgba(255, 255, 200, 0.15); border: 2px solid rgba(255, 255, 150, 0.5);">
+        <img src="logo-guia-digital.png" alt="Guía Digital" class="w-64 h-auto mx-auto md:w-80">
+    </div>
+    <div class="mt-2 text-[#fbbf24] text-lg md:text-xl font-semibold italic tracking-wide">
+        CONEXIÓN TOTAL
+    </div>
+        <div class="text-center my-4 px-4">
+        <p class="text-2xl md:text-3xl font-bold italic text-[#fbbf24] drop-shadow-lg">
+            "En Valencia, todos los negocios están aquí"
+        </p>
+        <p class="text-sm text-gray-300 mt-2">⭐ Bienvenid@s a la red de comercios que ya HACEN PARTE de Guía-Digital.com</p>
+    </div>
+</div>
+    <div class="text-center my-8 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold italic text-white drop-shadow-lg">
+            Directorio de negocios, talleres y servicios
+        </h2>
+    </div>
+
+   <!-- PULPITO PARLANTE (SIN DEPENDENCIAS EXTERNAS) -->
+<div class="text-center my-6" id="pulpitoContainer">
+    <img src="pulpito.png" id="pulpitoImg" alt="Pulpito bienvenida" class="w-56 h-56 mx-auto cursor-pointer transition duration-300 hover:scale-110 animate-float">
+    <div id="mensajePulpito" class="mt-3 text-white text-lg md:text-xl font-semibold"></div>
+    <p class="text-xs text-gray-400 mt-1">✨ Haz clic en el pulpito para saludar ✨</p>
+</div>
+
+<style>
+    @keyframes flotar {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0px); }
+    }
+    .animate-float {
+        animation: flotar 3s ease-in-out infinite;
+    }
+</style>
+
+<script>
+       // Saludo según la hora
+    function mostrarSaludo() {
+        const ahora = new Date();
+        const hora = ahora.getHours();
+        let saludo = "";
+        if (hora < 12) saludo = "🌞 Buenos días";
+        else if (hora < 19) saludo = "☀️ Buenas tardes";
+        else saludo = "🌙 Buenas noches";
+        document.getElementById("mensajePulpito").innerHTML = `🐙 ${saludo}, ¡"puuul piiii tooo" te da la bienvenida a la Guía Digital de Valencia! 🔍`;
+    }
+    mostrarSaludo();
+
+    // Hacer que hable al hacer clic (con voz colombiana)
+    document.getElementById('pulpitoImg').addEventListener('click', function() {
+const mensaje = "Hola, vecino, soy el pul pito de la Guía Digital. Conexión total para todos los negocios de nuestra amada ciudad de Valencia. ¡Bienvenido, veci!";        const voz = new SpeechSynthesisUtterance(mensaje);
+        
+        // Forzar español de Colombia (si existe)
+        voz.lang = 'es-CO';
+        
+        // Velocidad más lenta para que se entienda
+        voz.rate = 0.8; 
+        
+        // Intentar seleccionar una voz colombiana si está disponible
+        window.speechSynthesis.onvoiceschanged = () => {
+            const voces = window.speechSynthesis.getVoices();
+            const vozColombiana = voces.find(voz => voz.lang === 'es-CO');
+            if (vozColombiana) voz.voice = vozColombiana;
+            window.speechSynthesis.speak(voz);
+        };
+        
+        // Si no hay voces cargadas, igual intenta
+        window.speechSynthesis.speak(voz);
+    });
+</script>
+
+    <!-- BUSCADOR DE LA GUÍA -->
+    <div class="card mb-6 text-center">
+        <h2 class="text-3xl font-bold text-[#fbbf24] mb-2">🔍 ENCUENTRA TODO EN VALENCIA</h2>
+        <p class="text-gray-300 mb-4">Busca negocios, talleres, restaurantes y servicios en nuestra guía.</p>
+        <div class="max-w-2xl mx-auto">
+            <div class="flex flex-col sm:flex-row gap-2">
+                <input type="text" id="buscadorLocal" placeholder="Ej: taller, ferretería, restaurante, hotel..." 
+                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                <button id="btnBuscarLocal" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                    <i class="fas fa-search mr-2"></i> Buscar en la Guía
+                </button>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">🔎 Escribe lo que buscas y te mostraremos los negocios relacionados.</p>
+        </div>
+        <div id="resultadosBusqueda" class="mt-4 hidden"></div>
+    </div>
+
+    <!-- BUSCADOR DE GOOGLE -->
+    <div class="card mb-6 text-center" style="border-left-color: #34B7F1;">
+        <h2 class="text-2xl font-bold text-[#34B7F1] mb-2">🌐 ¿NO ENCUENTRAS LO QUE BUSCAS?</h2>
+        <p class="text-gray-300 mb-3">Búscalo directamente en Google. Se abrirá una nueva pestaña.</p>
+        <div class="max-w-2xl mx-auto">
+            <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
+                <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería..." 
+                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                    <i class="fas fa-search mr-2"></i> Buscar en Google
+                </button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">🔎 Al buscar, se abrirá una nueva pestaña con los resultados de Google.</p>
+        </div>
+    </div>
+
+    <!-- CARRUSEL -->
+    <div class="carrusel" id="carrusel">
+       <div class="carrusel-inner" id="carruselInner">
+    <div class="carrusel-slide">
+        <div style="width:100%; height:100%; background: linear-gradient(135deg, #6a3093, #a044ff); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; font-family: 'Segoe UI', sans-serif;">
+            <i class="fas fa-tshirt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+            <h2 style="font-size: 1.8rem; font-weight: bold; margin: 0;">Fajas Edi</h2>
+            <p style="font-size: 1rem; margin-top: 0.5rem;">Reducción · Moldeado · Fajas Postquirúrgicas</p>
+            <p style="font-size: 0.8rem; margin-top: 1rem;">¡Escanea y conoce la calidad que transforma!</p>
+            <i class="fas fa-qrcode" style="font-size: 2rem; margin-top: 0.5rem; color: #fbbf24;"></i>
+        </div>
+    </div>
+    <div class="carrusel-slide"><img src="https://hotel-lapuertadelsol.netlify.app/portada.jpg" alt="Hotel" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Hotel'"></div>
+    <div class="carrusel-slide"><img src="https://toyomack.pages.dev/portada.jpg" alt="TOYOMACK" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=TOYOMACK'"></div>
+<div class="carrusel-slide"><img src="https://guia-digital.com/portada-alex-mariachi.jpg" alt="Alex Mariachi" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Alex+Mariachi'"></div>    <div class="carrusel-slide"><img src="https://motores-motoreductores-jesus.netlify.app/portada.jpg" alt="Motores Jesús" onerror="this.src='https://placehold.co/1200x675/0b1c3a/fbbf24?text=Motores'"></div>
+<div class="carrusel-slide"><img src="https://guia-digital.com/portada-principal-luis.jpg" alt="Acarreos Luis Díaz" onerror="this.src='https://placehold.co/1200x675/1e3c72/fbbf24?text=Luis+Diaz'"></div></div>
+        <button class="carrusel-btn prev" id="prevBtn">❮</button>
+        <button class="carrusel-btn next" id="nextBtn">❯</button>
+        <div class="carrusel-indicators" id="indicadores"></div>
+    </div>
+
+    <div class="card mb-6 text-center">
+        <h2 class="text-3xl font-bold text-[#fbbf24] mb-2">📍 GUÍA DE TODOS LOS NEGOCIOS DE VALENCIA</h2>
+        <p class="text-xl text-amber-300 mb-2">✨ EN CONSTRUCCIÓN ✨</p>
+        <p class="text-gray-300 mb-4">Mientras crecemos, todo lo que quieras encontrar está aquí, desde Google, desde esta guía.</p>
+        <div class="max-w-2xl mx-auto">
+            <form action="https://www.google.com/search" method="GET" target="_blank" class="flex flex-col sm:flex-row gap-2">
+                <input type="text" name="q" placeholder="Ej: taller de motos, restaurante, ferretería, empleo..." 
+                       class="flex-1 p-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#fbbf24]">
+                <button type="submit" class="btn-primary py-3 px-6 rounded-xl font-bold transition hover:scale-105">
+                    <i class="fas fa-search mr-2"></i> Buscar en Google
+                </button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">🔎 Busca cualquier negocio, servicio o empleo. Se abrirá una nueva pestaña.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="text-2xl font-bold text-[#fbbf24] mb-2">🎯 ¿Qué es la Guía Digital de Valencia?</h2>
+        <p>El directorio más completo de talleres, tiendas y servicios de Valencia. Cada negocio tiene su propia tarjeta digital con WhatsApp, ubicación y más.</p>
+        <p class="mt-2"><strong>💡 ¿Cómo puedes ganar?</strong> Refiere otros negocios y cuando ellos se unan, tú ganas una comisión. Pregúntanos cómo.</p>
+        <p class="mt-2 text-sm text-gray-300">✅ Todos los negocios aquí listados ya tienen su tarjeta digital activa.</p>
+    </div>
+
+    <!-- CHATBOT DE EMPLEO -->
+    <div class="bg-black/40 rounded-xl p-5 mb-6">
+        <div class="flex items-center gap-2 mb-3">
+            <i class="fas fa-robot text-3xl text-amber-400"></i>
+            <h3 class="text-xl font-bold text-white">🤖 Asistente de Empleo</h3>
+        </div>
+        <div id="chatEmpleo" class="space-y-3">
+            <div id="chatMensajes" class="space-y-2 mb-3 max-h-80 overflow-y-auto">
+                <div class="bg-amber-400/20 p-3 rounded-xl text-sm">👋 ¡Hola! Soy tu asistente. Te ayudaré a encontrar empleo en Valencia.</div>
+            </div>
+            <div id="chatPregunta" class="bg-black/50 p-3 rounded-xl">
+                <p class="text-amber-400 font-bold mb-2" id="preguntaTexto">¿Qué tipo de empleo buscas?</p>
+                <div id="preguntaOpciones" class="flex flex-wrap gap-2">
+                    <button onclick="respuestaChat('tiempo_completo')" class="btn-sitio text-sm py-2 px-4 rounded-full">⏱️ Tiempo completo</button>
+                    <button onclick="respuestaChat('medio_tiempo')" class="btn-sitio text-sm py-2 px-4 rounded-full">🕒 Medio tiempo</button>
+                    <button onclick="respuestaChat('temporal')" class="btn-sitio text-sm py-2 px-4 rounded-full">📅 Temporal</button>
+                    <button onclick="respuestaChat('indistinto')" class="btn-sitio text-sm py-2 px-4 rounded-full">🔧 Indistinto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="card text-center" style="border-left-color: #fbbf24;">
+        <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
+            <span class="bg-amber-400 text-black px-3 py-1 rounded-full text-sm font-bold">🔥 OPORTUNIDAD LABORAL 🔥</span>
+            <span class="text-xs text-gray-300">NGE - Nueva Generación Emprendedora</span>
+        </div>
+        <h2 class="text-3xl font-bold text-amber-400 mb-2">🚀 ÚNETE AL EQUIPO NGE</h2>
+        <p class="text-gray-300 mb-4">Sé parte de la Evolución digital en Valencia. Trabaja con nosotros impulsando la Guía Digital.</p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <!-- IMPULSADOR -->
+            <div>
+                <div class="bg-black/30 p-5 rounded-xl text-left">
+                    <i class="fas fa-bullhorn text-4xl text-amber-400 mb-3"></i>
+                    <h3 class="text-xl font-bold text-white">💪 IMPULSADOR(A) DIGITAL</h3>
+                    <button onclick="document.getElementById('formImpulsador').classList.toggle('hidden')" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">📢 Postularme como Impulsador(a)</button>
+                </div>
+                <div id="formImpulsador" class="hidden mt-4 p-5 bg-black/50 rounded-xl">
+                    <form id="formImpulsadorForm">
+                        <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
+                        <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
+                        <textarea name="motivacion" rows="2" placeholder="¿Por qué quieres ser impulsador(a)?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3"></textarea>
+                        <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+                    </form>
+                </div>
+            </div>
+            <!-- DISEÑADOR -->
+            <div>
+                <div class="bg-black/30 p-5 rounded-xl text-left">
+                    <i class="fas fa-code text-4xl text-amber-400 mb-3"></i>
+                    <h3 class="text-xl font-bold text-white">🎨 DISEÑADOR(A) WEB</h3>
+                    <button onclick="document.getElementById('formDisenador').classList.toggle('hidden')" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">💻 Postularme como Diseñador(a)</button>
+                </div>
+                <div id="formDisenador" class="hidden mt-4 p-5 bg-black/50 rounded-xl">
+                    <form>
+                        <input type="text" name="nombre" placeholder="Nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
+                        <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3" required>
+                        <textarea name="conocimientos" rows="2" placeholder="¿Qué herramientas o lenguajes conoces?" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white mb-3"></textarea>
+                        <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar postulación</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Manejar envío de formularios (puedes cambiarlo a correo después)
+        document.getElementById('formImpulsadorForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Postulación enviada. Te contactaremos pronto.');
+            this.reset();
+            document.getElementById('formImpulsador').classList.add('hidden');
+        });
+    </script>
+        <h2 class="text-3xl font-bold text-[#34B7F1] text-center mb-2">💼 BOLSA DE EMPLEO</h2>
+        <p class="text-center text-gray-300 mb-4">Encuentra trabajo en los principales portales y postúlate a ofertas locales.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+            <a href="https://www.computrabajo.com.co/trabajo-en-cucuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fas fa-briefcase"></i> Computrabajo</a>
+            <a href="https://co.indeed.com/ofertas?l=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fas fa-search"></i> Indeed</a>
+            <a href="https://www.linkedin.com/jobs/search/?location=C%C3%BAcuta" target="_blank" class="btn-sitio py-2 px-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+
+        <div class="space-y-4 mb-6">
+            <h3 class="text-xl font-semibold text-white border-l-4 border-[#34B7F1] pl-3">📢 OFERTA LABORAL REAL</h3>
+            <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
+                <h4 class="text-lg font-bold text-white">Tapicero</h4>
+                <p class="text-sm text-gray-300">📍 Muebles RQ · Valencia (Afiliado a la Guía)</p>
+                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-1">
+                    <span><i class="fas fa-briefcase"></i> Tiempo Completo</span>
+                    <span><i class="fas fa-calendar-alt"></i> Salario: A convenir</span>
+                </div>
+                <button onclick="abrirFormularioOferta('Tapicero', 'Muebles RQ')" class="btn-primary mt-3 py-2 px-4 rounded-full text-sm font-bold w-full sm:w-auto">📋 Aplicar a esta oferta</button>
+            </div>
+        </div>
+
+        <div id="formularioOferta" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📋 Aplicar a oferta laboral</h3>
+                <button onclick="cerrarFormularioOferta()" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formOferta" class="space-y-3">
+                <input type="text" id="ofertaNombre" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Oferta">
+                <input type="text" id="ofertaEmpresa" readonly class="w-full p-3 rounded-xl bg-white/20 border border-white/20 text-white" placeholder="Empresa">
+                <input type="text" name="nombre" placeholder="Tu nombre completo" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Tu teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <textarea name="experiencia" rows="2" placeholder="Cuéntanos tu experiencia" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+                <button type="submit" class="btn-wsp w-full py-3 rounded-xl font-bold">📤 Enviar aplicación</button>
+            </form>
+            <p class="text-xs text-gray-400 mt-2">📢 Tu solicitud será enviada al empleador.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-6 pt-4 border-t border-gray-700">
+            <div class="bg-gradient-to-r from-blue-900/30 to-blue-800/30 p-5 rounded-xl text-center border border-blue-500/30">
+                <i class="fas fa-store text-5xl text-blue-400 mb-3"></i>
+                <h3 class="text-2xl font-bold text-white">🏪 ¿TIENES UN LOCAL?</h3>
+                <button onclick="abrirFormularioLocal()" class="btn-primary w-full mt-4 py-2 rounded-full text-sm font-bold">📢 Quiero ampliar mi negocio</button>
+            </div>
+            <div class="bg-gradient-to-r from-purple-900/30 to-purple-800/30 p-5 rounded-xl text-center border border-purple-500/30">
+                <i class="fas fa-chart-line text-5xl text-purple-400 mb-3"></i>
+                <h3 class="text-2xl font-bold text-white">📊 ¿TIENES SEGUIDORES?</h3>
+                <button onclick="abrirFormularioInfluencer()" class="btn-wsp w-full mt-4 py-2 rounded-full text-sm font-bold">🚀 Quiero generar ingresos</button>
+            </div>
+        </div>
+
+        <div id="formularioLocal" class="hidden mt-6 p-5 bg-black/50 rounded-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-amber-400">📋 Amplía tu negocio</h3>
+                <button onclick="cerrarFormulario('local')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+            </div>
+            <form id="formLocal" class="space-y-3">
+                <input type="text" name="nombre" placeholder="Nombre del local" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="text" name="direccion" placeholder="Dirección" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white" required>
+                <textarea name="mensaje" rows="2" placeholder="Cuéntanos sobre tu negocio" class="w-full p-3 rounded-xl bg-white/10 border border-white/20 text-white"></textarea>
+                <button type="submit" class="btn-primary w-full py-3 rounded-xl font-bold">📤 Enviar solicitud</button>
+            </form>
+        </div>
+
+        <div id="formulario
