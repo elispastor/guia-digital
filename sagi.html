@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAGI - Sistema Automático de Generación de Ingresos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #0b1a2e; color: #fff; display: flex; justify-content: center; padding: 20px; }
+        .container { max-width: 800px; width: 100%; }
+        .card { background: #112b4f; border-radius: 20px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #fbbf24; }
+        .title { font-size: 28px; font-weight: 800; color: #fbbf24; text-align: center; }
+        .sub { text-align: center; color: #a0c4e8; margin-bottom: 20px; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-box { background: #1e3a5f; border-radius: 12px; padding: 12px; text-align: center; }
+        .stat-box .number { font-size: 24px; font-weight: 700; color: #fbbf24; }
+        .stat-box .label { font-size: 12px; color: #a0c4e8; }
+        .levels { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+        .level-row { display: flex; align-items: center; gap: 10px; background: #1a2f44; padding: 8px 12px; border-radius: 10px; }
+        .level-row .level { width: 40px; font-weight: 700; color: #fbbf24; }
+        .level-row .bar-container { flex: 1; height: 20px; background: #0b1a2e; border-radius: 10px; overflow: hidden; position: relative; }
+        .level-row .bar { height: 100%; background: linear-gradient(90deg, #fbbf24, #f59e0b); border-radius: 10px; transition: width 0.5s; }
+        .level-row .people { width: 50px; text-align: right; font-size: 14px; color: #a0c4e8; }
+        .level-row .income { width: 80px; text-align: right; font-size: 14px; font-weight: 600; color: #fbbf24; }
+        .btn { background: #fbbf24; color: #0b1a2e; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .btn:hover { transform: scale(1.02); background: #f59e0b; }
+        .btn-group { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin: 16px 0; }
+        .history { background: #1a2f44; border-radius: 12px; padding: 12px; max-height: 200px; overflow-y: auto; font-size: 13px; color: #a0c4e8; }
+        .history .entry { padding: 4px 0; border-bottom: 1px solid #1e3a5f; }
+        .history .entry span { color: #fbbf24; }
+        .green { color: #22c55e; }
+        .ruleta-box { background: #1e3a5f; border-radius: 16px; padding: 16px; text-align: center; border: 2px solid #fbbf24; }
+        .ruleta-box .ruleta-num { font-size: 48px; font-weight: 800; color: #fbbf24; }
+        .ruleta-box .ruleta-label { font-size: 14px; color: #a0c4e8; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="card">
+        <div class="title">🐙 SAGI</div>
+        <div class="sub">Sistema Automático de Generación de Ingresos · Binario Híbrido con Derrame</div>
+
+        <div class="stats">
+            <div class="stat-box"><div class="number" id="totalMembers">0</div><div class="label">Total Miembros</div></div>
+            <div class="stat-box"><div class="number" id="totalIncome">$0</div><div class="label">Dividendos Generados</div></div>
+            <div class="stat-box"><div class="number" id="totalLevels">0</div><div class="label">Niveles Alcanzados</div></div>
+        </div>
+
+        <div class="levels" id="levelsContainer"></div>
+
+        <div class="btn-group">
+            <button class="btn" onclick="addMember()">➕ Agregar Miembro</button>
+            <button class="btn" onclick="simulateWave()">🌊 Simular Ola de 10</button>
+            <button class="btn" onclick="resetSystem()">🔄 Reiniciar</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="ruleta-box">
+            <div class="ruleta-label">🎰 Último Giro de la Ruleta</div>
+            <div class="ruleta-num" id="ruletaNum">00</div>
+            <div class="ruleta-label" id="ruletaGanador">Esperando participantes...</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3 style="color:#fbbf24; margin-bottom:8px;">📋 Historial de Ingresos</h3>
+        <div class="history" id="history"></div>
+    </div>
+
+    <div style="text-align:center; font-size:12px; color:#6b8aa8; margin-top:16px;">
+        SAGI v1.0 · Liga Motorizada · El poder de la unidad
+    </div>
+</div>
+
+<script>
+    let members = [];
+    let totalIncome = 0;
+    let history = [];
+    let levelConfig = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
+    let currentLevel = 0;
+    let ruletaCounter = 0;
+
+    function updateDisplay() {
+        const total = members.length;
+        document.getElementById('totalMembers').textContent = total;
+        document.getElementById('totalIncome').textContent = '$' + totalIncome.toFixed(2);
+
+        let levelsHtml = '';
+        let accumulated = 0;
+        let maxLevel = 0;
+        for (let i = 0; i < levelConfig.length; i++) {
+            const needed = levelConfig[i];
+            const filled = Math.min(total - accumulated, needed);
+            accumulated += filled;
+            const percent = Math.min((filled / needed) * 100, 100);
+            const levelIncome = filled * 0.5; // $0.5 por miembro en este nivel
+            const levelTotal = levelIncome.toFixed(2);
+            const isComplete = filled >= needed;
+            levelsHtml += `
+                <div class="level-row">
+                    <div class="level">N${i+1}</div>
+                    <div class="bar-container">
+                        <div class="bar" style="width: ${percent}%; background: ${isComplete ? 'linear-gradient(90deg, #22c55e, #16a34a)' : 'linear-gradient(90deg, #fbbf24, #f59e0b)'};"></div>
+                    </div>
+                    <div class="people">${filled}/${needed}</div>
+                    <div class="income">$${levelTotal}</div>
+                </div>
+            `;
+            if (filled >= needed) maxLevel = i + 1;
+        }
+        document.getElementById('levelsContainer').innerHTML = levelsHtml;
+        document.getElementById('totalLevels').textContent = maxLevel;
+
+        // Historial
+        let historyHtml = history.slice(-10).reverse().map(h => 
+            `<div class="entry">🟢 ${h} <span>+$${0.5}</span></div>`
+        ).join('');
+        document.getElementById('history').innerHTML = historyHtml || '<div class="entry">Aún no hay movimientos</div>';
+    }
+
+    function addMember() {
+        const id = members.length + 1;
+        members.push({ id, level: 0 });
+        const gain = 0.5;
+        totalIncome += gain;
+        history.push(`Miembro #${id} ingresó al sistema`);
+        ruletaCounter++;
+        if (ruletaCounter % 3 === 0) {
+            const win = Math.floor(Math.random() * 10) + 1;
+            document.getElementById('ruletaNum').textContent = win;
+            document.getElementById('ruletaGanador').textContent = `🎉 ¡Miembro #${id} ganó $${win} extra en la ruleta!`;
+            totalIncome += win;
+            history.push(`🎰 Ruleta: Miembro #${id} ganó $${win} extra`);
+        } else {
+            document.getElementById('ruletaNum').textContent = '--';
+            document.getElementById('ruletaGanador').textContent = 'Sigue participando...';
+        }
+        updateDisplay();
+    }
+
+    function simulateWave() {
+        for (let i = 0; i < 10; i++) {
+            setTimeout(addMember, i * 200);
+        }
+    }
+
+    function resetSystem() {
+        members = [];
+        totalIncome = 0;
+        history = [];
+        ruletaCounter = 0;
+        document.getElementById('ruletaNum').textContent = '00';
+        document.getElementById('ruletaGanador').textContent = 'Esperando participantes...';
+        updateDisplay();
+    }
+
+    // Inicializar con algunos miembros para demostración
+    for (let i = 0; i < 5; i++) {
+        addMember();
+    }
+</script>
+
+</body>
+</html>
