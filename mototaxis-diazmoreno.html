@@ -158,133 +158,132 @@
 </div>
     
 <script>
-    // MENÚ
-    const menuToggle = document.getElementById('menuToggle');
-    const menuClose = document.getElementById('menuClose');
-    const menuPanel = document.getElementById('menuPanel');
-    const menuOverlay = document.getElementById('menuOverlay');
+    // Esperar a que el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', function() {
 
-    function openMenu() { menuPanel.classList.add('open'); menuOverlay.classList.add('active'); }
-    function closeMenu() { menuPanel.classList.remove('open'); menuOverlay.classList.remove('active'); }
+        // MENÚ
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const menuPanel = document.getElementById('menuPanel');
+        const menuOverlay = document.getElementById('menuOverlay');
 
-    menuToggle.addEventListener('click', openMenu);
-    menuClose.addEventListener('click', closeMenu);
-    menuOverlay.addEventListener('click', closeMenu);
+        function openMenu() { menuPanel.classList.add('open'); menuOverlay.classList.add('active'); }
+        function closeMenu() { menuPanel.classList.remove('open'); menuOverlay.classList.remove('active'); }
 
-    document.getElementById('menuInicio').addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); });
-    document.getElementById('menuServicios').addEventListener('click', function() { document.getElementById('serviciosSection').scrollIntoView({ behavior: 'smooth' }); closeMenu(); });
-    document.getElementById('menuUbicacion').addEventListener('click', function() { window.open('https://www.google.com/maps?q=Valencia+Venezuela', '_blank'); closeMenu(); });
-    document.getElementById('menuContacto').addEventListener('click', function() { window.location.href = 'tel:573244913371'; closeMenu(); });
-    document.getElementById('menuCompartir').addEventListener('click', function() { compartir(); closeMenu(); });
-    document.getElementById('menuPide').addEventListener('click', function() { window.open('https://guia-digital.com', '_blank'); closeMenu(); });
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
 
-   // MENÚ
-const menuToggle = document.getElementById('menuToggle');
-const menuClose = document.getElementById('menuClose');
-const menuPanel = document.getElementById('menuPanel');
-const menuOverlay = document.getElementById('menuOverlay');
+        // --- ALTERNAR PANEL SAI ---
+        function toggleSAI() {
+            const panel = document.getElementById('panelSAI');
+            if (panel) {
+                panel.classList.toggle('active');
+            } else {
+                console.warn('Panel SAI no encontrado');
+            }
+        }
 
-function openMenu() { menuPanel.classList.add('open'); menuOverlay.classList.add('active'); }
-function closeMenu() { menuPanel.classList.remove('open'); menuOverlay.classList.remove('active'); }
+        // --- BOTÓN SAI EN LA INTERFAZ ---
+        const toggleSAIBtn = document.getElementById('toggleSAI');
+        if (toggleSAIBtn) {
+            toggleSAIBtn.addEventListener('click', toggleSAI);
+        }
 
-menuToggle.addEventListener('click', openMenu);
-menuClose.addEventListener('click', closeMenu);
-menuOverlay.addEventListener('click', closeMenu);
+        // --- OPCIÓN SAI EN EL MENÚ ---
+        const menuSAI = document.getElementById('menuSAI');
+        if (menuSAI) {
+            menuSAI.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleSAI();
+                closeMenu();
+            });
+        }
 
-// --- ALTERNAR PANEL SAI ---
-function toggleSAI() {
-    const panel = document.getElementById('panelSAI');
-    if (panel) {
-        panel.classList.toggle('active');
-    } else {
-        console.warn('Panel SAI no encontrado');
-    }
-}
-
-// --- BOTÓN SAI EN LA INTERFAZ ---
-document.getElementById('toggleSAI').addEventListener('click', toggleSAI);
-
-// --- OPCIÓN SAI EN EL MENÚ ---
-document.getElementById('menuSAI').addEventListener('click', function() {
-    toggleSAI();
-    closeMenu();
-});
-
-// --- RESTO DE OPCIONES DEL MENÚ ---
-document.getElementById('menuInicio').addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    closeMenu();
-});
-document.getElementById('menuServicios').addEventListener('click', function() {
-    document.getElementById('serviciosSection').scrollIntoView({ behavior: 'smooth' });
-    closeMenu();
-});
-document.getElementById('menuUbicacion').addEventListener('click', function() {
-    window.open('https://www.google.com/maps?q=Valencia+Venezuela', '_blank');
-    closeMenu();
-});
-document.getElementById('menuContacto').addEventListener('click', function() {
-    window.location.href = 'tel:573244913371';
-    closeMenu();
-});
-document.getElementById('menuCompartir').addEventListener('click', function() {
-    compartir();
-    closeMenu();
-});
-document.getElementById('menuPide').addEventListener('click', function() {
-    window.open('https://guia-digital.com', '_blank');
-    closeMenu();
-});
-
-// --- FUNCIONES DE COMPARTIR Y PANEL SAI ---
-let referidos = 0;
-let ganancias = 0;
-let nivel = 1;
-
-function actualizarPanel() {
-    document.getElementById('totalReferidos').textContent = referidos;
-    document.getElementById('totalGanancias').textContent = '$' + ganancias.toFixed(2);
-    document.getElementById('nivelActual').textContent = nivel;
-    document.getElementById('siguienteMeta').textContent = nivel * 2;
-}
-
-function simularIngreso() {
-    referidos++;
-    ganancias += 0.5 + Math.random() * 0.5;
-    if (referidos >= nivel * 2) nivel++;
-    actualizarPanel();
-}
-
-function compartir() {
-    const url = window.location.href;
-    if (navigator.share) {
-        navigator.share({ title: 'MOTO TAXIS DIAZ MORENO', text: 'Transporte seguro en Valencia', url: url }).catch(() => {});
-    } else {
-        navigator.clipboard.writeText(url).then(() => {
-            alert('📋 Enlace copiado al portapapeles');
-        }).catch(() => {
-            prompt('Copia este enlace:', url);
+        // --- RESTO DE OPCIONES DEL MENÚ ---
+        document.getElementById('menuInicio').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            closeMenu();
         });
-    }
-}
 
-document.getElementById('shareBtn').addEventListener('click', compartir);
-document.getElementById('shareSAI').addEventListener('click', function() {
-    const url = window.location.href;
-    const texto = '🚀 Únete al SAI y genera ingresos con solo $2. Usa mi código: SAI-2026-001. ' + url;
-    if (navigator.share) {
-        navigator.share({ title: 'SAI - Sistema Automatizado de Ingresos', text: texto, url: url }).catch(() => {});
-    } else {
-        navigator.clipboard.writeText(texto).then(() => {
-            alert('📋 Enlace copiado. ¡Comparte y gana!');
-        }).catch(() => {
-            prompt('Copia este enlace:', texto);
+        document.getElementById('menuServicios').addEventListener('click', function() {
+            document.getElementById('serviciosSection').scrollIntoView({ behavior: 'smooth' });
+            closeMenu();
         });
-    }
-    simularIngreso();
-});
 
-actualizarPanel();
+        document.getElementById('menuUbicacion').addEventListener('click', function() {
+            window.open('https://www.google.com/maps?q=Valencia+Venezuela', '_blank');
+            closeMenu();
+        });
+
+        document.getElementById('menuContacto').addEventListener('click', function() {
+            window.location.href = 'tel:573244913371';
+            closeMenu();
+        });
+
+        document.getElementById('menuCompartir').addEventListener('click', function() {
+            compartir();
+            closeMenu();
+        });
+
+        document.getElementById('menuPide').addEventListener('click', function() {
+            window.open('https://guia-digital.com', '_blank');
+            closeMenu();
+        });
+
+        // --- FUNCIONES DE COMPARTIR Y PANEL SAI ---
+        let referidos = 0;
+        let ganancias = 0;
+        let nivel = 1;
+
+        function actualizarPanel() {
+            document.getElementById('totalReferidos').textContent = referidos;
+            document.getElementById('totalGanancias').textContent = '$' + ganancias.toFixed(2);
+            document.getElementById('nivelActual').textContent = nivel;
+            document.getElementById('siguienteMeta').textContent = nivel * 2;
+        }
+
+        function simularIngreso() {
+            referidos++;
+            ganancias += 0.5 + Math.random() * 0.5;
+            if (referidos >= nivel * 2) nivel++;
+            actualizarPanel();
+        }
+
+        function compartir() {
+            const url = window.location.href;
+            if (navigator.share) {
+                navigator.share({ title: 'MOTO TAXIS DIAZ MORENO', text: 'Transporte seguro en Valencia', url: url }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('📋 Enlace copiado al portapapeles');
+                }).catch(() => {
+                    prompt('Copia este enlace:', url);
+                });
+            }
+        }
+
+        document.getElementById('shareBtn').addEventListener('click', compartir);
+
+        document.getElementById('shareSAI').addEventListener('click', function() {
+            const url = window.location.href;
+            const texto = '🚀 Únete al SAI y genera ingresos con solo $2. Usa mi código: SAI-2026-001. ' + url;
+            if (navigator.share) {
+                navigator.share({ title: 'SAI - Sistema Automatizado de Ingresos', text: texto, url: url }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(texto).then(() => {
+                    alert('📋 Enlace copiado. ¡Comparte y gana!');
+                }).catch(() => {
+                    prompt('Copia este enlace:', texto);
+                });
+            }
+            simularIngreso();
+        });
+
+        actualizarPanel();
+
+    }); // Fin DOMContentLoaded
 </script>
+
 </body>
 </html>
