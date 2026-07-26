@@ -156,7 +156,7 @@
         <small>&copy; 2026 MOTO TAXIS DIAZ MORENO - Todos los derechos reservados</small>
     </div>
 </div>
-
+    
 <script>
     // MENÚ
     const menuToggle = document.getElementById('menuToggle');
@@ -175,9 +175,31 @@
     document.getElementById('menuServicios').addEventListener('click', function() { document.getElementById('serviciosSection').scrollIntoView({ behavior: 'smooth' }); closeMenu(); });
     document.getElementById('menuUbicacion').addEventListener('click', function() { window.open('https://www.google.com/maps?q=Valencia+Venezuela', '_blank'); closeMenu(); });
     document.getElementById('menuContacto').addEventListener('click', function() { window.location.href = 'tel:573244913371'; closeMenu(); });
-    document.getElementById('menuSAI').addEventListener('click', function() { toggleSAI(); closeMenu(); });
     document.getElementById('menuCompartir').addEventListener('click', function() { compartir(); closeMenu(); });
     document.getElementById('menuPide').addEventListener('click', function() { window.open('https://guia-digital.com', '_blank'); closeMenu(); });
+
+    // --- FUNCIÓN PARA ALTERNAR EL PANEL SAI ---
+    function toggleSAI() {
+        const panel = document.getElementById('panelSAI');
+        if (panel) {
+            panel.classList.toggle('active');
+        }
+    }
+
+    // --- EVENTO PARA EL BOTÓN SAI EN LA INTERFAZ PRINCIPAL ---
+    const toggleSAIBtn = document.getElementById('toggleSAI');
+    if (toggleSAIBtn) {
+        toggleSAIBtn.addEventListener('click', toggleSAI);
+    }
+
+    // --- EVENTO PARA LA OPCIÓN "PANEL SAI" EN EL MENÚ ---
+    const menuSAI = document.getElementById('menuSAI');
+    if (menuSAI) {
+        menuSAI.addEventListener('click', function() {
+            toggleSAI();
+            closeMenu(); // Cierra el menú después de abrir el panel
+        });
+    }
 
     // PANEL SAI
     let referidos = 0;
@@ -196,11 +218,6 @@
         ganancias += 0.5 + Math.random() * 0.5;
         if (referidos >= nivel * 2) nivel++;
         actualizarPanel();
-    }
-
-    function toggleSAI() {
-        const panel = document.getElementById('panelSAI');
-        panel.classList.toggle('active');
     }
 
     function compartir() {
@@ -223,8 +240,6 @@
         }
         simularIngreso();
     });
-
-    document.getElementById('toggleSAI').addEventListener('click', toggleSAI);
 
     actualizarPanel();
 </script>
