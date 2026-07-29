@@ -47,6 +47,7 @@
         .btn-whatsapp { background: #25D366; color: #fff; }
         .btn-share { background: #fbbf24; color: #0b1a2e; }
         .btn-sai { background: #8b5cf6; color: #fff; }
+        .btn-registro { background: #22c55e; color: #fff; }
 
         .qr-section { text-align: center; padding: 8px 20px 16px; }
         .qr-section img { width: 120px; height: 120px; border-radius: 16px; background: #fff; padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -60,6 +61,12 @@
         .panel-sai .stat-box .label { font-size: 11px; color: #a0c4e8; }
         .panel-sai .code { font-size: 18px; font-weight: 700; color: #fbbf24; text-align: center; letter-spacing: 2px; padding: 8px; background: #0b1a2e; border-radius: 10px; margin: 8px 0; }
         .panel-sai .btn-sai-share { background: #fbbf24; color: #0b1a2e; border: none; padding: 12px; border-radius: 30px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 8px; }
+
+        .panel-registro { display: none; background: #112b4f; margin: 16px 20px; padding: 16px; border-radius: 16px; color: #fff; border: 1px solid #22c55e; }
+        .panel-registro.active { display: block; }
+        .panel-registro input, .panel-registro select { width: 100%; padding: 10px; margin: 6px 0; border-radius: 10px; border: none; background: #1a2f44; color: #fff; }
+        .panel-registro input::placeholder { color: #a0c4e8; }
+        .panel-registro .btn-enviar { background: #22c55e; color: #fff; border: none; padding: 12px; border-radius: 30px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 8px; }
 
         .footer { background: #f8fafc; padding: 16px 20px; text-align: center; border-top: 1px solid #eef2f6; }
         .footer a { text-decoration: none; font-weight: 700; color: #1a4b6d; }
@@ -94,6 +101,7 @@
             <li id="menuUbicacion"><i class="fas fa-map-pin"></i> Ubicación</li>
             <li id="menuContacto"><i class="fas fa-phone"></i> Contacto</li>
             <li id="menuSAI"><i class="fas fa-chart-line"></i> Panel SAI</li>
+            <li id="menuRegistro"><i class="fas fa-user-plus"></i> Registro</li>
             <li id="menuCompartir"><i class="fas fa-share-alt"></i> Compartir</li>
         </ul>
     </div>
@@ -133,13 +141,31 @@
         <button class="btn-sai-share" id="shareSAI"><i class="fas fa-share-alt"></i> COMPARTIR Y GANAR</button>
     </div>
 
+    <!-- PANEL REGISTRO -->
+    <div class="panel-registro" id="panelRegistro">
+        <h4 style="color:#22c55e; text-align:center; margin-bottom:8px;">📝 REGISTRAR NUEVO AFILIADO</h4>
+        <form id="registroForm">
+            <input type="text" id="nombreReg" placeholder="Nombre completo" required>
+            <input type="text" id="telefonoReg" placeholder="Teléfono / WhatsApp" required>
+            <input type="text" id="zonaReg" placeholder="Zona de trabajo">
+            <select id="planReg">
+                <option value="basico">Plan Básico ($2)</option>
+                <option value="plus">Plan Plus ($5)</option>
+                <option value="premium">Plan Premium ($10)</option>
+            </select>
+            <button type="submit" class="btn-enviar"><i class="fas fa-paper-plane"></i> REGISTRAR</button>
+        </form>
+        <div id="mensajeRegistro" style="text-align:center; margin-top:8px; color:#22c55e; display:none;">✅ Registro exitoso. La comisión se ha añadido a tu saldo.</div>
+    </div>
+
     <!-- BOTONES -->
     <div class="actions">
         <a href="https://wa.me/5804160282203?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios%20t%C3%A9cnicos." target="_blank" class="btn btn-whatsapp">
             <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
-        <button class="btn btn-share" id="shareBtn"><i class="fas fa-share-alt"></i> Compartir</button>
+        <button class="btn btn-registro" id="toggleRegistro"><i class="fas fa-user-plus"></i> Registro</button>
         <button class="btn btn-sai" id="toggleSAI"><i class="fas fa-chart-line"></i> SAI</button>
+        <button class="btn btn-share" id="shareBtn"><i class="fas fa-share-alt"></i> Compartir</button>
     </div>
 
     <!-- QR -->
@@ -207,6 +233,12 @@
         menuOverlay.classList.remove('active');
     });
 
+    document.getElementById('menuRegistro').addEventListener('click', function() {
+        toggleRegistro();
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
     document.getElementById('menuCompartir').addEventListener('click', function() {
         compartir();
         menuPanel.classList.remove('open');
@@ -224,6 +256,17 @@
 
     document.getElementById('toggleSAI').addEventListener('click', toggleSAI);
 
+    // PANEL REGISTRO
+    function toggleRegistro() {
+        const panel = document.getElementById('panelRegistro');
+        if (panel) {
+            panel.classList.toggle('active');
+        }
+    }
+
+    document.getElementById('toggleRegistro').addEventListener('click', toggleRegistro);
+
+    // VARIABLES SAI
     let referidos = 0;
     let ganancias = 0;
     let nivel = 1;
@@ -242,6 +285,7 @@
         actualizarPanel();
     }
 
+    // COMPARTIR SAI
     document.getElementById('shareSAI').addEventListener('click', function() {
         const url = window.location.href;
         const texto = '🚀 Únete al SAI y genera ingresos con solo $2. Usa mi código: SAI-CAIRO-001. ' + url;
@@ -261,6 +305,7 @@
         simularIngreso();
     });
 
+    // COMPARTIR TARJETA
     function compartir() {
         const url = window.location.href;
         if (navigator.share) {
@@ -279,6 +324,31 @@
     }
 
     document.getElementById('shareBtn').addEventListener('click', compartir);
+
+    // FORMULARIO DE REGISTRO
+    document.getElementById('registroForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombreReg').value;
+        const telefono = document.getElementById('telefonoReg').value;
+        const zona = document.getElementById('zonaReg').value;
+        const plan = document.getElementById('planReg').value;
+
+        const mensaje = document.getElementById('mensajeRegistro');
+        mensaje.style.display = 'block';
+        mensaje.textContent = `✅ ${nombre} registrado correctamente. Comisión añadida a tu saldo.`;
+
+        // SIMULAR INGRESO DE REFERIDO Y COMISIÓN
+        referidos++;
+        ganancias += 0.5 + Math.random() * 0.5;
+        if (referidos >= nivel * 2) nivel++;
+        actualizarPanel();
+
+        this.reset();
+        setTimeout(() => {
+            document.getElementById('panelRegistro').classList.remove('active');
+            mensaje.style.display = 'none';
+        }, 4000);
+    });
 
     actualizarPanel();
 </script>
