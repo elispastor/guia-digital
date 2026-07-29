@@ -10,12 +10,8 @@
         body { background: linear-gradient(145deg, #0a1a2e, #1a2f44); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 16px; }
         .card { max-width: 440px; width: 100%; background: #ffffff; border-radius: 36px; box-shadow: 0 25px 50px -8px rgba(0,0,0,0.6); overflow: hidden; position: relative; }
 
-        .portada { width: 100%; background: linear-gradient(135deg, #0f2b44, #1a4b6d); padding: 20px 20px 16px; text-align: center; border-bottom: 4px solid #fbbf24; }
-        .portada .icon { font-size: 56px; color: #fbbf24; }
-        .portada h1 { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: -0.5px; margin-top: 4px; }
-        .portada h1 span { color: #fbbf24; }
-        .portada .sub { font-size: 14px; color: #a0c4e8; font-weight: 300; letter-spacing: 1px; }
-        .portada .badge { background: rgba(255,255,255,0.12); backdrop-filter: blur(4px); padding: 6px 16px; border-radius: 60px; display: inline-block; margin-top: 8px; font-size: 12px; color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+        .portada { width: 100%; line-height: 0; }
+        .portada img { width: 100%; height: auto; display: block; }
 
         .header { background: linear-gradient(135deg, #0f2b44, #1a4b6d); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #fbbf24; }
         .header .brand h2 { font-size: 18px; font-weight: 700; color: #fff; }
@@ -51,12 +47,19 @@
         .btn-whatsapp { background: #25D366; color: #fff; }
         .btn-share { background: #fbbf24; color: #0b1a2e; }
         .btn-sai { background: #8b5cf6; color: #fff; }
-        .btn-instrucciones { background: #3b82f6; color: #fff; }
-        .btn-registro { background: #22c55e; color: #fff; }
 
         .qr-section { text-align: center; padding: 8px 20px 16px; }
         .qr-section img { width: 120px; height: 120px; border-radius: 16px; background: #fff; padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .qr-section p { font-size: 13px; color: #6b7f93; margin-top: 6px; }
+
+        .panel-sai { display: none; background: #112b4f; margin: 16px 20px; padding: 16px; border-radius: 16px; color: #fff; border: 1px solid #fbbf24; }
+        .panel-sai.active { display: block; }
+        .panel-sai .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
+        .panel-sai .stat-box { background: #1a2f44; border-radius: 12px; padding: 12px; text-align: center; }
+        .panel-sai .stat-box .num { font-size: 22px; font-weight: 700; color: #fbbf24; }
+        .panel-sai .stat-box .label { font-size: 11px; color: #a0c4e8; }
+        .panel-sai .code { font-size: 18px; font-weight: 700; color: #fbbf24; text-align: center; letter-spacing: 2px; padding: 8px; background: #0b1a2e; border-radius: 10px; margin: 8px 0; }
+        .panel-sai .btn-sai-share { background: #fbbf24; color: #0b1a2e; border: none; padding: 12px; border-radius: 30px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 8px; }
 
         .footer { background: #f8fafc; padding: 16px 20px; text-align: center; border-top: 1px solid #eef2f6; }
         .footer a { text-decoration: none; font-weight: 700; color: #1a4b6d; }
@@ -67,12 +70,9 @@
 
 <div class="card">
 
-    <!-- PORTADA -->
+    <!-- PORTADA CON IMAGEN cairocel.jpg -->
     <div class="portada">
-        <div class="icon"><i class="fas fa-phone-alt"></i></div>
-        <h1>CAIRO <span>CELL</span></h1>
-        <div class="sub">Servicio Técnico Celular</div>
-        <div class="badge"><i class="fas fa-check-circle"></i> 100% Servicio Técnico</div>
+        <img src="cairocel.jpg" alt="CAIRO CELL - Servicio Técnico Celular">
     </div>
 
     <!-- HEADER -->
@@ -118,6 +118,19 @@
             <li>🔧 Accesorios</li>
             <li>⚡ Y mucho más...</li>
         </ul>
+    </div>
+
+    <!-- PANEL SAI -->
+    <div class="panel-sai" id="panelSAI">
+        <h4 style="color:#fbbf24; text-align:center; margin-bottom:8px;">📊 PANEL SAI</h4>
+        <div class="code" id="referralCode">SAI-CAIRO-001</div>
+        <div class="stats">
+            <div class="stat-box"><div class="num" id="totalReferidos">0</div><div class="label">Referidos</div></div>
+            <div class="stat-box"><div class="num" id="totalGanancias">$0</div><div class="label">Ganancias</div></div>
+            <div class="stat-box"><div class="num" id="nivelActual">1</div><div class="label">Nivel</div></div>
+            <div class="stat-box"><div class="num" id="siguienteMeta">2</div><div class="label">Meta</div></div>
+        </div>
+        <button class="btn-sai-share" id="shareSAI"><i class="fas fa-share-alt"></i> COMPARTIR Y GANAR</button>
     </div>
 
     <!-- BOTONES -->
@@ -188,10 +201,64 @@
         menuOverlay.classList.remove('active');
     });
 
+    document.getElementById('menuSAI').addEventListener('click', function() {
+        toggleSAI();
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
     document.getElementById('menuCompartir').addEventListener('click', function() {
         compartir();
         menuPanel.classList.remove('open');
         menuOverlay.classList.remove('active');
+    });
+
+    // PANEL SAI
+    function toggleSAI() {
+        const panel = document.getElementById('panelSAI');
+        if (panel) {
+            panel.classList.toggle('active');
+            actualizarPanel();
+        }
+    }
+
+    document.getElementById('toggleSAI').addEventListener('click', toggleSAI);
+
+    let referidos = 0;
+    let ganancias = 0;
+    let nivel = 1;
+
+    function actualizarPanel() {
+        document.getElementById('totalReferidos').textContent = referidos;
+        document.getElementById('totalGanancias').textContent = '$' + ganancias.toFixed(2);
+        document.getElementById('nivelActual').textContent = nivel;
+        document.getElementById('siguienteMeta').textContent = nivel * 2;
+    }
+
+    function simularIngreso() {
+        referidos++;
+        ganancias += 0.5 + Math.random() * 0.5;
+        if (referidos >= nivel * 2) nivel++;
+        actualizarPanel();
+    }
+
+    document.getElementById('shareSAI').addEventListener('click', function() {
+        const url = window.location.href;
+        const texto = '🚀 Únete al SAI y genera ingresos con solo $2. Usa mi código: SAI-CAIRO-001. ' + url;
+        if (navigator.share) {
+            navigator.share({
+                title: 'SAI - Sistema Automatizado de Ingresos',
+                text: texto,
+                url: url
+            }).catch(() => {});
+        } else {
+            navigator.clipboard.writeText(texto).then(() => {
+                alert('📋 Enlace copiado. ¡Comparte y gana!');
+            }).catch(() => {
+                prompt('Copia este enlace:', texto);
+            });
+        }
+        simularIngreso();
     });
 
     function compartir() {
@@ -212,6 +279,8 @@
     }
 
     document.getElementById('shareBtn').addEventListener('click', compartir);
+
+    actualizarPanel();
 </script>
 
 </body>
