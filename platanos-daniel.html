@@ -42,6 +42,16 @@
         .services ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
         .services ul li { background: #eef2f6; padding: 6px 14px; border-radius: 20px; font-size: 13px; color: #1a2f44; }
 
+        /* PANEL SAI */
+        .panel-sai { display: none; background: #112b4f; margin: 16px 20px; padding: 16px; border-radius: 16px; color: #fff; border: 1px solid #fbbf24; }
+        .panel-sai.active { display: block; }
+        .panel-sai .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
+        .panel-sai .stat-box { background: #1a2f44; border-radius: 12px; padding: 12px; text-align: center; }
+        .panel-sai .stat-box .num { font-size: 22px; font-weight: 700; color: #fbbf24; }
+        .panel-sai .stat-box .label { font-size: 11px; color: #a0c4e8; }
+        .panel-sai .code { font-size: 18px; font-weight: 700; color: #fbbf24; text-align: center; letter-spacing: 2px; padding: 8px; background: #0b1a2e; border-radius: 10px; margin: 8px 0; }
+        .panel-sai .btn-sai-share { background: #fbbf24; color: #0b1a2e; border: none; padding: 12px; border-radius: 30px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 8px; }
+
         .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0 20px 16px; }
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 18px; border-radius: 60px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; text-decoration: none; flex: 1 0 auto; min-width: 100px; }
         .btn-whatsapp { background: #25D366; color: #fff; }
@@ -99,7 +109,7 @@
         <div class="address"><i class="fas fa-location-dot"></i> Av. Díaz Moreno con Av. Lara, Valencia</div>
     </div>
 
-    <!-- PRODUCTOS -->
+    <!-- SERVICIOS -->
     <div class="services" id="productosSection">
         <h3><i class="fas fa-check-circle" style="color:#fbbf24;"></i> Nuestros Productos</h3>
         <ul>
