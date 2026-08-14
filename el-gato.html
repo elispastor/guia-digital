@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversiones New Gato - Accesorios para Costura y Moda</title>
+    <!-- QR Code library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #f4f1ea; }
+        
+        /* MENÚ HAMBURGUESA */
+        .menu-hamburguesa {
+            background: #1a1a1a;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .menu-hamburguesa .logo-texto {
+            color: #ffd700;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .menu-hamburguesa .hamburguesa {
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+        }
+        .menu-hamburguesa .hamburguesa:hover { color: #ffd700; }
+        .menu-desplegable {
+            display: none;
+            background: #2a2a2a;
+            padding: 10px 20px;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .menu-desplegable a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid #444;
+        }
+        .menu-desplegable a:hover { color: #ffd700; }
+
+        /* IMAGEN PORTADA */
+        .portada {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        /* CONTENIDO */
+        .contenido {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        .info-negocio {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .info-negocio h1 {
+            color: #1a1a1a;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .info-negocio h1 span {
+            color: #ffd700;
+        }
+        .info-negocio p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+        .info-negocio i {
+            color: #ffd700;
+            width: 25px;
+        }
+
+        /* IMAGEN FACHADA */
+        .fachada {
+            width: 100%;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* BOTONES */
+        .botones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .btn:hover { transform: scale(1.05); opacity: 0.9; }
+        .btn-whatsapp { background: #25D366; }
+        .btn-llamar { background: #007bff; }
+        .btn-compartir { background: #6c757d; }
+
+        /* QR CODE */
+        .qr-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        #qrcode {
+            display: inline-block;
+            padding: 10px;
+            background: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            margin-top: 30px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .info-negocio h1 { font-size: 22px; }
+            .btn { padding: 12px 20px; font-size: 15px; width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ HAMBURGUESA -->
+    <div class="menu-hamburguesa">
+        <span class="logo-texto"><i class="fas fa-cat"></i> New Gato</span>
+        <span class="hamburguesa" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </span>
+    </div>
+    <div class="menu-desplegable" id="menuDesplegable">
+        <a href="#inicio">Inicio</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#qr">QR</a>
+    </div>
+
+    <!-- IMAGEN PORTADA -->
+    <img src="portada-gato.jpg" alt="Portada Inversiones New Gato" class="portada">
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="contenido" id="inicio">
+        <div class="info-negocio">
+            <h1>🐱 <span>Inversiones New Gato</span></h1>
+            <p><i class="fas fa-store"></i> <strong>Todo en accesorios para la costura y el diseño de modas</strong></p>
+            <p><i class="fas fa-phone"></i> <strong>Teléfono:</strong> <a href="tel:+584244975373" style="color:#007bff; text-decoration:none;">+58 424-4975373</a></p>
+            <p><i class="fas fa-user-tie"></i> <strong>Atención esmerada de Orlando y su equipo</strong></p>
+            <p><i class="fas fa-map-marker-alt"></i> <strong>Ubicación:</strong> Av. Constitución - a una cuadra del metro La Cedeño - Valencia - Venezuela</p>
+        </div>
+
+        <!-- IMAGEN FACHADA -->
+        <img src="fachada-elgato.jpg" alt="Fachada Inversiones New Gato" class="fachada">
+
+        <!-- BOTONES -->
+        <div class="botones" id="contacto">
+            <a href="https://wa.me/584244975373" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="tel:+584244975373" class="btn btn-llamar">
+                <i class="fas fa-phone-alt"></i> Llamar
+            </a>
+            <button onclick="compartirPagina()" class="btn btn-compartir">
+                <i class="fas fa-share-alt"></i> Compartir
+            </button>
+        </div>
+
+        <!-- QR CODE -->
+        <div class="qr-container" id="qr">
+            <h3><i class="fas fa-qrcode"></i> Escanea para compartir</h3>
+            <div id="qrcode"></div>
+            <p style="margin-top:10px; color:#555;">Apunta tu celular y comparte con quien quieras</p>
+        </div>
+
+        <div class="footer">
+            © 2026 Inversiones New Gato - Hecho con ❤️ para Orlando y su equipo
+        </div>
+    </div>
+
+    <script>
+        // Menú hamburguesa
+        function toggleMenu() {
+            const menu = document.getElementById('menuDesplegable');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+
+        // Compartir página
+        function compartirPagina() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Inversiones New Gato',
+                    text: 'Todo en accesorios para costura y moda. Atención esmerada de Orlando y su equipo.',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                // Fallback: copiar enlace al portapapeles
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('📋 Enlace copiado al portapapeles. ¡Compártelo donde quieras!');
+                }).catch(() => {
+                    prompt('Copia este enlace:', url);
+                });
+            }
+        }
+
+        // Generar QR con la URL actual
+        const qrDiv = document.getElementById('qrcode');
+        new QRCode(qrDiv, {
+            text: window.location.href,
+            width: 180,
+            height: 180,
+            colorDark: "#1a1a1a",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
+</body>
+</html>
