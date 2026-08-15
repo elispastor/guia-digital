@@ -96,6 +96,85 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
+        /* ===== CARRUSEL ===== */
+        .carrusel-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 25px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            background: #1a1a1a;
+        }
+        .carrusel-slides {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+        .carrusel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .carrusel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        /* Botones anterior/siguiente */
+        .carrusel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            padding: 16px 20px;
+            cursor: pointer;
+            font-size: 28px;
+            z-index: 10;
+            border-radius: 0 8px 8px 0;
+            transition: 0.3s;
+        }
+        .carrusel-btn:hover {
+            background: rgba(0,0,0,0.9);
+        }
+        .carrusel-btn.prev {
+            left: 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .carrusel-btn.next {
+            right: 0;
+            border-radius: 8px 0 0 8px;
+        }
+        /* Indicadores (puntos) */
+        .carrusel-indicadores {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .carrusel-indicador {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid rgba(255,255,255,0.6);
+        }
+        .carrusel-indicador.active {
+            background: #ffd700;
+            border-color: #ffd700;
+            transform: scale(1.2);
+        }
+        .carrusel-indicador:hover {
+            background: rgba(255,255,255,0.8);
+        }
+
         /* BOTONES */
         .botones {
             display: flex;
@@ -152,6 +231,8 @@
         @media (max-width: 600px) {
             .info-negocio h1 { font-size: 22px; }
             .btn { padding: 12px 20px; font-size: 15px; width: 100%; justify-content: center; }
+            .carrusel-slide img { height: 250px; }
+            .carrusel-btn { padding: 10px 14px; font-size: 20px; }
         }
     </style>
 </head>
@@ -168,6 +249,7 @@
         <a href="#inicio">Inicio</a>
         <a href="#contacto">Contacto</a>
         <a href="#ubicacion">Ubicación</a>
+        <a href="#galeria">Galería</a>
         <a href="#qr">QR</a>
     </div>
 
@@ -186,6 +268,26 @@
 
         <!-- IMAGEN FACHADA -->
         <img src="fachada-elgato.jpg" alt="Fachada Inversiones New Gato" class="fachada">
+
+        <!-- ===== CARRUSEL DE 7 FOTOS ===== -->
+        <div class="carrusel-container" id="galeria">
+            <div class="carrusel-slides" id="carruselSlides">
+                <div class="carrusel-slide"><img src="foto1.jpg" alt="Foto 1"></div>
+                <div class="carrusel-slide"><img src="foto2.jpg" alt="Foto 2"></div>
+                <div class="carrusel-slide"><img src="foto3.jpg" alt="Foto 3"></div>
+                <div class="carrusel-slide"><img src="foto4.jpg" alt="Foto 4"></div>
+                <div class="carrusel-slide"><img src="foto5.jpg" alt="Foto 5"></div>
+                <div class="carrusel-slide"><img src="foto6.jpg" alt="Foto 6"></div>
+                <div class="carrusel-slide"><img src="foto7.jpg" alt="Foto 7"></div>
+            </div>
+
+            <!-- Botones -->
+            <button class="carrusel-btn prev" onclick="cambiarSlide(-1)">❮</button>
+            <button class="carrusel-btn next" onclick="cambiarSlide(1)">❯</button>
+
+            <!-- Indicadores -->
+            <div class="carrusel-indicadores" id="carruselIndicadores"></div>
+        </div>
 
         <!-- BOTONES -->
         <div class="botones" id="contacto">
@@ -208,22 +310,65 @@
         </div>
 
         <div class="footer">
-            © 2026 Inversiones New Gato - Todos los derechos reservados.
+            © 2026 Inversiones New Gato - Hecho con ❤️ para Orlando y su equipo
         </div>
     </div>
 
     <script>
-        // Menú hamburguesa
+        // ===== MENÚ HAMBURGUESA =====
         function toggleMenu() {
             const menu = document.getElementById('menuDesplegable');
-            if (menu.style.display === 'flex') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'flex';
-            }
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        // Compartir página
+        // ===== CARRUSEL =====
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carrusel-slide');
+        const totalSlides = slides.length;
+        const indicadores = document.getElementById('carruselIndicadores');
+
+        // Crear indicadores (puntos)
+        for (let i = 0; i < totalSlides; i++) {
+            const punto = document.createElement('span');
+            punto.className = 'carrusel-indicador';
+            if (i === 0) punto.classList.add('active');
+            punto.onclick = () => irAlSlide(i);
+            indicadores.appendChild(punto);
+        }
+
+        function actualizarCarrusel() {
+            const desplazamiento = -slideIndex * 100;
+            document.getElementById('carruselSlides').style.transform = `translateX(${desplazamiento}%)`;
+
+            // Actualizar indicadores
+            document.querySelectorAll('.carrusel-indicador').forEach((el, idx) => {
+                el.classList.toggle('active', idx === slideIndex);
+            });
+        }
+
+        function cambiarSlide(direccion) {
+            slideIndex += direccion;
+            if (slideIndex >= totalSlides) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = totalSlides - 1;
+            actualizarCarrusel();
+        }
+
+        function irAlSlide(index) {
+            slideIndex = index;
+            actualizarCarrusel();
+        }
+
+        // Auto-play (opcional: cambia cada 4 segundos)
+        let autoPlay = setInterval(() => cambiarSlide(1), 4000);
+
+        // Pausar auto-play cuando el mouse está encima
+        const carruselContainer = document.querySelector('.carrusel-container');
+        carruselContainer.addEventListener('mouseenter', () => clearInterval(autoPlay));
+        carruselContainer.addEventListener('mouseleave', () => {
+            autoPlay = setInterval(() => cambiarSlide(1), 4000);
+        });
+
+        // ===== COMPARTIR =====
         function compartirPagina() {
             if (navigator.share) {
                 navigator.share({
@@ -232,7 +377,6 @@
                     url: window.location.href
                 }).catch(() => {});
             } else {
-                // Fallback: copiar enlace al portapapeles
                 const url = window.location.href;
                 navigator.clipboard.writeText(url).then(() => {
                     alert('📋 Enlace copiado al portapapeles. ¡Compártelo donde quieras!');
@@ -242,7 +386,7 @@
             }
         }
 
-        // Generar QR con la URL actual
+        // ===== QR CODE =====
         const qrDiv = document.getElementById('qrcode');
         new QRCode(qrDiv, {
             text: window.location.href,
