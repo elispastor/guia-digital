@@ -1,13 +1,11 @@
 {
-  "name": "sai-sistema",
+  "name": "guia-digital-node-red",
   "version": "1.0.0",
-  "description": "Sistema SAI con Node-RED",
-  "main": "server.js",
+  "main": "node_modules/node-red/red.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node node_modules/node-red/red.js"
   },
   "dependencies": {
-    "node-red": "^3.1.0",
-    "node-red-contrib-telegrambot": "^18.1.1"
+    "node-red": "^4.0.0"
   }
 }
