@@ -3,9 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <title>Registro SAI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #0066cc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0055aa;
+    }
+  </style>
 </head>
 <body>
-  <h1>Formulario de Registro SAI</h1>
-  <p>Si ves esto, la ruta /registro funciona.</p>
+  <div class="container">
+    <h1>Formulario de Registro SAI</h1>
+
+    <form id="registroForm">
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="cedula">Cédula</label>
+      <input type="text" id="cedula" name="cedula" required>
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefono">Teléfono</label>
+      <input type="text" id="telefono" name="telefono">
+
+      <label for="mensaje">Mensaje / Comentario</label>
+      <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+
+      <button type="submit">Registrar y generar tarjeta</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('registroForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const datos = {
+        nombre: document.getElementById('nombre').value,
+        cedula: document.getElementById('cedula').value,
+        email: document.getElementById('email').value,
+        telefono: document.getElementById('telefono').value,
+        mensaje: document.getElementById('mensaje').value
+      };
+
+      // Aquí enviaremos los datos al backend para generar la tarjeta
+      // Por ahora solo mostramos un mensaje de prueba
+      alert('Datos capturados:\n' + JSON.stringify(datos, null, 2));
+    });
+  </script>
 </body>
 </html>
