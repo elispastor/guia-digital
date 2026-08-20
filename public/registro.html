@@ -10,7 +10,7 @@
       padding: 20px;
     }
     .container {
-      max-width: 500px;
+      max-width: 900px;
       margin: 0 auto;
       background: #fff;
       padding: 20px 25px 30px;
@@ -21,6 +21,50 @@
       font-size: 20px;
       margin-bottom: 20px;
       text-align: center;
+    }
+
+    /* BOTONES GRANDES HORIZONTALES */
+    .tipo-selector {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .tipo-btn {
+      flex: 1 1 0;
+      min-width: 200px;
+      padding: 18px 14px;
+      border: 2px solid #0066cc;
+      border-radius: 10px;
+      background: #fff;
+      color: #0066cc;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tipo-btn:hover {
+      background: #f0f7ff;
+    }
+    .tipo-btn.activo {
+      background: #0066cc;
+      color: #fff;
+    }
+    .tipo-sub {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 6px;
+      opacity: 0.9;
+    }
+
+    /* FORMULARIOS */
+    .formulario-seccion {
+      display: none;
+    }
+    .formulario-seccion.activo {
+      display: block;
     }
     label {
       display: block;
@@ -37,60 +81,114 @@
       font-size: 14px;
       box-sizing: border-box;
     }
-    button {
+    button.guardar {
       width: 100%;
-      padding: 10px;
-      background: #0066cc;
+      padding: 12px;
+      background: #22c55e;
       color: #fff;
       border: none;
-      border-radius: 4px;
-      font-size: 15px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 700;
       cursor: pointer;
     }
-    button:hover {
-      background: #0055aa;
+    button.guardar:hover {
+      background: #1ea34d;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Formulario de Registro SAI</h1>
+    <h1>Registro SAI – Elige tu tipo</h1>
 
-    <form id="registroForm">
-      <label for="nombre">Nombre completo</label>
-      <input type="text" id="nombre" name="nombre" required>
+    <!-- SELECTOR DE TIPO -->
+    <div class="tipo-selector">
+      <button class="tipo-btn activo" data-tipo="motorizados">
+        Motorizados
+        <span class="tipo-sub">Moto taxis y taxistas y Transportistas</span>
+      </button>
+      <button class="tipo-btn" data-tipo="negocios">
+        Negocios
+        <span class="tipo-sub">Emprendedores – comerciantes y Empresarios</span>
+      </button>
+      <button class="tipo-btn" data-tipo="personas">
+        Personas
+        <span class="tipo-sub">Profesionales – gremios y particulares</span>
+      </button>
+    </div>
 
-      <label for="cedula">Cédula</label>
-      <input type="text" id="cedula" name="cedula" required>
+    <!-- FORMULARIO MOTORIZADOS -->
+    <div class="formulario-seccion activo" id="form-motorizados">
+      <h2>Formulario para Motorizados</h2>
 
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" name="email" required>
+      <label for="m_nombre">Nombre completo</label>
+      <input type="text" id="m_nombre" name="m_nombre" required>
 
-      <label for="telefono">Teléfono</label>
-      <input type="text" id="telefono" name="telefono">
+      <label for="m_cedula">Cédula</label>
+      <input type="text" id="m_cedula" name="m_cedula" required>
 
-      <label for="mensaje">Mensaje / Comentario</label>
-      <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+      <label for="m_email">Correo electrónico</label>
+      <input type="email" id="m_email" name="m_email" required>
 
-      <button type="submit">Registrar y generar tarjeta</button>
-    </form>
+      <label for="m_telefono">Teléfono</label>
+      <input type="text" id="m_telefono" name="m_telefono" required>
+
+      <label for="m_empresa">Nombre del servicio / empresa (ej. MOTO TAXI TERMINAL BIG LOW)</label>
+      <input type="text" id="m_empresa" name="m_empresa" required>
+
+      <label for="m_direccion">Dirección / zona de cobertura</label>
+      <textarea id="m_direccion" name="m_direccion" rows="3"></textarea>
+
+      <button class="guardar" type="button" id="btnGuardarMotorizados">
+        Guardar y generar tarjeta (Moto Taxi)
+      </button>
+    </div>
+
+    <!-- FORMULARIO NEGOCIOS (vacío por ahora) -->
+    <div class="formulario-seccion" id="form-negocios">
+      <h2>Formulario para Negocios</h2>
+      <p>Próximamente…</p>
+    </div>
+
+    <!-- FORMULARIO PERSONAS (vacío por ahora) -->
+    <div class="formulario-seccion" id="form-personas">
+      <h2>Formulario para Personas</h2>
+      <p>Próximamente…</p>
+    </div>
   </div>
 
   <script>
-    document.getElementById('registroForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+    // CAMBIO DE PESTAÑAS
+    const botones = document.querySelectorAll('.tipo-btn');
+    const secciones = document.querySelectorAll('.formulario-seccion');
 
+    botones.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Quitar activo de todos
+        botones.forEach(b => b.classList.remove('activo'));
+        secciones.forEach(s => s.classList.remove('activo'));
+
+        // Activar este
+        btn.classList.add('activo');
+        const tipo = btn.getAttribute('data-tipo');
+        document.getElementById('form-' + tipo).classList.add('activo');
+      });
+    });
+
+    // GUARDAR MOTORIZADOS (POR AHORA SOLO MUESTRA DATOS)
+    document.getElementById('btnGuardarMotorizados').addEventListener('click', () => {
       const datos = {
-        nombre: document.getElementById('nombre').value,
-        cedula: document.getElementById('cedula').value,
-        email: document.getElementById('email').value,
-        telefono: document.getElementById('telefono').value,
-        mensaje: document.getElementById('mensaje').value
+        tipo: 'motorizados',
+        nombre: document.getElementById('m_nombre').value,
+        cedula: document.getElementById('m_cedula').value,
+        email: document.getElementById('m_email').value,
+        telefono: document.getElementById('m_telefono').value,
+        empresa: document.getElementById('m_empresa').value,
+        direccion: document.getElementById('m_direccion').value
       };
 
-      // Aquí enviaremos los datos al backend para generar la tarjeta
-      // Por ahora solo mostramos un mensaje de prueba
-      alert('Datos capturados:\n' + JSON.stringify(datos, null, 2));
+      alert('Datos capturados (Moto Taxi):\n' + JSON.stringify(datos, null, 2));
+      // Aquí luego enviaremos a Node-RED para generar la tarjeta
     });
   </script>
 </body>
