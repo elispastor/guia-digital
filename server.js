@@ -11,14 +11,15 @@ const server = app.listen(process.env.PORT || 1880, () => {
 // Servir archivos estáticos desde la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta /registro
+// Ruta /registro (formulario)
 app.get('/registro', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'registro.html'));
 });
 
+// Inicializar Node-RED
 RED.init(server, {
-    httpAdminRoot: '/',
-    httpNodeRoot: '/api',
+    httpAdminRoot: '/editor',      // Editor de Node-RED en /editor
+    httpNodeRoot: '/api',          // Endpoints de flujos en /api
     userDir: __dirname,
     flowFile: 'flows.json'
 });
