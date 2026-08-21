@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes" />
+    <title>NABIN - Productos de Limpieza</title>
+    <!-- Incluir Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f5f5f5;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            padding: 16px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            padding: 24px 20px;
+            transition: all 0.3s;
+        }
+        h1 {
+            font-size: 32px;
+            color: #0b2b40;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .sub {
+            color: #3d5a6d;
+            font-weight: normal;
+            font-size: 18px;
+            margin-bottom: 28px;
+        }
+        .grid-productos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px 30px;
+            margin: 28px 0;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 6px 0 6px 6px;
+            border-bottom: 1px dashed #e0e0e0;
+            font-size: 18px;
+        }
+        .item .nombre {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .item .nombre i {
+            width: 24px;
+            color: #1a6b8a;
+            font-size: 20px;
+        }
+        .item .fragancias {
+            font-size: 13px;
+            color: #5f7d8f;
+            margin-left: 32px;
+            width: 100%;
+        }
+        .precio {
+            font-weight: 600;
+            color: #0b2b40;
+            background: #f0f7fa;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-size: 18px;
+            white-space: nowrap;
+        }
+        .botones-mega {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 40px 0 30px;
+        }
+        .btn-mega {
+            background: #0b2b40;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 22px 18px;
+            font-size: 24px;
+            font-weight: 600;
+            box-shadow: 0 6px 0 #061a28;
+            cursor: pointer;
+            transition: 0.1s linear;
+            text-align: center;
+        }
+        .btn-mega:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #061a28;
+        }
+        .btn-mega i {
+            margin-right: 12px;
+        }
+        .formulario-seccion {
+            display: none;
+            background: #f8fbfd;
+            border-radius: 24px;
+            padding: 24px 20px;
+            margin: 12px 0 20px;
+            border: 1px solid #dde9f0;
+        }
+        .formulario-seccion.activo {
+            display: block;
+        }
+        .formulario-seccion input,
+        .formulario-seccion textarea,
+        .formulario-seccion select {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            border: 1px solid #cbdae3;
+            border-radius: 14px;
+            margin: 8px 0 16px;
+        }
+        .formulario-seccion button[type="submit"] {
+            background: #d4a130;
+            color: #0b2b40;
+            border: none;
+            border-radius: 40px;
+            padding: 16px;
+            font-size: 20px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+        }
+        .qr-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e6edf3;
+        }
+        .qr-area img {
+            max-width: 200px;
+            height: auto;
+            border: 2px solid #0b2b40;
+            border-radius: 16px;
+            padding: 8px;
+            background: white;
+        }
+        .qr-area .leyenda {
+            margin-top: 16px;
+            font-size: 15px;
+            color: #2e4a5c;
+            text-align: center;
+        }
+        .qr-area .leyenda a {
+            color: #0b2b40;
+            font-weight: 600;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .footer {
+            margin-top: 24px;
+            font-size: 15px;
+            text-align: center;
+            color: #3d5a6d;
+            border-top: 1px solid #e0eaf0;
+            padding-top: 20px;
+        }
+        .footer i {
+            margin-right: 6px;
+        }
+        @media (max-width: 680px) {
+            .grid-productos {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .item {
+                font-size: 17px;
+                padding: 8px 4px;
+            }
+            .btn-mega {
+                font-size: 20px;
+                padding: 18px 14px;
+            }
+            h1 {
+                font-size: 26px;
+            }
+        }
+        .menu-hamburguesa {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+        .menu-hamburguesa i {
+            font-size: 32px;
+            color: #0b2b40;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <!-- MENÚ HAMBURGUESA -->
+    <div class="menu-hamburguesa">
+        <i class="fas fa-bars" id="hamburguesa" onclick="toggleMenu()"></i>
+    </div>
+
+    <!-- TÍTULO -->
+    <h1><i class="fas fa-spray-can"></i> NABIN</h1>
+    <div class="sub">Productos de limpieza <i class="fas fa-star" style="color:#d4a130;"></i> Calidad y confianza</div>
+
+    <!-- LISTA DE PRODUCTOS -->
+    <div class="grid-productos" id="listaProductos">
+        <!-- Los productos se cargarán con JavaScript desde el array -->
+    </div>
+
+    <!-- BOTONES MEGA -->
+    <div class="botones-mega">
+        <button class="btn-mega" data-tipo="motorizados"><i class="fas fa-motorcycle"></i> Motorizados</button>
+        <button class="btn-mega" data-tipo="negocios"><i class="fas fa-store"></i> Negocios</button>
+        <button class="btn-mega" data-tipo="personas"><i class="fas fa-user"></i> Personas</button>
+    </div>
+
+    <!-- FORMULARIOS -->
+    <div id="form-motorizados" class="formulario-seccion">
+        <h3><i class="fas fa-motorcycle"></i> Motorizados</h3>
+        <form><input placeholder="Nombre completo" /><input placeholder="Teléfono" /><input placeholder="Placa / moto" /><button type="submit">Enviar</button></form>
+    </div>
+    <div id="form-negocios" class="formulario-seccion">
+        <h3><i class="fas fa-store"></i> Negocios</h3>
+        <form><input placeholder="Nombre del negocio" /><input placeholder="Contacto" /><input placeholder="Dirección" /><button type="submit">Enviar</button></form>
+    </div>
+    <div id="form-personas" class="formulario-seccion">
+        <h3><i class="fas fa-user"></i> Personas</h3>
+        <form><input placeholder="Nombre completo" /><input placeholder="Teléfono" /><input placeholder="Correo" /><button type="submit">Enviar</button></form>
+    </div>
+
+    <!-- CÓDIGO QR -->
+    <div class="qr-area">
+        <!-- Imagen del QR generada con API pública -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://guia-digital-z612.onrender.com/productos-de-limpieza-nabin.html" alt="Código QR" />
+        <div class="leyenda">
+            <i class="fas fa-qrcode"></i> Escanea para ver esta tarjeta<br>
+            <a href="https://guia-digital-z612.onrender.com/productos-de-limpieza-nabin.html" target="_blank">guia-digital-z612.onrender.com/productos-de-limpieza-nabin</a>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <div class="footer">
+        <i class="fas fa-map-pin"></i> Av. Pp. de la Cumaca - San Diego &nbsp;|&nbsp; <i class="fas fa-phone"></i> +58 412-4502150<br>
+        <span style="font-size:13px; color:#6a8aa0;">Descubra cómo generar ingresos con la publicidad</span>
+    </div>
+</div>
+
+<script>
+    // DATOS DE PRODUCTOS (23)
+    const productos = [
+        { nombre: 'Jabón líquido', icono: 'fa-pump-soap' },
+        { nombre: 'Desinfectantes (Cherry, lavanda, citronela, Ajax, fabuloso, pinesol, manzana verde)', icono: 'fa-wind' },
+        { nombre: 'Desinfectante canela', icono: 'fa-leaf' },
+        { nombre: 'Cloro', icono: 'fa-flask' },
+        { nombre: 'Cloro jabonoso', icono: 'fa-jar' },
+        { nombre: 'Suavizante', icono: 'fa-hand-sparkles' },
+        { nombre: 'Vinagre de limpieza', icono: 'fa-bottle' },
+        { nombre: 'Cera blanca', icono: 'fa-circle' },
+        { nombre: 'Cera roja', icono: 'fa-circle' },
+        { nombre: 'Veneno de hormigas y polillas', icono: 'fa-skull' },
+        { nombre: 'Alcohol isopropílico', icono: 'fa-flask' },
+        { nombre: 'Crema mentolada', icono: 'fa-pills' },
+        { nombre: 'Creolina', icono: 'fa-biohazard' },
+        { nombre: 'Destapa cañería', icono: 'fa-wrench' },
+        { nombre: 'Limpia poceta', icono: 'fa-toilet' },
+        { nombre: 'Champú para mascota', icono: 'fa-paw' },
+        { nombre: 'Champú para carro', icono: 'fa-car' },
+        { nombre: 'Abrillantador', icono: 'fa-star' },
+        { nombre: 'Caucho negro', icono: 'fa-circle' },
+        { nombre: 'Brillos', icono: 'fa-sparkles' },
+        { nombre: 'Esponjas', icono: 'fa-sponge' },
+        { nombre: 'Bolsa de 40 kg y 30 kg', icono: 'fa-sack' },
+        { nombre: 'Envases de 4 litros', icono: 'fa-box' }
+    ];
+
+    // REFERENCIA DE PRECIOS (puedes cambiarlos después)
+    const precios = [
+        'Ref. 2,00', 'Ref. 3,00', 'Ref. 2,50', 'Ref. 1,80',
+        'Ref. 2,20', 'Ref. 2,80', 'Ref. 2,30', 'Ref. 2,50',
+        'Ref. 2,50', 'Ref. 3,00', 'Ref. 3,50', 'Ref. 3,00',
+        'Ref. 2,00', 'Ref. 3,50', 'Ref. 2,00', 'Ref. 3,00',
+        'Ref. 3,00', 'Ref. 2,50', 'Ref. 3,00', 'Ref. 2,00',
+        'Ref. 1,00', 'Ref. 2,50', 'Ref. 2,50'
+    ];
+
+    function cargarProductos() {
+        const contenedor = document.getElementById('listaProductos');
+        contenedor.innerHTML = '';
+        productos.forEach((p, index) => {
+            const div = document.createElement('div');
+            div.className = 'item';
+            // Detectar si es el desinfectante con fragancias para poner en línea pequeña
+            let nombreHtml = `<span class="nombre"><i class="fas ${p.icono}"></i> ${p.nombre}</span>`;
+            if (p.nombre.includes('Desinfectantes (')) {
+                const partes = p.nombre.split('(');
+                const base = partes[0].trim();
+                const frag = '(' + partes[1];
+                nombreHtml = `<span class="nombre"><i class="fas ${p.icono}"></i> ${base}</span><span class="fragancias">${frag}</span>`;
+            }
+            div.innerHTML = nombreHtml + `<span class="precio">${precios[index] || 'Ref. 0,00'}</span>`;
+            contenedor.appendChild(div);
+        });
+    }
+
+    // LÓGICA DE BOTONES Y FORMULARIOS
+    document.addEventListener('DOMContentLoaded', function() {
+        cargarProductos();
+
+        const botones = document.querySelectorAll('.btn-mega');
+        const secciones = {
+            motorizados: document.getElementById('form-motorizados'),
+            negocios: document.getElementById('form-negocios'),
+            personas: document.getElementById('form-personas')
+        };
+
+        botones.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tipo = this.dataset.tipo;
+                // Ocultar todos los formularios
+                Object.values(secciones).forEach(sec => sec.classList.remove('activo'));
+                // Mostrar el correspondiente
+                if (secciones[tipo]) {
+                    secciones[tipo].classList.add('activo');
+                    secciones[tipo].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    });
+
+    // MENÚ HAMBURGUESA (simple)
+    function toggleMenu() {
+        const lista = document.getElementById('listaProductos');
+        if (lista.style.display === 'none') {
+            lista.style.display = 'grid';
+        } else {
+            lista.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
