@@ -31,16 +31,23 @@
     <button id="send">Enviar</button>
   </div>
 
-  <div id="formulario-sai">
-    <h2>📋 Registro SAI</h2>
-    <form id="formularioRegistro">
-      <input type="text" id="nombre" placeholder="Nombre completo" required>
-      <input type="tel" id="telefono" placeholder="Teléfono / WhatsApp" required>
-      <input type="email" id="email" placeholder="Correo electrónico">
-      <button type="submit">Registrarse en el SAI</button>
-    </form>
-    <div id="mensaje"></div>
+ <div id="formulario-sai">
+  <h2>📋 Registro SAI</h2>
+  <form id="formularioRegistro">
+    <input type="text" id="nombre" placeholder="Nombre completo" required>
+    <input type="tel" id="telefono" placeholder="Teléfono / WhatsApp" required>
+    <input type="email" id="email" placeholder="Correo electrónico">
+    <button type="submit">Registrarse en el SAI</button>
+  </form>
+  <div id="mensaje"></div>
+
+  <!-- Tarjeta generada -->
+  <div id="tarjeta-generada" style="display:none; margin-top:20px; padding:16px; background:#e8f5e9; border-radius:10px; border:1px solid #4caf50;">
+    <h3>🧾 Tu tarjeta SAI</h3>
+    <p id="tarjeta-contenido"></p>
+    <p>🔗 Comparte tu enlace: <a id="enlace-tarjeta" href="#" target="_blank">Clic aquí</a></p>
   </div>
+</div>
 
   <script>
     // === CHAT DE MAP ===
