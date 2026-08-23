@@ -48,79 +48,63 @@
     <p>🔗 Comparte tu enlace: <a id="enlace-tarjeta" href="#" target="_blank">Clic aquí</a></p>
   </div>
 </div>
+// === FORMULARIO SAI ===
+document.getElementById('formularioRegistro').addEventListener('submit', async function (event) {
+  event.preventDefault();
 
-  <script>
-    // === CHAT DE MAP ===
-    const chat = document.getElementById('chat');
-    const input = document.getElementById('input');
-    const send = document.getElementById('send');
+  const mensaje = document.getElementById('mensaje');
+  const nombre = document.getElementById('nombre').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const email = document.getElementById('email').value.trim();
 
-    function addMessage(text, type) {
-      const div = document.createElement('div');
-      div.className = type;
-      div.textContent = text;
-      chat.appendChild(div);
-      chat.scrollTop = chat.scrollHeight;
+  mensaje.textContent = 'Enviando...';
+  mensaje.style.color = 'black';
+
+  try {
+    const respuesta = await fetch(
+      'https://guia-digital-z612.onrender.com/api/sai/registro',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, telefono, email })
+      }
+    );
+
+    const resultado = await respuesta.json();
+
+    if (!respuesta.ok) {
+      throw new Error(resultado.error || 'El servidor rechazó el registro');
     }
 
-    function responder(mensaje) {
-      const msg = mensaje.toLowerCase().trim();
-      if (msg.includes('hola') || msg.includes('buenas')) {
-        return "¡Hola! Soy MAP, tu agente personal. Estoy aquí para ayudarte con el SAI y la Guía Digital.";
-      }
-      if (msg.includes('sai') || msg.includes('registro') || msg.includes('automatización')) {
-        return "El SAI es el Sistema de Automatización de Ingresos. Puedes registrarte usando el formulario de abajo. ¿Necesitas ayuda con algo más?";
-      }
-      if (msg.includes('guía') || msg.includes('directorio')) {
-        return "La Guía Digital de Cúcuta es un directorio de negocios, talleres y servicios. ¿Te gustaría saber cómo incluir tu negocio?";
-      }
-      if (msg.includes('quien eres') || msg.includes('quién eres')) {
-        return "Soy MAP, tu agente personal. Mi misión es ayudarte a gestionar la Guía Digital y el SAI.";
-      }
-      return "Entiendo tu mensaje. ¿Puedes ser más específico? Estoy aquí para ayudarte con la Guía Digital o el SAI.";
-    }
+    mensaje.textContent = resultado.mensaje;
+    mensaje.style.color = 'green';
 
-    function sendMessage() {
-      const message = input.value.trim();
-      if (!message) return;
-      addMessage(message, 'user');
-      input.value = '';
-      setTimeout(() => {
-        const response = responder(message);
-        addMessage(response, 'bot');
-      }, 500);
-    }
+    // Mostrar tarjeta y enlace
+    const tarjetaDiv = document.getElementById('tarjeta-generada');
+    const tarjetaContenido = document.getElementById('tarjeta-contenido');
+    const enlaceTarjeta = document.getElementById('enlace-tarjeta');
 
-    send.addEventListener('click', sendMessage);
-    input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendMessage();
-    });
+    const idUnico = Date.now();
+    const enlace = `https://guia-digital-z612.onrender.com/tarjeta/${idUnico}`;
 
-    addMessage('👋 ¡Hola! Soy MAP, tu agente personal. Estoy aquí para ayudarte con el SAI y la Guía Digital.', 'bot');
+    tarjetaContenido.innerHTML = `
+      👤 <strong>Nombre:</strong> ${nombre}<br>
+      📱 <strong>Teléfono:</strong> ${telefono}<br>
+      📧 <strong>Correo:</strong> ${email}<br>
+      ✅ Registro exitoso en el SAI.
+    `;
+    enlaceTarjeta.href = enlace;
+    enlaceTarjeta.textContent = enlace;
+    tarjetaDiv.style.display = 'block';
 
-    // === FORMULARIO SAI ===
-    document.getElementById('formularioRegistro').addEventListener('submit', async function (event) {
-      event.preventDefault();
+    this.reset();
 
-      const mensaje = document.getElementById('mensaje');
-      const nombre = document.getElementById('nombre').value.trim();
-      const telefono = document.getElementById('telefono').value.trim();
-      const email = document.getElementById('email').value.trim();
-
-      mensaje.textContent = 'Enviando...';
-      mensaje.style.color = 'black';
-
-      try {
-        const respuesta = await fetch(
-          'https://guia-digital-z612.onrender.com/api/sai/registro',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ nombre, telefono, email })
-          }
-        );
+  } catch (error) {
+    console.error('Error al registrar:', error);
+    mensaje.textContent = '❌ Error al registrar: ' + error.message;
+    mensaje.style.color = 'red';
+  }
+});
 
         const resultado = await respuesta.json();
 
