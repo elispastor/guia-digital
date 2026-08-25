@@ -1,315 +1,418 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Liga Motorizada - Unión Sobre Ruedas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body {
-            background: #0b1a2e;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 16px;
-        }
-        .card {
-            max-width: 440px;
-            width: 100%;
-            background: #112b4f;
-            border-radius: 32px;
-            padding: 24px 20px;
-            border: 1px solid #1e3a5f;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            position: relative;
-        }
-        /* ENCABEZADO CON MOTO */
-        .header-image {
-            width: 100%;
-            background: linear-gradient(135deg, #0f2b44, #1a4b6d);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 4px solid #fbbf24;
-        }
-        .header-image .moto-icon {
-            font-size: 72px;
-            color: #fbbf24;
-            filter: drop-shadow(0 4px 12px rgba(251, 191, 36, 0.4));
-        }
-        .header-image h1 {
-            font-size: 22px;
-            font-weight: 800;
-            color: #fff;
-            margin-top: 4px;
-            letter-spacing: 1px;
-        }
-        .header-image h1 span { color: #fbbf24; }
-        .header-image .sub {
-            font-size: 13px;
-            color: #a0c4e8;
-            letter-spacing: 2px;
-            margin-top: 2px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Liga Motorizada · Tarjeta SAI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ===== RESET Y BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+    body {
+      background: #0a1a2e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
 
-        /* MENÚ HAMBURGUESA */
-        .menu-bar {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 8px;
-        }
-        .menu-btn {
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: #fff;
-            font-size: 26px;
-            padding: 6px 14px;
-            border-radius: 12px;
-            cursor: pointer;
-            backdrop-filter: blur(4px);
-        }
-        .menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 999;
-        }
-        .menu-overlay.active { display: block; }
-        .menu-panel {
-            position: fixed;
-            top: 0; right: 0;
-            width: 75%; max-width: 280px;
-            height: 100%;
-            background: #112b4f;
-            padding: 24px 20px;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-            box-shadow: -8px 0 30px rgba(0,0,0,0.5);
-            overflow-y: auto;
-        }
-        .menu-panel.open { transform: translateX(0); }
-        .menu-panel .close-btn {
-            background: none; border: none;
-            font-size: 28px; float: right;
-            cursor: pointer; color: #fbbf24;
-        }
-        .menu-panel ul {
-            list-style: none; margin-top: 30px;
-        }
-        .menu-panel ul li {
-            padding: 14px 0;
-            border-bottom: 1px solid #1e3a5f;
-            font-size: 16px;
-            font-weight: 600;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            cursor: pointer;
-        }
-        .menu-panel ul li i { width: 24px; color: #fbbf24; }
-        .menu-panel ul li:hover { color: #fbbf24; }
+    /* ===== CONTENEDOR PRINCIPAL ===== */
+    .container {
+      max-width: 720px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 36px;
+      box-shadow: 0 25px 50px -8px rgba(0,0,0,0.6);
+      overflow: hidden;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+    }
 
-        .section {
-            margin: 16px 0;
-            padding: 16px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            border-left: 4px solid #fbbf24;
-        }
-        .section h3 {
-            color: #fbbf24;
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-        .section p { color: #d0dbe8; font-size: 15px; line-height: 1.7; }
+    /* ===== PORTADA ===== */
+    .portada {
+      background: linear-gradient(135deg, #0f2b44, #1a4b6d);
+      padding: 24px 20px;
+      text-align: center;
+      border-radius: 24px 24px 0 0;
+      margin: -24px -20px 16px;
+    }
+    .portada .moto-icon { font-size: 64px; color: #fbbf24; filter: drop-shadow(0 4px 12px rgba(251,191,36,0.4)); }
+    .portada h1 { font-size: 26px; font-weight: 800; color: #fff; }
+    .portada h1 span { color: #fbbf24; }
+    .portada .sub { font-size: 14px; color: #a0c4e8; letter-spacing: 2px; margin-top: 4px; }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 16px 0;
-        }
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 16px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .btn-wsp { background: #25D366; color: #fff; }
-        .btn-asm { background: #fbbf24; color: #0b1a2e; }
-        .btn-outline { background: transparent; border: 2px solid #fbbf24; color: #fbbf24; }
+    /* ===== CUBO PERSUASIVO ===== */
+    .scene {
+      width: 240px;
+      height: 240px;
+      margin: 20px auto;
+      perspective: 800px;
+    }
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1.2s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transform: rotateX(-18deg) rotateY(30deg);
+    }
+    .face {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 16px;
+      backface-visibility: hidden;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+    .face .icon { font-size: 40px; margin-bottom: 8px; }
+    .face h3 { font-size: 20px; margin-bottom: 6px; }
+    .face p { font-size: 14px; opacity: 0.9; max-width: 200px; }
 
-        .qr {
-            text-align: center;
-            margin: 16px 0;
-        }
-        .qr img {
-            width: 140px;
-            height: 140px;
-            border-radius: 16px;
-            background: #fff;
-            padding: 8px;
-        }
-        .qr p { font-size: 13px; color: #a0c4e8; margin-top: 6px; }
+    .face-front  { background: linear-gradient(145deg, #1a3a5a, #0b2b40); transform: rotateY(0deg) translateZ(120px); }
+    .face-back   { background: linear-gradient(145deg, #1a4a3a, #0b3a2a); transform: rotateY(180deg) translateZ(120px); }
+    .face-right  { background: linear-gradient(145deg, #3a2a1a, #2a1a0b); transform: rotateY(90deg) translateZ(120px); }
+    .face-left   { background: linear-gradient(145deg, #2a1a3a, #1a0b2a); transform: rotateY(-90deg) translateZ(120px); }
+    .face-top    { background: linear-gradient(145deg, #1a3a3a, #0b2a2a); transform: rotateX(90deg) translateZ(120px); }
+    .face-bottom { background: linear-gradient(145deg, #3a1a1a, #2a0b0b); transform: rotateX(-90deg) translateZ(120px); }
 
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            color: #6b8aa8;
-            border-top: 1px solid #1e3a5f;
-            padding-top: 16px;
-            margin-top: 8px;
-        }
-        .footer a { color: #fbbf24; text-decoration: none; }
-    </style>
+    .controls-cube {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 12px 0 16px;
+    }
+    .controls-cube button {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.3s;
+      background: #1a2f44;
+    }
+    .controls-cube button:hover { background: #2a4a6a; }
+
+    /* ===== FORMULARIO ===== */
+    .form-registro {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 16px;
+      border: 1px solid #e0e8ee;
+    }
+    .form-registro h2 {
+      font-size: 20px;
+      color: #0b1a2e;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .form-registro input, .form-registro button {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ccd9e0;
+      border-radius: 14px;
+      font-size: 16px;
+      background: #fff;
+    }
+    .form-registro button {
+      background: #0f2b44;
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-registro button:hover { background: #1a4b6d; }
+
+    .codigo-referido {
+      background: #0b1a2e;
+      color: #fbbf24;
+      font-size: 22px;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== TARJETA GENERADA ===== */
+    #tarjeta-generada {
+      display: none;
+      margin-top: 20px;
+      padding: 16px;
+      background: #e6f4ea;
+      border-radius: 20px;
+      border: 1px solid #2e7d5e;
+      text-align: center;
+    }
+    #tarjeta-generada .qr img { width: 120px; height: 120px; border-radius: 12px; background: #fff; padding: 8px; }
+    .botones-tarjeta { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 12px 0; }
+    .botones-tarjeta a, .botones-tarjeta button {
+      padding: 10px 18px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-wa { background: #25D366; }
+    .btn-llamar { background: #1a4b6d; }
+    .btn-compartir { background: #fbbf24; color: #0b1a2e; }
+
+    .panel-sai {
+      background: #112b4f;
+      color: #fff;
+      padding: 16px;
+      border-radius: 16px;
+      margin-top: 16px;
+      border: 1px solid #fbbf24;
+    }
+    .panel-sai .stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 12px; }
+    .panel-sai .stat-box { background: #1a2f44; border-radius: 12px; padding: 12px; text-align: center; }
+    .panel-sai .stat-box .num { font-size: 22px; font-weight: 700; color: #fbbf24; }
+    .panel-sai .stat-box .label { font-size: 11px; color: #a0c4e8; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 13px;
+      color: #6b7f93;
+    }
+    .footer a { color: #fbbf24; text-decoration: none; font-weight: 600; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 480px) {
+      .scene { width: 200px; height: 200px; }
+      .face { width: 200px; height: 200px; padding: 12px; transform: translateZ(100px); }
+      .face h3 { font-size: 17px; }
+      .face p { font-size: 13px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="card">
+<div class="container" id="app">
 
-    <!-- MENÚ HAMBURGUESA -->
-    <div class="menu-bar">
-        <button class="menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+  <!-- PORTADA -->
+  <div class="portada">
+    <div class="moto-icon"><i class="fas fa-motorcycle"></i></div>
+    <h1>LIGA <span>MOTORIZADA</span></h1>
+    <div class="sub">SAN DIEGO · VALENCIA · ¡TU MOVIMIENTO GENERA INGRESOS!</div>
+  </div>
+
+  <!-- ===== CUBO PERSUASIVO ===== -->
+  <div class="scene">
+    <div class="cube" id="cube">
+      <div class="face face-front">
+        <div class="icon">💔</div>
+        <h3>¿Te falta ingresos?</h3>
+        <p>Llevas pasajeros, pero tu bolsillo no crece.</p>
+      </div>
+      <div class="face face-back">
+        <div class="icon">🔑</div>
+        <h3>Con $2 empiezas</h3>
+        <p>Compartes tu enlace y generas ingresos sin moverte de tu moto.</p>
+      </div>
+      <div class="face face-right">
+        <div class="icon">📤</div>
+        <h3>Comparte y gana</h3>
+        <p>Sin reuniones, sin productos. Solo compartes tu tarjeta digital.</p>
+      </div>
+      <div class="face face-left">
+        <div class="icon">🍲</div>
+        <h3>Comedor de motorizados</h3>
+        <p>Con cada registro, ayudas a construir el comedor de la liga.</p>
+      </div>
+      <div class="face face-top">
+        <div class="icon">⭐</div>
+        <h3>Testimonio real</h3>
+        <p>"Mi primer día generé $20 y ayudé a mi familia".</p>
+      </div>
+      <div class="face face-bottom">
+        <div class="icon">🚀</div>
+        <h3>Regístrate ya</h3>
+        <p>Tu enlace es tu pasaporte a la liga. Compártelo y gana.</p>
+      </div>
     </div>
+  </div>
 
-    <!-- MENÚ DESPLEGABLE -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-    <div class="menu-panel" id="menuPanel">
-        <button class="close-btn" id="menuClose"><i class="fas fa-times"></i></button>
-        <ul>
-            <li id="menuInicio"><i class="fas fa-home"></i> Inicio</li>
-            <li id="menuQuienes"><i class="fas fa-users"></i> ¿Quiénes somos?</li>
-            <li id="menuBeneficios"><i class="fas fa-gem"></i> Beneficios</li>
-            <li id="menuUnirse"><i class="fas fa-handshake"></i> Cómo unirse</li>
-            <li id="menuContacto"><i class="fas fa-phone"></i> Contacto</li>
-        </ul>
-    </div>
+  <!-- CONTROLES DEL CUBO -->
+  <div class="controls-cube">
+    <button onclick="girar('front')">1. Problema</button>
+    <button onclick="girar('back')">2. Solución</button>
+    <button onclick="girar('right')">3. Comparte</button>
+    <button onclick="girar('left')">4. Comedor</button>
+    <button onclick="girar('top')">5. Testimonio</button>
+    <button onclick="girar('bottom')">6. Acción</button>
+  </div>
 
-       <!-- ENCABEZADO CON IMAGEN -->
-<div class="header-image">
-    <img src="portada-liga.png" alt="Liga Motorizada de Valencia" style="width:100%; border-radius:20px;">
-</div>
+  <!-- ===== FORMULARIO DE REGISTRO CON CÓDIGO ===== -->
+  <div class="form-registro">
+    <h2><i class="fas fa-user-plus" style="color:#fbbf24;"></i> Registro Liga Motorizada</h2>
+    <div class="codigo-referido" id="codigoReferido">SAI-BIGLOW-001</div>
+    <form id="formRegistro">
+      <input type="text" id="nombre" placeholder="Nombre completo *" required />
+      <input type="tel" id="telefono" placeholder="Teléfono / WhatsApp *" required />
+      <input type="text" id="linea" placeholder="Línea / Ruta (opcional)" />
+      <button type="submit"><i class="fas fa-rocket"></i> Generar mi tarjeta SAI</button>
+    </form>
+    <div id="mensajeRegistro" style="margin-top:10px; font-weight:600;"></div>
+  </div>
 
-    <!-- QUIÉNES SOMOS -->
-    <div class="section" id="quienesSection">
-        <h3><i class="fas fa-users"></i> ¿Quiénes somos?</h3>
-        <p>Somos la <strong>Liga Motorizada de Valencia</strong>, una hermandad de motorizados organizados para protegerse, negociar y crecer juntos. Inspirados en la <strong>Liga Hanseática</strong>, entendemos que <strong>juntos, el pequeño se vuelve gigante</strong>.</p>
-    </div>
-
-    <!-- BENEFICIOS -->
-    <div class="section" id="beneficiosSection">
-        <h3><i class="fas fa-gem"></i> Beneficios</h3>
-        <p>✅ Repuestos colectivos con descuentos.<br>
-        ✅ Visibilidad en la Guía Digital.<br>
-        ✅ Token ASM: ahorro e inversión.<br>
-        ✅ Fondo común de apoyo.<br>
-        ✅ Comedor para motorizados.</p>
-    </div>
-
-    <!-- CÓMO UNIRSE -->
-    <div class="section" id="unirseSection">
-        <h3><i class="fas fa-handshake"></i> Cómo unirse</h3>
-        <p><strong>Con solo $2 USD</strong> empiezas a formar parte de la Liga. Con 2 referidos, recuperas tu inversión. Con 5 referidos, empiezas a ganar. <strong>El que no entra, pierde.</strong></p>
-    </div>
-
-    <!-- BOTONES -->
-    <div class="btn-group">
-        <a href="https://wa.me/573244913371?text=Hola%2C%20quiero%20unirme%20a%20la%20Liga%20Motorizada." target="_blank" class="btn btn-wsp">
-            <i class="fab fa-whatsapp"></i> UNIRME POR WHATSAPP
-        </a>
-        <a href="https://t.me/mototaxista_asm_bot" target="_blank" class="btn btn-asm">
-            <i class="fab fa-telegram-plane"></i> HABLAR CON EL BOT
-        </a>
-        <button class="btn btn-outline" id="shareBtn">
-            <i class="fas fa-share-alt"></i> COMPARTIR
-        </button>
-    </div>
-
-    <!-- QR -->
+  <!-- ===== TARJETA GENERADA ===== -->
+  <div id="tarjeta-generada">
+    <h3 style="color:#0b1a2e;">🧾 Tu tarjeta SAI</h3>
+    <div id="tarjeta-contenido"></div>
     <div class="qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://guia-digital.com/liga-motorizada" alt="QR para unirse">
-        <p><i class="fas fa-qrcode"></i> Escanea y únete a la Liga Motorizada</p>
+      <img id="qrImg" src="" alt="Código QR" />
     </div>
+    <p style="margin-top:8px; font-weight:600;">🔗 Comparte tu enlace:</p>
+    <p><a id="enlaceTarjeta" href="#" target="_blank" style="word-break:break-all; color:#0f2b44;"></a></p>
+    <div class="botones-tarjeta">
+      <a id="btnCompartir" href="#" class="btn-compartir"><i class="fas fa-share-alt"></i> Compartir</a>
+      <a id="btnLlamar" href="#" class="btn-llamar"><i class="fas fa-phone"></i> Llamar</a>
+      <a id="btnWhatsApp" href="#" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
 
-    <!-- FOOTER -->
-    <div class="footer">
-        <a href="https://guia-digital.com" target="_blank">🐙 Guía Digital de Cúcuta</a> · Liga Motorizada Valencia
+  <!-- ===== PANEL SAI ===== -->
+  <div class="panel-sai">
+    <h4 style="color:#fbbf24; text-align:center;">📊 PANEL SAI</h4>
+    <div class="stats">
+      <div class="stat-box"><div class="num" id="totalReferidos">0</div><div class="label">Referidos</div></div>
+      <div class="stat-box"><div class="num" id="totalGanancias">$0</div><div class="label">Ganancias</div></div>
+      <div class="stat-box"><div class="num" id="nivelActual">1</div><div class="label">Nivel</div></div>
+      <div class="stat-box"><div class="num" id="siguienteMeta">2</div><div class="label">Meta</div></div>
     </div>
+    <button id="btnSimularIngreso" style="width:100%; padding:12px; background:#fbbf24; color:#0b1a2e; border:none; border-radius:30px; font-weight:700; margin-top:12px; cursor:pointer;">
+      <i class="fas fa-coins"></i> Simular ingreso
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <a href="https://guia-digital.com" target="_blank">🐙 Guía Digital de Cúcuta</a>
+    <p style="margin-top:4px; font-size:12px;">&copy; 2026 Liga Motorizada · Todos los derechos reservados</p>
+  </div>
 </div>
 
 <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const menuClose = document.getElementById('menuClose');
-    const menuPanel = document.getElementById('menuPanel');
-    const menuOverlay = document.getElementById('menuOverlay');
-
-    function openMenu() {
-        menuPanel.classList.add('open');
-        menuOverlay.classList.add('active');
+  // ===== CUBO =====
+  const cube = document.getElementById('cube');
+  function girar(cara) {
+    let rotX = -18, rotY = 30;
+    switch(cara) {
+      case 'front':  rotX = -18; rotY = 30; break;
+      case 'back':   rotX = -18; rotY = 210; break;
+      case 'right':  rotX = -18; rotY = 120; break;
+      case 'left':   rotX = -18; rotY = -60; break;
+      case 'top':    rotX = 72;  rotY = 30; break;
+      case 'bottom': rotX = -108; rotY = 30; break;
     }
-    function closeMenu() {
-        menuPanel.classList.remove('open');
-        menuOverlay.classList.remove('active');
+    cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+  }
+  const caras = ['front','back','right','left','top','bottom'];
+  let idx = 0;
+  setInterval(() => { girar(caras[idx]); idx = (idx+1)%caras.length; }, 5000);
+
+  // ===== FORMULARIO =====
+  const referidos = 0;
+  let ganancias = 0;
+  let nivel = 1;
+
+  document.getElementById('formRegistro').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const linea = document.getElementById('linea').value.trim();
+    const codigo = document.getElementById('codigoReferido').textContent;
+
+    if (!nombre || !telefono) {
+      document.getElementById('mensajeRegistro').textContent = '❌ Completa nombre y teléfono.';
+      document.getElementById('mensajeRegistro').style.color = 'red';
+      return;
     }
 
-    menuToggle.addEventListener('click', openMenu);
-    menuClose.addEventListener('click', closeMenu);
-    menuOverlay.addEventListener('click', closeMenu);
+    // Simular registro
+    const id = Date.now().toString(36);
+    const enlace = `https://guia-digital.com/tarjeta/motorizado/${id}`;
 
-    document.getElementById('menuInicio').addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        closeMenu();
-    });
-    document.getElementById('menuQuienes').addEventListener('click', function() {
-        document.getElementById('quienesSection').scrollIntoView({ behavior: 'smooth' });
-        closeMenu();
-    });
-    document.getElementById('menuBeneficios').addEventListener('click', function() {
-        document.getElementById('beneficiosSection').scrollIntoView({ behavior: 'smooth' });
-        closeMenu();
-    });
-    document.getElementById('menuUnirse').addEventListener('click', function() {
-        document.getElementById('unirseSection').scrollIntoView({ behavior: 'smooth' });
-        closeMenu();
-    });
-    document.getElementById('menuContacto').addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        closeMenu();
-    });
+    // Mostrar tarjeta
+    const tarjetaDiv = document.getElementById('tarjeta-generada');
+    const contenido = document.getElementById('tarjeta-contenido');
+    const qrImg = document.getElementById('qrImg');
+    const enlaceTarjeta = document.getElementById('enlaceTarjeta');
+    const btnCompartir = document.getElementById('btnCompartir');
+    const btnLlamar = document.getElementById('btnLlamar');
+    const btnWhatsApp = document.getElementById('btnWhatsApp');
 
-    document.getElementById('shareBtn').addEventListener('click', function() {
-        const url = window.location.href;
-        if (navigator.share) {
-            navigator.share({
-                title: 'Liga Motorizada - Unión Sobre Ruedas',
-                text: 'Únete a la Liga Motorizada de Valencia. Con solo $2 empiezas a ganar.',
-                url: url
-            }).catch(() => {});
-        } else {
-            navigator.clipboard.writeText(url).then(() => {
-                alert('📋 Enlace copiado al portapapeles');
-            }).catch(() => {
-                prompt('Copia este enlace:', url);
-            });
-        }
-    });
+    contenido.innerHTML = `
+      <p><strong>👤 ${nombre}</strong></p>
+      <p>📱 ${telefono}</p>
+      ${linea ? `<p>🛵 ${linea}</p>` : ''}
+      <p style="background:#0b1a2e; color:#fbbf24; padding:8px; border-radius:10px; font-size:18px; font-weight:700;">🔑 ${codigo}</p>
+    `;
+
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(enlace)}`;
+    enlaceTarjeta.href = enlace;
+    enlaceTarjeta.textContent = enlace;
+    btnCompartir.href = `https://wa.me/?text=🚀%20Regístrate%20con%20mi%20código%20${codigo}%20y%20empieza%20a%20ganar.%20${encodeURIComponent(enlace)}`;
+    btnLlamar.href = `tel:${telefono}`;
+    btnWhatsApp.href = `https://wa.me/58${telefono.replace(/\D/g,'')}?text=Hola%20${encodeURIComponent(nombre)}%2C%20vi%20tu%20tarjeta%20SAI.`;
+
+    tarjetaDiv.style.display = 'block';
+    document.getElementById('mensajeRegistro').textContent = '✅ ¡Registro exitoso! Tu tarjeta está lista.';
+    document.getElementById('mensajeRegistro').style.color = 'green';
+
+    // Simular referido
+    simularIngreso();
+    this.reset();
+  });
+
+  // ===== PANEL SAI =====
+  function actualizarPanel() {
+    document.getElementById('totalReferidos').textContent = referidos;
+    document.getElementById('totalGanancias').textContent = '$' + ganancias.toFixed(2);
+    document.getElementById('nivelActual').textContent = nivel;
+    document.getElementById('siguienteMeta').textContent = nivel * 2;
+  }
+
+  function simularIngreso() {
+    referidos++;
+    ganancias += 0.5 + Math.random() * 0.5;
+    if (referidos >= nivel * 2) nivel++;
+    actualizarPanel();
+  }
+
+  document.getElementById('btnSimularIngreso').addEventListener('click', simularIngreso);
+
+  actualizarPanel();
 </script>
 
 </body>
-  </html>
+</html>
