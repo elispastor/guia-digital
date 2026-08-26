@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Liga Motorizada SAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+        body { background: linear-gradient(145deg, #0a1a2e, #1a2f44); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 16px; }
+        .container { max-width: 440px; width: 100%; background: #ffffff; border-radius: 36px; box-shadow: 0 25px 50px -8px rgba(0,0,0,0.6); overflow: hidden; padding: 24px 20px; }
+
+        .portada { background: linear-gradient(135deg, #0f2b44, #1a4b6d); padding: 20px; text-align: center; border-radius: 20px; margin-bottom: 20px; }
+        .portada .vehiculos-icon { font-size: 56px; color: #fbbf24; }
+        .portada h1 { font-size: 22px; font-weight: 800; color: #fff; }
+        .portada h1 span { color: #fbbf24; }
+        .portada .sub { font-size: 13px; color: #a0c4e8; letter-spacing: 1px; }
+
+        /* ===== TARJETA ===== */
+        .profile { text-align: center; padding: 16px 0; }
+        .profile .avatar { width: 80px; height: 80px; background: linear-gradient(135deg, #0f2b44, #1a4b6d); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 4px solid #fbbf24; }
+        .profile .avatar i { font-size: 36px; color: #fff; }
+        .profile h2 { font-size: 20px; font-weight: 700; color: #0b1a2e; }
+        .profile .business { font-size: 16px; font-weight: 600; color: #1a4b6d; }
+        .profile .phone { font-size: 15px; color: #4a5e72; margin: 4px 0; }
+        .profile .address { font-size: 14px; color: #6b7f93; }
+
+        .causa { background: #f8fafc; padding: 12px 16px; border-radius: 12px; border-left: 4px solid #fbbf24; margin: 12px 0; }
+        .causa h3 { font-size: 15px; color: #0b1a2e; }
+        .causa p { font-size: 14px; color: #1a2f44; }
+
+        .ruleta { background: #112b4f; padding: 12px; border-radius: 12px; color: #fff; border: 1px solid #fbbf24; text-align: center; margin: 12px 0; }
+        .ruleta h4 { color: #fbbf24; font-size: 16px; }
+        .ruleta p { font-size: 13px; color: #a0c4e8; }
+
+        .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 12px 0; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 60px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; text-decoration: none; flex: 1 0 auto; min-width: 80px; }
+        .btn-whatsapp { background: #25D366; color: #fff; }
+        .btn-call { background: #1a4b6d; color: #fff; }
+        .btn-share { background: #fbbf24; color: #0b1a2e; }
+        .btn-aporte { background: #22c55e; color: #fff; }
+        .btn-registro { background: #8b5cf6; color: #fff; }
+
+        .qr-section { text-align: center; padding: 8px 0; }
+        .qr-section img { width: 100px; height: 100px; border-radius: 12px; background: #fff; padding: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        .footer { background: #f8fafc; padding: 12px 16px; text-align: center; border-radius: 12px; margin-top: 12px; }
+        .footer small { font-size: 11px; color: #6b7f93; }
+
+        /* ===== FORMULARIO (oculto por defecto) ===== */
+        .form-registro { display: none; background: #f8fafc; border-radius: 20px; padding: 20px; border: 1px solid #e0e8ee; margin-top: 20px; }
+        .form-registro h3 { font-size: 18px; color: #0b1a2e; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .form-registro input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccd9e0; border-radius: 12px; font-size: 15px; background: #fff; }
+        .form-registro button { width: 100%; padding: 12px; background: #0f2b44; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; }
+        .form-registro button:hover { background: #1a4b6d; }
+        #mensaje { margin-top: 10px; font-weight: 600; text-align: center; }
+        .form-registro.visible { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- PORTADA -->
+    <div class="portada">
+        <div class="vehiculos-icon">
+            <i class="fas fa-motorcycle"></i>
+            <i class="fas fa-car" style="margin:0 8px;"></i>
+            <i class="fas fa-truck"></i>
+        </div>
+        <h1>LIGA <span>MOTORIZADA</span></h1>
+        <div class="sub">UNIDOS POR EL COMEDOR</div>
+    </div>
+
+    <!-- ===== TARJETA (siempre visible) ===== -->
+    <div id="tarjeta">
+
+        <div class="profile">
+            <div class="avatar"><i class="fas fa-user-tie"></i></div>
+            <h2 id="nombreTarjeta">LIGA MOTORIZADA</h2>
+            <div class="business" id="rutaTarjeta"><i class="fas fa-route"></i> Ruta / Línea</div>
+            <div class="phone" id="telefonoTarjeta"><i class="fas fa-phone"></i> 0412-000-0000</div>
+            <div class="address" id="direccionTarjeta"><i class="fas fa-location-dot"></i> Dirección</div>
+        </div>
+
+        <div class="causa">
+            <h3><i class="fas fa-utensils" style="color:#fbbf24;"></i> Construyendo el Comedor</h3>
+            <p>Este motorizado está ayudando a construir el <strong>Comedor de la Liga Motorizada</strong>.</p>
+        </div>
+
+        <div class="ruleta">
+            <h4>🎡 RULETA SAI</h4>
+            <p>Cada aporte de <strong>$2</strong> te da un boleto para la ruleta semanal.</p>
+            <p style="font-size:11px; color:#fbbf24; margin-top:4px;">Próximo sorteo: 7 días</p>
+        </div>
+
+        <div class="actions">
+            <a href="#" class="btn btn-aporte" id="btnAporte"><i class="fas fa-hand-holding-usd"></i> Aportar</a>
+            <a href="#" class="btn btn-whatsapp" id="btnWhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" class="btn btn-call" id="btnCall"><i class="fas fa-phone"></i> Llamar</a>
+            <button class="btn btn-share" id="btnShare"><i class="fas fa-share-alt"></i> Compartir</button>
+            <button class="btn btn-registro" id="btnMostrarRegistro"><i class="fas fa-user-plus"></i> Regístrate aquí</button>
+        </div>
+
+        <div class="qr-section">
+            <img id="qrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://guia-digital.com/liga-motorizada" alt="Código QR" />
+            <p style="font-size:12px; color:#6b7f93; margin-top:4px;"><i class="fas fa-qrcode"></i> Escanea para conocer la causa</p>
+        </div>
+
+        <div class="footer">
+            <small>&copy; 2026 LIGA MOTORIZADA - Construyendo juntos</small>
+        </div>
+    </div>
+
+    <!-- ===== FORMULARIO (oculto) ===== -->
+    <div class="form-registro" id="formularioRegistro">
+        <h3><i class="fas fa-user-plus" style="color:#fbbf24;"></i> Regístrate en la Liga</h3>
+        <form id="formRegistro">
+            <input type="text" id="nombre" placeholder="Nombre completo *" required>
+            <input type="tel" id="telefono" placeholder="Teléfono / WhatsApp *" required>
+            <input type="text" id="ruta" placeholder="Ruta / Línea (opcional)">
+            <input type="text" id="direccion" placeholder="Dirección (opcional)">
+            <button type="submit"><i class="fas fa-rocket"></i> Generar mi tarjeta</button>
+        </form>
+        <div id="mensaje"></div>
+    </div>
+
+</div>
+
+<script>
+    // ==== MOSTRAR FORMULARIO ====
+    document.getElementById('btnMostrarRegistro').addEventListener('click', function() {
+        const form = document.getElementById('formularioRegistro');
+        form.classList.toggle('visible');
+        form.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // ==== FORMULARIO ====
+    document.getElementById('formRegistro').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nombre = document.getElementById('nombre').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const ruta = document.getElementById('ruta').value.trim();
+        const direccion = document.getElementById('direccion').value.trim();
+        const mensaje = document.getElementById('mensaje');
+
+        if (!nombre || !telefono) {
+            mensaje.textContent = '❌ Completa nombre y teléfono.';
+            mensaje.style.color = 'red';
+            return;
+        }
+
+        // Actualizar tarjeta
+        document.getElementById('nombreTarjeta').textContent = nombre;
+        document.getElementById('rutaTarjeta').textContent = '🛵 ' + (ruta || 'Ruta no especificada');
+        document.getElementById('telefonoTarjeta').textContent = '📱 ' + telefono;
+        document.getElementById('direccionTarjeta').textContent = '📍 ' + (direccion || 'Dirección no especificada');
+
+        document.getElementById('btnWhatsApp').href = `https://wa.me/58${telefono.replace(/\D/g,'')}?text=Hola%2C%20vi%20tu%20tarjeta%20SAI.%20Quiero%20apoyar%20el%20comedor.`;
+        document.getElementById('btnCall').href = `tel:${telefono}`;
+
+        const enlace = `https://guia-digital.com/tarjeta/${nombre.replace(/\s/g,'')}`;
+        document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(enlace)}`;
+
+        mensaje.textContent = '✅ ¡Tarjeta generada!';
+        mensaje.style.color = 'green';
+        mensaje.scrollIntoView({ behavior: 'smooth' });
+        this.reset();
+
+        // Ocultar formulario después de registrar
+        document.getElementById('formularioRegistro').classList.remove('visible');
+    });
+
+    // ==== COMPARTIR ====
+    document.getElementById('btnShare').addEventListener('click', function() {
+        const nombre = document.getElementById('nombreTarjeta').textContent;
+        const telefono = document.getElementById('telefonoTarjeta').textContent.replace('📱 ', '');
+        const texto = `🚀 Apoyo al Comedor de la Liga Motorizada. Conoce a ${nombre}, motorizado SAI. 📱 ${telefono}`;
+        const url = window.location.href;
+
+        if (navigator.share) {
+            navigator.share({ title: 'Liga Motorizada SAI', text: texto, url: url });
+        } else {
+            navigator.clipboard.writeText(texto + '\n' + url).then(() => alert('📋 Enlace copiado. ¡Comparte la causa!'));
+        }
+    });
+
+    // ==== APORTE ====
+    document.getElementById('btnAporte').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('💳 Próximamente: Botón de Pago Móvil. Por ahora, contáctate con el motorizado.');
+    });
+</script>
+
+</body>
+</html>
