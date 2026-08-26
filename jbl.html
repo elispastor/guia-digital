@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>COMERCIALIZADORA JBL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+    body { background: #f5f5f5; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 16px; }
+    .container { max-width: 720px; width: 100%; background: #ffffff; border-radius: 36px; box-shadow: 0 25px 50px -8px rgba(0,0,0,0.6); overflow: hidden; padding: 24px 20px; }
+
+    /* ===== ENCABEZADO ===== */
+    .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 2px solid #eef2f6; }
+    .header .logo h1 { font-size: 22px; font-weight: 800; color: #0b1a2e; }
+    .header .logo h1 span { color: #1a4b6d; }
+    .header .logo small { display: block; font-size: 11px; color: #6b7f93; letter-spacing: 1px; }
+    .header .menu-btn { background: none; border: none; font-size: 24px; color: #0b1a2e; cursor: pointer; }
+
+    /* ===== ÍNDICE ===== */
+    .intro { padding: 16px 0 8px; text-align: center; }
+    .intro h2 { font-size: 20px; color: #0b1a2e; }
+    .intro p { font-size: 15px; color: #4a5e72; }
+
+    /* ===== PORTADA CON PANDA ===== */
+    .portada { margin: 16px 0; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    .portada img { width: 100%; height: auto; display: block; }
+
+    /* ===== DATOS DEL NEGOCIO ===== */
+    .datos { background: #f8fafc; border-radius: 20px; padding: 20px; margin: 16px 0; border: 1px solid #e0e8ee; }
+    .datos h3 { font-size: 18px; color: #0b1a2e; margin-bottom: 8px; }
+    .datos p { font-size: 15px; color: #1a2f44; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .datos i { width: 24px; color: #1a4b6d; }
+
+    /* ===== BOTONES ===== */
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 16px 0; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 20px; border-radius: 60px; font-weight: 700; font-size: 15px; border: none; cursor: pointer; text-decoration: none; flex: 1 0 auto; min-width: 100px; color: #fff; }
+    .btn-whatsapp { background: #25D366; }
+    .btn-call { background: #1a4b6d; }
+    .btn-location { background: #fbbf24; color: #0b1a2e; }
+    .btn-qr { background: #0b1a2e; }
+
+    /* ===== PIE DE PÁGINA ===== */
+    .footer { text-align: center; padding-top: 16px; border-top: 1px solid #eef2f6; margin-top: 12px; }
+    .footer p { font-size: 14px; color: #6b7f93; }
+    .footer a { color: #1a4b6d; text-decoration: none; font-weight: 600; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 480px) {
+      .header .logo h1 { font-size: 18px; }
+      .btn { font-size: 13px; padding: 12px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ===== ENCABEZADO ===== -->
+  <div class="header">
+    <div class="logo">
+      <h1>JBL <span>COMERCIALIZADORA</span></h1>
+      <small>Compra y venta al mayor y detal</small>
+    </div>
+    <button class="menu-btn" onclick="alert('Menú en construcción')"><i class="fas fa-bars"></i></button>
+  </div>
+
+  <!-- ===== ÍNDICE / INTRODUCCIÓN ===== -->
+  <div class="intro">
+    <h2>🐼 Ajos, granos, víveres y más</h2>
+    <p>Ventas al mayor y detal con la atención esmerada de sus propietarios.</p>
+  </div>
+
+  <!-- ===== PORTADA CON EL PANDA ===== -->
+  <div class="portada">
+    <img src="portada-panda.jpg" alt="COMERCIALIZADORA JBL - Panda" />
+  </div>
+
+  <!-- ===== DATOS DEL NEGOCIO ===== -->
+  <div class="datos">
+    <h3><i class="fas fa-store" style="color:#1a4b6d;"></i> COMERCIALIZADORA JBL</h3>
+    <p><i class="fas fa-tags"></i> Ajos, granos, víveres y todo lo relacionado.</p>
+    <p><i class="fas fa-balance-scale"></i> Ventas al mayor y detal.</p>
+    <p><i class="fas fa-user-tie"></i> Atendido por sus propietarios con atención esmerada.</p>
+    <p><i class="fas fa-phone"></i> <a href="tel:584124127159" style="text-decoration:none; color:#0b1a2e; font-weight:600;">0412-412 71 59</a></p>
+    <p><i class="fas fa-map-pin"></i> Mercado Mayorista - Nave 1 - N° 071 - Tocuyito - Edo. Carabobo</p>
+  </div>
+
+  <!-- ===== BOTONES DE ACCIÓN ===== -->
+  <div class="actions">
+    <a href="https://wa.me/584124127159?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="tel:584124127159" class="btn btn-call"><i class="fas fa-phone"></i> Llamar</a>
+    <a href="https://www.google.com/maps?q=Mercado+Mayorista+Tocuyito+Carabobo" target="_blank" class="btn btn-location"><i class="fas fa-location-dot"></i> Ubicación</a>
+    <button class="btn btn-qr" onclick="alert('📲 Escanea el código QR en la tienda para guardar este contacto.')"><i class="fas fa-qrcode"></i> QR</button>
+  </div>
+
+  <!-- ===== PIE DE PÁGINA ===== -->
+  <div class="footer">
+    <p><strong>Genera ingresos con la publicidad</strong></p>
+    <p><a href="https://guia-digital.com" target="_blank">🐙 Guía Digital de Cúcuta</a></p>
+    <p style="font-size:12px; margin-top:4px;">&copy; 2026 COMERCIALIZADORA JBL - Todos los derechos reservados</p>
+  </div>
+
+</div>
+
+</body>
+</html>
