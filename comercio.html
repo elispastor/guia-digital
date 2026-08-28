@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Tarjeta Comercio SAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+        body { background: linear-gradient(145deg, #0a1a2e, #1a2f44); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 16px; }
+        .container { max-width: 440px; width: 100%; background: #ffffff; border-radius: 36px; box-shadow: 0 25px 50px -8px rgba(0,0,0,0.6); overflow: hidden; padding: 24px 20px; }
+
+        .portada { background: linear-gradient(135deg, #0f2b44, #1a4b6d); padding: 20px; text-align: center; border-radius: 20px; margin-bottom: 20px; }
+        .portada .icon { font-size: 56px; color: #fbbf24; }
+        .portada h1 { font-size: 22px; font-weight: 800; color: #fff; }
+        .portada h1 span { color: #fbbf24; }
+        .portada .sub { font-size: 13px; color: #a0c4e8; letter-spacing: 1px; }
+
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 8px 0 16px; border-bottom: 1px solid #eef2f6; margin-bottom: 16px; }
+        .header .brand h2 { font-size: 18px; font-weight: 700; color: #0b1a2e; }
+        .header .brand h2 span { color: #1a4b6d; }
+        .header .brand small { display: block; font-size: 10px; color: #6b7f93; letter-spacing: 1px; }
+        .menu-btn { background: none; border: none; font-size: 28px; color: #0b1a2e; cursor: pointer; padding: 4px 8px; }
+
+        .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+        .menu-overlay.active { display: block; }
+        .menu-panel { position: fixed; top: 0; right: 0; width: 75%; max-width: 280px; height: 100%; background: #fff; padding: 24px 20px; transform: translateX(100%); transition: transform 0.3s ease; z-index: 1000; box-shadow: -8px 0 30px rgba(0,0,0,0.3); overflow-y: auto; }
+        .menu-panel.open { transform: translateX(0); }
+        .menu-panel .close-btn { background: none; border: none; font-size: 28px; float: right; cursor: pointer; color: #1a2f44; }
+        .menu-panel ul { list-style: none; margin-top: 40px; }
+        .menu-panel ul li { padding: 14px 0; border-bottom: 1px solid #eef2f6; font-size: 16px; font-weight: 600; color: #1a2f44; display: flex; align-items: center; gap: 14px; cursor: pointer; }
+        .menu-panel ul li i { width: 24px; color: #1a4b6d; }
+
+        .profile { text-align: center; padding: 16px 0; }
+        .profile .avatar { width: 80px; height: 80px; background: linear-gradient(135deg, #0f2b44, #1a4b6d); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 4px solid #fbbf24; }
+        .profile .avatar i { font-size: 36px; color: #fff; }
+        .profile h2 { font-size: 20px; font-weight: 700; color: #0b1a2e; }
+        .profile .business { font-size: 16px; font-weight: 600; color: #1a4b6d; }
+        .profile .phone { font-size: 15px; color: #4a5e72; margin: 4px 0; }
+        .profile .address { font-size: 14px; color: #6b7f93; }
+
+        .causa { background: #f8fafc; padding: 12px 16px; border-radius: 12px; border-left: 4px solid #fbbf24; margin: 12px 0; }
+        .causa h3 { font-size: 15px; color: #0b1a2e; }
+        .causa p { font-size: 14px; color: #1a2f44; }
+
+        .panel-sai { background: #112b4f; padding: 16px; border-radius: 16px; color: #fff; border: 1px solid #fbbf24; margin: 12px 0; }
+        .panel-sai h4 { color: #fbbf24; text-align: center; font-size: 16px; margin-bottom: 8px; }
+        .panel-sai .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .panel-sai .stat-box { background: #1a2f44; border-radius: 12px; padding: 12px; text-align: center; }
+        .panel-sai .stat-box .num { font-size: 20px; font-weight: 700; color: #fbbf24; }
+        .panel-sai .stat-box .label { font-size: 11px; color: #a0c4e8; }
+        .panel-sai .code { font-size: 16px; font-weight: 700; color: #fbbf24; text-align: center; letter-spacing: 2px; padding: 8px; background: #0b1a2e; border-radius: 10px; margin: 8px 0; }
+
+        .ruleta { background: #112b4f; padding: 12px; border-radius: 12px; color: #fff; border: 1px solid #fbbf24; text-align: center; margin: 12px 0; }
+        .ruleta h4 { color: #fbbf24; font-size: 16px; }
+        .ruleta p { font-size: 13px; color: #a0c4e8; }
+
+        .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 12px 0; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 60px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; text-decoration: none; flex: 1 0 auto; min-width: 80px; }
+        .btn-whatsapp { background: #25D366; color: #fff; }
+        .btn-call { background: #1a4b6d; color: #fff; }
+        .btn-share { background: #fbbf24; color: #0b1a2e; }
+        .btn-aporte { background: #22c55e; color: #fff; }
+        .btn-registro { background: #8b5cf6; color: #fff; }
+
+        .qr-section { text-align: center; padding: 8px 0; }
+        .qr-section img { width: 100px; height: 100px; border-radius: 12px; background: #fff; padding: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        .footer { background: #f8fafc; padding: 12px 16px; text-align: center; border-radius: 12px; margin-top: 12px; }
+        .footer small { font-size: 11px; color: #6b7f93; }
+
+        .form-registro { display: none; background: #f8fafc; border-radius: 20px; padding: 20px; border: 1px solid #e0e8ee; margin-top: 20px; }
+        .form-registro h3 { font-size: 18px; color: #0b1a2e; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .form-registro input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccd9e0; border-radius: 12px; font-size: 15px; background: #fff; }
+        .form-registro button { width: 100%; padding: 12px; background: #0f2b44; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; }
+        .form-registro button:hover { background: #1a4b6d; }
+        #mensaje { margin-top: 10px; font-weight: 600; text-align: center; }
+        .form-registro.visible { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="brand">
+            <h2>GUÍA <span>DIGITAL</span></h2>
+            <small>VALENCIA</small>
+        </div>
+        <button class="menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="menu-panel" id="menuPanel">
+        <button class="close-btn" id="menuClose"><i class="fas fa-times"></i></button>
+        <ul>
+            <li id="menuInicio"><i class="fas fa-home"></i> Inicio</li>
+            <li id="menuServicios"><i class="fas fa-tools"></i> Servicios</li>
+            <li id="menuSAI"><i class="fas fa-chart-line"></i> Panel SAI</li>
+            <li id="menuCompartir"><i class="fas fa-share-alt"></i> Compartir</li>
+            <li id="menuContacto"><i class="fas fa-phone"></i> Contacto</li>
+            <li id="menuRegistro"><i class="fas fa-user-plus"></i> Registro</li>
+        </ul>
+    </div>
+
+    <div class="portada">
+        <div class="icon"><i class="fas fa-store"></i></div>
+        <h1>TARJETA <span>COMERCIO</span></h1>
+        <div class="sub">SAI · GENERA INGRESOS PARA TU NEGOCIO</div>
+    </div>
+
+    <div id="tarjeta">
+
+        <div class="profile">
+            <div class="avatar"><i class="fas fa-user-tie"></i></div>
+            <h2 id="nombreTarjeta">COMERCIO SAI</h2>
+            <div class="business" id="categoriaTarjeta"><i class="fas fa-tag"></i> Categoría</div>
+            <div class="phone" id="telefonoTarjeta"><i class="fas fa-phone"></i> 0412-000-0000</div>
+            <div class="address" id="direccionTarjeta"><i class="fas fa-location-dot"></i> Dirección</div>
+        </div>
+
+        <div class="causa">
+            <h3>🤝 UNIDOS Y ORGANIZADOS PARA EL BIEN!</h3>
+            <p><strong>JUNTOS CONSTRUIMOS PROSPERIDAD PARA TU NEGOCIO.</strong></p>
+        </div>
+
+        <div class="panel-sai" id="panelSAI">
+            <h4>📊 PANEL SAI</h4>
+            <div class="code" id="codigoReferido">SAI-COM-001</div>
+            <div class="stats">
+                <div class="stat-box"><div class="num" id="balance">$0.00</div><div class="label">Balance</div></div>
+                <div class="stat-box"><div class="num" id="totalReferidos">0</div><div class="label">Referidos</div></div>
+                <div class="stat-box"><div class="num" id="nivelActual">1</div><div class="label">Nivel</div></div>
+                <div class="stat-box"><div class="num" id="siguienteMeta">2</div><div class="label">Meta</div></div>
+            </div>
+        </div>
+
+        <div class="ruleta">
+            <h4>🎡 RULETA SAI</h4>
+            <p>Cada aporte de <strong>$2</strong> te da un boleto para la ruleta semanal.</p>
+            <p style="font-size:11px; color:#fbbf24; margin-top:4px;">Próximo sorteo: 7 días</p>
+        </div>
+
+        <div class="actions">
+            <a href="#" class="btn btn-aporte" id="btnAporte"><i class="fas fa-hand-holding-usd"></i> Aportar</a>
+            <a href="#" class="btn btn-whatsapp" id="btnWhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" class="btn btn-call" id="btnCall"><i class="fas fa-phone"></i> Llamar</a>
+            <button class="btn btn-share" id="btnShare"><i class="fas fa-share-alt"></i> Compartir</button>
+            <button class="btn btn-registro" id="btnMostrarRegistro"><i class="fas fa-user-plus"></i> Regístrate aquí</button>
+        </div>
+
+        <div class="qr-section">
+            <img id="qrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://guia-digital-z612.onrender.com/comercio.html" alt="Código QR" />
+            <p style="font-size:12px; color:#6b7f93; margin-top:4px;"><i class="fas fa-qrcode"></i> Escanea para conocer la causa</p>
+        </div>
+
+        <div class="footer">
+            <small>&copy; 2026 SAI COMERCIO - Construyendo juntos</small>
+        </div>
+    </div>
+
+    <div class="form-registro" id="formularioRegistro">
+        <h3><i class="fas fa-user-plus" style="color:#fbbf24;"></i> Registra tu Comercio</h3>
+        <form id="formRegistro">
+            <input type="text" id="nombre" placeholder="Nombre del comercio *" required>
+            <input type="tel" id="telefono" placeholder="Teléfono / WhatsApp *" required>
+            <input type="text" id="categoria" placeholder="Categoría (ej: taller, tienda, etc.)">
+            <input type="text" id="direccion" placeholder="Dirección (opcional)">
+            <button type="submit"><i class="fas fa-rocket"></i> Generar mi tarjeta</button>
+        </form>
+        <div id="mensaje"></div>
+    </div>
+
+</div>
+
+<script>
+    // ===== MENÚ =====
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const menuPanel = document.getElementById('menuPanel');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    menuToggle.addEventListener('click', function() {
+        menuPanel.classList.add('open');
+        menuOverlay.classList.add('active');
+    });
+
+    menuClose.addEventListener('click', function() {
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
+    menuOverlay.addEventListener('click', function() {
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
+    document.getElementById('menuInicio').addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
+    document.getElementById('menuServicios').addEventListener('click', function() {
+        document.querySelector('.causa').scrollIntoView({ behavior: 'smooth' });
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
+    document.getElementById('menuSAI').addEventListener('click', function() {
+        document.getElementById('panelSAI').scrollIntoView({ behavior: 'smooth' });
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
+    document.getElementById('menuCompartir').addEventListener('click', function() {
+        compartir();
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
+    document.getElementById('menuContacto').addEventListener('click', function() {
+        window.location.href = 'tel:584144092063';
+        menuPanel.classList.remove('open');
+        menuOverlay.classList.remove('active');
+    });
+
+    document.getElementById('menuRegistro').addEventListener('click', function() {
+        const form = document.getElementById('formularioRegistro');
+        form.classList.toggle('visible');
+        form.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // ===== FORMULARIO =====
+    document.getElementById('btnMostrarRegistro').addEventListener('click', function() {
+        const form = document.getElementById('formularioRegistro');
+        form.classList.toggle('visible');
+        form.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('formRegistro').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nombre = document.getElementById('nombre').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const categoria = document.getElementById('categoria').value.trim();
+        const direccion = document.getElementById('direccion').value.trim();
+        const mensaje = document.getElementById('mensaje');
+
+        if (!nombre || !telefono) {
+            mensaje.textContent = '❌ Completa nombre y teléfono.';
+            mensaje.style.color = 'red';
+            return;
+        }
+
+        document.getElementById('nombreTarjeta').textContent = nombre;
+        document.getElementById('categoriaTarjeta').textContent = '🏷️ ' + (categoria || 'Categoría no especificada');
+        document.getElementById('telefonoTarjeta').textContent = '📱 ' + telefono;
+        document.getElementById('direccionTarjeta').textContent = '📍 ' + (direccion || 'Dirección no especificada');
+
+        document.getElementById('btnWhatsApp').href = `https://wa.me/58${telefono.replace(/\D/g,'')}?text=Hola%2C%20vi%20tu%20tarjeta%20SAI.%20Quiero%20apoyar%20tu%20comercio.`;
+        document.getElementById('btnCall').href = `tel:${telefono}`;
+
+        mensaje.textContent = '✅ ¡Tarjeta generada!';
+        mensaje.style.color = 'green';
+        mensaje.scrollIntoView({ behavior: 'smooth' });
+        this.reset();
+        document.getElementById('formularioRegistro').classList.remove('visible');
+    });
+
+    // ===== COMPARTIR =====
+    document.getElementById('btnShare').addEventListener('click', function() {
+        compartir();
+    });
+
+    function compartir() {
+        const nombre = document.getElementById('nombreTarjeta').textContent;
+        const telefono = document.getElementById('telefonoTarjeta').textContent.replace('📱 ', '');
+        const texto = `🚀 Conoce ${nombre}, un comercio afiliado a SAI. 📱 ${telefono}`;
+        const url = window.location.href;
+
+        if (navigator.share) {
+            navigator.share({ title: 'Tarjeta Comercio SAI', text: texto, url: url });
+        } else {
+            navigator.clipboard.writeText(texto + '\n' + url).then(() => alert('📋 Enlace copiado. ¡Comparte la causa!'));
+        }
+    }
+
+    // ===== APORTE =====
+    document.getElementById('btnAporte').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('💳 Próximamente: Botón de Pago Móvil. Por ahora, contáctate con el comercio.');
+    });
+</script>
+
+</body>
+</html>
