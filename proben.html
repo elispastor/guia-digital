@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>PROBEN - Ayuda a los Adultos Mayores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+        body { background: #0a1a2e; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 16px; }
+        .container { max-width: 440px; width: 100%; background: #ffffff; border-radius: 36px; overflow: hidden; box-shadow: 0 25px 50px -8px rgba(0,0,0,0.6); }
+
+        .header { background: linear-gradient(135deg, #0f2b44, #1a4b6d); padding: 24px 20px; text-align: center; }
+        .header h1 { font-size: 28px; font-weight: 800; color: #fff; }
+        .header h1 span { color: #fbbf24; }
+        .header p { color: #a0c4e8; font-size: 14px; }
+
+        .content { padding: 24px 20px; }
+        .causa { background: #f8fafc; padding: 16px; border-radius: 16px; border-left: 4px solid #fbbf24; margin-bottom: 20px; }
+        .causa h3 { font-size: 18px; color: #0b1a2e; }
+        .causa ul { list-style: none; margin-top: 8px; }
+        .causa ul li { padding: 4px 0; font-size: 14px; color: #1a2f44; display: flex; align-items: center; gap: 8px; }
+
+        .donacion { background: #112b4f; padding: 20px; border-radius: 16px; color: #fff; text-align: center; margin-bottom: 20px; }
+        .donacion h4 { color: #fbbf24; font-size: 20px; }
+        .donacion .monto { font-size: 32px; font-weight: 700; color: #fbbf24; margin: 8px 0; }
+        .donacion .btn-pagar { background: #fbbf24; color: #0b1a2e; border: none; padding: 14px; border-radius: 30px; font-weight: 700; font-size: 18px; width: 100%; cursor: pointer; }
+        .donacion .btn-pagar:hover { background: #f59e0b; }
+
+        .ruleta { background: #f8fafc; padding: 16px; border-radius: 16px; border: 1px solid #e0e8ee; margin-bottom: 20px; }
+        .ruleta h4 { color: #0b1a2e; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+        .ruleta p { font-size: 14px; color: #1a2f44; }
+
+        .referidos { background: #f8fafc; padding: 16px; border-radius: 16px; border: 1px solid #e0e8ee; margin-bottom: 20px; }
+        .referidos h4 { color: #0b1a2e; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+        .referidos p { font-size: 14px; color: #1a2f44; }
+
+        .impacto { background: #112b4f; padding: 16px; border-radius: 16px; color: #fff; text-align: center; margin-bottom: 20px; }
+        .impacto h4 { color: #fbbf24; font-size: 16px; }
+        .impacto p { font-size: 14px; color: #a0c4e8; }
+
+        .footer { background: #f8fafc; padding: 16px 20px; text-align: center; border-top: 1px solid #eef2f6; }
+        .footer small { font-size: 12px; color: #6b7f93; }
+        .footer a { color: #0b1a2e; text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>PROBEN <span>SAI</span></h1>
+        <p>Ayuda a los adultos mayores con solo $2</p>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="content">
+
+        <!-- CAUSA -->
+        <div class="causa">
+            <h3>🍲 ¿Qué necesitamos?</h3>
+            <ul>
+                <li>🍚 Arroz, pasta, harina de maíz</li>
+                <li>🥩 Pollo, carne, pescado, huevos</li>
+                <li>🧴 Pañales desechables para adultos</li>
+                <li>🧴 Crema para pañalitis</li>
+            </ul>
+        </div>
+
+        <!-- DONACIÓN -->
+        <div class="donacion">
+            <h4>💳 Donación con Pago Móvil</h4>
+            <div class="monto">$2</div>
+            <p style="font-size:14px; color:#a0c4e8;">Banco: 0102 · Cuenta: J-075869419</p>
+            <p style="font-size:14px; color:#a0c4e8;">Teléfono: 0424-4019279</p>
+            <button class="btn-pagar" id="btnDonar"><i class="fas fa-hand-holding-usd"></i> Donar ahora</button>
+        </div>
+
+        <!-- RULETA -->
+        <div class="ruleta">
+            <h4>🎡 RULETA SAI</h4>
+            <p>Con tu donación de <strong>$2</strong>, obtienes un ticket para la ruleta mensual. ¡Puedes ganar dinero mientras ayudas!</p>
+        </div>
+
+        <!-- REFERIDOS -->
+        <div class="referidos">
+            <h4>📤 COMPARTE Y GANA</h4>
+            <p>Comparte este enlace y gana comisiones por cada persona que done. ¡Todos ganan!</p>
+        </div>
+
+        <!-- IMPACTO -->
+        <div class="impacto">
+            <h4>📊 IMPACTO</h4>
+            <p>Con tu ayuda, hemos logrado recaudar <strong>$0</strong> y ayudar a <strong>0</strong> adultos mayores.</p>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <a href="https://guia-digital.com" target="_blank">🐙 Guía Digital · Cúcuta</a>
+        <small>Fundación PROBEN · RIF J-07586941-9</small>
+    </div>
+
+</div>
+
+<script>
+    document.getElementById('btnDonar').addEventListener('click', function() {
+        alert('💳 Próximamente: Pago Móvil integrado. Por ahora, contacta al 0424-4019279.');
+        // Aquí se integrará el pago con Pago Móvil (InstaPago, COBRO, etc.)
+    });
+</script>
+
+</body>
+</html>
