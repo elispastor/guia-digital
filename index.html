@@ -35,6 +35,90 @@
     .btn-group {
       display: flex;
       flex-direction: column;
+      gap: 12px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      border-radius: 16px;
+      border: none;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+      transition: all 0.1s ease;
+      letter-spacing: 0.5px;
+    }
+    .btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+    }
+    .btn .subtitulo {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+    .btn-motorizado { background: #fbbf24; color: #0b1a2e; }
+    .btn-particular { background: #22c55e; color: #0b1a2e; }
+    .btn-comercio { background: #8b5cf6; color: #fff; }
+    .btn-gremios { background: #ef4444; color: #fff; }
+    .footer-text {
+      color: #6b8fa0;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 20px;
+      border-top: 1px solid #eef2f6;
+      padding-top: 16px;
+    }
+    .footer-text a {
+      color: #0b1a2e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- PORTADA CON LA PRESENTACIÓN DEL SAI -->
+  <div class="banner">
+    <img src="presentacion-sai.png" alt="SAI - Sistema de Recaudación de Fondos">
+  </div>
+
+  <!-- BOTONES DEBAJO DE LA PORTADA -->
+  <div class="content">
+    <div class="btn-group">
+      <a href="motorizado.html" class="btn btn-motorizado">
+        🏍️ Motorizados
+        <span class="subtitulo">Mototaxistas · Taxistas · Transportistas</span>
+      </a>
+      <a href="particular.html" class="btn btn-particular">
+        👤 Particulares
+        <span class="subtitulo">Profesionales · Independientes · Personas naturales</span>
+      </a>
+      <a href="comercio.html" class="btn btn-comercio">
+        🏪 Comercios
+        <span class="subtitulo">Emprendimientos · Tiendas · Negocios</span>
+      </a>
+      <a href="gremios.html" class="btn btn-gremios">
+        🏛️ Fundaciones / Gremios
+        <span class="subtitulo">Asociaciones · Fundaciones · Gremios en general</span>
+      </a>
+    </div>
+    <div class="footer-text">
+      🐙 <a href="https://guia-digital.com" target="_blank">Guía Digital</a> · Tarjetas que generan ingresos
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>      flex-direction: column;
       gap: 14px;
     }
     .btn {
