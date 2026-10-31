@@ -1,7 +1,156 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta charset="UTF-8"><!DOCTYPE html>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plátanos al Mayor en Valencia y San Diego | La Bendición de Dios</title>
+<meta name="description" content="Sistema de Abastecimiento Solidario. Compra plátanos al mayor a precio justo en Valencia y San Diego. Distribución comunitaria y Giro del Pulpo.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0b1c3a; font-family: 'Segoe UI', Arial, sans-serif; color: white; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  /* NAVBAR Y MENÚ HAMBURGUESA */
+  .navbar {
+    position: sticky; top: 0; z-index: 9999;
+    background: rgba(17, 43, 79, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 4px solid #fbbf24;
+    padding: 15px 25px; margin-bottom: 30px;
+    border-radius: 0 0 20px 20px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .navbar .brand { display: flex; flex-direction: column; }
+  .navbar .brand .title { color: white; font-size: 1.4rem; font-weight: bold; letter-spacing: 1px; }
+  .navbar .brand .city { color: #fbbf24; font-size: 0.75rem; font-weight: 600; margin-top: -2px; }
+  .navbar .menu-desktop { display: flex; gap: 18px; font-size: 0.85rem; font-weight: 600; align-items: center; }
+  .navbar .menu-desktop a { color: white; text-decoration: none; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 0.85rem; font-weight: 600; transition: color 0.2s; }
+  .navbar .menu-desktop a:hover { color: #fbbf24; }
+  .navbar .btn-tarjeta-nav { background: #fbbf24; color: #0b1c3a !important; padding: 8px 16px; border-radius: 30px; font-weight: bold !important; }
+  .navbar .menu-mobile-btn { display: none; background: none; border: none; color: #fbbf24; font-size: 1.5rem; cursor: pointer; }
+  #mobile-menu { display: none; background: rgba(17, 43, 79, 0.98); backdrop-filter: blur(10px); padding: 15px; margin-bottom: 20px; border-radius: 15px; border-left: 4px solid #fbbf24; }
+  #mobile-menu.open { display: flex; flex-direction: column; gap: 12px; }
+  #mobile-menu a { color: white; text-decoration: none; padding: 10px; border-radius: 8px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-size: 1rem; font-weight: 600; }
+  #mobile-menu a:hover { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  @media (max-width: 900px) {
+    .navbar .menu-desktop { display: none; }
+    .navbar .menu-mobile-btn { display: block; }
+  }
+  @media (max-width: 768px) { .container { padding: 12px; } }
+
+  /* PORTADA */
+  .portada { text-align: center; margin: 30px 0; }
+  .portada img { width: 100%; max-width: 900px; border-radius: 20px; border: 4px solid #fbbf24; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin: 0 auto; display: block; }
+  .portada h1 { color: #fbbf24; font-size: 2rem; font-weight: bold; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+  .portada p { color: #ccc; font-size: 1.1rem; margin-top: 10px; font-style: italic; }
+
+  /* SECCIONES */
+  .seccion { background: #112b4f; border-radius: 20px; padding: 30px; margin-bottom: 30px; border-left: 5px solid #fbbf24; }
+  .seccion h2 { color: #fbbf24; font-size: 1.8rem; margin-bottom: 15px; }
+  .seccion p { color: #ddd; line-height: 1.6; margin-bottom: 15px; font-size: 1rem; }
+  .seccion ul { list-style: none; padding: 0; }
+  .seccion ul li { margin-bottom: 10px; font-size: 1rem; display: flex; align-items: flex-start; gap: 10px; }
+  .seccion ul li i { color: #fbbf24; margin-top: 5px; }
+
+  /* BOTONES */
+  .btn { display: inline-block; padding: 12px 24px; border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 1rem; transition: 0.3s; text-align: center; cursor: pointer; border: none; }
+  .btn-wsp { background: #25d366; color: white; }
+  .btn-oro { background: #fbbf24; color: #0b1c3a; }
+  .btn-wsp:hover { background: #1eb954; transform: scale(1.05); }
+  .btn-oro:hover { background: #eab308; transform: scale(1.05); }
+
+  /* WHATSAPP FLOTANTE */
+  .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2em; text-decoration: none; color: white; border: 2px solid #fbbf24; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+  .whatsapp-float:hover { transform: scale(1.1); }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 20px; margin-top: 40px; border-top: 2px solid #fbbf24; color: #aaa; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<a href="https://api.whatsapp.com/send?phone=584227159158&text=Hola,%20quiero%20comprar%20plátanos%20al%20mayor" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<nav class="navbar">
+  <div class="brand">
+    <div class="title">LA BENDICIÓN DE DIOS</div>
+    <div class="city">Plátanos al Mayor</div>
+  </div>
+  <div class="menu-desktop">
+    <a href="#inicio">INICIO</a>
+    <a href="#mayor">VENTA AL MAYOR</a>
+    <a href="#comunidad">DISTRIBUCIÓN COMUNITARIA</a>
+    <a href="#contacto">CONTACTO</a>
+  </div>
+  <button class="menu-mobile-btn" id="menu-btn">☰</button>
+</nav>
+
+<div id="mobile-menu">
+  <a href="#inicio">INICIO</a>
+  <a href="#mayor">VENTA AL MAYOR</a>
+  <a href="#comunidad">DISTRIBUCIÓN COMUNITARIA</a>
+  <a href="#contacto">CONTACTO</a>
+</div>
+
+<div class="container">
+
+  <div id="inicio" class="portada">
+    <img src="portada-platanos.jpg" alt="Pendón La Bendición de Dios - Plátanos al Mayor" onerror="this.src='https://placehold.co/900x400/0b1c3a/fbbf24?text=La+Bendicion+de+Dios'">
+    <h1>Sistema de Abastecimiento Solidario</h1>
+    <p>Plátanos al Mayor para Valencia y San Diego. Precios justos, calidad garantizada.</p>
+  </div>
+
+  <div id="mayor" class="seccion">
+    <h2>🚛 Venta al Mayor</h2>
+    <p>¿Tienes una bodega, frutería o restaurante? Te surtimos directo del productor. <strong>Pregunta por nuestros precios especiales por volumen.</strong></p>
+    <ul>
+      <li><i class="fas fa-check-circle"></i> Plátanos frescos de primera calidad.</li>
+      <li><i class="fas fa-check-circle"></i> Precios justos, sin intermediarios abusivos.</li>
+      <li><i class="fas fa-check-circle"></i> Entrega a domicilio en Valencia y San Diego.</li>
+    </ul>
+    <a href="https://api.whatsapp.com/send?phone=584227159158&text=Hola,%20quiero%20cotizar%20plátanos%20al%20mayor" target="_blank" class="btn btn-wsp"><i class="fab fa-whatsapp"></i> Cotizar por WhatsApp</a>
+  </div>
+
+  <div id="comunidad" class="seccion">
+    <h2>🤝 Distribución Comunitaria</h2>
+    <p>Nuestro sistema es como un <strong>equipo de fútbol</strong>: el productor pone el plátano, tú pones las ganas de comprar, y nosotros ponemos la organización. Jugamos en equipo para que el precio sea justo y a todos nos rinda el dinero.</p>
+    
+    <h3 style="color: #fbbf24; margin-top: 20px;">🎰 El Giro del Pulpo</h3>
+    <p>Compra tus plátanos, recibe tu cupón y participa por una Cesta de Plátanos extra. <strong>¡Cada 100 cupones, el Pulpo gira!</strong></p>
+    <a href="https://api.whatsapp.com/send?phone=584227159158&text=Hola,%20quiero%20registrar%20mi%20compra%20para%20el%20Giro%20del%20Pulpo" target="_blank" class="btn btn-oro"><i class="fas fa-ticket-alt"></i> Quiero mi cupón</a>
+  </div>
+
+  <div id="contacto" class="seccion">
+    <h2>📍 Contacto</h2>
+    <p><strong>Dirección:</strong> Avenida Principal de La Cumaca, San Diego, Carabobo.</p>
+    <p><strong>WhatsApp:</strong> <a href="https://api.whatsapp.com/send?phone=584227159158" style="color: #fbbf24; text-decoration: none;">+58 422-7159158</a></p>
+    <p style="font-style: italic; color: #aaa;">"La Bendición de Dios" - Unidos Ganamos Más.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 La Bendición de Dios · Sistema de Abastecimiento Solidario</p>
+  <p>Valencia · San Diego · Naguanagua</p>
+</footer>
+
+<script>
+  document.getElementById('menu-btn')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(el => {
+    el.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plátanos al Mayor en Valencia y San Diego | La Bendición de Dios</title>
 <meta name="description" content="Sistema de Abastecimiento Solidario. Compra plátanos al mayor a precio justo en Valencia y San Diego. Distribución comunitaria y Giro del Pulpo.">
