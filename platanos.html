@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plátanos al Mayor en Valencia | La Bendición de Dios</title>
+    <meta name="description" content="Sistema de Abastecimiento Solidario y Economía Solidaria. Compra plátanos al mayor a precio justo en Valencia y San Diego. ¡Únete al equipo campeón!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Animaciones y estilos base */
+        body { background-color: #0b1c3a; color: white; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
+        .fuente-impacto { font-family: 'Arial Black', Impact, sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Efecto Parallax y degradado en la portada */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('portada-platanos.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(11,28,58,0.6) 0%, rgba(11,28,58,0.95) 100%);
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; padding: 20px; max-width: 900px; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); color: #fbbf24; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); line-height: 1.1; }
+        .hero p { font-size: clamp(1.2rem, 3vw, 1.8rem); color: #e2e8f0; margin-top: 15px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
+
+        /* Animación de aparición al hacer scroll */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Estilo de las tarjetas (Bento Grid) */
+        .bento-card {
+            background: rgba(17, 43, 79, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid #1e3a5f;
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .bento-card:hover {
+            transform: translateY(-5px);
+            border-color: #fbbf24;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
+        }
+        .bento-card.destacado { border-color: #fbbf24; background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(17,43,79,0.9)); }
+        
+        /* Animación de pulso para los botones */
+        .btn-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        }
+
+        /* Iconos del Bento Grid */
+        .icono-grande { font-size: 2.5rem; color: #fbbf24; margin-bottom: 15px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación Fija (Glassmorphism) -->
+    <nav class="fixed w-full top-0 z-50 bg-[#112b4f]/80 backdrop-blur-md border-b-4 border-[#fbbf24] py-4 px-6 flex justify-between items-center shadow-lg">
+        <div class="text-xl font-bold text-white tracking-wider flex items-center gap-2">
+            <span class="text-2xl">🐙</span> LA BENDICIÓN DE DIOS
+        </div>
+        <div class="hidden md:flex gap-6 text-sm font-semibold text-white">
+            <a href="#sas" class="hover:text-[#fbbf24] transition">Venta al Mayor</a>
+            <a href="#ses" class="hover:text-[#fbbf24] transition">Economía Solidaria</a>
+            <a href="#giro" class="hover:text-[#fbbf24] transition">El Giro del Pulpo</a>
+            <a href="https://wa.me/584227159158" target="_blank" class="bg-[#25d366] text-white px-4 py-2 rounded-full hover:bg-green-600 transition">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Portada de Impacto -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fuente-impacto">El Equipo Campeón<br><span class="text-white">del Abastecimiento</span></h1>
+            <p>Jugar solo te sale caro. Jugar en equipo te hace campeón.</p>
+            <a href="#ses" class="mt-8 inline-block bg-[#fbbf24] text-[#0b1c3a] px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform btn-pulse">
+                Unirme al Equipo Ganador
+            </a>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container mx-auto px-4 py-16 max-w-6xl">
+        
+        <!-- Sección SAS y SES (Bento Grid) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- SAS -->
+            <div class="bento-card fade-in" id="sas">
+                <i class="fas fa-truck-loading icono-grande"></i>
+                <h2 class="text-2xl font-bold text-[#fbbf24] mb-4">Venta al Mayor (SAS)</h2>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    ¿Tienes una bodega, frutería o restaurante? En nuestro equipo, todos metemos el gol. Te surtimos directo del productor, con precios justos y entregas en Valencia, San Diego y Naguanagua.
+                </p>
+                <ul class="mb-6 space-y-2 text-gray-200">
+                    <li><i class="fas fa-check-circle text-[#fbbf24] mr-2"></i> Precios directos sin intermediarios.</li>
+                    <li><i class="fas fa-check-circle text-[#fbbf24] mr-2"></i> Entregas a domicilio para tu negocio.</li>
+                    <li><i class="fas fa-check-circle text-[#fbbf24] mr-2"></i> Calidad garantizada de primera.</li>
+                </ul>
+                <a href="https://wa.me/584227159158?text=Hola,%20quiero%20cotizar%20platanos%20al%20mayor" target="_blank" class="inline-block w-full text-center bg-[#25d366] text-white font-bold py-3 rounded-xl hover:bg-green-600 transition">
+                    <i class="fab fa-whatsapp mr-2"></i> Cotizar Precios
+                </a>
+            </div>
+
+            <!-- SES -->
+            <div class="bento-card destacado fade-in" id="ses">
+                <i class="fas fa-users icono-grande"></i>
+                <h2 class="text-2xl font-bold text-[#fbbf24] mb-4">Economía Solidaria (SES)</h2>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Aquí no hay personas solas. Si te unes a nuestro equipo, ganas por recomendar. Cada persona que traigas al sistema te genera un beneficio.
+                </p>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    No importa si tienes un local, un camión, o si tu superpoder es conectar a la gente. En el SES, tu recomendación vale oro.
+                </p>
+                <a href="https://wa.me/584227159158?text=Hola,%20quiero%20unirme%20al%20Sistema%20de%20Economia%20Solidaria" target="_blank" class="inline-block w-full text-center bg-[#fbbf24] text-[#0b1c3a] font-bold py-3 rounded-xl hover:bg-yellow-500 transition btn-pulse">
+                    <i class="fas fa-handshake mr-2"></i> Unirme al Equipo SES
+                </a>
+            </div>
+        </div>
+
+        <!-- Sección Giro del Pulpo -->
+        <div class="mt-6 bento-card fade-in text-center" id="giro">
+            <i class="fas fa-dharmachakra icono-grande animate-spin" style="animation-duration: 4s;"></i>
+            <h2 class="text-2xl font-bold text-[#fbbf24] mb-4">El Giro del Pulpo</h2>
+            <p class="text-gray-300 mb-6 leading-relaxed max-w-2xl mx-auto">
+                Por cada compra que hagas, recibes un cupón de participación. Cada 100 cupones entregados, el Pulpo gira y alguien se gana una <strong>Cesta de Plátanos Extra</strong>. Registra tu compra para obtener tu cupón y participa.
+            </p>
+            <a href="https://cucuta.guia-digital.com/platanos" target="_blank" class="inline-block bg-white text-[#0b1c3a] px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition">
+                🎟️ Registrar mi Compra
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 py-8 border-t border-gray-700 text-sm text-gray-500">
+            <p class="mb-2">© 2026 La Bendición de Dios · SAS & SES</p>
+            <p>Valencia · San Diego · Naguanagua</p>
+            <p class="mt-4">Hecho con ❤️ para nuestra comunidad.</p>
+        </footer>
+    </div>
+
+    <!-- Script para animaciones al hacer scroll -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Opcional: dejar de observar una vez que ya es visible
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Se activa cuando el 10% del elemento es visible
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
